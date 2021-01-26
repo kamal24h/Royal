@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="it">
+  <texts>
+    <text name="HomePage" value="صفحه اصلی" />
+    <text name="About" value="درباره" />
+    <text name="WelcomeMessage" value="به رویال ملک تبریز خوض آمدید!" />
+
+    <text name="FormIsNotValidMessage" value="I dati non sono corretti. Verifica gli errori." />
+    <text name="TenantNameCanNotBeEmpty" value="Il Dominio non può essere vuoto" />
+
+    <text name="InvalidUserNameOrPassword" value="Username o password errati" />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="Il dominio {0} non esiste" />
+    <text name="TenantIsNotActive" value="Il dominio {0} non è attivo." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="L'utente {0} non è attivo e non può fare login." />
+    <text name="UserEmailIsNotConfirmedAndCanNotLogin">Indirizzo email non registrato. Login non ammesso.</text>
+    <text name="UserLockedOutMessage">L'account è momentaneamente bloccato. Riprovare più tardi.</text>
+    <text name="PleaseEnterLoginInformation" value="Inserisci le informazioni di login" />
+    <text name="TenancyName" value="Dominio" />
+    <text name="UserNameOrEmail" value="Use name o email" />
+    <text name="Password" value="Password" />
+    <text name="ResetPassword" value="بازیابی رمز عبور" />
+    <text name="UpdatePassword" value="بروزرسانی رمز عبور" />
+    <text name="RememberMe" value="مرا بخاطر بسپار" />
+    <text name="LogIn" value="ورود" />
+    <text name="LoginFailed" value="ورود ناموفق!" />
+    <text name="NameSurname" value="نام نام خانوادگی" />
+    <text name="UserName" value="نام کاربر" />
+    <text name="Name" value="نام" />
+    <text name="Surname" value="نام خانوادگی" />
+    <text name="EmailAddress" value="آدرس ایمیل" />
+    <text name="Tenants" value="Tenants" />
+    <text name="SavedSuccessfully" value="با موفقیت ذخیره شد" />
+    <text name="CreateNewTenant" value="Create new tenant" />
+    <text name="AdminEmailAddress" value="آدرس ایمیل مدیر" />
+    <text name="AdminPassword" value="رمز عبور مدیر" />
+    <text name="Save" value="ذخیره" />
+    <text name="Cancel" value="انصراف" />
+    <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
+    <text name="DefaultPasswordIs" value="رمز پیش فرض {0}است" />
+    <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
+    <text name="Register" value="ثبت نام" />    
+    
+    <text name="OrLoginWith" value="O entra con" />
+    <text name="WaitingForActivationMessage" value="Il tuo account è in attesa di approvazione." />
+    <text name="TenantSelection" value="Selezione dominio" />
+    <text name="TenantSelection_Detail" value="Seleziona uno dei seguenti domini." />
+    <text name="Logout" value="Logout" />
+
+    <text name="DatabaseConnectionString" value="String connession Database" />
+    <text name="Users" value="Utenti" />
+    <text name="IsActive" value="Attivo" />
+    <text name="FullName" value="Nome completo" />
+    <text name="CreateNewUser" value="Nuovo utente" />
+    <text name="Yes" value="Sì" />
+    <text name="No" value="No" />
+    <text name="Optional" value="Opzionale" />
+    <text name="SearchWithThreeDot">Cerca...</text>
+  </texts>
+</localizationDictionary>
