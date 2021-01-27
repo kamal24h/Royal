@@ -14,6 +14,8 @@ namespace RoyalEstate
     /// </summary>
     public abstract class RoyalEstateAppServiceBase : ApplicationService
     {
+        private object repository;
+
         public TenantManager TenantManager { get; set; }
 
         public UserManager UserManager { get; set; }
@@ -22,7 +24,7 @@ namespace RoyalEstate
         {
             LocalizationSourceName = RoyalEstateConsts.LocalizationSourceName;
         }
-
+        
         protected virtual async Task<User> GetCurrentUserAsync()
         {
             var user = await UserManager.FindByIdAsync(AbpSession.GetUserId().ToString());

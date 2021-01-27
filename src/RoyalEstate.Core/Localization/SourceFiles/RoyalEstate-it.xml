@@ -1,23 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="it">
   <texts>
     <text name="HomePage" value="صفحه اصلی" />
     <text name="About" value="درباره" />
-    <text name="WelcomeMessage" value="به رویال ملک تبریز خوض آمدید!" />
-
-    <text name="FormIsNotValidMessage" value="I dati non sono corretti. Verifica gli errori." />
-    <text name="TenantNameCanNotBeEmpty" value="Il Dominio non può essere vuoto" />
-
-    <text name="InvalidUserNameOrPassword" value="Username o password errati" />
-    <text name="ThereIsNoTenantDefinedWithName{0}" value="Il dominio {0} non esiste" />
-    <text name="TenantIsNotActive" value="Il dominio {0} non è attivo." />
-    <text name="UserIsNotActiveAndCanNotLogin" value="L'utente {0} non è attivo e non può fare login." />
-    <text name="UserEmailIsNotConfirmedAndCanNotLogin">Indirizzo email non registrato. Login non ammesso.</text>
-    <text name="UserLockedOutMessage">L'account è momentaneamente bloccato. Riprovare più tardi.</text>
-    <text name="PleaseEnterLoginInformation" value="Inserisci le informazioni di login" />
-    <text name="TenancyName" value="Dominio" />
-    <text name="UserNameOrEmail" value="Use name o email" />
-    <text name="Password" value="Password" />
+    <text name="WelcomeMessage" value="به رویال ملک تبریز خوش آمدید!" />
+    <text name="FormIsNotValidMessage" value="اطلاعات فرم معتبر نیست. لطفا خطاها را رفع کنید ." />
+    <text name="TenantNameCanNotBeEmpty" value="نام تننت نمیتواند خالی باشد" />
+    <text name="InvalidUserNameOrPassword" value="نام کاربری یا رمز عبور اشتباه هست " />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="تننت با نام {0} تعریف نشده است" />
+    <text name="TenantIsNotActive" value="تننت {0} فعال نیست." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="کاربر {0} فعال نیست و نمیتواند وارد شود." />
+    <text name="UserEmailIsNotConfirmedAndCanNotLogin">ایمیل کاربر تایید نشده و نمی تواند وارد شود.</text>
+    <text name="UserLockedOutMessage">حساب کاربری قفل شده و امکان ورود در حال حاضر نیست. بعدا امتحان کنید.</text>
+    <text name="PleaseEnterLoginInformation" value="لطفا اطلاعات ورود را وارد کنید" />
+    <text name="TenancyName" value="نام تننتی" />
+    <text name="UserNameOrEmail" value="نام کاربری یا ایمیل" />
+    <text name="Password" value="رمز عبور" />
     <text name="ResetPassword" value="بازیابی رمز عبور" />
     <text name="UpdatePassword" value="بروزرسانی رمز عبور" />
     <text name="RememberMe" value="مرا بخاطر بسپار" />
@@ -30,30 +28,93 @@
     <text name="EmailAddress" value="آدرس ایمیل" />
     <text name="Tenants" value="Tenants" />
     <text name="SavedSuccessfully" value="با موفقیت ذخیره شد" />
-    <text name="CreateNewTenant" value="Create new tenant" />
+    <text name="CreateNewTenant" value="ایجاد تننت جدید" />
     <text name="AdminEmailAddress" value="آدرس ایمیل مدیر" />
     <text name="AdminPassword" value="رمز عبور مدیر" />
     <text name="Save" value="ذخیره" />
     <text name="Cancel" value="انصراف" />
     <text name="TenantName_Regex_Description" value="Tenant name must be at least 2 chars, starts with a letter and continue with letter, number, dash or underscore." />
     <text name="DefaultPasswordIs" value="رمز پیش فرض {0}است" />
-    <text name="CanBeEmptyToLoginAsHost" value="Can be empty to login as host." />
-    <text name="Register" value="ثبت نام" />    
-    
-    <text name="OrLoginWith" value="O entra con" />
-    <text name="WaitingForActivationMessage" value="Il tuo account è in attesa di approvazione." />
-    <text name="TenantSelection" value="Selezione dominio" />
-    <text name="TenantSelection_Detail" value="Seleziona uno dei seguenti domini." />
-    <text name="Logout" value="Logout" />
-
-    <text name="DatabaseConnectionString" value="String connession Database" />
-    <text name="Users" value="Utenti" />
-    <text name="IsActive" value="Attivo" />
-    <text name="FullName" value="Nome completo" />
-    <text name="CreateNewUser" value="Nuovo utente" />
-    <text name="Yes" value="Sì" />
-    <text name="No" value="No" />
-    <text name="Optional" value="Opzionale" />
-    <text name="SearchWithThreeDot">Cerca...</text>
+    <text name="CanBeEmptyToLoginAsHost" value="برای ورود به عنوان میزبان نمی تواند خالی باشد." />
+    <text name="Register" value="ثبت نام" />
+    <text name="OrLoginWith" value="یا وارد شوید با" />
+    <text name="WaitingForActivationMessage" value="حساب کاربری شما منتظر فعالسازی از سوی مدیر سیستم است." />
+    <text name="TenantSelection" value="انتخاب تننت" />
+    <text name="TenantSelection_Detail" value="لطفا یکی از این تننت ها را انتخاب کنید." />
+    <text name="Logout" value="خروج" />
+    <text name="RegisterFormUserNameInvalidMessage">لطفا ایمیل برای نام کاربری وارد نکنید.</text>
+    <text name="DatabaseConnectionString" value="آرایه اتصال بانک اطلاعاتی" />
+    <text name="Users" value="کاربران" />
+    <text name="IsActive" value="فعال؟" />
+    <text name="FullName" value="نام کامل" />
+    <text name="CreateNewUser" value="ایجاد کاربر جدید" />
+    <text name="Yes" value="بله" />
+    <text name="No" value="خیر" />
+    <text name="Optional" value="انتخابی" />
+    <text name="LeaveEmptyToSwitchToHost">برای سویچ به هاست، خالی بگذارید</text>
+    <text name="CurrentTenant">تننت جاری</text>
+    <text name="NotSelected">انتخاب نشده!</text>
+    <text name="Change">تغییر</text>
+    <text name="ChangeTenant">تغییر تننت</text>
+    <text name="MultiLevelMenu">منوی چند سطحی</text>
+    <text name="Back">بازگشت</text>
+    <text name="SuccessfullyRegistered">با موفقیت ثبت نام انجام شد</text>
+    <text name="WaitingForEmailActivation">ایمیل شما باید فعها شود</text>
+    <text name="Roles">نقش ها</text>
+    <text name="DisplayName">نام نمایشی</text>
+    <text name="Edit">ویرایش</text>
+    <text name="Delete">حذف</text>
+    <text name="CreateNewRole">ایجاد نقش جدید</text>
+    <text name="RoleName">نام نقش</text>
+    <text name="Actions">عملیات</text>
+    <text name="CouldNotCompleteLoginOperation">عملیات ورود کامل نشد. لطفا بعدا امتحان کنید..</text>
+    <text name="CouldNotValidateExternalUser">اعتبارسنجی کاربر بیرونی ممکن نشد.</text>
+    <text name="EditRole">ویرایش نقش</text>
+    <text name="EditTenant">ویرایش تننت</text>
+    <text name="EditUser">ویرایش کاربر</text>
+    <text name="TenantIdIsNotActive{0}">تننت با شناسه {0} فعال نیست</text>
+    <text name="UnknownTenantId{0}">شناسه تننت {0} ناشناس است.</text>
+    <text name="ThisFieldIsRequired">این فیلد اجباری است.</text>
+    <text name="PleaseWait">لطفا صبر کنید...</text>
+    <text name="Administration">مدیریت</text>
+    <text name="ClearAll">همه را پاک کن</text>
+    <text name="ClearOthers">بقیه را پاک کن</text>
+    <text name="LabelOptions">آپشنهای لیبل</text>
+    <text name="Permissions">مجوزهای دسترسی</text>
+    <text name="RoleDescription">توضیحات نقش</text>
+    <text name="Refresh">تازه سازی</text>
+    <text name="Create">ایجاد</text>
+    <text name="UserDetails">جزییات کاربر</text>
+    <text name="UserRoles">نقشهای کاربر</text>
+    <text name="ConfirmPassword">تایید رمز عبور</text>
+    <text name="Version">نسخه</text>
+    <text name="On">روشن</text>
+    <text name="Off">خاموش</text>
+    <text name="AreYouSureWantToDelete">آیا شما مطمئن هستید {0}?</text>
+    <text name="SuccessfullyDeleted">با موفقیت حذف شد.</text>
+    <text name="StartTyping">تایپ را شروع کنید</text>
+    <text name="Skins">پوسته</text>
+    <text name="Settings">تنظیمات</text>
+    <text name="Filter">فیلتر</text>
+    <text name="CurrentPassword">رمز جاری</text>
+    <text name="NewPassword">رمز جدید</text>
+    <text name="ConfirmNewPassword">تایید رمز جدید</text>
+    <text name="PasswordsDoNotMatch">رمز یکسان نیست</text>
+    <text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">Passwords must be at least 8 characters, contain a lowercase, uppercase, and number</text>
+    <text name="UserDeleteWarningMessage">کاربر {0} حذف خواهد شد.</text>
+    <text name="RoleDeleteWarningMessage">نقش {0} حذف شده و از همه کاربران مربوطه قطع خواهد شد.</text>
+    <text name="TenantDeleteWarningMessage">تننت {0} حذف خواهد شد.</text>
+    <text name="SearchWithThreeDot">جستجو...</text>
+    <text name="PleaseEnterAtLeastNCharacter">لطفا حداقل {0} کاراکتر وارد نمایید</text>
+    <text name="PleaseEnterNoMoreThanNCharacter">لطفا بیش از {0} کاراکتر وارد نکنید</text>
+    <text name="InvalidEmailAddress">ایمیل نامعتبر</text>
+    <text name="InvalidPattern">نامعتبر</text>
+    <text name="PairsDoNotMatch">یکسان نیست</text>
+    <text name="All">همه</text>
+    <text name="TotalRecordsCount">تعداد کل: {0}</text>
+    <text name="Search">جستجو</text>
+    <text name="Clear">پاک کن</text>
+    <text name="ResetPasswordStepOneInfo">1.رمز مدیریتی خود را وارد نمایید</text>
+    <text name="ResetPasswordStepTwoInfo">2.این رمز تصادفی را کپی کنید تا برای کاربر ارسال کنید</text>
   </texts>
 </localizationDictionary>
