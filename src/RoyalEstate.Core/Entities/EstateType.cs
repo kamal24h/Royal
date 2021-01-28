@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
@@ -23,6 +24,11 @@ namespace RoyalEstate.Entities{
         public EstateType()
         {
             CreationTime = DateTime.Now;
+        }
+
+        public static implicit operator List<object>(EstateType v)
+        {
+            throw new NotImplementedException();
         }
     }
 }

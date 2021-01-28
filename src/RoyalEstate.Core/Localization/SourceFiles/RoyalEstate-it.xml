@@ -3,6 +3,7 @@
   <texts>
     <text name="HomePage" value="صفحه اصلی" />
     <text name="About" value="درباره" />
+    <text name="Estates" value="املاک" />
     <text name="WelcomeMessage" value="به رویال ملک تبریز خوش آمدید!" />
     <text name="FormIsNotValidMessage" value="اطلاعات فرم معتبر نیست. لطفا خطاها را رفع کنید ." />
     <text name="TenantNameCanNotBeEmpty" value="نام تننت نمیتواند خالی باشد" />

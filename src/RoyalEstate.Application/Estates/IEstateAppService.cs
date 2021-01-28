@@ -10,10 +10,11 @@ using System.Threading.Tasks;
 
 namespace RoyalEstate.Estates
 {
-    interface IEstateAppService : IAsyncCrudAppService<EstateTypeDto>
+    interface IEstateAppService : IApplicationService
     {
 
         //public List<string> GetAllNames();
         public List<EstateType> GetAllNames();
+        void CreateEstateType(CreateEstateTypeInput input);
     }
 }

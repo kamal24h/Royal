@@ -1,6 +1,7 @@
 ﻿using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
+using Abp.UI;
 using AutoMapper;
 using RoyalEstate.Entities;
 using RoyalEstate.Estates.Dto;
@@ -15,17 +16,37 @@ using System.Threading.Tasks;
 namespace RoyalEstate.Estates
 {
 
-    class EstateAppService : AsyncCrudAppService<EstateType, EstateTypeDto> , IEstateAppService
+    class EstateAppService :  IEstateAppService
     {
-        public EstateAppService(IRepository<EstateType> repository)
-            : base(repository)
-        {
+        
+        private readonly IRepository<EstateType> _estateTypeRepository;
 
+        public EstateAppService(IRepository<EstateType> estateTypeRepository)
+        {
+            _estateTypeRepository = estateTypeRepository;
         }
 
-        public Task<List<EstateTypeDto>> GetAll()
+        public void CreateEstateType(CreateEstateTypeInput input)
         {
-            //throw new NotImplementedException();
+            var estateType = _estateTypeRepository.FirstOrDefault(p => p.Name == input.Name);
+            if (estateType != null)
+            {
+                throw new UserFriendlyException("نوع ملکی با نام مشابه وجود دارد");
+            }
+
+            estateType = new EstateType { 
+                Name = input.Name,
+                CreationTime = input.CreationTime,
+                IsActive = input.IsActive };
+            _estateTypeRepository.Insert(estateType); 
         }
-     }
+
+        public List<EstateType> GetAllNames()
+        {
+            var estateType = _estateTypeRepository.GetAll();
+
+            return (List<EstateType>)estateType;
+                
+        }
+    }
 }
