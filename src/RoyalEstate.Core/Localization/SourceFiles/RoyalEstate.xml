@@ -4,6 +4,10 @@
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="Estates" value="Estates" />
+    <text name="EstateTypes" value="Estate Types" />
+    <text name="EstateType" value="Estate Type" />
+    <text name="EstateTypeName" value="EstateType Name" />
+    <text name="CreateNewEstateType" value="Create New EstateType" />    
     <text name="WelcomeMessage" value="Welcome to RoyalEstate!" />
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant name can not be empty" />

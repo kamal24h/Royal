@@ -2,21 +2,41 @@
 using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
-using RoyalEstate.Authorization;
-using RoyalEstate.Controllers;
-using RoyalEstate.Estates;
 using RoyalEstate.Web.Models.Estates;
-using RoyalEstate.Entities;
-using System.Collections.Generic;
+using RoyalEstate.Controllers;
+using RoyalEstate.Estates.Dto;
+using RoyalEstate.Estates;
 
 namespace RoyalEstate.Web.Controllers
 {
     public class EstatesController : RoyalEstateControllerBase
     {
-        public IActionResult Index()
+        private readonly IEstateAppService _estateAppServic;
+
+        public EstatesController(IEstateAppService estateAppServic)
         {
-            List<EstateType> estateType = new List<EstateType>();
-            return View(estateType);
+            _estateAppServic = estateAppServic;
+        }
+
+        public async Task<ActionResult> IndexAsync()
+        {
+            var types = (await _estateAppServic.GetEstateTypeNames()).Items;
+            var model = new EstateListViewModel
+            {
+                EstateTypes = types
+            };            
+            return View(model);
+        }
+
+        public async Task<ActionResult> EditModal(int typeId)
+        {
+            var estateType = await _estateAppServic.GetAsync(new EntityDto<int>(typeId));
+            
+            var model = new EditEstateTypeModalViewModel
+            {
+                EstateType = estateType                
+            };
+            return PartialView("_EditModal", model);
         }
     }
 }

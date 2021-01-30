@@ -1,34 +1,34 @@
 ﻿@using RoyalEstate.Web.Startup
+@model RoyalEstate.Web.Models.Estates.EstateListViewModel
 
-@*Model IEnumerable<RoyalEstate.Entities.EstateType>
+@{
+    ViewBag.Title = L("Estates");
 
-    @model RoyalEstate.Web.Models.Estates.EstateListViewModel*@
-@*@{
-        ViewData["Title"] = "Index";
-        Layout = "~/Views/Shared/Layout/_Layout.cshtml";
-    }*@
+    //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
+    ViewBag.ActiveMenu = PageNames.Estates;
+}
 
-@{ ViewBag.Title = L("Estates");
-    ViewBag.CurrentPageName = PageNames.Estates;
-    Layout = "~/Views/Shared/Layout/_Layout.cshtml";  }
+
+
 @section scripts
 {
     <environment names="Development">
         <script src="~/view-resources/Views/Estates/Index.js" asp-append-version="true"></script>
     </environment>
 
-    <environment names="Staging,Production">
+    @*<environment names="Staging,Production">
         <script src="~/view-resources/Views/Estates/Index.min.js" asp-append-version="true"></script>
-    </environment>
+    </environment>*@
 }
+
 <section class="content-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-6">
-                <h1>@L("Estates")</h1>
+                <h1>@L("EstateType")</h1>
             </div>
             <div class="col-sm-6">
-                <a href="javascript:;" data-toggle="modal" data-target="#UserCreateModal" class="btn bg-blue float-sm-right">
+                <a href="javascript:;" data-toggle="modal" data-target="#EstateTypeCreateModal" class="btn bg-blue float-sm-right">
                     <i class="fa fa-plus-square"></i>
                     @L("Create")
                 </a>
@@ -37,47 +37,51 @@
     </div>
 </section>
 
-<h1>املاک</h1>
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!--Use for bulk actions-->
+                            </div>
+                            <div class="col-md-6">
+                                @await Html.PartialAsync("~/Views/Estates/Index.AdvancedSearch.cshtml")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="EstateTypeTable" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>@L("EstateTypeName")</th>                                        
+                                        <th>@L("IsActive")</th>
+                                        <th style="width: 150px">@L("Actions")</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("~/Views/Estates/_CreateModal.cshtml", Model)
+
+<div class="modal fade" id="EstateTypeEditModal" tabindex="-1" role="dialog" aria-labelledby="EstateTypeEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 
 
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
-@*<table class="table">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => Model.Name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.CreationTime)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.IsActive)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.CreationTime)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.IsActive)
-                    </td>
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>*@

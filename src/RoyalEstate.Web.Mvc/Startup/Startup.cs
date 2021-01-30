@@ -54,6 +54,7 @@ namespace RoyalEstate.Web.Startup
             AuthConfigurer.Configure(services, _appConfiguration);
 
             services.AddScoped<IWebResourceManager, WebResourceManager>();
+            //services.AddSingleton<IEstateAppService, EstateAppService>();
 
             services.AddSignalR();
 

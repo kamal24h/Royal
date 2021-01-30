@@ -1,0 +1,32 @@
+﻿@using RoyalEstate.Web.Models.Common.Modals
+@model RoyalEstate.Web.Models.Estates.EstateListViewModel
+@{
+    Layout = null;
+}
+<div class="modal fade" id="EstateTypeCreateModal" tabindex="-1" role="dialog" aria-labelledby="EstateTypeCreateModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewEstateType")))
+            <form name="EstateTypeCreateForm" role="form" class="form-horizontal">
+                <div class="modal-body">
+                    
+                    <div class="form-group row required">
+                        <label class="col-md-3 col-form-label" for="estateypename">@L("EstateTypeName")</label>
+                        <div class="col-md-9">
+                            <input id="estatetypename" type="text" name="Name" class="form-control" required maxlength="32" minlength="2">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-md-3 col-form-label" for="CreateUserIsActive">@L("IsActive")</label>
+                        <div class="col-md-9">
+                            <input type="checkbox" name="IsActive" value="true" id="CreateUserIsActive" checked />
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+            </form>
+        </div>
+    </div>
+</div>

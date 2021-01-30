@@ -4,6 +4,10 @@
     <text name="HomePage" value="صفحه اصلی" />
     <text name="About" value="درباره" />
     <text name="Estates" value="املاک" />
+    <text name="EstateTypes" value="انواع ملک" />
+    <text name="EstateType" value="نوع ملک" />
+    <text name="EstateTypeName" value="نوع ملک" />
+    <text name="CreateNewEstateType" value="تعریف نوع ملک جدید" />  
     <text name="WelcomeMessage" value="به رویال ملک تبریز خوش آمدید!" />
     <text name="FormIsNotValidMessage" value="اطلاعات فرم معتبر نیست. لطفا خطاها را رفع کنید ." />
     <text name="TenantNameCanNotBeEmpty" value="نام تننت نمیتواند خالی باشد" />
@@ -101,7 +105,7 @@
     <text name="NewPassword">رمز جدید</text>
     <text name="ConfirmNewPassword">تایید رمز جدید</text>
     <text name="PasswordsDoNotMatch">رمز یکسان نیست</text>
-    <text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">Passwords must be at least 8 characters, contain a lowercase, uppercase, and number</text>
+    <text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">رمز عبور باید حداقل 8 کاراکتر و شامل حرف بزرگ و کوچک و عدد باشد</text>
     <text name="UserDeleteWarningMessage">کاربر {0} حذف خواهد شد.</text>
     <text name="RoleDeleteWarningMessage">نقش {0} حذف شده و از همه کاربران مربوطه قطع خواهد شد.</text>
     <text name="TenantDeleteWarningMessage">تننت {0} حذف خواهد شد.</text>
