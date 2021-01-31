@@ -10,7 +10,7 @@ using RoyalEstate.Estates.Dto;
 namespace RoyalEstate.Estates
 {
 
-    public class EstateAppService : AsyncCrudAppService<EstateType, EstateTypeDto, int, PagedEstateTypeResultRequestDto, CreateEntityTypeDto, EstateTypeDto>, IEstateAppService
+    public class EstateAppService : AsyncCrudAppService<EstateType, EstateTypeDto, int, PagedEstateTypeResultRequestDto, CreateEstateTypeDto, EstateTypeDto>, IEstateAppService
     {
         private readonly IRepository<EstateType> _estateTypeRepository;
 

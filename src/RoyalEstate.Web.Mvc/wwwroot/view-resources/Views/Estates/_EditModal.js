@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    var _estateTypeService = abp.services.app.estateType,
+    var _estateTypeService = abp.services.app.estate,
         l = abp.localization.getSource('RoyalEstate'),
         _$modal = $('#EstateTypeEditModal'),
         _$form = _$modal.find('form');

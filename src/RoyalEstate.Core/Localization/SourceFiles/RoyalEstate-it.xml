@@ -7,6 +7,7 @@
     <text name="EstateTypes" value="انواع ملک" />
     <text name="EstateType" value="نوع ملک" />
     <text name="EstateTypeName" value="نوع ملک" />
+    <text name="CreationTime" value="تاریخ ثبت" />
     <text name="CreateNewEstateType" value="تعریف نوع ملک جدید" />  
     <text name="WelcomeMessage" value="به رویال ملک تبریز خوش آمدید!" />
     <text name="FormIsNotValidMessage" value="اطلاعات فرم معتبر نیست. لطفا خطاها را رفع کنید ." />

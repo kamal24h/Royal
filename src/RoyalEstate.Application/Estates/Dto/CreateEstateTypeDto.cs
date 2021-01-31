@@ -9,7 +9,7 @@ using System.Text;
 namespace RoyalEstate.Estates.Dto
 {
     [AutoMapTo(typeof(EstateType))]
-    public class CreateEntityTypeDto
+    public class CreateEstateTypeDto
     {
         public const int MaxNameLength = 256;
 

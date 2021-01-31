@@ -7,6 +7,7 @@
     <text name="EstateTypes" value="Estate Types" />
     <text name="EstateType" value="Estate Type" />
     <text name="EstateTypeName" value="EstateType Name" />
+    <text name="CreationTime" value="Creation Time" />    
     <text name="CreateNewEstateType" value="Create New EstateType" />    
     <text name="WelcomeMessage" value="Welcome to RoyalEstate!" />
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />

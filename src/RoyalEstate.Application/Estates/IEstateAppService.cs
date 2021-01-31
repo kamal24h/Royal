@@ -5,7 +5,7 @@ using RoyalEstate.Estates.Dto;
 
 namespace RoyalEstate.Estates
 {
-    public interface IEstateAppService : IAsyncCrudAppService<EstateTypeDto, int, PagedEstateTypeResultRequestDto, CreateEntityTypeDto, EstateTypeDto>
+    public interface IEstateAppService : IAsyncCrudAppService<EstateTypeDto, int, PagedEstateTypeResultRequestDto, CreateEstateTypeDto, EstateTypeDto>
     {
         Task<ListResultDto<EstateTypeDto>> GetEstateTypeNames();        
     }

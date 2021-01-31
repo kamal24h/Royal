@@ -49,12 +49,17 @@
             },
             {
                 targets: 2,
+                data: 'creationTime',
+                sortable: true
+            },
+            {
+                targets: 3,
                 data: 'isActive',
                 sortable: false,
                 render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`
             },
             {
-                targets: 3,
+                targets: 4,
                 data: null,
                 sortable: false,
                 autoWidth: false,
