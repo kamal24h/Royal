@@ -4,8 +4,8 @@
 }
 
 @font-face {
-    font-family: 'yekan';
-    src: url(fonts/Yekan.eot);
+    font-family: 'Vazir';
+    src: url(~/fonts/Vazir/Vazir.eot);
     src: url(~/fonts/Vazir/Vazir.eot?#iefix) format("embedded-opentype"), url(~/fonts/Vazir/Vazir.woff) format("woff"), url(~/fonts/Vazir/Vazir.ttf) format("truetype"), url(~/fonts/Vazir/Vazir.svg#BYekan) format("svg");
     font-weight: normal;
     font-style: normal
