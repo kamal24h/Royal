@@ -66,12 +66,12 @@
                 defaultContent: '',
                 render: (data, type, row, meta) => {
                     return [
-                        `   <button type="button" class="btn btn-sm bg-secondary edit-role" data-role-id="${row.id}" data-toggle="modal" data-target="#EstateTypeEditModal">`,
+                        `   <button type="button" class="btn btn-sm bg-secondary edit-estateType" data-estateType-id="${row.id}" data-toggle="modal" data-target="#EstateTypeEditModal">`,
                         `       <i class="fas fa-pencil-alt"></i> ${l('Edit')}`,
                         '   </button>',
-                        `   <button type="button" class="btn btn-sm bg-danger delete-role" data-role-id="${row.id}" data-role-name="${row.name}">`,
+                        `   <button type="button" class="btn btn-sm bg-danger delete-estateType" data-estateType-id="${row.id}" data-estateType-name="${row.name}">`,
                         `       <i class="fas fa-trash"></i> ${l('Delete')}`,
-                        '   </button>',
+                        '   </button>'
                     ].join('');
                 }
             }
@@ -109,19 +109,19 @@
             });
     });
 
-    $(document).on('click', '.delete-EstateType', function () {
-        var EstateTypeId = $(this).attr("data-EstateType-id");
-        var EstateTypeName = $(this).attr('data-EstateType-name');
+    $(document).on('click', '.delete-estateType', function () {
+        var estateTypeId = $(this).attr("data-estateType-id");
+        var estateTypeName = $(this).attr('data-estateType-name');
 
-        deleteEstateType(EstateTypeId, EstateTypeName);
+        deleteestateType(estateTypeId, estateTypeName);
     });
 
-    $(document).on('click', '.edit-EstateType', function (e) {
-        var EstateTypeId = $(this).attr("data-EstateType-id");
+    $(document).on('click', '.edit-estateType', function (e) {
+        var estateTypeId = $(this).attr("data-estateType-id");
 
         e.preventDefault();
         abp.ajax({
-            url: abp.appPath + 'Estates/EditModal?EstateTypeId=' + roleId,
+            url: abp.appPath + 'Estates/EditModal?estateTypeId=' + estateTypeId,
             type: 'POST',
             dataType: 'html',
             success: function (content) {
@@ -131,15 +131,15 @@
         })
     });
 
-    abp.event.on('EstateType.edited', (data) => {
+    abp.event.on('estateType.edited', (data) => {
         _$EstateTypeTable.ajax.reload();
     });
 
-    function deleteEstateType(EstateTypeId, EstateTypeName) {
+    function deleteestateType(estateTypeId, estateTypeName) {
         abp.message.confirm(
             abp.utils.formatString(
                 l('AreYouSureWantToDelete'),
-                EstateTypeName),
+                estateTypeName),
             null,
             (isConfirmed) => {
                 if (isConfirmed) {

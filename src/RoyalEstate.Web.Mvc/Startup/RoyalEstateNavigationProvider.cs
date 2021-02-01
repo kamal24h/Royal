@@ -21,14 +21,14 @@ namespace RoyalEstate.Web.Startup
                         icon: "fas fa-home",
                         requiresAuthentication: true
                     )
-                //).AddItem(
-                //    new MenuItemDefinition(
-                //        PageNames.Tenants,
-                //        L("Tenants"),
-                //        url: "Tenants",
-                //        icon: "fas fa-building",
-                //        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
-                //    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Tenants,
+                        L("Tenants"),
+                        url: "Tenants",
+                        icon: "fas fa-building",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
+                    )
                 ).AddItem(
                     new MenuItemDefinition(
                         PageNames.Users,

@@ -3,8 +3,11 @@
 @using RoyalEstate.Web.Models.Estates
 @model EditEstateTypeModalViewModel
 @{ Layout = null; }
+
 @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditEstateType")))
+
 <form name="EstateTypeEditForm" role="form" class="form-horizontal">
+    
     <input type="hidden" name="Id" value="@Model.EstateType.Id" />
     <div class="modal-body">
 

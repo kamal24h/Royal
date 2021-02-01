@@ -15,7 +15,7 @@
         _estateTypeService.update(estateType).done(function () {
             _$modal.modal('hide');
             abp.notify.info(l('SavedSuccessfully'));
-            abp.event.trigger('tenant.edited', tenant);
+            abp.event.trigger('estate.edited', estate);
         }).always(function () {
             abp.ui.clearBusy(_$form);
         });
