@@ -78,26 +78,20 @@
         ]
     });
 
+
+
     _$form.find('.save-button').on('click', (e) => {
         e.preventDefault();
 
         if (!_$form.valid()) {
             return;
         }
-
-        //var role = _$form.serializeFormToObject();
-        //role.grantedPermissions = [];
-        //var _$permissionCheckboxes = _$form[0].querySelectorAll("input[name='permission']:checked");
-        //if (_$permissionCheckboxes) {
-        //    for (var permissionIndex = 0; permissionIndex < _$permissionCheckboxes.length; permissionIndex++) {
-        //        var _$permissionCheckbox = $(_$permissionCheckboxes[permissionIndex]);
-        //        role.grantedPermissions.push(_$permissionCheckbox.val());
-        //    }
-        //}
+       
+        var estate = _$form.serializeFormToObject();
 
         abp.ui.setBusy(_$modal);
         _estateTypeService
-            .create(estatetype)
+            .create(estate)
             .done(function () {
                 _$modal.modal('hide');
                 _$form[0].reset();
@@ -108,6 +102,9 @@
                 abp.ui.clearBusy(_$modal);
             });
     });
+
+
+
 
     $(document).on('click', '.delete-estateType', function () {
         var estateTypeId = $(this).attr("data-estateType-id");

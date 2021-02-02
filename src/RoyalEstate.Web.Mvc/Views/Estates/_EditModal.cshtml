@@ -8,20 +8,20 @@
 
 <form name="EstateTypeEditForm" role="form" class="form-horizontal">
     
-    <input type="hidden" name="Id" value="@Model.EstateType.Id" />
+    <input type="hidden" name="Id" value="@Model.estateType.Id" />
     <div class="modal-body">
 
         <div class="form-group row required">
             <label class="col-md-3 col-form-label" for="Name">@L("Name")</label>
             <div class="col-md-9">
-                <input id="name" type="text" class="form-control" name="Name" value="@Model.EstateType.Name" required maxlength="@AbpUserBase.MaxNameLength">
+                <input id="name" type="text" class="form-control" name="Name" value="@Model.estateType.Name" required maxlength="@AbpUserBase.MaxNameLength">
             </div>
         </div>        
 
         <div class="form-group row">
             <label class="col-md-3 col-form-label" for="IsActive">@L("IsActive")</label>
             <div class="col-md-9">
-                <input id="IsActive" type="checkbox" name="IsActive" value="true" @(Model.EstateType.IsActive ? "checked" : "") />
+                <input id="IsActive" type="checkbox" name="IsActive" value="true" @(Model.estateType.IsActive ? "checked" : "") />
             </div>
         </div>
     </div>

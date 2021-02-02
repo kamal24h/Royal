@@ -7,6 +7,6 @@ namespace RoyalEstate.Web.Models.Estates
 {
     public class EditEstateTypeModalViewModel
     {
-        public EstateTypeDto EstateType { get; set; }        
+        public EstateTypeDto estateType { get; set; }        
     }
 }

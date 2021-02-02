@@ -34,7 +34,7 @@ namespace RoyalEstate.Web.Controllers
             
             var model = new EditEstateTypeModalViewModel
             {
-                EstateType = estateType                
+                estateType = estateType                
             };
             return PartialView("_EditModal", model);
         }
