@@ -11,7 +11,7 @@ namespace RoyalEstate.Entities{
     
     public class EstateType : Entity, IHasCreationTime
     {
-        public const int MaxNameLength = 256;
+        public const int MaxNameLength = 100;
 
         [Required]
         [StringLength(MaxNameLength)]
