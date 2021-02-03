@@ -2,6 +2,8 @@
 using Abp.Modules;
 using Abp.Reflection.Extensions;
 using RoyalEstate.Authorization;
+using RoyalEstate.Entities;
+using RoyalEstate.Estates.Dto;
 
 namespace RoyalEstate
 {
@@ -13,6 +15,11 @@ namespace RoyalEstate
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<RoyalEstateAuthorizationProvider>();
+            Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
+                {
+                    config.CreateMap<EstateTypeDto, EstateType>()
+                        .ForMember(d => d.CreationTime, options => options.Ignore());
+                });
         }
 
         public override void Initialize()

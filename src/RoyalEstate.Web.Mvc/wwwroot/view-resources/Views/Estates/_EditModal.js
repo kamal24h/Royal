@@ -10,7 +10,7 @@
         }
 
         var estateType = _$form.serializeFormToObject();
-
+        
         abp.ui.setBusy(_$form);
         _estateTypeService.update(estateType).done(function () {
             _$modal.modal('hide');
