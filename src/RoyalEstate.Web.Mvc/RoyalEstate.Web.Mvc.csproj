@@ -48,6 +48,7 @@
     <PackageReference Include="Abp.Castle.Log4Net" Version="5.13.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Views\Estates\EstateType\" />
     <Folder Include="wwwroot\libs\" />
   </ItemGroup>
 </Project>

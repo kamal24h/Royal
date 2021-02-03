@@ -11,7 +11,7 @@ namespace RoyalEstate.Estates.Dto
     [AutoMapFrom(typeof(EstateType))]
     public class EstateTypeDto : EntityDto
     {
-        public const int MaxNameLength = 256;
+        public const int MaxNameLength = 100;
 
         [Required]
         [StringLength(MaxNameLength)]

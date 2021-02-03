@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    var _estateTypeService = abp.services.app.estate,
+    var _estateTypeService = abp.services.app.estateType,
         l = abp.localization.getSource('RoyalEstate'),
         _$modal = $('#EstateTypeCreateModal'),        
         _$form = _$modal.find('form'),
@@ -87,11 +87,11 @@
             return;
         }
        
-        var estate = _$form.serializeFormToObject();
+        var estateType = _$form.serializeFormToObject();
 
         abp.ui.setBusy(_$modal);
         _estateTypeService
-            .create(estate)
+            .create(estateType)
             .done(function () {
                 _$modal.modal('hide');
                 _$form[0].reset();
@@ -118,13 +118,15 @@
 
         e.preventDefault();
         abp.ajax({
-            url: abp.appPath + 'Estates/EditModal?estateTypeId=' + estateTypeId,
+            url: abp.appPath + 'Estates/EditModal/?estateTypeId=' + estateTypeId,
             type: 'POST',
             dataType: 'html',
             success: function (content) {
                 $('#EstateTypeEditModal div.modal-content').html(content);
             },
-            error: function (e) { }
+            error: function (e) {
+                console.log(e)
+            }
         })
     });
 
@@ -141,7 +143,7 @@
             (isConfirmed) => {
                 if (isConfirmed) {
                     _estateTypeService.delete({
-                        id: roleId
+                        id: estateTypeId
                     }).done(() => {
                         abp.notify.info(l('SuccessfullyDeleted'));
                         _$EstateTypeTable.ajax.reload();

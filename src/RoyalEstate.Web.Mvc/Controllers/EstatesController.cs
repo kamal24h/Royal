@@ -11,30 +11,30 @@ namespace RoyalEstate.Web.Controllers
 {
     public class EstatesController : RoyalEstateControllerBase
     {
-        private readonly IEstateAppService _estateAppServic;
+        private readonly IEstateTypeAppService _estateTypeAppServic;
 
-        public EstatesController(IEstateAppService estateAppServic)
+        public EstatesController(IEstateTypeAppService estateTypeAppServic)
         {
-            _estateAppServic = estateAppServic;
+            _estateTypeAppServic = estateTypeAppServic;
         }
 
         public async Task<ActionResult> IndexAsync()
         {
-            var types = (await _estateAppServic.GetEstateTypeNames()).Items;
-            var model = new EstateListViewModel
+            var types = (await _estateTypeAppServic.GetEstateTypeNames()).Items;
+            var model = new EstateTypeListViewModel
             {
                 EstateTypes = types
             };            
             return View(model);
         }
 
-        public async Task<ActionResult> EditModal(int typeId)
+        public async Task<ActionResult> EditModal(int estateTypeId)
         {
-            var estateType = await _estateAppServic.GetAsync(new EntityDto<int>(typeId));
+            var estateType = await _estateTypeAppServic.GetAsync(new EntityDto<int>(estateTypeId));
             
             var model = new EditEstateTypeModalViewModel
             {
-                estateType = estateType                
+                EstateType = estateType                
             };
             return PartialView("_EditModal", model);
         }

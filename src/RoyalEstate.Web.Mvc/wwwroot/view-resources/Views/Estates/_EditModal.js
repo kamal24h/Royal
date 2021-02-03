@@ -1,5 +1,5 @@
 ﻿(function ($) {
-    var _estateTypeService = abp.services.app.estate,
+    var _estateTypeService = abp.services.app.estateType,
         l = abp.localization.getSource('RoyalEstate'),
         _$modal = $('#EstateTypeEditModal'),
         _$form = _$modal.find('form');
@@ -15,7 +15,7 @@
         _estateTypeService.update(estateType).done(function () {
             _$modal.modal('hide');
             abp.notify.info(l('SavedSuccessfully'));
-            abp.event.trigger('estate.edited', estate);
+            abp.event.trigger('estateType.edited', estateType);
         }).always(function () {
             abp.ui.clearBusy(_$form);
         });

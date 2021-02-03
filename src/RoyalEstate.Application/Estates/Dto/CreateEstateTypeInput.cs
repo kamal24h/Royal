@@ -7,7 +7,10 @@ namespace RoyalEstate.Estates.Dto
 {    
     public class CreateEstateTypeInput
     {
+        public const int MaxNameLength = 100;
+
         [Required]
+        [StringLength(MaxNameLength)]
         public string Name { get; set; }
 
         public DateTime CreationTime { get; set; }
