@@ -11,6 +11,12 @@ namespace RoyalEstate.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<EstateType> EstateTypes { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<Estate> Estates { get; set; }
+        public DbSet<Province> Provinces { get; set; }
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<EstateImage> EstateImages { get; set; }
 
         public RoyalEstateDbContext(DbContextOptions<RoyalEstateDbContext> options)
             : base(options)

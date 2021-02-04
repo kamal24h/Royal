@@ -1,73 +1,155 @@
 ﻿@using RoyalEstate.Web.Startup
-@model RoyalEstate.Web.Models.Estates.EstateTypeListViewModel
-
 @{
-    ViewBag.Title = L("Estates");
-
-    //Matches with the menu name in SimpleTaskAppNavigationProvider to highlight the menu item
-    ViewBag.ActiveMenu = PageNames.Estates;
-}
-
-
-
-@section scripts
-{
-    <environment names="Development">
-        <script src="~/view-resources/Views/Estates/Index.js" asp-append-version="true"></script>
-    </environment>
-
-    @*<environment names="Staging,Production">
-        <script src="~/view-resources/Views/Estates/Index.min.js" asp-append-version="true"></script>
-    </environment>*@
+    ViewBag.Title = L("Roles");
+    ViewBag.CurrentPageName = PageNames.Estates;
 }
 
 <section class="content-header">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-6">
-                <h1>@L("EstateType")</h1>
-            </div>
-            <div class="col-sm-6">
-                <a href="javascript:;" data-toggle="modal" data-target="#EstateTypeCreateModal" class="btn bg-blue float-sm-right">
-                    <i class="fa fa-plus-square"></i>
-                    @L("Create")
-                </a>
+            <div class="col-12">
+                <h5>Royal Estates</h5>
             </div>
         </div>
     </div>
 </section>
 
+@section styles
+{
+    <style>
+        ul#ulCategories li {
+            padding: 0.7rem 0.5rem !important;
+            
+        }
+
+        #newEstateSection ul {
+            font-size: 1rem;
+            font-weight: bold
+        }
+
+        #btnReturnToCategories {
+            color: #777777;
+            font-weight: bold;
+            transition: color 0.5s
+        }
+        #btnReturnToCategories:hover {
+            color: black;
+        }
+    </style>
+}
+
 <section class="content">
-    <div class="container-fluid">
+    <div class="container-fluid text-right">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <!--Use for bulk actions-->
-                            </div>
-                            <div class="col-md-6">
-                                @await Html.PartialAsync("~/Views/Estates/Index.AdvancedSearch.cshtml")
-                            </div>
-                        </div>
+                    <div class="card-header text-left">
+                        <button id="btnNewEstate" class="btn btn-success">آگهی جدید</button>
                     </div>
                     <div class="card-body">
-                        <div class="table-responsive">
-                            <table id="EstateTypeTable" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th></th>
-                                        <th>@L("Name")</th>
-                                        <th>@L("CreationTime")</th>
-                                        <th>@L("IsActive")</th>
-                                        <th style="width: 150px">@L("Actions")</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                        <section id="newEstateSection" class="d-none">
+                            <div class="row justify-content-center">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <h5>دسته آگهی را انتخاب کنید</h5>
+                                    <ul id="ulCategories" class="nav flex-column">
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#sellResidential">فروش مسکونی</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#rentResidential">اجاره مسکونی</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#sellCommercial">فروش اداری/تجاری</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#rentCommercial">اجاره اداری/تجاری</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content d-none">
+                                        <button id="btnReturnToCategories" class="btn btn-link">
+                                            <i class="fa fa-arrow-circle-right"></i>&nbsp;
+                                            بازگشت به همه دسته‌بندی‌ها
+                                        </button>
+                                        <div class="tab-pane container" id="sellResidential">
+                                            <label>فروش مسکونی</label>
+                                            <ul class="list-group ">
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="1">
+                                                        <i class="fa fa-building"></i>
+                                                        آپارتمان
+                                                    </a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="2">
+                                                        <i class="fa fa-home"></i>
+                                                        خانه/ویلا
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane container" id="rentResidential">
+                                            <label>اجاره مسکونی</label>
+                                            <ul class="list-group ">
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="1">
+                                                        <i class="fa fa-building"></i>
+                                                        آپارتمان
+                                                    </a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="2">
+                                                        <i class="fa fa-home"></i>
+                                                        خانه/ویلا
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane container" id="sellCommercial">
+                                            <label>فروش اداری/تجاری</label>
+                                            <ul class="list-group ">
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="3">
+                                                        <i class="fa fa-store"></i>
+                                                        مغازه
+                                                    </a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="4">
+                                                        <i class="fa fa-building"></i>
+                                                        دفتر کار
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="tab-pane container" id="rentCommercial">
+                                            <label>اجاره اداری/تجاری</label>
+                                            <ul class="list-group ">
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="3">
+                                                        <i class="fa fa-store"></i>
+                                                        مغازه
+                                                    </a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <a asp-controller="Estates" asp-action="CreateEstate"
+                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="4">
+                                                        <i class="fa fa-building"></i>
+                                                        دفتر کار
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                 </div>
             </div>
@@ -75,14 +157,25 @@
     </div>
 </section>
 
-@await Html.PartialAsync("~/Views/Estates/_CreateModal.cshtml", Model)
+@section scripts
+{
+    <script>
+        $(() => {
+            $("#btnNewEstate").click(function() {
+                $("#newEstateSection").removeClass("d-none");
+            });
 
-<div class="modal fade" id="EstateTypeEditModal" tabindex="-1" role="dialog" aria-labelledby="EstateTypeEditModalLabel" data-backdrop="static">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
+            $("#newEstateSection a.nav-link").click(function () {
+                $("#ulCategories").addClass("d-none");
+                $("#newEstateSection div.tab-content").removeClass("d-none");
+            });
 
-
-
+            $("#btnReturnToCategories").click(function() {
+                $("#ulCategories").removeClass("d-none");
+                $("#ulCategories .active").removeClass("active");
+                $("#newEstateSection div.tab-pane").removeClass("fade active show");
+                $("#newEstateSection div.tab-content").addClass("d-none");
+            });
+        })
+    </script>
+}

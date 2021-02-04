@@ -4,6 +4,7 @@ using Abp.Reflection.Extensions;
 using RoyalEstate.Authorization;
 using RoyalEstate.Entities;
 using RoyalEstate.Estates.Dto;
+using RoyalEstate.Estates.Resolvers;
 
 namespace RoyalEstate
 {
@@ -19,6 +20,9 @@ namespace RoyalEstate
                 {
                     config.CreateMap<EstateTypeDto, EstateType>()
                         .ForMember(d => d.CreationTime, options => options.Ignore());
+
+                    config.CreateMap<CreateEstateDto, Estate>().ForMember(d => d.Images,
+                        options => options.MapFrom<CreateEstateImgResolver>());
                 });
         }
 

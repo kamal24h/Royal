@@ -1,7 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using RoyalEstate.Web.Models.Estates;
 using RoyalEstate.Controllers;
 using RoyalEstate.Estates.Dto;
@@ -11,16 +16,19 @@ namespace RoyalEstate.Web.Controllers
 {
     public class EstatesController : RoyalEstateControllerBase
     {
-        private readonly IEstateTypeAppService _estateTypeAppServic;
+        private readonly IEstateTypeAppService _estateTypeAppService;
+        private readonly IEstateAppService _estateAppService;
 
-        public EstatesController(IEstateTypeAppService estateTypeAppServic)
+        public EstatesController(IEstateTypeAppService estateTypeAppService, 
+            IEstateAppService estateAppService)
         {
-            _estateTypeAppServic = estateTypeAppServic;
+            _estateTypeAppService = estateTypeAppService;
+            _estateAppService = estateAppService;
         }
 
-        public async Task<ActionResult> IndexAsync()
+        public async Task<ActionResult> EstateTypes()
         {
-            var types = (await _estateTypeAppServic.GetEstateTypeNames()).Items;
+            var types = (await _estateTypeAppService.GetEstateTypeNames()).Items;
             var model = new EstateTypeListViewModel
             {
                 EstateTypes = types
@@ -28,15 +36,63 @@ namespace RoyalEstate.Web.Controllers
             return View(model);
         }
 
-        public async Task<ActionResult> EditModal(int estateTypeId)
+        public async Task<ActionResult> EditEstateTypeModal(int estateTypeId)
         {
-            var estateType = await _estateTypeAppServic.GetAsync(new EntityDto<int>(estateTypeId));
+            var estateType = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateTypeId));
             
             var model = new EditEstateTypeModalViewModel
             {
                 EstateType = estateType                
             };
-            return PartialView("_EditModal", model);
+            return PartialView("_EditEstateTypeModal", model);
+        }
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<JsonResult> CreateEstate(CreateEstateDto input)
+        {
+            try
+            {
+                if (input.Images.Count>0)
+                {
+                    var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","img", ticks);
+                    Directory.CreateDirectory(path);
+
+                    int i = 1;
+                    foreach (IFormFile file in input.Images.Where(f=>f.Length!=0))
+                    {
+                        string imageExt = Path.GetExtension(file.FileName);
+                        await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                            input.ImagePaths.Add(Path.Combine("img",i+imageExt));
+                        }
+                        i++;
+                    }
+                }
+
+                var estate = await _estateAppService.CreateAsync(input);
+                return Json(new
+                {
+                    code = 0,
+                    msg = "آگهی با موقیت ثبت شد"
+                });
+
+            }
+            catch (Exception e)
+            {
+                return Json(new
+                {
+                    code = 1,
+                    msg = "خطایی در سمت سرور رخ داد"
+                });
+            }
         }
     }
 }

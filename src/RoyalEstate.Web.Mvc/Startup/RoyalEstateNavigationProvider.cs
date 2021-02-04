@@ -56,9 +56,16 @@ namespace RoyalEstate.Web.Startup
                     new MenuItemDefinition(
                         PageNames.Estates,
                         L("Estates"),
-                        url: "Estates",
-                        icon: "fas fa - building"
+                        url: "Estates/Index",
+                        icon: "fas fa-building"
                         )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.EstateTypes,
+                        L("EstateTypes"),
+                        url: "Estates/EstateTypes",
+                        icon: "fas fa-cogs"
+                    )
                 );
             //).AddItem( // Menu items below is just for demonstration!
             //    new MenuItemDefinition(
