@@ -45,8 +45,12 @@ namespace RoyalEstate.Entities
         public long? Rent { get; set; }
         public long? Deposit { get; set; }
 
+        [Required]
+        public string District { get; set; }
 
+        public DateTime CreationTime { get; set; }
         
+        public DateTime? LastModificationTime { get; set; }        
 
         [ForeignKey(nameof(CityId))]
         public City City { get; set; }
@@ -59,16 +63,18 @@ namespace RoyalEstate.Entities
         [Required]
         [MaxLength(500)]
         public string Address { get; set; }
-
+        
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }
-              
+
+            LastModificationTime = DateTime.Now;
+        }
 
         public bool IsActive { get; set; }
 
         [StringLength(2000)]
         public string Description { get; set; }
-
+        
         public virtual ICollection<EstateImage> Images { get; set; }
     }
 }
