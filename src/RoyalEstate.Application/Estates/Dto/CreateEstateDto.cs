@@ -12,8 +12,13 @@ namespace RoyalEstate.Estates.Dto
     [AutoMapTo(typeof(Estate))]
     public class CreateEstateDto : AuditedEntityDto<long>
     {
-        [Required]
-        [MinLength(10)]
+        public CreateEstateDto()
+        {
+            ImagePaths = new List<string>();
+            Images = new List<IFormFile>(); 
+        }
+        [Required(ErrorMessage = "عنوان آگهی را وارد کنید")]
+        [MinLength(10, ErrorMessage = "حداقل 10 کاراکتر")]
         public string Title { get; set; }
         
         public int EstateTypeId { get; set; }
@@ -26,6 +31,7 @@ namespace RoyalEstate.Estates.Dto
         public int? UnitsPerFloor { get; set; }
         public bool? Parking { get; set; }
         public bool? StoreRoom { get; set; }
+        public bool? Elevator { get; set; }
         public string BuiltDate { get; set; }
 
 
@@ -36,8 +42,8 @@ namespace RoyalEstate.Estates.Dto
         public int CityId { get; set; }
         public long CustomerId { get; set; }
 
-        [Required]
-        [MaxLength(500)]
+        [Required(ErrorMessage = "آدرس را وارد کنید")]
+        [MaxLength(500, ErrorMessage = "حداکثر 500 کاراکتر")]
         public string Address { get; set; }
 
         public double? Longitude { get; set; }
@@ -46,7 +52,7 @@ namespace RoyalEstate.Estates.Dto
 
         public bool IsActive { get; set; }
 
-        [StringLength(2000)]
+        [MaxLength(500,ErrorMessage = "حداکثر 500 کاراکتر")]
         public string Description { get; set; }
 
         public List<string> ImagePaths { get; set; }

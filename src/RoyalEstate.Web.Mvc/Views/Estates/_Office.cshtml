@@ -1,0 +1,41 @@
+﻿@model RoyalEstate.Estates.Dto.CreateEstateDto
+
+<div class="form-group">
+    <label asp-for="Area">متراژ</label>
+    <input asp-for="Area" type="number" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label asp-for="Rooms">تعداد اتاق</label>
+    <input asp-for="Rooms" type="number" class="form-control" />
+</div>
+
+<div class="form-group">
+    <label asp-for="Floor">طبقه</label>
+    <input asp-for="Floor" type="number" class="form-control" />
+</div>
+
+
+<div class="form-group">
+    <label asp-for="Elevator">آسانسور</label>
+    <select asp-for="Elevator" class="form-control">
+        <option value="True">دارد</option>
+        <option value="False">ندارد</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label asp-for="Parking">پارکینگ</label>
+    <select asp-for="Parking" class="form-control">
+        <option value="True">دارد</option>
+        <option value="False">ندارد</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label asp-for="StoreRoom">انباری</label>
+    <select asp-for="StoreRoom" class="form-control">
+        <option value="True">دارد</option>
+        <option value="False">ندارد</option>
+    </select>
+</div>

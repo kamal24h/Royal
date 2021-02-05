@@ -196,5 +196,10 @@
       "destination": "wwwroot/libs/push.js"
     }
     //other libs end
+    ,
+    {
+      "library": "jquery.form@4.3.0",
+      "destination": "wwwroot/libs/jquery.form/"
+    }
   ]
 }

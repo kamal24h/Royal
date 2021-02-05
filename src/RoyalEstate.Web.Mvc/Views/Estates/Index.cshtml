@@ -1,6 +1,6 @@
 ﻿@using RoyalEstate.Web.Startup
 @{
-    ViewBag.Title = L("Roles");
+    ViewBag.Title = L("Estates");
     ViewBag.CurrentPageName = PageNames.Estates;
 }
 
@@ -74,15 +74,13 @@
                                             <label>فروش مسکونی</label>
                                             <ul class="list-group ">
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="1">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="1">
                                                         <i class="fa fa-building"></i>
                                                         آپارتمان
                                                     </a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="2">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="2">
                                                         <i class="fa fa-home"></i>
                                                         خانه/ویلا
                                                     </a>
@@ -93,15 +91,13 @@
                                             <label>اجاره مسکونی</label>
                                             <ul class="list-group ">
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="1">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="1">
                                                         <i class="fa fa-building"></i>
                                                         آپارتمان
                                                     </a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="2">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="2">
                                                         <i class="fa fa-home"></i>
                                                         خانه/ویلا
                                                     </a>
@@ -112,15 +108,13 @@
                                             <label>فروش اداری/تجاری</label>
                                             <ul class="list-group ">
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="3">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="3">
                                                         <i class="fa fa-store"></i>
                                                         مغازه
                                                     </a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="1" asp-route-EstateTypeId="4">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="4">
                                                         <i class="fa fa-building"></i>
                                                         دفتر کار
                                                     </a>
@@ -131,15 +125,13 @@
                                             <label>اجاره اداری/تجاری</label>
                                             <ul class="list-group ">
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="3">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="3">
                                                         <i class="fa fa-store"></i>
                                                         مغازه
                                                     </a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <a asp-controller="Estates" asp-action="CreateEstate"
-                                                       asp-route-ServiceTypeId="2" asp-route-EstateTypeId="4">
+                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="4">
                                                         <i class="fa fa-building"></i>
                                                         دفتر کار
                                                     </a>
@@ -149,6 +141,12 @@
                                     </div>
                                 </div>
                             </div>
+                            @using(Html.BeginForm("NewEstate","Estates", FormMethod.Post, new {id="frmNew", @class="d-none" }))
+                            {
+                                @Html.AntiForgeryToken()
+                                <input name="estateTypeId" type="hidden" value=""/>
+                                <input name="serviceTypeId" type="hidden" value=""/>
+                            }
                         </section>
                     </div>
                 </div>
@@ -175,6 +173,14 @@
                 $("#ulCategories .active").removeClass("active");
                 $("#newEstateSection div.tab-pane").removeClass("fade active show");
                 $("#newEstateSection div.tab-content").addClass("d-none");
+            });
+
+            $("a.newEstateLink").click(function() {
+                let serviceTypeId = $(this).attr("data-ServiceTypeId");
+                let estateTypeId = $(this).attr("data-EstateTypeId");
+                $("#frmNew input[name='estateTypeId']").val(estateTypeId);
+                $("#frmNew input[name='serviceTypeId']").val(serviceTypeId);
+                $("#frmNew").submit();
             });
         })
     </script>

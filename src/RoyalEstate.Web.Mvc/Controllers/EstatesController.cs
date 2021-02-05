@@ -54,6 +54,22 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult NewEstate(int estateTypeId, int serviceTypeId)
+        {
+            CreateEstateVm model = new CreateEstateVm
+            {
+                CreateEstateDto = new CreateEstateDto()
+                {
+                    ServiceTypeId = serviceTypeId, 
+                    EstateTypeId = estateTypeId
+                }
+            };
+
+            return View(model);
+        }
+        
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<JsonResult> CreateEstate(CreateEstateDto input)
         {
             try
@@ -61,7 +77,7 @@ namespace RoyalEstate.Web.Controllers
                 if (input.Images.Count>0)
                 {
                     var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","img", ticks);
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","img","Estates", ticks);
                     Directory.CreateDirectory(path);
 
                     int i = 1;
@@ -71,7 +87,7 @@ namespace RoyalEstate.Web.Controllers
                         await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
-                            input.ImagePaths.Add(Path.Combine("img",i+imageExt));
+                            input.ImagePaths.Add(Path.Combine("img", "Estates", ticks,i+imageExt));
                         }
                         i++;
                     }

@@ -1,0 +1,248 @@
+﻿@using RoyalEstate.Web.Startup
+@model RoyalEstate.Web.Models.Estates.CreateEstateVm
+
+@{
+    ViewBag.Title = L("Estates");
+    ViewBag.CurrentPageName = PageNames.Estates;
+}
+
+@section styles
+{
+    <style>
+        #imgThumbnails {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+        .imgThumbnail {
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            margin-left: 1rem;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed black;
+            position: relative;
+        }
+        .imgThumbnail img {
+            width: 4.9rem;
+            height: 4.9rem;
+        }
+        .imgThumbnail .deleteImg {
+            position: absolute;
+            top: 0.1rem;
+            left: 0.1rem;
+        }
+            .imgThumbnail .deleteImg:hover {
+                cursor: pointer;
+                color: red !important
+            }
+            #imgSelector {
+                width: 5rem;
+                height: 5rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background: white;
+                border: 1px dashed black;
+                transition: background-color 0.5s
+            }
+        #imgSelector:hover {
+            cursor: pointer;
+            background-color: burlywood
+        }
+    </style>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h5>Royal Estates</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body text-right">
+                        @using (Html.BeginForm("CreateEstate", "Estates", FormMethod.Post, new { id = "frmCreate", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input asp-for="CreateEstateDto.ServiceTypeId" name="ServiceTypeId" type="hidden"/>
+                            <input asp-for="CreateEstateDto.EstateTypeId" name="EstateTypeId" type="hidden"/>
+                            <div class="row justify-content-center">
+                                <div class="col-sm-12 col-md-6 col-lg-4 text-right">
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.Title">عنوان آگهی</label>
+                                        <input asp-for="CreateEstateDto.Title" name="Title" class="form-control" />
+                                        <span asp-validation-for="CreateEstateDto.Title" name="Title"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.CityId">فروشنده</label>
+                                        <select asp-for="CreateEstateDto.CustomerId" name="CustomerId" class="form-control">
+                                            <option value="5">علی</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.CityId">شهر</label>
+                                        <select asp-for="CreateEstateDto.CityId" name="CityId" class="form-control">
+                                            <option value="1">تبریز</option>
+                                        </select>
+                                    </div>
+                                    @switch (Model.CreateEstateDto.EstateTypeId)
+                                    {
+                                        case 1:
+                                            await Html.RenderPartialAsync("_Apartment", Model.CreateEstateDto);
+                                            break;
+                                        case 2:
+                                            await Html.RenderPartialAsync("_House", Model.CreateEstateDto);
+                                            break;
+                                        case 3:
+                                            await Html.RenderPartialAsync("_Store", Model.CreateEstateDto);
+                                            break;
+                                        case 4:
+                                            await Html.RenderPartialAsync("_Office", Model.CreateEstateDto);
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.BuiltDate">سال ساخت</label>
+                                        <input type="date" asp-for="CreateEstateDto.BuiltDate" name="BuiltDate" class="form-control" />
+                                    </div>
+
+                                    @switch (Model.CreateEstateDto.ServiceTypeId)
+                                    {
+                                        case 1:
+                                            <div class="form-group">
+                                                <label asp-for="CreateEstateDto.Price">قیمت</label>
+                                                <input asp-for="CreateEstateDto.Price" name="Price" class="form-control" />
+                                            </div>
+                                            break;
+                                        case 2:
+                                            <div class="form-group">
+                                                <label asp-for="CreateEstateDto.Deposit">ودیعه</label>
+                                                <input asp-for="CreateEstateDto.Deposit" name="Deposit" class="form-control" />
+                                            </div>
+                                            <div class="form-group">
+                                                <label asp-for="CreateEstateDto.Rent">مبلغ اجاره</label>
+                                                <input asp-for="CreateEstateDto.Rent" name="Rent" class="form-control" />
+                                            </div>
+                                            break;
+                                    }
+
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.Address">آدرس</label>
+                                        <textarea asp-for="CreateEstateDto.Address" name="Address" class="form-control" rows="6"></textarea>
+                                        <span asp-validation-for="CreateEstateDto.Address"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.Description">توضیحات</label>
+                                        <textarea asp-for="CreateEstateDto.Description" name="Description" class="form-control" rows="6"></textarea>
+                                        <span asp-validation-for="CreateEstateDto.Description"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <label>عکس‌های آگهی</label>
+                            <div class="row">
+                                <div id="imgThumbnails" class="col-12 text-right">
+                                    
+                                    <div id="imgSelector" data-target="#inp1">
+                                        <i class="fa fa-image" style="font-size: 2rem"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="imgZone" style="visibility: hidden; position: absolute">
+                                <input id="inp1" type="file" name="Images" />
+                            </div>
+                            <div class="row justify-content-end">
+                                <button type="submit" class="btn btn-success">ثبت <i class="fa fa-check"></i></button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="/libs/jquery.form/jquery.form.min.js"></script>
+    <script src="/libs/sweetalert/sweetalert.min.js"></script>
+    <script>
+        $(() => {
+            $("#frmCreate").ajaxForm({
+                success: function (data) {
+                    if (data.result.code == 0) {
+                        sweetAlert("", "اطلاعات با موفقیت ثبت شد", "success");
+                        $("#frmCreate").trigger("reset");
+                        $("#imgThumbnails .imgThumbnail").remove();
+                        $("#imgZone").empty();
+                        $("#imgZone").append(`<input id="inp1" type="file" name="Images" />`);
+                        $("#imgSelector").attr("data-target", "#inp1");
+                        $("#inp1").change(function() {
+                            readUrl(this);
+                        })
+                    } else {
+                        sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
+                    }
+                },
+                error: function() {
+                    sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
+                }
+            });
+            $("#Elevator,#Parking,#StoreRoom").val('').change();
+            $("#imgSelector").click(function() {
+                let selector = $(this).attr("data-target");
+                $(selector).trigger("click");
+            });
+
+            $("div#imgZone input").change(function() {
+                readUrl(this);
+            });
+        });
+
+        function readUrl(input) {
+            if (input.files && input.files[0]) {
+                let id = $(input).prop("id");
+                $("#imgSelector").before(`<div data-id="${id}" class="imgThumbnail">
+                                        <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
+                                        <img/>
+                                    </div>`);
+
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    $(`#imgThumbnails div[data-id=${id}] img`)
+                        .attr('src', e.target.result);
+                    let length = $("#imgZone input").length;
+                    let inpId = "inp" + (length + 1);
+                    $("#imgZone")
+                        .append(
+                            `<input id="${inpId}" type="file" name="Images" onchange="readUrl(this)"/>`);
+                    $("#imgSelector").attr("data-target", "#" + inpId);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function deleteImg(e) {
+            let inpId = $(e).parent().attr("data-id");
+            $(e).parent().remove();
+            $(`#imgZone input#${inpId}`).remove();
+            $("#imgZone input").each(function(i, inp) {
+                $(inp).prop("name", `Images[${i}]`);
+            });
+        }
+    </script>
+}

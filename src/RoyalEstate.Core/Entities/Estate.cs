@@ -38,6 +38,7 @@ namespace RoyalEstate.Entities
         public int? UnitsPerFloor { get; set; }
         public bool? Parking { get; set; }
         public bool? StoreRoom { get; set; }
+        public bool? Elevator { get; set; }
         public DateTime BuiltDate { get; set; }
 
         
@@ -45,13 +46,7 @@ namespace RoyalEstate.Entities
         public long? Rent { get; set; }
         public long? Deposit { get; set; }
 
-        [Required]
-        public string District { get; set; }
-
-        public DateTime CreationTime { get; set; }
         
-        public DateTime? LastModificationTime { get; set; }        
-
         [ForeignKey(nameof(CityId))]
         public City City { get; set; }
         public int CityId { get; set; }
@@ -66,9 +61,6 @@ namespace RoyalEstate.Entities
         
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }
-
-            LastModificationTime = DateTime.Now;
-        }
 
         public bool IsActive { get; set; }
 
