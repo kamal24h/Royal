@@ -8460,3 +8460,311 @@ INFO  2021-02-05 16:09:10,428 [6    ] tonsoftJson.NewtonsoftJsonResultExecutor -
 INFO  2021-02-05 16:09:10,435 [6    ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.EstatesController.CreateEstate (RoyalEstate.Web.Mvc) in 153.2616ms
 INFO  2021-02-05 16:09:10,437 [6    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.EstatesController.CreateEstate (RoyalEstate.Web.Mvc)'
 INFO  2021-02-05 16:09:10,441 [6    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 177.3376ms 200 application/json; charset=utf-8
+DEBUG 2021-02-05 17:05:04,788 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2021-02-05 17:05:04,922 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2021-02-05 17:05:04,950 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: RoyalEstate.Web.Startup.RoyalEstateWebMvcModule, RoyalEstate.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,956 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: RoyalEstate.RoyalEstateWebCoreModule, RoyalEstate.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,957 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: RoyalEstate.RoyalEstateApplicationModule, RoyalEstate.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: RoyalEstate.RoyalEstateCoreModule, RoyalEstate.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,958 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,959 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,960 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,961 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: RoyalEstate.EntityFrameworkCore.RoyalEstateEntityFrameworkModule, RoyalEstate.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,961 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,962 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,962 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,962 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,963 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,963 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=5.13.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:04,967 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2021-02-05 17:05:05,155 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-02-05 17:05:05,155 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-02-05 17:05:05,156 [1    ] o.Configuration.LanguageManagementConfig - Converted RoyalEstate (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-02-05 17:05:05,156 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2021-02-05 17:05:05,888 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: RoyalEstate.EntityFrameworkCore.RoyalEstateDbContext, RoyalEstate.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2021-02-05 17:05:07,789 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2021-02-05 17:05:08,016 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2021-02-05 17:05:08,102 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2021-02-05 17:05:08,145 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: RoyalEstate
+DEBUG 2021-02-05 17:05:08,183 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2021-02-05 17:05:08,636 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Castle.Proxies.BackgroundJobManagerProxy
+DEBUG 2021-02-05 17:05:08,866 [1    ] , Culture=neutral, PublicKeyToken=null]] - Start background worker: Abp.Authorization.Users.UserTokenExpirationWorker`2[[RoyalEstate.MultiTenancy.Tenant, RoyalEstate.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[RoyalEstate.Authorization.Users.User, RoyalEstate.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]
+DEBUG 2021-02-05 17:05:08,953 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 15 classes define auto mapping attributes
+DEBUG 2021-02-05 17:05:08,953 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2021-02-05 17:05:08,960 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Users.Dto.CreateUserDto
+DEBUG 2021-02-05 17:05:08,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Users.Dto.UserDto
+DEBUG 2021-02-05 17:05:08,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2021-02-05 17:05:08,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Sessions.Dto.UserLoginInfoDto
+DEBUG 2021-02-05 17:05:08,961 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Roles.Dto.PermissionDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.MultiTenancy.Dto.TenantDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Estates.Dto.CreateEstateDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Estates.Dto.CreateEstateTypeDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Estates.Dto.EstateDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Estates.Dto.EstateTypeDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Estates.Dto.UpdateEstateTypeDto
+DEBUG 2021-02-05 17:05:08,962 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2021-02-05 17:05:08,963 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - RoyalEstate.Web.Models.Roles.EditRoleModalViewModel
+INFO  2021-02-05 17:05:12,820 [1    ] tCore.Builder.RequestLocalizationOptions - Supported Request Localization Cultures: en,es-MX,fr,de,it,nl,pt-BR,tr,ru,ar,ja,zh-Hans
+INFO  2021-02-05 17:05:13,450 [1    ] taProtection.KeyManagement.XmlKeyManager - User profile is available. Using 'C:\Users\ali\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+INFO  2021-02-05 17:05:13,565 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2021-02-05 17:05:13,709 [4    ] uthorization.DefaultAuthorizationService - Authorization failed.
+INFO  2021-02-05 17:05:13,718 [4    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2021-02-05 17:05:13,737 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2021-02-05 17:05:13,742 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 177.7158ms 302 
+INFO  2021-02-05 17:05:13,750 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.AccountController.Login (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:05:18,853 [5    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Login(System.String, System.String, System.String) on controller RoyalEstate.Web.Controllers.AccountController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:05:23,213 [9    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2021-02-05 17:05:24,143 [9    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 986.7841ms.
+INFO  2021-02-05 17:05:24,150 [9    ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.AccountController.Login (RoyalEstate.Web.Mvc) in 5293.179ms
+INFO  2021-02-05 17:05:24,155 [9    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.AccountController.Login (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:05:24,193 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 10439.0893ms 200 text/html; charset=utf-8
+INFO  2021-02-05 17:05:24,354 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/_Layout.css?v=pHobCa-IAfjMNqE8x1a2vYglVfPFWGtvFJmb0671Np0  
+INFO  2021-02-05 17:05:24,373 [10   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/_Layout.css was not modified
+INFO  2021-02-05 17:05:24,378 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 24.4664ms 304 text/css
+INFO  2021-02-05 17:05:24,505 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=637481415088682039  
+INFO  2021-02-05 17:05:24,508 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=637481415088682039  
+INFO  2021-02-05 17:05:24,515 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Account/Login.js?v=QcQaP2tYhyMf9nF9oQ73Fek6Q4zGCxX2-VNI5iPnEaU  
+INFO  2021-02-05 17:05:24,518 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:05:24,520 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:05:24,523 [9    ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Account/Login.js was not modified
+INFO  2021-02-05 17:05:24,528 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 10.403ms 304 application/javascript
+INFO  2021-02-05 17:05:24,536 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Shared/Components/TenantChange/Default.js?v=637481415241259617  
+INFO  2021-02-05 17:05:24,546 [5    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2021-02-05 17:05:24,549 [10   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2021-02-05 17:05:24,556 [9    ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2021-02-05 17:05:24,558 [9    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 21.7301ms 200 application/javascript
+INFO  2021-02-05 17:05:24,675 [10   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2021-02-05 17:05:24,683 [10   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 126.9036ms
+INFO  2021-02-05 17:05:24,686 [5    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:05:24,687 [10   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:05:24,690 [10   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 185.7343ms 200 application/x-javascript
+INFO  2021-02-05 17:05:24,695 [5    ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 146.35ms
+INFO  2021-02-05 17:05:24,700 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:05:24,703 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 194.3599ms 200 application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:05,234 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 256
+INFO  2021-02-05 17:14:05,244 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.AccountController.Login (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:05,262 [5    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.JsonResult] Login(RoyalEstate.Web.Models.Account.LoginViewModel, System.String, System.String) on controller RoyalEstate.Web.Controllers.AccountController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:14:05,894 [32   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2021-02-05 17:14:05,917 [28   ] tonsoftJson.NewtonsoftJsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2021-02-05 17:14:05,935 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.AccountController.Login (RoyalEstate.Web.Mvc) in 669.4082ms
+INFO  2021-02-05 17:14:05,938 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.AccountController.Login (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:05,942 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 709.6724ms 200 application/json; charset=utf-8
+INFO  2021-02-05 17:14:05,969 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2021-02-05 17:14:06,018 [31   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2021-02-05 17:14:06,022 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.HomeController.Index (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:06,029 [31   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller RoyalEstate.Web.Controllers.HomeController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:14:06,076 [28   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2021-02-05 17:14:06,752 [31   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 688.589ms.
+INFO  2021-02-05 17:14:06,764 [31   ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.HomeController.Index (RoyalEstate.Web.Mvc) in 730.1325ms
+INFO  2021-02-05 17:14:06,767 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.HomeController.Index (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:06,778 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 802.1646ms 200 text/html; charset=utf-8
+INFO  2021-02-05 17:14:06,816 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/css/style.css  
+INFO  2021-02-05 17:14:06,847 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Shared/_Layout.css?v=pHobCa-IAfjMNqE8x1a2vYglVfPFWGtvFJmb0671Np0  
+INFO  2021-02-05 17:14:06,941 [31   ] NetCore.StaticFiles.StaticFileMiddleware - The file /css/style.css was not modified
+INFO  2021-02-05 17:14:06,974 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/img/logo.png  
+INFO  2021-02-05 17:14:06,987 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=637481415088682039  
+INFO  2021-02-05 17:14:06,990 [28   ] NetCore.StaticFiles.StaticFileMiddleware - The file /img/logo.png was not modified
+INFO  2021-02-05 17:14:06,995 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 136.3001ms 304 text/css
+INFO  2021-02-05 17:14:06,997 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 114.2232ms 304 image/png
+INFO  2021-02-05 17:14:07,004 [32   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Shared/_Layout.css was not modified
+INFO  2021-02-05 17:14:07,007 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=637481415088682039  
+INFO  2021-02-05 17:14:07,012 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Home/Index.js?v=j15_3UQM_OHO7c9lRyJFSPI9uIy3cZwnglSG6RzPmPA  
+INFO  2021-02-05 17:14:07,016 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/js/abp.dataTable.js?v=UDRWmnrxCOQUpOI2r6aA_V1Wz0bSH--X9kkb1tkcAug  
+INFO  2021-02-05 17:14:07,021 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 194.1862ms 304 text/css
+INFO  2021-02-05 17:14:07,026 [28   ] NetCore.StaticFiles.StaticFileMiddleware - The file /view-resources/Views/Home/Index.js was not modified
+INFO  2021-02-05 17:14:07,042 [31   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/abp.dataTable.js was not modified
+INFO  2021-02-05 17:14:07,045 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 20.7479ms 304 application/javascript
+INFO  2021-02-05 17:14:07,049 [30   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:07,050 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 44.8499ms 304 application/javascript
+INFO  2021-02-05 17:14:07,057 [30   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2021-02-05 17:14:07,061 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:07,067 [5    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2021-02-05 17:14:07,075 [5    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2021-02-05 17:14:07,079 [5    ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 8.1097ms
+INFO  2021-02-05 17:14:07,082 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:07,085 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 149.2882ms 200 application/x-javascript
+INFO  2021-02-05 17:14:07,150 [5    ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:07,157 [5    ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 94.1995ms
+INFO  2021-02-05 17:14:07,160 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:07,163 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 160.2854ms 200 application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:07,271 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2021-02-05 17:14:07,306 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:14:07,345 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:14:07,355 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 78.4344ms 200 application/json
+INFO  2021-02-05 17:14:07,406 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=4Puv-SM8erwtxgcSlrmAaQ  
+INFO  2021-02-05 17:14:07,471 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2021-02-05 17:14:07,564 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"4Puv-SM8erwtxgcSlrmAaQ","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2021-02-05T17:14:07.5559147+03:30","Properties":{}}
+DEBUG 2021-02-05 17:14:07,578 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: 4Puv-SM8erwtxgcSlrmAaQ
+INFO  2021-02-05 17:14:08,516 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/Estates/Index  
+INFO  2021-02-05 17:14:08,527 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.EstatesController.Index (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:08,532 [28   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "Index", controller = "Estates", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult Index() on controller RoyalEstate.Web.Controllers.EstatesController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:14:09,816 [26   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2021-02-05 17:14:09,872 [32   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 60.3319ms.
+INFO  2021-02-05 17:14:09,878 [32   ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.EstatesController.Index (RoyalEstate.Web.Mvc) in 1340.0787ms
+INFO  2021-02-05 17:14:09,892 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.EstatesController.Index (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:09,896 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 1379.0556ms 200 text/html; charset=utf-8
+DEBUG 2021-02-05 17:14:09,934 [5    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: 4Puv-SM8erwtxgcSlrmAaQ
+INFO  2021-02-05 17:14:09,966 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=637481415088682039  
+INFO  2021-02-05 17:14:10,019 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=637481415088682039  
+INFO  2021-02-05 17:14:10,061 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:10,072 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:10,090 [32   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2021-02-05 17:14:10,094 [26   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2021-02-05 17:14:10,107 [32   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2021-02-05 17:14:10,134 [32   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 17.9262ms
+INFO  2021-02-05 17:14:10,149 [26   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:10,162 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:10,176 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2021-02-05 17:14:10,191 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 229.7957ms 200 application/x-javascript
+INFO  2021-02-05 17:14:10,195 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:14:10,197 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 67.6852ms
+INFO  2021-02-05 17:14:10,216 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:10,226 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:14:10,230 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=Wbk5QvY4QdHssADYSHR43w  
+INFO  2021-02-05 17:14:10,232 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 85.8547ms 200 application/json
+INFO  2021-02-05 17:14:10,235 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 275.9178ms 200 application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:10,247 [32   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+INFO  2021-02-05 17:14:10,256 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2021-02-05 17:14:10,265 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 2861.7231ms 101 
+DEBUG 2021-02-05 17:14:10,274 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"Wbk5QvY4QdHssADYSHR43w","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2021-02-05T17:14:10.2744005+03:30","Properties":{}}
+DEBUG 2021-02-05 17:14:10,275 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: Wbk5QvY4QdHssADYSHR43w
+INFO  2021-02-05 17:14:15,051 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/Estates/NewEstate application/x-www-form-urlencoded 256
+INFO  2021-02-05 17:14:15,067 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:14:15,075 [5    ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "NewEstate", controller = "Estates", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult NewEstate(Int32, Int32) on controller RoyalEstate.Web.Controllers.EstatesController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:14:15,077 [5    ] idateAntiforgeryTokenAuthorizationFilter - Skipping the execution of current filter as its not the most effective filter implementing the policy Microsoft.AspNetCore.Mvc.ViewFeatures.IAntiforgeryPolicy
+INFO  2021-02-05 17:14:15,139 [30   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view NewEstate.
+INFO  2021-02-05 17:14:15,320 [5    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view NewEstate executed in 225.8547ms.
+INFO  2021-02-05 17:14:15,324 [5    ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc) in 244.3849ms
+INFO  2021-02-05 17:14:15,337 [5    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc)'
+DEBUG 2021-02-05 17:14:15,341 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: Wbk5QvY4QdHssADYSHR43w
+INFO  2021-02-05 17:14:15,344 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 290.0192ms 200 text/html; charset=utf-8
+INFO  2021-02-05 17:14:15,357 [30   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2021-02-05 17:14:15,365 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 5142.9713ms 101 
+INFO  2021-02-05 17:14:15,449 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/sweetalert/sweetalert.min.js  
+INFO  2021-02-05 17:14:15,456 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=637481415088682039  
+INFO  2021-02-05 17:14:15,459 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/jquery.form/jquery.form.min.js  
+INFO  2021-02-05 17:14:15,466 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=637481415088682039  
+INFO  2021-02-05 17:14:15,479 [5    ] NetCore.StaticFiles.StaticFileMiddleware - The file /libs/sweetalert/sweetalert.min.js was not modified
+INFO  2021-02-05 17:14:15,482 [30   ] NetCore.StaticFiles.StaticFileMiddleware - The file /libs/jquery.form/jquery.form.min.js was not modified
+INFO  2021-02-05 17:14:15,489 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 37.0619ms 304 application/javascript
+INFO  2021-02-05 17:14:15,491 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:15,496 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 30.697ms 304 application/javascript
+INFO  2021-02-05 17:14:15,500 [28   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2021-02-05 17:14:15,504 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:15,508 [26   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2021-02-05 17:14:15,515 [26   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2021-02-05 17:14:15,521 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 7.3331ms
+INFO  2021-02-05 17:14:15,524 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:15,530 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 80.9825ms 200 application/x-javascript
+INFO  2021-02-05 17:14:15,537 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2021-02-05 17:14:15,543 [28   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:15,551 [28   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 41.7308ms
+INFO  2021-02-05 17:14:15,566 [28   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:14:15,572 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:14:15,573 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 121.1001ms 200 application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:14:15,580 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:14:15,598 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 49.063ms 200 application/json
+INFO  2021-02-05 17:14:15,600 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=UOkz5ySRfYsiLkocOHMv8g  
+INFO  2021-02-05 17:14:15,620 [30   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2021-02-05 17:14:15,650 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"UOkz5ySRfYsiLkocOHMv8g","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2021-02-05T17:14:15.6507426+03:30","Properties":{}}
+DEBUG 2021-02-05 17:14:15,651 [28   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: UOkz5ySRfYsiLkocOHMv8g
+INFO  2021-02-05 17:14:24,364 [5    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/bootstrap/dist/js/bootstrap.bundle.js.map  
+INFO  2021-02-05 17:14:24,366 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/toastr/toastr.js.map  
+INFO  2021-02-05 17:14:24,371 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/signalr/dist/browser/signalr.js.map  
+INFO  2021-02-05 17:14:24,378 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/admin-lte/dist/js/adminlte.js.map  
+INFO  2021-02-05 17:14:24,386 [32   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/push.js/push.js.map  
+INFO  2021-02-05 17:14:24,387 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/jquery.form/jquery.form.min.js.map  
+INFO  2021-02-05 17:14:24,433 [31   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/toastr/toastr.js.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\toastr\toastr.js.map'
+INFO  2021-02-05 17:14:24,435 [26   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/jquery.form/jquery.form.min.js.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\jquery.form\jquery.form.min.js.map'
+INFO  2021-02-05 17:14:24,439 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 81.2856ms 200 text/plain
+INFO  2021-02-05 17:14:24,444 [27   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/admin-lte/dist/js/adminlte.js.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\admin-lte\dist\js\adminlte.js.map'
+INFO  2021-02-05 17:14:24,449 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 81.7023ms 200 text/plain
+INFO  2021-02-05 17:14:24,456 [30   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/libs/admin-lte/dist/css/adminlte.min.css.map  
+INFO  2021-02-05 17:14:24,459 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 94.5384ms 200 text/plain
+INFO  2021-02-05 17:14:24,466 [31   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/signalr/dist/browser/signalr.js.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\signalr\dist\browser\signalr.js.map'
+INFO  2021-02-05 17:14:24,469 [25   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/push.js/push.js.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\push.js\push.js.map'
+INFO  2021-02-05 17:14:24,474 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 104.6723ms 200 text/plain
+INFO  2021-02-05 17:14:24,478 [25   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 115.9972ms 200 text/plain
+INFO  2021-02-05 17:14:24,506 [28   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/bootstrap/dist/js/bootstrap.bundle.js.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\bootstrap\dist\js\bootstrap.bundle.js.map'
+INFO  2021-02-05 17:14:24,522 [28   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 225.8497ms 200 text/plain
+INFO  2021-02-05 17:14:24,706 [25   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/libs/admin-lte/dist/css/adminlte.min.css.map'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\libs\admin-lte\dist\css\adminlte.min.css.map'
+INFO  2021-02-05 17:14:24,711 [25   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 259.134ms 200 text/plain
+INFO  2021-02-05 17:15:07,583 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/Estates/NewEstate application/x-www-form-urlencoded 256
+INFO  2021-02-05 17:15:07,594 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:15:07,603 [31   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "NewEstate", controller = "Estates", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult NewEstate(Int32, Int32) on controller RoyalEstate.Web.Controllers.EstatesController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:15:07,603 [31   ] idateAntiforgeryTokenAuthorizationFilter - Skipping the execution of current filter as its not the most effective filter implementing the policy Microsoft.AspNetCore.Mvc.ViewFeatures.IAntiforgeryPolicy
+INFO  2021-02-05 17:15:07,674 [31   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view NewEstate.
+INFO  2021-02-05 17:15:07,726 [26   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view NewEstate executed in 58.1886ms.
+INFO  2021-02-05 17:15:07,734 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc) in 123.9467ms
+INFO  2021-02-05 17:15:07,739 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc)'
+DEBUG 2021-02-05 17:15:07,746 [27   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: UOkz5ySRfYsiLkocOHMv8g
+INFO  2021-02-05 17:15:07,749 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 163.9783ms 200 text/html; charset=utf-8
+INFO  2021-02-05 17:15:07,774 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2021-02-05 17:15:07,834 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 52184.018ms 101 
+INFO  2021-02-05 17:15:07,940 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=637481415088682039  
+INFO  2021-02-05 17:15:07,942 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=637481415088682039  
+INFO  2021-02-05 17:15:07,961 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:15:07,964 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:15:07,971 [31   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2021-02-05 17:15:07,973 [26   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2021-02-05 17:15:07,978 [31   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2021-02-05 17:15:07,987 [31   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 8.1662ms
+INFO  2021-02-05 17:15:07,990 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:15:07,993 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 51.001ms 200 application/x-javascript
+INFO  2021-02-05 17:15:08,005 [26   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:15:08,008 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 33.0045ms
+INFO  2021-02-05 17:15:08,014 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:15:08,022 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 77.5418ms 200 application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:15:08,048 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2021-02-05 17:15:08,059 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:15:08,067 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:15:08,078 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 24.2525ms 200 application/json
+INFO  2021-02-05 17:15:08,090 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=Nu7HCbstMEHJLXezxxCNLA  
+INFO  2021-02-05 17:15:08,103 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2021-02-05 17:15:08,134 [31   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"Nu7HCbstMEHJLXezxxCNLA","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2021-02-05T17:15:08.1345173+03:30","Properties":{}}
+DEBUG 2021-02-05 17:15:08,135 [31   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: Nu7HCbstMEHJLXezxxCNLA
+INFO  2021-02-05 17:15:08,155 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/img/favicon.ico  
+INFO  2021-02-05 17:15:08,161 [31   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/img/favicon.ico'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\img\favicon.ico'
+INFO  2021-02-05 17:15:08,166 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 8.3079ms 200 image/x-icon
+INFO  2021-02-05 17:16:13,431 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/Estates/NewEstate application/x-www-form-urlencoded 256
+INFO  2021-02-05 17:16:13,444 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:16:13,449 [31   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "NewEstate", controller = "Estates", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult NewEstate(Int32, Int32) on controller RoyalEstate.Web.Controllers.EstatesController (RoyalEstate.Web.Mvc).
+INFO  2021-02-05 17:16:13,450 [31   ] idateAntiforgeryTokenAuthorizationFilter - Skipping the execution of current filter as its not the most effective filter implementing the policy Microsoft.AspNetCore.Mvc.ViewFeatures.IAntiforgeryPolicy
+INFO  2021-02-05 17:16:19,285 [31   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view NewEstate.
+INFO  2021-02-05 17:16:19,368 [27   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view NewEstate executed in 5878.9075ms.
+INFO  2021-02-05 17:16:19,372 [27   ] c.Infrastructure.ControllerActionInvoker - Executed action RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc) in 5918.5559ms
+INFO  2021-02-05 17:16:19,376 [27   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'RoyalEstate.Web.Controllers.EstatesController.NewEstate (RoyalEstate.Web.Mvc)'
+INFO  2021-02-05 17:16:19,383 [27   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 5952.2264ms 200 text/html; charset=utf-8
+DEBUG 2021-02-05 17:16:19,386 [31   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: Nu7HCbstMEHJLXezxxCNLA
+INFO  2021-02-05 17:16:19,406 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2021-02-05 17:16:19,466 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 71320.623ms 101 
+INFO  2021-02-05 17:16:19,524 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=637481415088682039  
+INFO  2021-02-05 17:16:19,527 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=637481415088682039  
+INFO  2021-02-05 17:16:19,541 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:16:19,546 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:16:19,549 [31   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ContentResult GetAll(Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) on controller Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController (Abp.AspNetCore).
+INFO  2021-02-05 17:16:19,557 [26   ] c.Infrastructure.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetScripts(System.String, Boolean) on controller Abp.AspNetCore.Mvc.Controllers.AbpScriptsController (Abp.AspNetCore).
+INFO  2021-02-05 17:16:19,560 [31   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2021-02-05 17:16:19,566 [31   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 12.1646ms
+INFO  2021-02-05 17:16:19,570 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)'
+INFO  2021-02-05 17:16:19,577 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 80.682ms 200 application/x-javascript
+INFO  2021-02-05 17:16:19,596 [26   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:16:19,600 [26   ] c.Infrastructure.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 37.8757ms
+INFO  2021-02-05 17:16:19,606 [26   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint 'Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)'
+INFO  2021-02-05 17:16:19,610 [26   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 95.1479ms 200 application/x-javascript; charset=utf-8
+INFO  2021-02-05 17:16:19,673 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2021-02-05 17:16:19,703 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:16:19,726 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr/negotiate'
+INFO  2021-02-05 17:16:19,731 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 57.6387ms 200 application/json
+INFO  2021-02-05 17:16:19,763 [31   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=oHHqeRX9Qx-S9sPdkmjBsA  
+INFO  2021-02-05 17:16:19,766 [38   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request starting HTTP/1.1 GET http://localhost:62114/img/favicon.ico  
+INFO  2021-02-05 17:16:19,774 [38   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/img/favicon.ico'. Physical path: 'C:\Users\ali\Desktop\Royal\src\RoyalEstate.Web.Mvc\wwwroot\img\favicon.ico'
+INFO  2021-02-05 17:16:19,777 [38   ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 10.9361ms 200 image/x-icon
+INFO  2021-02-05 17:16:19,783 [31   ] ft.AspNetCore.Routing.EndpointMiddleware - Executing endpoint '/signalr'
+DEBUG 2021-02-05 17:16:19,790 [31   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"oHHqeRX9Qx-S9sPdkmjBsA","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2021-02-05T17:16:19.7907331+03:30","Properties":{}}
+DEBUG 2021-02-05 17:16:19,791 [31   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: oHHqeRX9Qx-S9sPdkmjBsA
+DEBUG 2021-02-05 17:16:28,558 [4    ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: oHHqeRX9Qx-S9sPdkmjBsA
+INFO  2021-02-05 17:16:28,585 [4    ] ft.AspNetCore.Routing.EndpointMiddleware - Executed endpoint '/signalr'
+INFO  2021-02-05 17:16:28,609 [4    ] Microsoft.AspNetCore.Hosting.Diagnostics - Request finished in 8826.0219ms 101 

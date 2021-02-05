@@ -240,9 +240,7 @@
             let inpId = $(e).parent().attr("data-id");
             $(e).parent().remove();
             $(`#imgZone input#${inpId}`).remove();
-            $("#imgZone input").each(function(i, inp) {
-                $(inp).prop("name", `Images[${i}]`);
-            });
+            
         }
     </script>
 }
