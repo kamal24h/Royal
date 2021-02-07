@@ -200,6 +200,22 @@
     {
       "library": "jquery.form@4.3.0",
       "destination": "wwwroot/libs/jquery.form/"
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/libs/select2/",
+      "files": [
+        "js/select2.min.js",
+        "css/select2.css",
+        "css/select2.min.css",
+        "js/select2.full.js",
+        "js/select2.full.min.js",
+        "js/select2.js",
+        "js/i18n/fa.js",
+        "js/i18n/fa.min.js",
+        "js/i18n/en.js",
+        "js/i18n/en.min.js"
+      ]
     }
   ]
 }

@@ -8,6 +8,6 @@ namespace RoyalEstate.Estates
 {
     public interface IEstateAppService : IAsyncCrudAppService<EstateDto, long, GetAllEstatesInputDto, CreateEstateDto, EstateDto>
     {
-
+        
     }
 }

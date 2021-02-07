@@ -10,5 +10,36 @@ namespace RoyalEstate.Estates.Dto
     [AutoMapFrom(typeof(Estate))]
     public class EstateDto : AuditedEntityDto<long>
     {
+        public string Title { get; set; }
+
+        public int EstateTypeId { get; set; }
+        public int ServiceTypeId { get; set; }
+
+        public double Area { get; set; }
+        public int? Rooms { get; set; }
+        public int? Floor { get; set; }
+        public int? TotalFloors { get; set; }
+        public int? UnitsPerFloor { get; set; }
+        public bool? Parking { get; set; }
+        public bool? StoreRoom { get; set; }
+        public bool? Elevator { get; set; }
+        public string BuiltDate { get; set; }
+
+
+        public long? Price { get; set; }
+        public long? Rent { get; set; }
+        public long? Deposit { get; set; }
+
+        public int CityId { get; set; }
+        public long CustomerId { get; set; }
+        
+        public string Address { get; set; }
+
+        public double? Longitude { get; set; }
+        public double? Latitude { get; set; }
+        public bool IsActive { get; set; }
+        public string Description { get; set; }
+
+        public List<string> ImagePaths { get; set; }
     }
 }

@@ -7,6 +7,7 @@ namespace RoyalEstate.Cities.Dto
 {
     public class PagedCityResultRequestDto : PagedResultRequestDto
     {
-        public bool IsActive { get; set; }
+        public bool? IsActive { get; set; }
+        public int? ProvinceId { get; set; }
     }
 }

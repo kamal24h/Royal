@@ -21,6 +21,7 @@ namespace RoyalEstate.EntityFrameworkCore
         public RoyalEstateDbContext(DbContextOptions<RoyalEstateDbContext> options)
             : base(options)
         {
+            
         }
     }
 }
