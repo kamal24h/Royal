@@ -7,8 +7,13 @@ using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using RoyalEstate.Cities;
+using RoyalEstate.Cities.Dto;
 using RoyalEstate.Web.Models.Estates;
 using RoyalEstate.Controllers;
+using RoyalEstate.Customers;
+using RoyalEstate.Customers.Dto;
 using RoyalEstate.Estates.Dto;
 using RoyalEstate.Estates;
 
@@ -18,12 +23,19 @@ namespace RoyalEstate.Web.Controllers
     {
         private readonly IEstateTypeAppService _estateTypeAppService;
         private readonly IEstateAppService _estateAppService;
+        private readonly ICustomerAppService _customerAppService;
+        private readonly ICityAppService _cityAppService;
 
-        public EstatesController(IEstateTypeAppService estateTypeAppService, 
-            IEstateAppService estateAppService)
+        public EstatesController(
+            IEstateTypeAppService estateTypeAppService, 
+            IEstateAppService estateAppService,
+            ICustomerAppService customerAppService,
+            ICityAppService cityAppService)
         {
             _estateTypeAppService = estateTypeAppService;
             _estateAppService = estateAppService;
+            _customerAppService = customerAppService;
+            _cityAppService = cityAppService;
         }
 
         public async Task<ActionResult> EstateTypes()
@@ -54,7 +66,7 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult NewEstate(int estateTypeId, int serviceTypeId)
+        public async Task<ActionResult> NewEstate(int estateTypeId, int serviceTypeId)
         {
             CreateEstateVm model = new CreateEstateVm
             {
@@ -62,7 +74,9 @@ namespace RoyalEstate.Web.Controllers
                 {
                     ServiceTypeId = serviceTypeId, 
                     EstateTypeId = estateTypeId
-                }
+                },
+                Customers = await _customerAppService.GetCustomersSelectListAsync(),
+                Cities = await _cityAppService.GetCitiesSelectList(new PagedCityResultRequestDto{IsActive = true})
             };
 
             return View(model);

@@ -9,5 +9,8 @@
         public const string Roles = "Roles";
         public const string EstateTypes = "Estate Types";
         public const string Estates = "Estates";
+        public const string CitiesAndProvinces = "شهرها و استانها";
+        public const string Cities = "شهرها";
+        public const string Provinces = "استانها";
     }
 }
