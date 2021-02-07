@@ -101,7 +101,7 @@ namespace RoyalEstate.Web.Controllers
                         await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
-                            input.ImagePaths.Add(Path.Combine("img", "Estates", ticks,i+imageExt));
+                            input.ImagePaths.Add("/"+ Path.Combine("img", "Estates", ticks, i + imageExt).Replace('\\', '/'));
                         }
                         i++;
                     }

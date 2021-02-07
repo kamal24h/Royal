@@ -84,12 +84,13 @@
                                         <span asp-validation-for="CreateEstateDto.Title" name="Title"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CreateEstateDto.CityId">فروشنده</label>
-                                        @Html.DropDownListFor(m=>m.CreateEstateDto.CustomerId, Model.Customers, new{name="CustomerId", @class="form-control"})
+                                        <label asp-for="CreateEstateDto.CustomerId">فروشنده</label>
+                                        <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" name="CustomerId" id="CustomerId" class="form-control"></select>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.CityId">شهر</label>
-                                        @Html.DropDownListFor(m => m.CreateEstateDto.CityId, Model.Cities, new { name = "CityId", @class = "form-control" })
+                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" name="CityId" id="CityId" class="form-control"></select>
                                     </div>
                                     @switch (Model.CreateEstateDto.EstateTypeId)
                                     {

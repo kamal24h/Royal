@@ -8,8 +8,8 @@
                                     <div class="card-header">
                                         <p>${r.title}</p>
                                     </div>
-                                    <div class="card-body" style="height:7rem">
-                                        <img class="estateCover" src="/${r.imagePaths[0]}"/>
+                                    <div class="card-body p-0" style="height:7rem; background-image:url('${(r.imagePaths[0] || '')}')">
+                                        
                                     </div>
                                     <div class="card-footer">
                                         قیمت<p>${r.price}</p>
