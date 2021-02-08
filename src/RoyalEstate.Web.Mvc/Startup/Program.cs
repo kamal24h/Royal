@@ -13,8 +13,11 @@ namespace RoyalEstate.Web.Startup
         public static IWebHost BuildWebHost(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
+                 .CaptureStartupErrors(true)
+                .UseSetting("detailedErrors", "true")
                 .UseStartup<Startup>()
                 .Build();
         }
     }
 }
+
