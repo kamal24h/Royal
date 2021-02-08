@@ -4,6 +4,7 @@ using RoyalEstate.Authorization.Roles;
 using RoyalEstate.Authorization.Users;
 using RoyalEstate.MultiTenancy;
 using RoyalEstate.Entities;
+using System.Collections.Generic;
 
 namespace RoyalEstate.EntityFrameworkCore
 {
@@ -23,5 +24,7 @@ namespace RoyalEstate.EntityFrameworkCore
         {
             
         }
+
+        
     }
 }

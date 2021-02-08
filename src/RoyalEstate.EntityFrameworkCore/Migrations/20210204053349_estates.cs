@@ -185,6 +185,34 @@ namespace RoyalEstate.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
+            // Seed service types
+            migrationBuilder.InsertData(
+                table: "ServiceTypes",
+                columns: new[] { "Id", "IsActive", "Name" },
+                values: new object[] { 1, true, "Sale" });
+            migrationBuilder.InsertData(
+                table: "ServiceTypes",
+                columns: new[] { "Id", "IsActive", "Name" },
+                values: new object[] { 2, true, "Rent" });
+
+            // Seed estate types
+            migrationBuilder.InsertData(
+                table: "EstateTypes",
+                columns: new[] { "Id", "IsActive", "Name", "CreationTime" },
+                values: new object[] { 1, true, "Apartment", DateTime.Now });
+            migrationBuilder.InsertData(
+                table: "EstateTypes",
+                columns: new[] { "Id", "IsActive", "Name", "CreationTime" },
+                values: new object[] { 2, true, "House", DateTime.Now });
+            migrationBuilder.InsertData(
+                table: "EstateTypes",
+                columns: new[] { "Id", "IsActive", "Name", "CreationTime" },
+                values: new object[] { 3, true, "Store", DateTime.Now });
+            migrationBuilder.InsertData(
+                table: "EstateTypes",
+                columns: new[] { "Id", "IsActive", "Name", "CreationTime" },
+                values: new object[] { 4, true, "Office", DateTime.Now });
+
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cities_ProvinceId",
