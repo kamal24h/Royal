@@ -3,10 +3,6 @@
   <texts>
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
-    <text name="Estates" value="Estates" />
-    <text name="EstateTypes" value="Estate Types" />
-    <text name="EstateType" value="Estate Type" />
-    <text name="EstateTypeName" value="EstateType Name" />
     <text name="CreationTime" value="Creation Time" />    
     <text name="CreateNewEstateType" value="Create New EstateType" />    
     <text name="WelcomeMessage" value="Welcome to RoyalEstate!" />
@@ -50,7 +46,7 @@
     <text name="Logout" value="Logout" />
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
-    <text name="Users" value="Users" />
+    <text name="Users" value="کاربران" />
     <text name="IsActive" value="Is active" />
     <text name="FullName" value="Full name" />
     <text name="CreateNewUser" value="Create new user" />
@@ -122,5 +118,23 @@
     <text name="Clear">Clear</text>
     <text name="ResetPasswordStepOneInfo">1. Enter your administrator password</text>
     <text name="ResetPasswordStepTwoInfo">2. Copy this random password so you can send it to the user</text>
+
+    <text name="Estates" value="Estates" />
+    <text name="EstateTypes" value="Estate Types" />
+    <text name="EstateType" value="Estate Type" />
+    <text name="EstateTypeName" value="Estate Type Name" />
+
+    <text name="CitiesAndProvinces">Cities and Provinces</text>
+
+    <text name="Province">Province</text>
+    <text name="Provinces">Provinces</text>
+    <text name="CreateNewProvince">Create New Province</text>
+
+    <text name="City">City</text>
+    <text name="Cities">Cities</text>
+    <text name="CreateNewCity">Create New City</text>
+
+    <text name="SystemUsers">System Users</text>
+    <text name="Customers">Customers</text>
   </texts>
 </localizationDictionary>

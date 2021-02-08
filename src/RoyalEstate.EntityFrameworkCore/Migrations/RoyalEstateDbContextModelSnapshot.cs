@@ -1555,6 +1555,9 @@ namespace RoyalEstate.Migrations
                         .HasColumnType("nvarchar(32)")
                         .HasMaxLength(32);
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
@@ -1603,6 +1606,8 @@ namespace RoyalEstate.Migrations
                         .HasMaxLength(64);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityId");
 
                     b.ToTable("Customers");
                 });
@@ -2056,8 +2061,17 @@ namespace RoyalEstate.Migrations
             modelBuilder.Entity("RoyalEstate.Entities.City", b =>
                 {
                     b.HasOne("RoyalEstate.Entities.Province", "Province")
-                        .WithMany()
+                        .WithMany("Cities")
                         .HasForeignKey("ProvinceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RoyalEstate.Entities.Customer", b =>
+                {
+                    b.HasOne("RoyalEstate.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

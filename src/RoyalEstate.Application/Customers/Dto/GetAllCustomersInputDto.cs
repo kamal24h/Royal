@@ -7,6 +7,6 @@ namespace RoyalEstate.Customers.Dto
 {
     public class GetAllCustomersInputDto : PagedAndSortedResultRequestDto
     {
-
+        public string Name { get; set; }
     }
 }

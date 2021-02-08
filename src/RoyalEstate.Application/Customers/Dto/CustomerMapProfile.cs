@@ -10,6 +10,8 @@ namespace RoyalEstate.Customers.Dto
     {
         public CustomerMapProfile()
         {
+            CreateMap<CreateCustomerDto, Customer>();
+            
             CreateMap<CustomerDto, Customer>().ForMember(d => d.CreationTime, opt => opt.Ignore());
         }
     }
