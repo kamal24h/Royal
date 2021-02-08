@@ -14,7 +14,8 @@ namespace RoyalEstate.Entities
         public string Name { get; set; }
 
         [ForeignKey(nameof(ProvinceId))]
-        public Province Province { get; set; }
+        public virtual Province Province { get; set; }
+
         [Required]
         public int ProvinceId { get; set; }
 

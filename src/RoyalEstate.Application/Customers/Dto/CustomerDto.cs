@@ -29,19 +29,18 @@ namespace RoyalEstate.Customers.Dto
         [StringLength(AbpUserBase.MaxPhoneNumberLength)]
         public string CellPhone1 { get; set; }
 
-        [Phone]
-        [StringLength(AbpUserBase.MaxPhoneNumberLength)]
+        
         public string CellPhone2 { get; set; }
 
         [Phone]
         [StringLength(AbpUserBase.MaxPhoneNumberLength)]
         public string PhoneNumber1 { get; set; }
 
-        [Phone]
-        [StringLength(AbpUserBase.MaxPhoneNumberLength)]
+        
         public string PhoneNumber2 { get; set; }
 
         public string Address { get; set; }
+        public string CityName { get; set; }
 
         [DisplayName("")]
         public bool IsActive { get; set; }

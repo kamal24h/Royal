@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<localizationDictionary culture="fa">
+  <texts>
+    <text name="HomePage" value="خانه" />
+    <text name="About" value="درباره ما" />
+    <text name="CreationTime" value="زمان ایجاد" />
+    <text name="CreateNewEstateType" value="ثبت دسته جدید" />
+    <text name="WelcomeMessage" value="خوش آمدید" />
+    <text name="FormIsNotValidMessage" value="اطلاعات فرم صحیح نیست. لطفا خطاها را بررسی کنید." />
+    <text name="Submit">ثبت</text>
+
+    <text name="Tenants" value="تننت‌ها" />
+    <text name="CreateNewTenant" value="ایجاد تننت جدید" />
+    <text name="TenancyName" value="نام tenancy" />
+    <text name="TenantNameCanNotBeEmpty" value="نام تنت نمیتواند خالی باشد." />
+    <text name="ThereIsNoTenantDefinedWithName{0}" value="تننتی با نام {0} موجود نمیباشد." />
+    <text name="CurrentTenant">تننت فعلی</text>
+    <text name="ChangeTenant">تغییر تننت</text>
+    <text name="EditTenant">ویرایش تننت</text>
+    <text name="TenantIdIsNotActive{0}">تننت {0} فعال نیست.</text>
+    <text name="UnknownTenantId{0}">تننت ناشناس {0}</text>
+    <text name="TenantSelection" value="انتخاب تننت" />
+    <text name="TenantSelection_Detail" value="لطفا یکی از تننت‌های زیر را انتخاب کنید." />
+    <text name="TenantIsNotActive" value="تننت {0} فعال نمیباشد." />
+    <text name="TenantDeleteWarningMessage">تننت {0} حذف خواهد شد.</text>
+    <text name="TenantName_Regex_Description" value="نام تننت باید شامل حداقل 2 کاراکتر باشد و با یک حرف شروع شود با حروف یا اعداد و یا (_) ادامه یابد" />
+
+
+    
+
+
+    <text name="Roles">نقش‌ها</text>
+    <text name="CreateNewRole">ایجاد نقش جدید</text>
+    <text name="RoleName">نام نقش</text>
+    <text name="RoleDescription">شرح نقش</text>
+    <text name="EditRole">ویرایش نقش</text>
+    <text name="RoleDeleteWarningMessage">نقش {0} حذف از تمام کاربران پاک خواهد شد.</text>
+    <text name="UserRoles">نقش‌های کاربر</text>
+    <text name="UserDetails">جزئیات کاربر</text>
+    <text name="UserDeleteWarningMessage">کاربر {0} پاک خواهد شد.</text>
+    
+    <text name="InvalidUserNameOrPassword" value="نام کاربری و یا رمز عبور معتبر نمیباشد." />
+    <text name="UserIsNotActiveAndCanNotLogin" value="کاربر {0} فعال نیست و نمیتواند ورود کند." />
+    <text name="UserEmailIsNotConfirmedAndCanNotLogin">ایمیل شما فعلا تائید نشده است و نمیتوانید وارد شوید.</text>
+    <text name="UserLockedOutMessage">حساب کاربری مسدود شده است. لطفا بعدا دامتحان کنید.</text>
+    <text name="PleaseEnterLoginInformation" value="لطفا اطلاعات حساب خود را وارد کنید" />
+
+    <text name="Users" value="کاربران" />
+    <text name="CreateNewUser" value="ثبت کاربر جدید" />
+    <text name="EditUser">ویرایش کاربر</text>
+    <text name="UserNameOrEmail" value="نام کاربری یا ایمیل" />
+    <text name="Password" value="رمز عبور" />
+    <text name="ResetPassword" value="تنظیم مجدد رمز عبور" />
+    <text name="UpdatePassword" value="بروزرسانی رمز عبور" />
+    <text name="RememberMe" value="مرا به خاطر بسپار" />
+    <text name="LogIn" value="ورود" />
+    <text name="LoginFailed" value="ورود ناموفق!" />
+    <text name="NameSurname" value="نام و نام خانوادگی" />
+    <text name="UserName" value="نام کاربری" />
+    <text name="Name" value="نام" />
+    <text name="Surname" value="نام خانوادگی" />
+    <text name="EmailAddress" value="آدرس ایمیل" />
+    
+    <text name="SavedSuccessfully" value="با موفقیت ذخیره شد" />
+    
+    <text name="AdminEmailAddress" value="آدرس ایمیل ادمین" />
+    <text name="AdminPassword" value="رمز عبور ادمین" />
+    <text name="Save" value="ذخیره" />
+    <text name="Cancel" value="انصراف" />
+    
+    <text name="DefaultPasswordIs" value="رمز عبور پیشفرض: {0}" />
+    <text name="CanBeEmptyToLoginAsHost" value="برای وارد شدن به عنوان هاست میتواند خالی باشد." />
+    <text name="Register" value="ثبت نام" />
+    <text name="OrLoginWith" value="یا وارد شدن با" />
+    <text name="WaitingForActivationMessage" value="حساب کاربری شما منتظر فعال شدن توسط ادمین میباشد." />
+    
+    <text name="Logout" value="خروج" />
+    <text name="RegisterFormUserNameInvalidMessage">لطفا از ایمیل خود به عنوان نام کاربری استفاده نکنید.</text>
+    <text name="DatabaseConnectionString" value="Database connection string" />
+    
+    <text name="IsActive" value="فعال" />
+    <text name="FullName" value="نام کامل" />
+    
+    <text name="Yes" value="بله" />
+    <text name="No" value="خیر" />
+    <text name="Optional" value="اختیاری" />
+    <text name="LeaveEmptyToSwitchToHost">برای وارد شدن به عنوان هاست خالی بگذارید.</text>
+    
+    <text name="NotSelected">انتخاب نشده است</text>
+    <text name="Change">تغییر</text>
+    
+    <text name="MultiLevelMenu">منوی چندشاخه</text>
+    <text name="Back">بازگشت</text>
+    <text name="SuccessfullyRegistered">ثبت نام موفق</text>
+    <text name="WaitingForEmailActivation">ایمیل شما باید فعال شود.</text>
+    
+    <text name="DisplayName">نام نمایشی</text>
+    <text name="Edit">ویرایش</text>
+    <text name="Delete">حذف</text>
+    
+    <text name="Actions">عملیات</text>
+    <text name="CouldNotCompleteLoginOperation">ورود ناموفق! لطفا بعدا دوباره امتحان کنید.</text>
+    <text name="CouldNotValidateExternalUser">کاربر خارجی تائید نشد.</text>
+    
+    
+    
+    
+    <text name="ThisFieldIsRequired">این فیلد الزامی میباشد.</text>
+    <text name="PleaseWait">لطفا صبر کنید...</text>
+    <text name="Administration">مدیریت</text>
+    <text name="ClearAll">پاک کردن همه</text>
+    <text name="ClearOthers">پاک کردن بقیه</text>
+    <text name="LabelOptions">گزینه‌های برچسب</text>
+    <text name="Permissions">مجوزها</text>
+    
+    <text name="Refresh">تازه کردن</text>
+    <text name="Create">ایجاد</text>
+    
+    
+    <text name="ConfirmPassword">تکرار رمز عبور</text>
+    <text name="Version">ورژن</text>
+    <text name="On">فعال</text>
+    <text name="Off">غیرفعال</text>
+    <text name="AreYouSureWantToDelete">آیا میخواهید {0} را پاک کنید؟</text>
+    <text name="SuccessfullyDeleted">با موفقیت پاک شد.</text>
+    <text name="StartTyping">تایپ کنید.</text>
+    <text name="Skins">پوسته‌ها</text>
+    <text name="Settings">تنظیمات</text>
+    <text name="Filter">فیلتر</text>
+    <text name="CurrentPassword">رمز عبور فعلی</text>
+    <text name="NewPassword">رمز عبور جدید</text>
+    <text name="ConfirmNewPassword">تکرار رمز عبور جدید</text>
+    <text name="PasswordsDoNotMatch">رمزها همخوانی ندارند.</text>
+    <text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">رمز عبور باید شامل حداقل 8 کاراکتر، و حداقل یک حرف کوچک و یک حرف بزرگ و یک عدد باشد.</text>
+    
+    
+    
+    <text name="SearchWithThreeDot">جستجو...</text>
+    <text name="PleaseEnterAtLeastNCharacter">لطفا حداقل {0} کاراکتر وارد کنید.</text>
+    <text name="PleaseEnterNoMoreThanNCharacter">لطفا بیش از {0} کاراکتر وارد نکنید.</text>
+    <text name="InvalidEmailAddress">ایمیل نامعتبر</text>
+    <text name="InvalidPattern">نامعتبر</text>
+    <text name="PairsDoNotMatch">عدم همخوانی</text>
+    <text name="All">همه</text>
+    <text name="TotalRecordsCount">کل: {0}</text>
+    <text name="Search">جستجو</text>
+    <text name="Clear">پاک کردن</text>
+    <text name="ResetPasswordStepOneInfo">1. رمز مدیریتی خود را وارد کنید</text>
+    <text name="ResetPasswordStepTwoInfo">2. این رمز تصادفی را یادداشت کرده و به کاربر ارسال کنید.</text>
+
+    <text name="Estates" value="پرونده‌ها" />
+    <text name="EstateTypes" value="دسته‌بندی پرونده‌ها" />
+    <text name="EstateType" value="Estate Type" />
+    <text name="EstateTypeName" value="EstateType Name" />
+
+    <text name="CitiesAndProvinces">شهرها و استانها</text>
+
+    <text name="Province">استان</text>
+    <text name="Provinces">استانها</text>
+    <text name="CreateNewProvince">ثبت استان جدید</text>
+
+    <text name="City">شهر</text>
+    <text name="Cities">شهرها</text>
+    <text name="CreateNewCity">ثبت شهر جدید</text>
+
+    <text name="SystemUsers">کاربران سیستم</text>
+    <text name="Customers">افراد</text>
+    <text name="CreateCustomer">ثبت فرد جدید</text>
+
+    <text name="IsSeller">فروشنده</text>
+    <text name="IsBuyer">خریدار</text>
+
+    <text name="PersonalInfo">اطلاعات فردی</text>
+    <text name="ContactInfo">اطلاعات تماس</text>
+    <text name="LocationInfo">اطلاعات مکانی</text>
+
+    <text name="CellPhone1">شماره موبایل اول</text>
+    <text name="CellPhone2">شماره موبایل دوم</text>
+    <text name="PhoneNumber1">شماره ثابت اول</text>
+    <text name="PhoneNumber2">شماره ثابت دوم</text>
+
+    <text name="Address">آدرس</text>
+  </texts>
+</localizationDictionary>

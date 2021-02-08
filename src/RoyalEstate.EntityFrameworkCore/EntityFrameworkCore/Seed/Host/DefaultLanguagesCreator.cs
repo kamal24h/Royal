@@ -18,7 +18,8 @@ namespace RoyalEstate.EntityFrameworkCore.Seed.Host
             return new List<ApplicationLanguage>
             {
                 new ApplicationLanguage(tenantId, "en", "English", "famfamfam-flags us"),
-                new ApplicationLanguage(tenantId, "ar", "العربية", "famfamfam-flags sa"),
+                new ApplicationLanguage(tenantId, "fa", "فارسی", "famfamfam-flags ir"),
+                /*new ApplicationLanguage(tenantId, "ar", "العربية", "famfamfam-flags sa"),
                 new ApplicationLanguage(tenantId, "de", "German", "famfamfam-flags de"),
                 new ApplicationLanguage(tenantId, "it", "Italiano", "famfamfam-flags it"),
                 new ApplicationLanguage(tenantId, "fr", "Français", "famfamfam-flags fr"),
@@ -28,7 +29,7 @@ namespace RoyalEstate.EntityFrameworkCore.Seed.Host
                 new ApplicationLanguage(tenantId, "zh-Hans", "简体中文", "famfamfam-flags cn"),
                 new ApplicationLanguage(tenantId, "es-MX", "Español México", "famfamfam-flags mx"),
                 new ApplicationLanguage(tenantId, "nl", "Nederlands", "famfamfam-flags nl"),
-                new ApplicationLanguage(tenantId, "ja", "日本語", "famfamfam-flags jp")
+                new ApplicationLanguage(tenantId, "ja", "日本語", "famfamfam-flags jp")*/
             };
         }
 

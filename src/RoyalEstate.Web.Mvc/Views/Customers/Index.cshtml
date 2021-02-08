@@ -1,0 +1,194 @@
+﻿@using RoyalEstate.Web.Startup
+@model RoyalEstate.Customers.Dto.CreateCustomerDto
+@{
+    ViewBag.Title = L("Customers");
+    ViewBag.ActiveMenu = PageNames.Customers;
+}
+
+@section styles
+{
+    <style>
+        button.close {
+            font-size: 3rem
+        }
+    </style>
+}
+
+<section class="content-header text-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2>@L("Customers")</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content text-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button id="btnCreateCustomer" class="btn btn-success" >@L("CreateCustomer")</button>
+                        <div id="secCreateCustomer" class="row justify-content-center" style="display: none">
+                            <div class="col-12 d-flex justify-content-start">
+                                <button class="btn close" onclick="closeCreateSection()">&times;</button>
+                            </div>
+                            <div class="col-12 col-sm-8">
+                                <form id="frmCreateCustomer">
+                                    <h5 class="text-primary">@L("PersonalInfo")</h5>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="Name">@L("Name")</label>
+                                                <input asp-for="Name" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="Surname">@L("Surname")</label>
+                                                <input asp-for="Surname" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group form-inline">
+                                                <label asp-for="IsSeller" class="ml-2">@L("IsSeller")</label>
+                                                <input asp-for="IsSeller" type="checkbox" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="form-group form-inline">
+                                                <label asp-for="IsBuyer" class="ml-2">@L("IsBuyer")</label>
+                                                <input asp-for="IsBuyer" type="checkbox" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="text-primary">@L("ContactInfo")</h5>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="EmailAddress">@L("EmailAddress")</label>
+                                                <input asp-for="EmailAddress" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="CellPhone1">@L("CellPhone1")</label>
+                                                <input asp-for="CellPhone1" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="CellPhone2">@L("CellPhone2")</label>
+                                                <input asp-for="CellPhone2" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneNumber1">@L("PhoneNumber1")</label>
+                                                <input asp-for="PhoneNumber1" class="form-control"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label asp-for="PhoneNumber2">@L("PhoneNumber2")</label>
+                                                <input asp-for="PhoneNumber2" class="form-control"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="text-primary">@L("LocationInfo")</h5>
+                                    <div class="row">
+                                        <div class="col-sm-3">
+                                            <div class="form-group">
+                                                <label asp-for="CityId">@L("City")</label>
+                                                <select asp-for="CityId" asp-items="Model.Cities" class="form-control"></select>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-9">
+                                            <div class="form-group">
+                                                <label asp-for="Address">@L("Address")</label>
+                                                <textarea asp-for="Address" class="form-control"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h5 class="text-primary">وضعیت</h5>
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                            <div class="form-group form-inline">
+                                                <label asp-for="IsActive" class="ml-2">@L("IsActive")</label>
+                                                <input asp-for="IsActive" type="checkbox" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row justify-content-end">
+                                        <button type="submit" class="btn btn-success">@L("Submit")</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="secCustomers" class="card-body">
+                    <form id="customerSearchForm">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>جستجو</label>
+                                    <input name="name" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="table-responsive">
+                        <table id="tblCustomers" class="table table-bordered table-striped text-center">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>@L("Name")</th>
+                                    <th>@L("Surname")</th>
+                                    <th>@L("City")</th>
+                                    <th>@L("CreationTime")</th>
+                                    <th>@L("IsBuyer")</th>
+                                    <th>@L("IsSeller")</th>
+                                    <th>@L("IsActive")</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts
+{
+    <script>
+        $(() => {
+            $("#btnCreateCustomer").click(function() {
+                $("#frmCreateCustomer").trigger("reset");
+                $(this).hide(500);
+                $("#secCreateCustomer").show(500);
+                $("#secCustomers").fadeOut(500);
+            });
+
+            $("#frmCreateCustomer select").select2({
+                width: '100%'
+            });
+        });
+
+        function closeCreateSection() {
+            $("#btnCreateCustomer").show(500);
+            $("#secCreateCustomer").hide(500);
+            $("#secCustomers").fadeIn(500);
+        }
+    </script>
+    <script src="~/view-resources/Views/Customers/Index.js" asp-append-version="true"></script>
+}
