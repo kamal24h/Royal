@@ -1,0 +1,48 @@
+﻿@using RoyalEstate.Web.Models.Common.Modals
+@model RoyalEstate.Customers.Dto.CreateCustomerDto
+
+<div class="modal fade" id="mdlCreateCustomer" tabindex="-1" role="dialog" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            @await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewCustomer")))
+            <div class="modal-body">
+                <form name="CreateCustomerForm" role="form">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label asp-for="Name">@L("Name")</label>
+                                <input asp-for="Name" class="form-control"/>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label asp-for="Surname">@L("SurName")</label>
+                                <input asp-for="Surname" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group row">
+                                <label asp-for="IsSeller" class="ml-2">@L("IsSeller")</label>
+                                <input type="checkbox" asp-for="IsSeller" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group row">
+                                <label asp-for="IsBuyer" class="ml-2">@L("IsBuyer")</label>
+                                <input type="checkbox" asp-for="IsBuyer" class="form-control" />
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group row">
+                                <label asp-for="IsActive" class="ml-2">@L("IsActive")</label>
+                                <input type="checkbox" asp-for="IsActive" class="form-control" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+﻿@using RoyalEstate.Web.Models.Common.Modals;
+@model RoyalEstate.Web.Models.Cities.EditCityVm
+@{
+    Layout = null;
+}
+
+@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewCity")))
+<form name="CityEditForm" role="form" class="form-horizontal">
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="Name">@L("Name")</label>
+            <div class="col-md-9">
+                <input asp-for="City.Name" name="Name" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="Name">@L("Province")</label>
+            <div class="col-md-9">
+                @Html.DropDownListFor(m=>m.City.ProvinceId, Model.Provinces, new{@class="form-control",id="mdlEditProvinceId", name="ProvinceId"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="IsActive">@L("IsActive")</label>
+            <div class="col-md-9">
+                <input type="checkbox" asp-for="City.IsActive" name="IsActive" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+</form>
+
+<script>
+    $("#mdlEditProvinceId").select2({
+        width: '100%',
+        dropdownParent: $("#mdlEditCity")
+    });
+</script>

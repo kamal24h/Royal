@@ -11,7 +11,7 @@ namespace RoyalEstate.Entities
     {
         [Required]
         [ForeignKey(nameof(EstateId))]
-        public Estate Estate { get; set; }
+        public virtual Estate Estate { get; set; }
         public long EstateId { get; set; }
 
         public string Path { get; set; }

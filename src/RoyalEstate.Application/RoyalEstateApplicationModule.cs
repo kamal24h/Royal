@@ -16,6 +16,7 @@ namespace RoyalEstate
         public override void PreInitialize()
         {
             Configuration.Authorization.Providers.Add<RoyalEstateAuthorizationProvider>();
+
             Configuration.Modules.AbpAutoMapper().Configurators.Add(config =>
                 {
                     config.CreateMap<EstateTypeDto, EstateType>()
@@ -23,6 +24,9 @@ namespace RoyalEstate
 
                     config.CreateMap<CreateEstateDto, Estate>().ForMember(d => d.Images,
                         options => options.MapFrom<CreateEstateImgResolver>());
+
+                    config.CreateMap<Estate, EstateDto>()
+                        .ForMember(d => d.ImagePaths, opt => opt.MapFrom<ShowEstateImageResolver>());
                 });
         }
 

@@ -2,6 +2,7 @@
 using Abp.Authorization;
 using Abp.Localization;
 using RoyalEstate.Authorization;
+using StackExchange.Redis;
 
 namespace RoyalEstate.Web.Startup
 {
@@ -19,9 +20,66 @@ namespace RoyalEstate.Web.Startup
                         L("HomePage"),
                         url: "",
                         icon: "fas fa-home",
-                        requiresAuthentication: true
+                        requiresAuthentication: true,
+                        order:1
                     )
                 ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Estates,
+                        L("Estates"),
+                        url: "Estates/Index",
+                        icon: "fas fa-building",
+                        order:2
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.EstateTypes,
+                        L("EstateTypes"),
+                        url: "Estates/EstateTypes",
+                        icon: "fas fa-cogs",
+                        order:3
+                    )
+                ).AddItem(new MenuItemDefinition(
+                        PageNames.CitiesAndProvinces,
+                        L("CitiesAndProvinces"),
+                        icon: "fas fa-map",
+                        order:4
+                    ).AddItem(new MenuItemDefinition(
+                            PageNames.Cities,
+                            L("Cities"),
+                            url: "Cities/Index",
+                            icon: "fas fa-city",
+                            order:1
+                        )
+                    ).AddItem(new MenuItemDefinition(
+                            PageNames.Provinces,
+                            L("Provinces"),
+                            url: "Provinces/Index",
+                            icon: "fas fa-map",
+                            order:2
+                        )
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Users,
+                        L("Users"),
+                        icon: "fas fa-users",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users),
+                        order:5
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.SystemUsers,
+                        L("SystemUsers"),
+                        url: "Users",
+                        icon: "fas fa-users",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users), order:1)
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.Customers,
+                        L("Customers"),
+                        url: "Customers",
+                        icon: "fas fa-users",
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users),order:2)
+                    )
+                )/*.AddItem(
                     new MenuItemDefinition(
                         PageNames.Tenants,
                         L("Tenants"),
@@ -29,126 +87,21 @@ namespace RoyalEstate.Web.Startup
                         icon: "fas fa-building",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Tenants)
                     )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Users,
-                        L("Users"),
-                        url: "Users",
-                        icon: "fas fa-users",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users)
-                    )
-                ).AddItem(
+                )*/.AddItem(
                     new MenuItemDefinition(
                         PageNames.Roles,
                         L("Roles"),
                         url: "Roles",
                         icon: "fas fa-theater-masks",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles)
-                            )
+                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Roles),
+                        order:6)
                 ).AddItem(
                     new MenuItemDefinition(
                         PageNames.About,
                         L("About"),
                         url: "About",
-                        icon: "fas fa-info-circle"                 
-                        )                    
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Estates,
-                        L("Estates"),
-                        url: "Estates/Index",
-                        icon: "fas fa-building"
-                        )
-                ).AddItem(
-                    new MenuItemDefinition(
-                        PageNames.EstateTypes,
-                        L("EstateTypes"),
-                        url: "Estates/EstateTypes",
-                        icon: "fas fa-cogs"
-                    )
+                        icon: "fas fa-info-circle", order:7)                    
                 );
-            //).AddItem( // Menu items below is just for demonstration!
-            //    new MenuItemDefinition(
-            //        "MultiLevelMenu",
-            //        L("MultiLevelMenu"),
-            //        icon: "fas fa-circle"
-            //    ).AddItem(
-            //        new MenuItemDefinition(
-            //            "AspNetBoilerplate",
-            //            new FixedLocalizableString("ASP.NET Boilerplate"),
-            //            icon: "far fa-circle"
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetBoilerplateHome",
-            //                new FixedLocalizableString("Home"),
-            //                url: "https://aspnetboilerplate.com?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetBoilerplateTemplates",
-            //                new FixedLocalizableString("Templates"),
-            //                url: "https://aspnetboilerplate.com/Templates?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetBoilerplateSamples",
-            //                new FixedLocalizableString("Samples"),
-            //                url: "https://aspnetboilerplate.com/Samples?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetBoilerplateDocuments",
-            //                new FixedLocalizableString("Documents"),
-            //                url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        )
-            //    ).AddItem(
-            //        new MenuItemDefinition(
-            //            "AspNetZero",
-            //            new FixedLocalizableString("ASP.NET Zero"),
-            //            icon: "far fa-circle"
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetZeroHome",
-            //                new FixedLocalizableString("Home"),
-            //                url: "https://aspnetzero.com?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetZeroFeatures",
-            //                new FixedLocalizableString("Features"),
-            //                url: "https://aspnetzero.com/Features?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetZeroPricing",
-            //                new FixedLocalizableString("Pricing"),
-            //                url: "https://aspnetzero.com/Pricing?ref=abptmpl#pricing",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetZeroFaq",
-            //                new FixedLocalizableString("Faq"),
-            //                url: "https://aspnetzero.com/Faq?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        ).AddItem(
-            //            new MenuItemDefinition(
-            //                "AspNetZeroDocuments",
-            //                new FixedLocalizableString("Documents"),
-            //                url: "https://aspnetzero.com/Documents?ref=abptmpl",
-            //                icon: "far fa-dot-circle"
-            //            )
-            //        )
-            //    )
-            //);
         }
 
         private static ILocalizableString L(string name)

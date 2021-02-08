@@ -1,0 +1,98 @@
+﻿@using RoyalEstate.Web.Startup
+@model RoyalEstate.Web.Models.Cities.CitiesIndexVm
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = L("Cities");
+    ViewBag.ActiveMenu = PageNames.Cities;
+}
+
+@section styles
+{
+    <style>
+        #citySearchForm select {
+            height: 3rem
+        }
+    </style>
+}
+
+<section class="content-header text-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h2>شهرها</h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content text-right">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <button class="btn btn-success" data-toggle="modal" data-target="#mdlCreateCity">ثبت شهر جدید</button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form id="citySearchForm">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>استان</label>
+                                    @Html.DropDownList("provinceId", Model.Provinces, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div class="form-group">
+                                    <label>وضعیت</label>
+                                    <select name="isactive" class="form-control">
+                                        <option value="">همه</option>
+                                        <option value="">فعال</option>
+                                        <option value="">غیرفعال</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+
+                    <div class="table-responsive">
+                        <table id="tblCities" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>@L("Name")</th>
+                                    <th>@L("Province")</th>
+                                    <th>@L("IsActive")</th>
+                                    <th style="width: 150px">@L("Actions")</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("~/Views/Cities/_CreateCityModal.cshtml", Model.Provinces)
+
+<div class="modal fade" id="mdlEditCity" tabindex="-1" role="dialog" aria-labelledby="EstateTypeEditModalLabel" data-backdrop="static">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script src="~/view-resources/Views/Cities/Index.js" asp-append-version="true"></script>
+    <script>
+        $(() => {
+            $("#citySearchForm select").select2();
+        })
+    </script>
+}

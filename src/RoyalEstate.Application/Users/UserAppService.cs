@@ -172,7 +172,7 @@ namespace RoyalEstate.Users
         {
             if (_abpSession.UserId == null)
             {
-                throw new UserFriendlyException("Please log in before attemping to change password.");
+                throw new UserFriendlyException("Please log in before attempting to change password.");
             }
             long userId = _abpSession.UserId.Value;
             var user = await _userManager.GetUserByIdAsync(userId);

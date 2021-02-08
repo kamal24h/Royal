@@ -12,6 +12,10 @@ namespace RoyalEstate.Entities
     [Table("Estates")]
     public class Estate : AuditedEntity<long>
     {
+        public Estate()
+        {
+            Images = new HashSet<EstateImage>();
+        }
         [Required]
         [MinLength(10)]
         public string Title { get; set; }
@@ -67,6 +71,6 @@ namespace RoyalEstate.Entities
         [StringLength(2000)]
         public string Description { get; set; }
         
-        public virtual ICollection<EstateImage> Images { get; set; }
+        public ICollection<EstateImage> Images { get; set; }
     }
 }

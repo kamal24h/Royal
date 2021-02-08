@@ -10,7 +10,7 @@ using RoyalEstate.Entities;
 namespace RoyalEstate.Estates.Dto
 {
     [AutoMapTo(typeof(Estate))]
-    public class CreateEstateDto : AuditedEntityDto<long>
+    public class CreateEstateDto
     {
         public CreateEstateDto()
         {

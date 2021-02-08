@@ -4,7 +4,9 @@ using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using JetBrains.Annotations;
 
 namespace RoyalEstate.Entities
 {
@@ -25,21 +27,23 @@ namespace RoyalEstate.Entities
         [Phone]
         [StringLength(AbpUserBase.MaxPhoneNumberLength)]
         public string CellPhone1 { get; set; }
-
-        [Phone]
-        [StringLength(AbpUserBase.MaxPhoneNumberLength)]
+        
         public string CellPhone2 { get; set; }
 
         [Phone]
         [StringLength(AbpUserBase.MaxPhoneNumberLength)]
         public string PhoneNumber1 { get; set; }
-
-        [Phone]
-        [StringLength(AbpUserBase.MaxPhoneNumberLength)]
+        
+        
         public string PhoneNumber2 { get; set; }
                 
         [StringLength(200)]
         public string Address { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(CityId))]
+        public City City { get; set; }
+        public int CityId { get; set; }
 
         public bool IsActive { get; set; }
 

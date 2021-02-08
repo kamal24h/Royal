@@ -15,20 +15,36 @@
     <PreserveCompilationReferences>true</PreserveCompilationReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Remove="Views\Estates\EstateType\**" />
     <Compile Remove="wwwroot\img\Estates\**" />
+    <Compile Remove="wwwroot\lib\**" />
+    <Content Remove="Views\Estates\EstateType\**" />
     <Content Remove="wwwroot\img\Estates\**" />
+    <Content Remove="wwwroot\lib\**" />
+    <EmbeddedResource Remove="Views\Estates\EstateType\**" />
     <EmbeddedResource Remove="wwwroot\img\Estates\**" />
+    <EmbeddedResource Remove="wwwroot\lib\**" />
+    <None Remove="Views\Estates\EstateType\**" />
     <None Remove="wwwroot\img\Estates\**" />
+    <None Remove="wwwroot\lib\**" />
+    <TypeScriptCompile Remove="Views\Estates\EstateType\**" />
     <TypeScriptCompile Remove="wwwroot\img\Estates\**" />
+    <TypeScriptCompile Remove="wwwroot\lib\**" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml.user" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.min.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.min.js.map" />
-    <None Include="wwwroot\lib\jquery.form\jquery.form.js" />
-    <None Include="wwwroot\lib\jquery.form\jquery.form.min.js" />
-    <None Include="wwwroot\lib\jquery.form\jquery.form.min.js.map" />
+    <None Include="wwwroot\libs\select2\js\i18n\en.js" />
+    <None Include="wwwroot\libs\select2\js\i18n\en.min.js" />
+    <None Include="wwwroot\libs\select2\js\i18n\fa.js" />
+    <None Include="wwwroot\libs\select2\js\i18n\fa.min.js" />
+    <None Include="wwwroot\libs\select2\js\select2.full.js" />
+    <None Include="wwwroot\libs\select2\js\select2.full.min.js" />
+    <None Include="wwwroot\libs\select2\js\select2.js" />
+    <None Include="wwwroot\libs\select2\js\select2.min.js" />
     <None Update="Dockerfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -61,6 +77,6 @@
     <PackageReference Include="Abp.Castle.Log4Net" Version="5.13.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Views\Estates\EstateType\" />
+    <Folder Include="Models\Customers\" />
   </ItemGroup>
 </Project>

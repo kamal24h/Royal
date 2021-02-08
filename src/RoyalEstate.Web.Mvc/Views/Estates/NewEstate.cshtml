@@ -84,16 +84,13 @@
                                         <span asp-validation-for="CreateEstateDto.Title" name="Title"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CreateEstateDto.CityId">فروشنده</label>
-                                        <select asp-for="CreateEstateDto.CustomerId" name="CustomerId" class="form-control">
-                                            <option value="5">علی</option>
-                                        </select>
+                                        <label asp-for="CreateEstateDto.CustomerId">فروشنده</label>
+                                        <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" name="CustomerId" id="CustomerId" class="form-control"></select>
+                                        
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.CityId">شهر</label>
-                                        <select asp-for="CreateEstateDto.CityId" name="CityId" class="form-control">
-                                            <option value="1">تبریز</option>
-                                        </select>
+                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" name="CityId" id="CityId" class="form-control"></select>
                                     </div>
                                     @switch (Model.CreateEstateDto.EstateTypeId)
                                     {
@@ -219,20 +216,19 @@
                                         <img/>
                                     </div>`);
 
-                var reader = new FileReader();
-
-                reader.onload = function(e) {
-                    $(`#imgThumbnails div[data-id=${id}] img`)
-                        .attr('src', e.target.result);
-                    let length = $("#imgZone input").length;
-                    let inpId = "inp" + (length + 1);
-                    $("#imgZone")
-                        .append(
-                            `<input id="${inpId}" type="file" name="Images" onchange="readUrl(this)"/>`);
-                    $("#imgSelector").attr("data-target", "#" + inpId);
-                };
-
-                reader.readAsDataURL(input.files[0]);
+                var blob = new Blob([input.files[0]]);
+                var url = URL.createObjectURL(blob);
+                var img = $(`#imgThumbnails div[data-id=${id}] img`)[0];
+                img.onload = function() {
+                    URL.revokeObjectURL(this.src);     // clean-up memory
+                }
+                img.src = url;
+                let length = $("#imgZone input").length;
+                let inpId = "inp" + (length + 1);
+                $("#imgZone")
+                    .append(
+                        `<input id="${inpId}" type="file" name="Images" onchange="readUrl(this)"/>`);
+                $("#imgSelector").attr("data-target", "#" + inpId);
             }
         }
 
@@ -240,7 +236,7 @@
             let inpId = $(e).parent().attr("data-id");
             $(e).parent().remove();
             $(`#imgZone input#${inpId}`).remove();
-            
         }
     </script>
+    
 }
