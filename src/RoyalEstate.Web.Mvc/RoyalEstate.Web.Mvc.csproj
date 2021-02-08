@@ -33,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\PublishProfiles\IISProfile.pubxml.user" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.min.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.min.js.map" />
