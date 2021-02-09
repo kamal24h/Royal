@@ -35,7 +35,12 @@ namespace RoyalEstate.Estates.Dto
 
         public int CityId { get; set; }
         public long CustomerId { get; set; }
-        
+        public string CustomerName { get; set; }
+        public string CustomerSurname { get; set; }
+        public string CustomerCellPhone1 { get; set; }
+        public string CustomerEmailAddress { get; set; }
+
+
         public string Address { get; set; }
 
         public double? Longitude { get; set; }
