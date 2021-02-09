@@ -33,7 +33,9 @@ namespace RoyalEstate.Estates
                 throw new EntityNotFoundException(typeof(Estate), id);
             }
 
-            return new Task<Estate>(()=>entity);
+            var taskSrc = new TaskCompletionSource<Estate>();
+            taskSrc.SetResult(entity);
+            return taskSrc.Task;
         }
     }
 }
