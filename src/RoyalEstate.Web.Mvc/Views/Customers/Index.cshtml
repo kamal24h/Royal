@@ -56,13 +56,13 @@
                                         <div class="col-sm-4">
                                             <div class="form-group form-inline">
                                                 <label asp-for="IsSeller" class="ml-2">@L("IsSeller")</label>
-                                                <input asp-for="IsSeller" type="checkbox" class="form-control" />
+                                                <input name="IsSeller" type="checkbox" class="form-control" value="true" checked/>
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group form-inline">
                                                 <label asp-for="IsBuyer" class="ml-2">@L("IsBuyer")</label>
-                                                <input asp-for="IsBuyer" type="checkbox" class="form-control" />
+                                                <input name="IsBuyer" type="checkbox" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group form-inline">
                                                 <label asp-for="IsActive" class="ml-2">@L("IsActive")</label>
-                                                <input asp-for="IsActive" type="checkbox" class="form-control" />
+                                                <input name="IsActive" type="checkbox" class="form-control" value="true" checked/>
                                             </div>
                                         </div>
                                     </div>
@@ -154,8 +154,8 @@
                                     <th>@L("Surname")</th>
                                     <th>@L("City")</th>
                                     <th>@L("CreationTime")</th>
-                                    <th>@L("IsBuyer")</th>
                                     <th>@L("IsSeller")</th>
+                                    <th>@L("IsBuyer")</th>
                                     <th>@L("IsActive")</th>
                                 </tr>
                             </thead>
@@ -181,6 +181,9 @@
 
             $("#frmCreateCustomer select").select2({
                 width: '100%'
+            });
+            $("#frmCreateCustomer :checkbox").change(function() {
+                $(this).val($(this).is(":checked"));
             });
         });
 

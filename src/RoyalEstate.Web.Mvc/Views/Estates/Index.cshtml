@@ -22,14 +22,35 @@
             transition: color 0.5s
         }
 
-        #estatesSection .card-body {
+        /*#estatesSection .card-body {
             height: 7rem;
             background-repeat: no-repeat;
             background-size: cover
+        }*/
+        .estateCover {
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-clip: content-box;
+            height: 7rem;
         }
         #btnReturnToCategories:hover {
             color: black;
         }
+        .estateCard {
+            height: 8rem !important;
+            background-color: #f5f5f5;
+        }
+
+        .estateCardBody {
+            height: 100%;
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+        }
+        #estatesSection a {
+            color: black;
+        }
+        
     </style>
 }
 
@@ -54,7 +75,7 @@
                         <button id="btnNewEstate" class="btn btn-success">پرونده جدید</button>
                     </div>
                     <div class="card-body">
-                        <section id="newEstateSection" class="d-none">
+                        <section id="newEstateSection" style="display: none">
                             <div class="row justify-content-end">
                                 <button class="btn close" style="font-size: 3rem">&times;</button>
                             </div>
@@ -160,7 +181,6 @@
                             }
                         </section>
                         <div id="estatesSection" class="row">
-                            
                         </div>
                     </div>
                 </div>
@@ -171,12 +191,19 @@
 
 @section scripts
 {
+    <script src="/libs/persian-date/dist/persian-date.min.js" asp-append-version="true"></script>
     <script>
         $(() => {
             $("#btnNewEstate").click(function () {
-                $("#newEstateSection").removeClass("d-none");
-                $("#estateSection").addClass("d-none");
+                $("#newEstateSection").show(500);
+                $("#estatesSection").fadeOut(500);
             });
+
+            $("#newEstateSection button.close").click(function() {
+                $("#newEstateSection").hide(500);
+                $("#estatesSection").fadeIn(500);
+            });
+            
 
             $("#newEstateSection a.nav-link").click(function () {
                 $("#ulCategories").addClass("d-none");
@@ -198,10 +225,7 @@
                 $("#frmNew").submit();
             });
 
-            $("#newEstateSection button.close").click(function () {
-                $("#newEstateSection").addClass("d-none");
-                $("#estateSection").removeClass("d-none");
-            })
+            
         })
     </script>
 

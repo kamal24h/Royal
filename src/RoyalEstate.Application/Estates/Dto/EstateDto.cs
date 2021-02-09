@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Abp.Timing;
 using RoyalEstate.Entities;
 
 namespace RoyalEstate.Estates.Dto
@@ -24,7 +25,9 @@ namespace RoyalEstate.Estates.Dto
         public bool? StoreRoom { get; set; }
         public bool? Elevator { get; set; }
         public string BuiltDate { get; set; }
-
+        
+        [DisableDateTimeNormalization]
+        public  DateTime CreationTime { get; set; }
 
         public long? Price { get; set; }
         public long? Rent { get; set; }

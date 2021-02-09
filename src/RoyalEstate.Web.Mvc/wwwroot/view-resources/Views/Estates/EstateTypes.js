@@ -118,7 +118,7 @@
 
         e.preventDefault();
         abp.ajax({
-            url: abp.appPath + 'Estates/EditModal/?estateTypeId=' + estateTypeId,
+            url: abp.appPath + 'Estates/EditEstateTypeModal/?estateTypeId=' + estateTypeId,
             type: 'POST',
             dataType: 'html',
             success: function (content) {
