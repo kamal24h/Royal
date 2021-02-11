@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Abp.Timing;
 using Abp.Application.Services.Dto;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
@@ -28,7 +29,6 @@ namespace RoyalEstate.Customers.Dto
         [Phone]
         [StringLength(AbpUserBase.MaxPhoneNumberLength)]
         public string CellPhone1 { get; set; }
-
         
         public string CellPhone2 { get; set; }
 
@@ -38,8 +38,10 @@ namespace RoyalEstate.Customers.Dto
 
         
         public string PhoneNumber2 { get; set; }
-
         public string Address { get; set; }
+
+        [DisableDateTimeNormalization]
+        public DateTime CreationTime { get; set; }
         public string CityName { get; set; }
 
         [DisplayName("")]
