@@ -30,7 +30,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button id="btnCreateCustomer" class="btn btn-success" >@L("CreateCustomer")</button>
+                        <button id="btnCreateCustomer" class="btn btn-success">@L("CreateCustomer")</button>
                         <div id="secCreateCustomer" class="row justify-content-center" style="display: none">
                             <div class="col-12 d-flex justify-content-start">
                                 <button class="btn close" onclick="closeCreateSection()">&times;</button>
@@ -42,13 +42,13 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="Name">@L("Name")</label>
-                                                <input asp-for="Name" class="form-control"/>
+                                                <input asp-for="Name" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="Surname">@L("Surname")</label>
-                                                <input asp-for="Surname" class="form-control"/>
+                                                <input asp-for="Surname" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -56,7 +56,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group form-inline">
                                                 <label asp-for="IsSeller" class="ml-2">@L("IsSeller")</label>
-                                                <input name="IsSeller" type="checkbox" class="form-control" value="true" checked/>
+                                                <input name="IsSeller" type="checkbox" class="form-control" value="true" checked />
                                             </div>
                                         </div>
                                         <div class="col-sm-4">
@@ -71,7 +71,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="EmailAddress">@L("EmailAddress")</label>
-                                                <input asp-for="EmailAddress" class="form-control"/>
+                                                <input asp-for="EmailAddress" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -79,25 +79,25 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="CellPhone1">@L("CellPhone1")</label>
-                                                <input asp-for="CellPhone1" class="form-control"/>
+                                                <input asp-for="CellPhone1" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="CellPhone2">@L("CellPhone2")</label>
-                                                <input asp-for="CellPhone2" class="form-control"/>
+                                                <input asp-for="CellPhone2" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="PhoneNumber1">@L("PhoneNumber1")</label>
-                                                <input asp-for="PhoneNumber1" class="form-control"/>
+                                                <input asp-for="PhoneNumber1" class="form-control" />
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label asp-for="PhoneNumber2">@L("PhoneNumber2")</label>
-                                                <input asp-for="PhoneNumber2" class="form-control"/>
+                                                <input asp-for="PhoneNumber2" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group form-inline">
                                                 <label asp-for="IsActive" class="ml-2">@L("IsActive")</label>
-                                                <input name="IsActive" type="checkbox" class="form-control" value="true" checked/>
+                                                <input name="IsActive" type="checkbox" class="form-control" value="true" checked />
                                             </div>
                                         </div>
                                     </div>
@@ -139,7 +139,7 @@
                             <div class="col-sm-3">
                                 <div class="form-group">
                                     <label>جستجو</label>
-                                    <input name="name" class="form-control"/>
+                                    <input name="name" class="form-control" />
                                 </div>
                             </div>
                         </div>
@@ -170,9 +170,10 @@
 
 @section scripts
 {
+    <script src="~/libs/persian-date/dist/persian-date.min.js"></script>
     <script>
         $(() => {
-            $("#btnCreateCustomer").click(function() {
+            $("#btnCreateCustomer").click(function () {
                 $("#frmCreateCustomer").trigger("reset");
                 $(this).hide(500);
                 $("#secCreateCustomer").show(500);
@@ -182,7 +183,7 @@
             $("#frmCreateCustomer select").select2({
                 width: '100%'
             });
-            $("#frmCreateCustomer :checkbox").change(function() {
+            $("#frmCreateCustomer :checkbox").change(function () {
                 $(this).val($(this).is(":checked"));
             });
         });

@@ -164,8 +164,8 @@
     <text name="CreateNewCity">ثبت شهر جدید</text>
 
     <text name="SystemUsers">کاربران سیستم</text>
-    <text name="Customers">افراد</text>
-    <text name="CreateCustomer">ثبت فرد جدید</text>
+    <text name="Customers">مشتریان</text>
+    <text name="CreateCustomer">ثبت مشتری جدید</text>
 
     <text name="IsSeller">فروشنده</text>
     <text name="IsBuyer">خریدار</text>

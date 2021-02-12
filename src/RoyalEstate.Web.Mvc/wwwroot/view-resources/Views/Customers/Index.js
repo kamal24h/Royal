@@ -1,4 +1,5 @@
-﻿$(() => {
+﻿
+$(() => {
     let _customerService = abp.services.app.customer,
         l = abp.localization.getSource('RoyalEstate'),
         _$form = $("#frmCreateCustomer"),
@@ -53,13 +54,14 @@
             },
             {
                 targets: 3,
-                data: 'cityname',
+                data: 'cityName',
                 sortable: true
             },
             {
                 targets: 4,
-                data: 'creationtime',
-                sortable: true
+                data: 'creationTime',
+                sortable: true,
+                render: data => new persianDate(new Date(data)).format("DD MMMM YYYY")
             },
             {
                 targets: 5,
