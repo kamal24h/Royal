@@ -21,8 +21,8 @@ namespace RoyalEstate.Customers
 
         public async Task<List<SelectListItem>> GetCustomersSelectListAsync()
         {
-            return (await Repository.GetAllListAsync()).Select(c => new SelectListItem { Text = c.Name, Value = c.Id.ToString() }).ToList();
-
+            return (await Repository.GetAllListAsync()).Select(c => new SelectListItem {Text = c.Name, Value = c.Id.ToString()}).ToList();
+            
         }
 
         protected override IQueryable<Customer> CreateFilteredQuery(GetAllCustomersInputDto input)

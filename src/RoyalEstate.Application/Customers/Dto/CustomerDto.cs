@@ -29,7 +29,7 @@ namespace RoyalEstate.Customers.Dto
         [Phone]
         [StringLength(AbpUserBase.MaxPhoneNumberLength)]
         public string CellPhone1 { get; set; }
-
+        
         public string CellPhone2 { get; set; }
 
         [Phone]
