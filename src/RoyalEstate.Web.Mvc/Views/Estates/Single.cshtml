@@ -10,9 +10,9 @@
 @section styles
 {
     <style>
-        
-        .list-group-item {
-            font-family: 'yekan';
+
+        .container-fluid {
+            font: 'yekan';
         }
 
         .carousel-inner img {
@@ -65,7 +65,7 @@
                                 <span class="text-info text-bold">@Model.EstateDto.CustomerCellPhone1</span>
                             </div>
                             <div class="col-sm-4">
-                                <i class="fas fa-user"></i>                                
+                                <i class="fas fa-user"></i>
                                 <span class="text-info text-bold"> کاربر: @Model.EstateDto.CreatorUserId</span>
                             </div>
                         </div>
@@ -85,20 +85,36 @@
                                                 </div>
                                             </li>
 
-                                            @*<li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>
-                                                        @("قیمت :" + "   " + Model.EstateDto.Price + "  " + "   میلیون تومان " +
-                                                        "قیمت کل" + "  " + Model.EstateDto.Price * Model.EstateDto.Area + " میلیون تومان.")
-                                                    </h6>
-                                                </div>
-                                            </li>*@                                           
+
                                             <li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    @if (Model.EstateDto.Price > 0)
+                                                    {<h6>قیمت</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Price (میلیون تومان)</span> }
+                                                    else
+                                                    {<h6>رهن</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Deposit (میلیون تومان)</span>}
+                                                </div>
+                                            </li>
+
+                                            <li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    @if (Model.EstateDto.Price > 0)
+                                                    {<h6>قیمت کل</h6>
+                                                    <span class="text-info text-bold">@(Model.EstateDto.Price * Model.EstateDto.Area) (میلیون تومان)</span>}
+                                                    else
+                                                    {<h6>اجاره</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Rent (میلیون تومان)</span>}
+                                                </div>
+                                            </li>
+
+                                            @*<li class="list-group-item">
                                                 <div class="row justify-content-between">
                                                     <h6>قیمت (میلیون تومان) </h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.Price</span>
                                                     <h6>قیمت کل</h6>
-                                                    <span class="text-info text-bold">@(Model.EstateDto.Price * Model.EstateDto.Area)</span>
+                                                    <span class="text-info text-bold">)
+</span>
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
@@ -108,7 +124,7 @@
                                                     <h6>:اجاره</h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.Rent</span>
                                                 </div>
-                                            </li>
+                                            </li>*@
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
                                                     <h6>متراژ</h6>
@@ -122,15 +138,15 @@
                                                 </div>
                                             </li>
                                             @*<li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>
-                                                        @("طبقه:" + "  " + Model.EstateDto.Floor + "  " + " از: " + "  " + Model.EstateDto.TotalFloors
-                                                        + "  " + " طبقه --- هر طبقه: " + "  " + Model.EstateDto.UnitsPerFloor + "  " + " واحد.")
-                                                    </h6>
-                                                </div>
-                                            </li>*@
+                                                    <div class="row justify-content-between">
+                                                        <h6>
+                                                            @("طبقه:" + "  " + Model.EstateDto.Floor + "  " + " از: " + "  " + Model.EstateDto.TotalFloors
+                                                            + "  " + " طبقه --- هر طبقه: " + "  " + Model.EstateDto.UnitsPerFloor + "  " + " واحد.")
+                                                        </h6>
+                                                    </div>
+                                                </li>*@
                                             <li class="list-group-item">
-                                                <div class="row justify-content-between">                                                    
+                                                <div class="row justify-content-between">
                                                     <h6>طبقه:</h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.Floor</span>
                                                     <h6>مجموع طبقات:</h6>

@@ -17,8 +17,11 @@ let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-4">
                                                     <div class="px-2 py-1 overflow-hidden text-bold">
                                                         ${estate.title}
                                                     </div>
+
                                                     <div class="px-2 py-1">
-                                                        قیمت: ${estate.price}
+                                                        قیمت: ${estate.price ? estate.price : "" } میلیون تومان
+                                                        <br/>
+                                                        رهن: ${estate.deposit ? estate.deposit : ""} - اجاره: ${estate.rent ? estate.rent : ""}
                                                         <br/>
                                                         تاریخ: ${new persianDate(new Date(estate.creationTime)).format("DD MMMM YYYY")}
                                                     </div>
@@ -29,3 +32,11 @@ let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-4">
                                     </div>
                                 </a>
                             </div>`;
+
+                                                       
+                                                            //$ { if (estate.Price > 0)
+                                                            //قیمت: estate.price;
+                                                            //else
+                                                            //رهن: estate.deposit }
+
+                                                  
