@@ -1,5 +1,6 @@
 ﻿@using RoyalEstate.Web.Startup
 @using System.ComponentModel.DataAnnotations;
+@using DNTPersianUtils.Core;
 @model RoyalEstate.Web.Models.Estates.EstateVm
 @{
     ViewBag.Title = L("Estates");
@@ -58,15 +59,15 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <i class="fas fa-user"></i>
-                                <span class="text-info text-bold">@Model.EstateDto.CustomerName @Model.EstateDto.CustomerSurname</span>
+                                <span class="text-info text-bold">@Model.EstateDto.CreatorUserName @Model.EstateDto.CreatorUserSurname</span>
                             </div>
                             <div class="col-sm-4">
-                                <i class="fas fa-mobile"></i>
-                                <span class="text-info text-bold">@Model.EstateDto.CustomerCellPhone1</span>
+                                <i class="fas fa-calendar"></i>
+                                <span class="text-info text-bold">@Model.EstateDto.CreationTime.ToShortPersianDateString()</span>
                             </div>
                             <div class="col-sm-4">
-                                <i class="fas fa-user"></i>
-                                <span class="text-info text-bold"> کاربر: @Model.EstateDto.CreatorUserId</span>
+                                <i class="fas fa-clock"></i>
+                                <span class="text-info text-bold">@Model.EstateDto.CreationTime.ToShortTimeString()</span>
                             </div>
                         </div>
                     </div>
@@ -76,6 +77,29 @@
                                 <div class="row">
                                     <div class="col-sm-6 order-2 order-sm-1">
                                         <h4>@Model.EstateDto.Title</h4>
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered table-striped text-center">
+                                                <thead>
+                                                    <tr class="bg-info">
+                                                        <td colspan="2">اطلاعات تماس</td>
+                                                    </tr>                                                    
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <th>مالک</th>
+                                                        <td>@($"{Model.EstateDto.CustomerName} {Model.EstateDto.CustomerSurname}")</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>همراه</th>
+                                                        <td>@Model.EstateDto.CustomerCellPhone1</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>ثابت</th>
+                                                        <td>@Model.EstateDto.CustomerPhoneNumber1</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
                                         <ul class="list-group list-group-flush p-0 mb-3 mt-3">
 
                                             <li class="list-group-item">
@@ -146,32 +170,32 @@
                                                     </div>
                                                 </li>*@
                                             <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>طبقه:</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Floor</span>
-                                                    <h6>مجموع طبقات:</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span>
-                                                    <h6>تعداد واحد هر طبقه:</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span>
+                                                <div class="row justify-content-between">                                                    
+                                                    <h6>طبقه: <span class="text-info text-bold">@Model.EstateDto.Floor</span></h6>
+                                                    
+                                                    <h6>مجموع طبقات: <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span></h6>
+                                                    
+                                                    <h6>تعداد واحد هر طبقه: </h6>
+                                                    
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
                                                     <h6>آسانسور</h6>
-                                                    <input type="checkbox" name="chkElevator" checked="@Model.EstateDto.Elevator" />
+                                                    <i class="fas @(Model.EstateDto.Elevator==true?"fa-check text-success":"fa-times text-danger")"></i>
                                                     &nbsp
                                                     <h6>پارکینگ</h6>
-                                                    <input type="checkbox" name="chkParking" checked="@Model.EstateDto.Parking" />
+                                                    <i class="fas @(Model.EstateDto.Parking==true?"fa-check text-success":"fa-times text-danger")"></i>
                                                     <label>&nbsp</label>
                                                     <h6>انباری</h6>
-                                                    <input type="checkbox" name="chkStore Room" checked="@Model.EstateDto.StoreRoom" />
+                                                    <i class="fas @(Model.EstateDto.StoreRoom==true?"fa-check text-success":"fa-times text-danger")"></i>
                                                 </div>
                                             </li>
                                         </ul>
 
-                                        <h6>@L("Address")</h6>
+                                        <h5>@L("Address")</h5>
                                         <p>@Model.EstateDto.Address</p>
-                                        <h6>@L("EstateDescription")</h6>
+                                        <h5>@L("EstateDescription")</h5>
                                         <p>@Model.EstateDto.Description</p>
                                     </div>
                                     <div class="col-sm-6 order-1 order-sm-2" dir="ltr">

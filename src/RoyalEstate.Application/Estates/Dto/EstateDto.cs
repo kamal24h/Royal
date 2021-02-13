@@ -38,7 +38,11 @@ namespace RoyalEstate.Estates.Dto
         public string CustomerName { get; set; }
         public string CustomerSurname { get; set; }
         public string CustomerCellPhone1 { get; set; }
+        public string CustomerPhoneNumber1 { get; set; }
         public string CustomerEmailAddress { get; set; }
+
+        public string CreatorUserName { get; set; }
+        public string CreatorUserSurname { get; set; }
 
 
         public string Address { get; set; }
