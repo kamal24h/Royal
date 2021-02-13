@@ -1,4 +1,5 @@
 ﻿@using RoyalEstate.Web.Startup
+@using System.ComponentModel.DataAnnotations;
 @model RoyalEstate.Web.Models.Estates.EstateVm
 @{
     ViewBag.Title = L("Estates");
@@ -9,13 +10,20 @@
 @section styles
 {
     <style>
+        
+        .list-group-item {
+            font-family: 'yekan';
+        }
+
         .carousel-inner img {
             width: 100%;
             height: 100%;
         }
+
         #estateSlider .carousel-inner img:hover {
             cursor: zoom-in;
         }
+
         #fullScreenSlider {
             display: none;
             flex-direction: row;
@@ -35,7 +43,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h5 class="text-right">@L("RoyalEstates")</h5>
+                <h5 class="text-right">@L("EstateDetails")</h5>
             </div>
         </div>
     </div>
@@ -57,8 +65,8 @@
                                 <span class="text-info text-bold">@Model.EstateDto.CustomerCellPhone1</span>
                             </div>
                             <div class="col-sm-4">
-                                <i class="fas fa-envelope"></i>
-                                <span class="text-info text-bold">@Model.EstateDto.CustomerEmailAddress</span>
+                                <i class="fas fa-user"></i>                                
+                                <span class="text-info text-bold"> کاربر: @Model.EstateDto.CreatorUserId</span>
                             </div>
                         </div>
                     </div>
@@ -69,6 +77,38 @@
                                     <div class="col-sm-6 order-2 order-sm-1">
                                         <h4>@Model.EstateDto.Title</h4>
                                         <ul class="list-group list-group-flush p-0 mb-3 mt-3">
+
+                                            <li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    <h6>محله</h6>
+                                                    @*<span class="text-info text-bold">@Model.EstateDto.Distrcit</span>*@
+                                                </div>
+                                            </li>
+
+                                            @*<li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    <h6>
+                                                        @("قیمت :" + "   " + Model.EstateDto.Price + "  " + "   میلیون تومان " +
+                                                        "قیمت کل" + "  " + Model.EstateDto.Price * Model.EstateDto.Area + " میلیون تومان.")
+                                                    </h6>
+                                                </div>
+                                            </li>*@                                           
+                                            <li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    <h6>قیمت (میلیون تومان) </h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Price</span>
+                                                    <h6>قیمت کل</h6>
+                                                    <span class="text-info text-bold">@(Model.EstateDto.Price * Model.EstateDto.Area)</span>
+                                                </div>
+                                            </li>
+                                            <li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    <h6> رهن (میلیون تومان) </h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Deposit</span>
+                                                    <h6>:اجاره</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Rent</span>
+                                                </div>
+                                            </li>
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
                                                     <h6>متراژ</h6>
@@ -81,29 +121,46 @@
                                                     <span class="text-info text-bold">@Model.EstateDto.Rooms</span>
                                                 </div>
                                             </li>
-                                            <li class="list-group-item">
+                                            @*<li class="list-group-item">
                                                 <div class="row justify-content-between">
-                                                    <h6>طبقه</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Floor</span>
+                                                    <h6>
+                                                        @("طبقه:" + "  " + Model.EstateDto.Floor + "  " + " از: " + "  " + Model.EstateDto.TotalFloors
+                                                        + "  " + " طبقه --- هر طبقه: " + "  " + Model.EstateDto.UnitsPerFloor + "  " + " واحد.")
+                                                    </h6>
                                                 </div>
-                                            </li>
+                                            </li>*@
                                             <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>تعداد کل طبقات</h6>
+                                                <div class="row justify-content-between">                                                    
+                                                    <h6>طبقه:</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.Floor</span>
+                                                    <h6>مجموع طبقات:</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span>
+                                                    <h6>تعداد واحد هر طبقه:</h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span>
                                                 </div>
                                             </li>
+                                            <li class="list-group-item">
+                                                <div class="row justify-content-between">
+                                                    <h6>آسانسور</h6>
+                                                    <input type="checkbox" name="chkElevator" checked="@Model.EstateDto.Elevator" />
+                                                    &nbsp
+                                                    <h6>پارکینگ</h6>
+                                                    <input type="checkbox" name="chkParking" checked="@Model.EstateDto.Parking" />
+                                                    <label>&nbsp</label>
+                                                    <h6>انباری</h6>
+                                                    <input type="checkbox" name="chkStore Room" checked="@Model.EstateDto.StoreRoom" />
+                                                </div>
+                                            </li>
                                         </ul>
-                                        
-                                        
-                                        
-                                        
-                                        <h5>@L("Address")</h5>
+
+                                        <h6>@L("Address")</h6>
                                         <p>@Model.EstateDto.Address</p>
+                                        <h6>@L("EstateDescription")</h6>
+                                        <p>@Model.EstateDto.Description</p>
                                     </div>
                                     <div class="col-sm-6 order-1 order-sm-2" dir="ltr">
                                         <div id="estateSlider" class="carousel slide w-100" data-ride="carousel">
-                                            <ul class="carousel-indicators" >
+                                            <ul class="carousel-indicators">
                                                 @{
                                                     int i = 0;
                                                     foreach (var item in Model.EstateDto.ImagePaths)
@@ -119,7 +176,7 @@
                                                     foreach (var item in Model.EstateDto.ImagePaths)
                                                     {
                                                         <div class="carousel-item @(i==0?"active":"")">
-                                                            <img src="@item" style="height:15rem" onclick="goFullScreen(this)"/>
+                                                            <img src="@item" style="height:15rem" onclick="goFullScreen(this)" />
                                                         </div>
                                                         i++;
                                                     }
@@ -144,9 +201,11 @@
 </section>
 
 <div id="fullScreenSlider" dir="ltr">
-    <button class="btn close position-absolute" data-dismiss="#fullScreenSlider" 
+    <button class="btn close position-absolute" data-dismiss="#fullScreenSlider"
             style="left:1vw; top:1vh; font-size:3rem; color:white; font-weight:bold"
-            onclick="getOutFullScreen()">&times;</button>
+            onclick="getOutFullScreen()">
+        &times;
+    </button>
     <div id="estateSlider2" class="carousel slide w-75" data-ride="carousel">
         <ul class="carousel-indicators">
             @{
@@ -164,7 +223,7 @@
                 foreach (var item in Model.EstateDto.ImagePaths)
                 {
                     <div class="carousel-item @(i==0?"active":"")">
-                        <img src="@item" style="height:90vh"/>
+                        <img src="@item" style="height:90vh" />
                     </div>
                     i++;
                 }
@@ -179,18 +238,18 @@
     </div>
 </div>
 
-@section scripts{ 
-<script>
-    function goFullScreen(i) {     
-        let index = $(i).parent().index();        
-        $(`#fullScreenSlider .carousel-indicators> li`).removeClass("active");
-        $(`#fullScreenSlider .carousel-indicators> li:nth-child(${index+1})`).addClass("active");
-        $(`#fullScreenSlider .carousel-inner> div`).removeClass("active");
-        $(`#fullScreenSlider .carousel-inner> div:nth-child(${index + 1})`).addClass("active");
-        $("#fullScreenSlider").css("display", "flex");
-    }
-    function getOutFullScreen() {
-        $("#fullScreenSlider").css("display", "none");
-    }
-</script>
+@section scripts{
+    <script>
+        function goFullScreen(i) {
+            let index = $(i).parent().index();
+            $(`#fullScreenSlider .carousel-indicators> li`).removeClass("active");
+            $(`#fullScreenSlider .carousel-indicators> li:nth-child(${index + 1})`).addClass("active");
+            $(`#fullScreenSlider .carousel-inner> div`).removeClass("active");
+            $(`#fullScreenSlider .carousel-inner> div:nth-child(${index + 1})`).addClass("active");
+            $("#fullScreenSlider").css("display", "flex");
+        }
+        function getOutFullScreen() {
+            $("#fullScreenSlider").css("display", "none");
+        }
+    </script>
 }

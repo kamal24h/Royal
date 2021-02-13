@@ -79,12 +79,12 @@
                             <div class="row justify-content-center">
                                 <div class="col-sm-12 col-md-6 col-lg-4 text-right">
                                     <div class="form-group">
-                                        <label asp-for="CreateEstateDto.Title">عنوان آگهی</label>
+                                        <label asp-for="CreateEstateDto.Title">عنوان پرونده</label>
                                         <input asp-for="CreateEstateDto.Title" name="Title" class="form-control" />
                                         <span asp-validation-for="CreateEstateDto.Title" name="Title"></span>
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CreateEstateDto.CustomerId">فروشنده</label>
+                                        <label asp-for="CreateEstateDto.CustomerId">مشتری</label>
                                         <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" name="CustomerId" id="CustomerId" class="form-control"></select>
                                         
                                     </div>
@@ -118,7 +118,7 @@
                                     {
                                         case 1:
                                             <div class="form-group">
-                                                <label asp-for="CreateEstateDto.Price">قیمت</label>
+                                                <label asp-for="CreateEstateDto.Price">قیمت هر مترمربع به میلیون تومان</label>
                                                 <input asp-for="CreateEstateDto.Price" name="Price" class="form-control" />
                                             </div>
                                             break;

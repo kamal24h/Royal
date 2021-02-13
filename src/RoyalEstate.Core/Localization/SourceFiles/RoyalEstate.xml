@@ -46,7 +46,7 @@
     <text name="Logout" value="Logout" />
     <text name="RegisterFormUserNameInvalidMessage">Please don't enter an email address for username.</text>
     <text name="DatabaseConnectionString" value="Database connection string" />
-    <text name="Users" value="کاربران" />
+    <text name="Users" value="Users" />
     <text name="IsActive" value="Is active" />
     <text name="FullName" value="Full name" />
     <text name="CreateNewUser" value="Create new user" />
@@ -125,6 +125,9 @@
     <text name="EstateTypeName" value="Estate Type Name" />
     <text name="BaseInformation" value="Base Information" />
     <text name="District" value="District" />
+    <text name="EstateDetails" value="Estate Details" /> 
+
+
 
     <text name="CitiesAndProvinces">Cities and Provinces</text>
 
@@ -138,5 +141,7 @@
 
     <text name="SystemUsers">System Users</text>
     <text name="Customers">Customers</text>
+    <text name="EstateDescription">Estate Description</text>
+    
   </texts>
 </localizationDictionary>

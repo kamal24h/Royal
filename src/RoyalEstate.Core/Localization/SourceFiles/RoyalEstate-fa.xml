@@ -24,7 +24,7 @@
     <text name="TenantIsNotActive" value="تننت {0} فعال نمیباشد." />
     <text name="TenantDeleteWarningMessage">تننت {0} حذف خواهد شد.</text>
     <text name="TenantName_Regex_Description" value="نام تننت باید شامل حداقل 2 کاراکتر باشد و با یک حرف شروع شود با حروف یا اعداد و یا (_) ادامه یابد" />
-
+    
 
     
 
@@ -152,9 +152,9 @@
 
     <text name="Estates" value="پرونده‌ها" />
     <text name="EstateTypes" value="دسته‌بندی پرونده‌ها" />
-    <text name="EstateType" value="Estate Type" />
-    <text name="EstateTypeName" value="EstateType Name" />
-
+    <text name="EstateDetails" value="جزئیات پرونده" />
+    <text name="EstateTypeName" value="نام نوع ملک" />
+    
     <text name="CitiesAndProvinces">شهرها و استانها</text>
 
     <text name="Province">استان</text>
@@ -182,5 +182,6 @@
     <text name="PhoneNumber2">شماره ثابت دوم</text>
 
     <text name="Address">آدرس</text>
+    <text name="EstateDescription">توضیحات ملک</text>
   </texts>
 </localizationDictionary>
