@@ -60,7 +60,9 @@
     <text name="Name" value="نام" />
     <text name="Surname" value="نام خانوادگی" />
     <text name="EmailAddress" value="آدرس ایمیل" />
-    
+    <text name="BaseInformation" value="اطلاعات پایه" />
+    <text name="District" value="محله" />    
+
     <text name="SavedSuccessfully" value="با موفقیت ذخیره شد" />
     
     <text name="AdminEmailAddress" value="آدرس ایمیل ادمین" />

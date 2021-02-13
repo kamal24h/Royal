@@ -123,6 +123,8 @@
     <text name="EstateTypes" value="Estate Types" />
     <text name="EstateType" value="Estate Type" />
     <text name="EstateTypeName" value="Estate Type Name" />
+    <text name="BaseInformation" value="Base Information" />
+    <text name="District" value="District" />
 
     <text name="CitiesAndProvinces">Cities and Provinces</text>
 

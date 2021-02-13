@@ -31,32 +31,49 @@ namespace RoyalEstate.Web.Startup
                         icon: "fas fa-building",
                         order:2
                     )
-                ).AddItem(
+                ).AddItem(new MenuItemDefinition(
+                        PageNames.BaseInformation,
+                        L("BaseInformation"),
+                        icon: "fas fa-map",
+                        order:4
+                    ).AddItem(new MenuItemDefinition(
+                        PageNames.Customers,
+                        L("Customers"),
+                        url: "Customers",
+                        icon: "fas fa-users",
+                        /*permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users),*/ 
+                        order: 1
+                        )
+                    ).AddItem(
                     new MenuItemDefinition(
                         PageNames.EstateTypes,
                         L("EstateTypes"),
                         url: "Estates/EstateTypes",
                         icon: "fas fa-cogs",
-                        order:3
-                    )
-                ).AddItem(new MenuItemDefinition(
-                        PageNames.CitiesAndProvinces,
-                        L("CitiesAndProvinces"),
-                        icon: "fas fa-map",
-                        order:4
-                    ).AddItem(new MenuItemDefinition(
+                        order: 2
+                        )
+                   )
+                    //.AddItem(new MenuItemDefinition(
+                    //        PageNames.Provinces,
+                    //        L("Provinces"),
+                    //        url: "Provinces/Index",
+                    //        icon: "fas fa-map",
+                    //        order:2
+                    //    )
+                    //)
+                    .AddItem(new MenuItemDefinition(
                             PageNames.Cities,
                             L("Cities"),
                             url: "Cities/Index",
                             icon: "fas fa-city",
-                            order:1
+                            order: 3
                         )
                     ).AddItem(new MenuItemDefinition(
-                            PageNames.Provinces,
-                            L("Provinces"),
-                            url: "Provinces/Index",
-                            icon: "fas fa-map",
-                            order:2
+                            PageNames.District,
+                            L("District"),
+                            url: "District/Index",
+                            icon: "fas fa-city",
+                            order: 4
                         )
                     )
                 ).AddItem(
@@ -72,12 +89,6 @@ namespace RoyalEstate.Web.Startup
                         url: "Users",
                         icon: "fas fa-users",
                         permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users), order:1)
-                    ).AddItem(new MenuItemDefinition(
-                        PageNames.Customers,
-                        L("Customers"),
-                        url: "Customers",
-                        icon: "fas fa-users",
-                        permissionDependency: new SimplePermissionDependency(PermissionNames.Pages_Users),order:2)
                     )
                 )/*.AddItem(
                     new MenuItemDefinition(
