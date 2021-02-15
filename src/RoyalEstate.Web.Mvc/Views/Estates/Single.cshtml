@@ -59,15 +59,15 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <i class="fas fa-user"></i>
-                                <span class="text-info text-bold">@Model.EstateDto.CreatorUserName @Model.EstateDto.CreatorUserSurname</span>
+                                <span class="text-info text-bold">@("ثبت: " + Model.EstateDto.CreatorUserName) @Model.EstateDto.CreatorUserSurname</span>
                             </div>
                             <div class="col-sm-4">
                                 <i class="fas fa-calendar"></i>
-                                <span class="text-info text-bold">@Model.EstateDto.CreationTime.ToShortPersianDateString()</span>
+                                <span class="text-info text-bold">تاریخ ثبت: @Model.EstateDto.CreationTime.ToShortPersianDateString()</span>
                             </div>
                             <div class="col-sm-4">
                                 <i class="fas fa-clock"></i>
-                                <span class="text-info text-bold">@Model.EstateDto.CreationTime.ToShortTimeString()</span>
+                                <span class="text-info text-bold">کد پرونده: @Model.EstateDto.FilingCode</span>
                             </div>
                         </div>
                     </div>
@@ -104,8 +104,11 @@
 
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
+                                                    <h6>کد :</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.FilingCode</span>
+                                                    &nbsp
                                                     <h6>محله</h6>
-                                                    @*<span class="text-info text-bold">@Model.EstateDto.Distrcit</span>*@
+                                                    <span class="text-info text-bold">@Model.EstateDto.DistrictName</span>
                                                 </div>
                                             </li>
 
@@ -151,6 +154,9 @@
                                             </li>*@
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
+                                                    <h6>وضعیت سند</h6>
+                                                    <span class="text-info text-bold">@Model.EstateDto.LegalDoc</span>
+                                                    &nbsp
                                                     <h6>متراژ</h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.Area</span>
                                                 </div>
@@ -159,6 +165,10 @@
                                                 <div class="row justify-content-between">
                                                     <h6>تعداد اتاق</h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.Rooms</span>
+                                                    &nbsp
+                                                    <h6>اتاق مستر</h6>
+                                                    <i class="fas @(Model.EstateDto.MasterRoom==true?"fa-check text-success":"fa-times text-danger")"></i>
+
                                                 </div>
                                             </li>
                                             @*<li class="list-group-item">

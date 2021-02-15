@@ -19,6 +19,8 @@ let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-4">
                                                     </div>
 
                                                     <div class="px-2 py-1">
+                                                         کد: ${estate.filingcode ? estate.filingcode : " - " }
+                                                        <br/>
                                                         قیمت: ${estate.price ? estate.price : "" } میلیون تومان
                                                         <br/>
                                                         رهن: ${estate.deposit ? estate.deposit : ""} - اجاره: ${estate.rent ? estate.rent : ""}

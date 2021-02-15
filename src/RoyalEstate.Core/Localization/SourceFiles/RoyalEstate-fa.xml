@@ -8,6 +8,9 @@
     <text name="WelcomeMessage" value="خوش آمدید" />
     <text name="FormIsNotValidMessage" value="اطلاعات فرم صحیح نیست. لطفا خطاها را بررسی کنید." />
     <text name="Submit">ثبت</text>
+    <text name="CreateNewDistrict">محله جدید</text>
+    <text name="Districts">محله ها</text>
+    <text name="District">محله</text> 
 
     <text name="Tenants" value="تننت‌ها" />
     <text name="CreateNewTenant" value="ایجاد تننت جدید" />
@@ -61,7 +64,6 @@
     <text name="Surname" value="نام خانوادگی" />
     <text name="EmailAddress" value="آدرس ایمیل" />
     <text name="BaseInformation" value="اطلاعات پایه" />
-    <text name="District" value="محله" />    
 
     <text name="SavedSuccessfully" value="با موفقیت ذخیره شد" />
     

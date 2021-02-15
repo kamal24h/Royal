@@ -20,7 +20,7 @@ namespace RoyalEstate.Entities
         [Required]
         [MinLength(10)]
         public string Title { get; set; }
-
+        
         [Required]
         [ForeignKey(nameof(CreatorUserId))]
         public User CreatorUser { get; set; }
@@ -36,6 +36,8 @@ namespace RoyalEstate.Entities
         public ServiceType ServiceType { get; set; }
         public int ServiceTypeId { get; set; }
 
+        public string FilingCode { get; set; }
+
         public double Area { get; set; }
         public int? Rooms { get; set; }
         public int? Floor { get; set; }
@@ -44,6 +46,9 @@ namespace RoyalEstate.Entities
         public bool? Parking { get; set; }
         public bool? StoreRoom { get; set; }
         public bool? Elevator { get; set; }
+        public bool? MasterRoom { get; set; }
+        public string? LegalDoc { get; set; }
+        
         public DateTime BuiltDate { get; set; }
 
         
@@ -51,10 +56,14 @@ namespace RoyalEstate.Entities
         public long? Rent { get; set; }
         public long? Deposit { get; set; }
 
-        
-        [ForeignKey(nameof(CityId))]
-        public City City { get; set; }
-        public int CityId { get; set; }
+
+        //[ForeignKey(nameof(CityId))]
+        //public City City { get; set; }
+        //public int CityId { get; set; }
+
+        [ForeignKey(nameof(DistrictId))]
+        public District District { get; set; }
+        public int? DistrictId { get; set; }
 
         [ForeignKey(nameof(CustomerId))]
         public Customer Customer { get; set; }

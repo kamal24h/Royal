@@ -16,6 +16,7 @@ namespace RoyalEstate.EntityFrameworkCore
         public DbSet<Estate> Estates { get; set; }
         public DbSet<Province> Provinces { get; set; }
         public DbSet<City> Cities { get; set; }
+        public DbSet<District> Districts { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<EstateImage> EstateImages { get; set; }
 

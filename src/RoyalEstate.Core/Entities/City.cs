@@ -10,6 +10,11 @@ namespace RoyalEstate.Entities
     [Table("Cities")]
     public class City : Entity
     {
+        public City()
+        {
+            Districts = new HashSet<District>();
+        }
+
         [MaxLength(100)]
         public string Name { get; set; }
 
@@ -20,5 +25,7 @@ namespace RoyalEstate.Entities
         public int ProvinceId { get; set; }
 
         public bool IsActive { get; set; }
+
+        public ICollection<District> Districts { get; set; }
     }
 }

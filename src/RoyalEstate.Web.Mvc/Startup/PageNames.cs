@@ -14,7 +14,7 @@
         public const string CitiesAndProvinces = "Cities & Provinces";
         public const string Cities = "Cities";
         public const string Provinces = "Provinces";
-        public const string District = "District";
+        public const string Districts = "Districts";
         public const string BaseInformation = "Base Information";
 
     }

@@ -1,6 +1,16 @@
 ﻿@model RoyalEstate.Estates.Dto.CreateEstateDto
 
 <div class="form-group">
+    <label asp-for="LegalDoc">وضعیت سند</label>
+    <select asp-for="LegalDoc" name="LegalDoc" class="form-control">
+        <option value="">سند آزاد</option>
+        <option value="">در دست اقدام</option>
+        <option value="">فاقد سند</option>
+        <option value="">سند ورٍثه ای</option>
+    </select>
+</div>
+
+<div class="form-group">
     <label asp-for="Area">متراژ</label>
     <input asp-for="Area" type="number" class="form-control" />
 </div>

@@ -27,7 +27,7 @@ namespace RoyalEstate.Estates
 
         protected override Task<Estate> GetEntityByIdAsync(long id)
         {
-            var entity = Repository.GetAllIncluding(p => p.Images, p=>p.Customer, e=>e.CreatorUser).FirstOrDefault(p => p.Id == id);
+            var entity = Repository.GetAllIncluding(p => p.Images, p => p.District, p =>p.Customer, e=>e.CreatorUser).FirstOrDefault(p => p.Id == id);
             if (entity == null)
             {
                 throw new EntityNotFoundException(typeof(Estate), id);

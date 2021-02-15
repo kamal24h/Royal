@@ -69,7 +69,7 @@ namespace RoyalEstate.Web.Startup
                             order: 3
                         )
                     ).AddItem(new MenuItemDefinition(
-                            PageNames.District,
+                            PageNames.Districts,
                             L("District"),
                             url: "District/Index",
                             icon: "fas fa-city",

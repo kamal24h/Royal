@@ -83,14 +83,20 @@
                                         <input asp-for="CreateEstateDto.Title" name="Title" class="form-control" />
                                         <span asp-validation-for="CreateEstateDto.Title" name="Title"></span>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="CreateEstateDto.FilingCode">کد پرونده</label>
+                                        <input asp-for="CreateEstateDto.FilingCode" name="FilingCode" class="form-control" />
+                                    </div>
+
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.CustomerId">مشتری</label>
                                         <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" name="CustomerId" id="CustomerId" class="form-control"></select>
-                                        
+
                                     </div>
                                     <div class="form-group">
-                                        <label asp-for="CreateEstateDto.CityId">شهر</label>
-                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" name="CityId" id="CityId" class="form-control"></select>
+                                        <label asp-for="CreateEstateDto.DistrictId">منطقه شهری</label>
+                                        <select asp-for="CreateEstateDto.DistrictId" asp-items="Model.Districts" name="DistrictId" id="DistrictId" class="form-control"></select>
                                     </div>
                                     @switch (Model.CreateEstateDto.EstateTypeId)
                                     {

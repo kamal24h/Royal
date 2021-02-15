@@ -1,17 +1,17 @@
 ﻿@using RoyalEstate.Web.Startup
-@model RoyalEstate.Web.Models.Cities.CitiesIndexVm
+@model RoyalEstate.Web.Models.Districts.DistrictsIndexVm
 @*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
-    ViewBag.Title = L("Cities");
-    ViewBag.ActiveMenu = PageNames.Cities;
+    ViewBag.Title = L("Districts");
+    ViewBag.ActiveMenu = PageNames.Districts;
 }
 
 @section styles
 {
     <style>
-        #citySearchForm select {
+        #districtSearchForm select {
             height: 3rem
         }
     </style>
@@ -21,7 +21,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h2>@L("Cities")</h2>
+                <h2>>@L("Districts")</h2>
             </div>
         </div>
     </div>
@@ -33,16 +33,16 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <button class="btn btn-success" data-toggle="modal" data-target="#mdlCreateCity">ثبت شهر جدید</button>
+                        <button class="btn btn-success" data-toggle="modal" data-target="#mdlCreateDistrict">ثبت محله جدید</button>
                     </div>
                 </div>
                 <div class="card-body">
-                    <form id="citySearchForm">
+                    <form id="DistrictSearchForm">
                         <div class="row">
                             <div class="col-sm-3">
                                 <div class="form-group">
-                                    <label>استان</label>
-                                    @Html.DropDownList("provinceId", Model.Provinces, new { @class = "form-control" })
+                                    <label>شهر</label>
+                                    @Html.DropDownList("CityId", Model.Cities, new { @class = "form-control" })
                                 </div>
                             </div>
                             <div class="col-sm-3">
@@ -59,12 +59,12 @@
                     </form>
 
                     <div class="table-responsive">
-                        <table id="tblCities" class="table table-bordered table-striped">
+                        <table id="tblDistricts" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th></th>
                                     <th>@L("Name")</th>
-                                    <th>@L("Province")</th>
+                                    <th>@L("City")</th>
                                     <th>@L("IsActive")</th>
                                     <th style="width: 150px">@L("Actions")</th>
                                 </tr>
@@ -78,9 +78,9 @@
     </div>
 </section>
 
-@await Html.PartialAsync("~/Views/Cities/_CreateCityModal.cshtml", Model.Provinces)
+@await Html.PartialAsync("~/Views/Districts/_CreateDistrictModal.cshtml", Model.Cities)
 
-<div class="modal fade" id="mdlEditCity" tabindex="-1" role="dialog" aria-labelledby="EstateTypeEditModalLabel" data-backdrop="static">
+<div class="modal fade" id="mdlEditDistrict" tabindex="-1" role="dialog" aria-labelledby="DistrictEditModalLabel" data-backdrop="static">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
         </div>
@@ -89,10 +89,10 @@
 
 @section scripts
 {
-    <script src="~/view-resources/Views/Cities/Index.js" asp-append-version="true"></script>
+    <script src="~/view-resources/Views/Districts/Index.js" asp-append-version="true"></script>
     <script>
         $(() => {
-            $("#citySearchForm select").select2();
+            $("#districtSearchForm select").select2();
         })
     </script>
 }

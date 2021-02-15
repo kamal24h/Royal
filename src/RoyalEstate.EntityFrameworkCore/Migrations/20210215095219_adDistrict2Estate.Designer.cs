@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoyalEstate.EntityFrameworkCore;
 
 namespace RoyalEstate.Migrations
 {
     [DbContext(typeof(RoyalEstateDbContext))]
-    partial class RoyalEstateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210215095219_adDistrict2Estate")]
+    partial class adDistrict2Estate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

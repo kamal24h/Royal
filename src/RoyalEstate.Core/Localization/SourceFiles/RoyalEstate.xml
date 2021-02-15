@@ -52,6 +52,11 @@
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
+
+    <text name="CreateNewDistrict">New District</text>
+    <text name="Districts">Districts</text>
+    <text name="District">District</text>
+
     <text name="Optional" value="Optional" />
     <text name="LeaveEmptyToSwitchToHost">Leave empty to switch to the host</text>
     <text name="CurrentTenant">Current tenant</text>
@@ -124,7 +129,6 @@
     <text name="EstateType" value="Estate Type" />
     <text name="EstateTypeName" value="Estate Type Name" />
     <text name="BaseInformation" value="Base Information" />
-    <text name="District" value="District" />
     <text name="EstateDetails" value="Estate Details" /> 
 
 

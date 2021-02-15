@@ -1,0 +1,39 @@
+﻿@using RoyalEstate.Web.Models.Common.Modals;
+@model RoyalEstate.Web.Models.Districts.EditDistrictVm
+@{
+    Layout = null;
+}
+
+@await Html.PartialAsync("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("CreateNewDistrict")))
+<form name="DistrictEditForm" role="form" class="form-horizontal">
+    <div class="modal-body">
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="Name">@L("Name")</label>
+            <div class="col-md-9">
+                <input asp-for="District.Name" name="Name" class="form-control"/>
+            </div>
+        </div>
+
+        <div class="form-group row required">
+            <label class="col-md-3 col-form-label" for="Name">@L("Province")</label>
+            <div class="col-md-9">
+                @Html.DropDownListFor(m=>m.District.CityId, Model.Cities, new{@class="form-control",id="mdlEditCityId", name="CityId"})
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-md-3 col-form-label" for="IsActive">@L("IsActive")</label>
+            <div class="col-md-9">
+                <input type="checkbox" asp-for="District.IsActive" name="IsActive" class="form-control"/>
+            </div>
+        </div>
+    </div>
+    @await Html.PartialAsync("~/Views/Shared/Modals/_ModalFooterWithSaveAndCancel.cshtml")
+</form>
+
+<script>
+    $("#mdlEditCityId").select2({
+        width: '100%',
+        dropdownParent: $("#mdlEditDistrict")
+    });
+</script>

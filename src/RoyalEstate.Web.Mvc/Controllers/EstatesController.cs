@@ -8,14 +8,14 @@ using Abp.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using RoyalEstate.Cities;
-using RoyalEstate.Cities.Dto;
 using RoyalEstate.Web.Models.Estates;
 using RoyalEstate.Controllers;
 using RoyalEstate.Customers;
 using RoyalEstate.Customers.Dto;
 using RoyalEstate.Estates.Dto;
 using RoyalEstate.Estates;
+using RoyalEstate.Districts;
+using RoyalEstate.Districts.Dto;
 
 namespace RoyalEstate.Web.Controllers
 {
@@ -24,18 +24,18 @@ namespace RoyalEstate.Web.Controllers
         private readonly IEstateTypeAppService _estateTypeAppService;
         private readonly IEstateAppService _estateAppService;
         private readonly ICustomerAppService _customerAppService;
-        private readonly ICityAppService _cityAppService;
+        private readonly IDistrictAppService _districtAppService;
 
         public EstatesController(
             IEstateTypeAppService estateTypeAppService, 
             IEstateAppService estateAppService,
             ICustomerAppService customerAppService,
-            ICityAppService cityAppService)
+            IDistrictAppService districtAppService)
         {
             _estateTypeAppService = estateTypeAppService;
             _estateAppService = estateAppService;
             _customerAppService = customerAppService;
-            _cityAppService = cityAppService;
+            _districtAppService = districtAppService;
         }
 
         public async Task<ActionResult> EstateTypes()
@@ -76,7 +76,7 @@ namespace RoyalEstate.Web.Controllers
                     EstateTypeId = estateTypeId
                 },
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),
-                Cities = await _cityAppService.GetCitiesSelectList(new PagedCityResultRequestDto{IsActive = true})
+                Districts = await _districtAppService.GetDistrictsSelectList(new PagedDistrictResultRequestDto { IsActive = true})
             };
 
             return View(model);

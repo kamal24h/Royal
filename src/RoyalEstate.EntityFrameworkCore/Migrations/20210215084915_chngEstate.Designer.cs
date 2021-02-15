@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoyalEstate.EntityFrameworkCore;
 
 namespace RoyalEstate.Migrations
 {
     [DbContext(typeof(RoyalEstateDbContext))]
-    partial class RoyalEstateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210215084915_chngEstate")]
+    partial class chngEstate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1652,6 +1654,9 @@ namespace RoyalEstate.Migrations
                     b.Property<DateTime>("BuiltDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
@@ -1668,9 +1673,6 @@ namespace RoyalEstate.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(2000)")
                         .HasMaxLength(2000);
-
-                    b.Property<int?>("DistrictId")
-                        .HasColumnType("int");
 
                     b.Property<bool?>("Elevator")
                         .HasColumnType("bit");
@@ -1735,11 +1737,11 @@ namespace RoyalEstate.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
                     b.HasIndex("CreatorUserId");
 
                     b.HasIndex("CustomerId");
-
-                    b.HasIndex("DistrictId");
 
                     b.HasIndex("EstateTypeId");
 
@@ -2118,6 +2120,12 @@ namespace RoyalEstate.Migrations
 
             modelBuilder.Entity("RoyalEstate.Entities.Estate", b =>
                 {
+                    b.HasOne("RoyalEstate.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RoyalEstate.Authorization.Users.User", "CreatorUser")
                         .WithMany()
                         .HasForeignKey("CreatorUserId")
@@ -2129,10 +2137,6 @@ namespace RoyalEstate.Migrations
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("RoyalEstate.Entities.District", "District")
-                        .WithMany()
-                        .HasForeignKey("DistrictId");
 
                     b.HasOne("RoyalEstate.Entities.EstateType", "EstateType")
                         .WithMany()
