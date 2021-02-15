@@ -71,7 +71,7 @@ namespace RoyalEstate.Web.Startup
                     ).AddItem(new MenuItemDefinition(
                             PageNames.Districts,
                             L("District"),
-                            url: "District/Index",
+                            url: "Districts/Index",
                             icon: "fas fa-city",
                             order: 4
                         )
