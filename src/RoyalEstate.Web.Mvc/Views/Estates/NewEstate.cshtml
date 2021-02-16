@@ -197,37 +197,57 @@
                     dropdownParent: $(e).parent()
                 });
             });
+            $.post("/Estates/GetDistricts",
+                {
+                    cityId: $("#CityId").val()
+                },
+                function (data, status) {
+                    $("#DistrictId").select2({
+                        dir: 'rtl',
+                        dropdownAutoWidth: true,
+                        dropdownParent: $("#DistrictId").parent(),
+                        data:data.result.results
+                    });
+                });
 
-            $("#DistrictId").select2({
-                dir: 'rtl',
-                dropdownAutoWidth: true,
-                dropdownParent: $("#DistrictId").parent(),
-                ajax: {
-                    url: '/Estates/GetDistricts',
-                    type: "post",
-                    data: function (params) {
-                        var query = {
-                            term: params.term,
-                            cityId: $("#CityId").val()
-                            
-                        }
+            //$("#DistrictId").select2({
+            //    dir: 'rtl',
+            //    dropdownAutoWidth: true,
+            //    dropdownParent: $("#DistrictId").parent(),
+            //    ajax: {
+            //        url: '/Estates/GetDistricts',
+            //        type: "post",
+            //        data: function (params) {
+            //            var query = {
+            //                term: params.term,
+            //                cityId: $("#CityId").val()
+            //            }
+            //            return query;
+            //        },
 
-                        // Query parameters will be ?search=[term]&type=public
-                        return query;
-                    },
-                    processResults: function (data) {
-                        console.log(data);
-                        // Transforms the top-level key of the response object from 'items' to 'results'
-                        return {
-                            results: data.result.results
-                        };
-                    },
-                    dataType: 'json'
-                }
-            });
+            //        processResults: function (data) {
+            //            return {
+            //                results: data.result.results
+            //            };
+            //        },
+            //        dataType: 'json'
+            //    }
+            //});
             $("#CityId").change(function() {
                 $("#DistrictId").val('').trigger("change");
-            })
+                $.post("/Estates/GetDistricts",
+                    {
+                        cityId: $("#CityId").val()
+                    },
+                    function(data, status) {
+                        $("#DistrictId option").remove();
+                        data.result.results.forEach(d => {
+                            var newOption = new Option(d.text, d.id, false, false);
+                            $("#DistrictId").append(newOption);
+                        });
+                        $("#DistrictId").trigger('change');
+                    });
+            });
             $("#frmCreate").ajaxForm({
                 success: function (data) {
                     if (data.result.code == 0) {

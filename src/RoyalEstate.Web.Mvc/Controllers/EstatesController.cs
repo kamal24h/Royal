@@ -89,13 +89,13 @@ namespace RoyalEstate.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<JsonResult> GetDistricts(int cityId, string term)
+        public async Task<JsonResult> GetDistricts(int cityId)
         {
             var districts = await _districtAppService.GetDistrictsSelectListAsync(cityId);
-            term = term.ToEnglishNumbers();
+            /*term = term.ToEnglishNumbers();*/
             return Json(new
             {
-                results = districts.Where(d=>string.IsNullOrEmpty(term)|| d.Text.Contains(term)).Select(d => new
+                results = districts.Select(d => new
                 {
                     id = int.Parse(d.Value),
                     text = d.Text
