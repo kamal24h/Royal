@@ -21,6 +21,25 @@ namespace RoyalEstate.Entities{
 
         public bool IsActive { get; set; }
 
+        [ForeignKey(nameof(ServiceTypeId))]
+        [Required]
+        public virtual ServiceType ServiceType { get; set; }
+        public int ServiceTypeId { get; set; }
+
+        public bool Price { get; set; }
+        public bool Rent { get; set; }
+        public bool Deposit { get; set; }
+
+        public bool Area { get; set; }
+        public bool Rooms { get; set; }
+        public bool Floor { get; set; }
+        public bool TotalFloors { get; set; }
+        public bool UnitsPerFloor { get; set; }
+        public bool Parking { get; set; }
+        public bool Storeroom { get; set; }
+        public bool Elevator { get; set; }
+        public bool BuiltDate { get; set; }
+
         public EstateType()
         {
             CreationTime = DateTime.Now;

@@ -83,8 +83,8 @@
                                 <div class="col-sm-12 col-md-6 col-lg-4 text-right">
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.Title">عنوان پرونده</label>
-                                        <input asp-for="CreateEstateDto.Title"  class="form-control" />
-                                        <span asp-validation-for="CreateEstateDto.Title" ></span>
+                                        <input asp-for="CreateEstateDto.Title" class="form-control" />
+                                        <span asp-validation-for="CreateEstateDto.Title"></span>
                                     </div>
 
                                     <div class="form-group">
@@ -99,52 +99,105 @@
                                     </div>
                                     <div class="form-group text-right">
                                         <label asp-for="CreateEstateDto.CityId">شهر</label>
-                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities"  id="CityId" class="form-control"></select>
+                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" id="CityId" class="form-control"></select>
                                     </div>
                                     <div class="form-group text-right">
                                         <label asp-for="CreateEstateDto.DistrictId">منطقه شهری</label>
                                         <select asp-for="CreateEstateDto.DistrictId" id="DistrictId" class="form-control"></select>
                                     </div>
-                                    @switch (Model.CreateEstateDto.EstateTypeId)
-                                    {
-                                        case 1:
-                                            await Html.RenderPartialAsync("_Apartment", Model.CreateEstateDto);
-                                            break;
-                                        case 2:
-                                            await Html.RenderPartialAsync("_House", Model.CreateEstateDto);
-                                            break;
-                                        case 3:
-                                            await Html.RenderPartialAsync("_Store", Model.CreateEstateDto);
-                                            break;
-                                        case 4:
-                                            await Html.RenderPartialAsync("_Office", Model.CreateEstateDto);
-                                            break;
-                                        default:
-                                            break;
-                                    }
-                                    <div class="form-group">
-                                        <label asp-for="CreateEstateDto.BuiltDate">سال ساخت</label>
-                                        <input type="date" asp-for="CreateEstateDto.BuiltDate"  class="form-control" />
-                                    </div>
 
-                                    @switch (Model.CreateEstateDto.ServiceTypeId)
+                                    @if (Model.EstateType.Area)
                                     {
-                                        case 1:
-                                            <div class="form-group">
-                                                <label asp-for="CreateEstateDto.Price">قیمت هر مترمربع به میلیون تومان</label>
-                                                <input asp-for="CreateEstateDto.Price"  class="form-control" />
-                                            </div>
-                                            break;
-                                        case 2:
-                                            <div class="form-group">
-                                                <label asp-for="CreateEstateDto.Deposit">ودیعه</label>
-                                                <input asp-for="CreateEstateDto.Deposit" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label asp-for="CreateEstateDto.Rent">مبلغ اجاره</label>
-                                                <input asp-for="CreateEstateDto.Rent" class="form-control" />
-                                            </div>
-                                            break;
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Area">@L("AreaM2")</label>
+                                            <input asp-for="CreateEstateDto.Area" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Rooms)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Rooms">@L("Rooms")</label>
+                                            <input asp-for="CreateEstateDto.Rooms" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Floor)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Floor">@L("Floor")</label>
+                                            <input asp-for="CreateEstateDto.Floor" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.TotalFloors)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.TotalFloors">@L("TotalFloors")</label>
+                                            <input asp-for="CreateEstateDto.TotalFloors" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.UnitsPerFloor)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.UnitsPerFloor">@L("UnitsPerFloor")</label>
+                                            <input asp-for="CreateEstateDto.UnitsPerFloor" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Parking)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Parking">@L("Parking")</label>
+                                            <select asp-for="CreateEstateDto.Parking" class="form-control">
+                                                <option value="true">@L("Has")</option>
+                                                <option value="false">@L("NotHave")</option>
+                                            </select>
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Storeroom)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.StoreRoom">@L("Storeroom")</label>
+                                            <select asp-for="CreateEstateDto.StoreRoom" class="form-control">
+                                                <option value="true">@L("Has")</option>
+                                                <option value="false">@L("NotHave")</option>
+                                            </select>
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Elevator)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Elevator">@L("Elevator")</label>
+                                            <select asp-for="CreateEstateDto.Elevator" class="form-control">
+                                                <option value="true">@L("Has")</option>
+                                                <option value="false">@L("NotHave")</option>
+                                            </select>
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.BuiltDate)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.BuiltDate">@L("BuiltDate")</label>
+                                            <input asp-for="CreateEstateDto.BuiltDate" type="date" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Price)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Price">@L("PricePerM2")</label>
+                                            <input asp-for="CreateEstateDto.Price" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Deposit)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Deposit">@L("Deposit")</label>
+                                            <input asp-for="CreateEstateDto.Deposit" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateType.Rent)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.Rent">@L("Rent")</label>
+                                            <input asp-for="CreateEstateDto.Rent" type="number" class="form-control" />
+                                        </div>
                                     }
 
                                     <div class="form-group">
@@ -174,10 +227,10 @@
                                 <input id="inp1" type="file" asp-for="CreateEstateDto.Images" />
                             </div>
                             <div class="row justify-content-end">
-                                <button type="submit" class="btn btn-success">ثبت <i class="fa fa-check"></i></button>
+                                <button type="submit" class="btn btn-success" >ثبت <i class="fa fa-check"></i></button>
                             </div>
                         }
-                    </div>
+                    </div>                    
                 </div>
             </div>
             
@@ -190,6 +243,7 @@
     <script src="/libs/sweetalert/sweetalert.min.js"></script>
     <script>
         $(() => {
+            
             $("#frmCreate select:not(#DistrictId)").each((i, e) => {
                 $(e).select2({
                     dir: 'rtl',
@@ -226,14 +280,14 @@
                     });
             });
             $("#frmCreate").ajaxForm({
-                beforeSubmit: () => {
-                    $("#IsBusy").modal("show");
-                    abp.ui.setBusy($("#frmCreate"));
+                beforeSubmit: () => {                           
+                    $("#IsBusy").css("display","block");
+                    abp.ui.setBusy($("#frmCreate"));                                        
                 },
                 success: function (data) {
-                    $("#IsBusy").modal("hide");
+                    $("#IsBusy").css("display", "none");
                     abp.ui.clearBusy($("#frmCreate"));                    
-                    if (data.result.code == 0) {
+                    if (data.result.code == 0) {                        
                         sweetAlert("", "اطلاعات با موفقیت ثبت شد", "success");
                         $("#frmCreate").trigger("reset");
                         $("#imgThumbnails .imgThumbnail").remove();
@@ -248,7 +302,7 @@
                     }
                 },
                 error: function () {
-                    $("#IsBusy").modal("hide");
+                    $("#IsBusy").css("display", "none");
                     abp.ui.clearBusy($("#frmCreate"));
                     sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
                 }

@@ -1777,8 +1777,23 @@ namespace RoyalEstate.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Area")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("BuiltDate")
+                        .HasColumnType("bit");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("Deposit")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Elevator")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Floor")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -1788,7 +1803,33 @@ namespace RoyalEstate.Migrations
                         .HasColumnType("nvarchar(100)")
                         .HasMaxLength(100);
 
+                    b.Property<bool>("Parking")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Price")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Rent")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Rooms")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ServiceTypeId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Storeroom")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("TotalFloors")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("UnitsPerFloor")
+                        .HasColumnType("bit");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("ServiceTypeId");
 
                     b.ToTable("EstateTypes");
                 });
@@ -2156,6 +2197,15 @@ namespace RoyalEstate.Migrations
                     b.HasOne("RoyalEstate.Entities.Estate", "Estate")
                         .WithMany("Images")
                         .HasForeignKey("EstateId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("RoyalEstate.Entities.EstateType", b =>
+                {
+                    b.HasOne("RoyalEstate.Entities.ServiceType", "ServiceType")
+                        .WithMany("EstateTypes")
+                        .HasForeignKey("ServiceTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

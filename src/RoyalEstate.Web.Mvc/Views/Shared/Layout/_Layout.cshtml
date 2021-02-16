@@ -35,16 +35,13 @@
         </div>
         @await Html.PartialAsync("_Footer.cshtml")
     </div>
-    <div id="IsBusy" class="modal fade" data-backdrop="static" data-keyboard="false">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <p class="text-center">
-                        <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>
-                    </p>
-                    <h5 class="text-center">لطفا کمی صبر نمایید</h5>
-                </div>
-            </div>
+
+    <div class="modal" id="IsBusy" role="dialog" data-backdrop="static" data-keyboard="false">
+        <div style="z-index: 10011; position: fixed;  padding: 5px; margin: 0px; width: 30%; top: 40%; left: 35%; text-align: center; color: rgb(255, 255, 255); border: none; background-color: rgb(0, 0, 0); cursor: wait; border-radius: 10px; opacity: 0.5; font-size: 14px;">
+            <p class="text-center">
+                <i class="fa fa-cog fa-spin fa-2x fa-fw"></i>
+            </p>
+            <h4 style="font-size: 12px;line-height: 21px;"> لطفا کمی صبر نمایید ...</h4>
         </div>
     </div>
     @await Html.PartialAsync("_Scripts.cshtml")

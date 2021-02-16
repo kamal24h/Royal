@@ -1,4 +1,6 @@
 ﻿@using RoyalEstate.Web.Startup
+@using RoyalEstate.Entities
+@model System.Collections.Generic.List<ServiceType>
 @{
     ViewBag.Title = L("Estates");
     ViewBag.CurrentPageName = PageNames.Estates;
@@ -84,92 +86,35 @@
                                 <div class="col-sm-12 col-md-6 col-lg-4">
                                     <h5>دسته پرونده را انتخاب کنید</h5>
                                     <ul id="ulCategories" class="nav flex-column">
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#sellResidential">فروش مسکونی</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#rentResidential">اجاره مسکونی</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#sellCommercial">فروش اداری/تجاری</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" data-toggle="tab" href="#rentCommercial">اجاره اداری/تجاری</a>
-                                        </li>
+                                        @foreach (var item in Model)
+                                        {
+                                            <li class="nav-item">
+                                                <a class="nav-link" data-toggle="tab" href="@("#serviceType"+item.Id)">@L(item.Name)</a>
+                                            </li>
+                                        }                                        
                                     </ul>
                                     <div class="tab-content d-none">
                                         <button id="btnReturnToCategories" class="btn btn-link">
                                             <i class="fa fa-arrow-circle-right"></i>&nbsp;
                                             بازگشت به همه دسته‌بندی‌ها
                                         </button>
-                                        <div class="tab-pane container" id="sellResidential">
-                                            <label>فروش مسکونی</label>
-                                            <ul class="list-group ">
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="1">
-                                                        <i class="fa fa-building"></i>
-                                                        آپارتمان
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="2">
-                                                        <i class="fa fa-home"></i>
-                                                        خانه/ویلا
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane container" id="rentResidential">
-                                            <label>اجاره مسکونی</label>
-                                            <ul class="list-group ">
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="1">
-                                                        <i class="fa fa-building"></i>
-                                                        آپارتمان
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="2">
-                                                        <i class="fa fa-home"></i>
-                                                        خانه/ویلا
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane container" id="sellCommercial">
-                                            <label>فروش اداری/تجاری</label>
-                                            <ul class="list-group ">
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="3">
-                                                        <i class="fa fa-store"></i>
-                                                        مغازه
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="1" data-EstateTypeId="4">
-                                                        <i class="fa fa-building"></i>
-                                                        دفتر کار
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="tab-pane container" id="rentCommercial">
-                                            <label>اجاره اداری/تجاری</label>
-                                            <ul class="list-group ">
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="3">
-                                                        <i class="fa fa-store"></i>
-                                                        مغازه
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <a href="#" class="newEstateLink" data-ServiceTypeId="2" data-EstateTypeId="4">
-                                                        <i class="fa fa-building"></i>
-                                                        دفتر کار
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
+                                        @foreach (var item in Model)
+                                        {
+                                            <div class="tab-pane container" id="@("serviceType"+item.Id)">
+                                                <label>@item.Name</label>
+                                                <ul class="list-group ">
+                                                    @foreach (var estateType in item.EstateTypes)
+                                                    {
+                                                        <li class="list-group-item">
+                                                            <a href="#" class="newEstateLink" data-ServiceTypeId="@item.Id" data-EstateTypeId="@estateType.Id">
+                                                                <i class="fa fa-building"></i>
+                                                                @L(estateType.Name)
+                                                            </a>
+                                                        </li>
+                                                    }                                                    
+                                                </ul>
+                                            </div>
+                                        }                                        
                                     </div>
                                 </div>
                             </div>

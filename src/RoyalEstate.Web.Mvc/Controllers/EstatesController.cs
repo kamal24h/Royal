@@ -19,6 +19,9 @@ using RoyalEstate.Estates.Dto;
 using RoyalEstate.Estates;
 using RoyalEstate.Districts;
 using RoyalEstate.Districts.Dto;
+using Abp.Domain.Repositories;
+using RoyalEstate.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace RoyalEstate.Web.Controllers
 {
@@ -29,19 +32,22 @@ namespace RoyalEstate.Web.Controllers
         private readonly ICustomerAppService _customerAppService;
         private readonly IDistrictAppService _districtAppService;
         private readonly ICityAppService _cityAppService;
+        private readonly IRepository<ServiceType> _serviceTypesRepo;
 
         public EstatesController(
             IEstateTypeAppService estateTypeAppService, 
             IEstateAppService estateAppService,
             ICustomerAppService customerAppService,
             IDistrictAppService districtAppService,
-            ICityAppService cityAppService)
+            ICityAppService cityAppService,
+            IRepository<ServiceType> serviceTypesRepo)
         {
             _estateTypeAppService = estateTypeAppService;
             _estateAppService = estateAppService;
             _customerAppService = customerAppService;
             _districtAppService = districtAppService;
             _cityAppService = cityAppService;
+            _serviceTypesRepo = serviceTypesRepo;
         }
 
         public async Task<ActionResult> EstateTypes()
@@ -65,9 +71,12 @@ namespace RoyalEstate.Web.Controllers
             return PartialView("_EditEstateTypeModal", model);
         }
 
-        public ActionResult Index()
+
+
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var serviceTypes = await _serviceTypesRepo.GetAllIncluding(s => s.EstateTypes).ToListAsync();            
+            return View(serviceTypes);
         }
 
         [HttpPost]
@@ -79,10 +88,11 @@ namespace RoyalEstate.Web.Controllers
                 CreateEstateDto = new CreateEstateDto
                 {
                     ServiceTypeId = serviceTypeId, 
-                    EstateTypeId = estateTypeId
+                    EstateTypeId = estateTypeId                  
                 },
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),
-                Cities = await _cityAppService.GetCitiesSelectList()
+                Cities = await _cityAppService.GetCitiesSelectList(),
+                EstateType = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateTypeId))
             };
 
             return View(model);
