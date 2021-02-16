@@ -77,33 +77,33 @@
                         @using (Html.BeginForm("CreateEstate", "Estates", FormMethod.Post, new { id = "frmCreate", enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
-                            <input asp-for="CreateEstateDto.ServiceTypeId" name="ServiceTypeId" type="hidden"/>
-                            <input asp-for="CreateEstateDto.EstateTypeId" name="EstateTypeId" type="hidden"/>
+                            <input asp-for="CreateEstateDto.ServiceTypeId"  type="hidden"/>
+                            <input asp-for="CreateEstateDto.EstateTypeId"  type="hidden"/>
                             <div class="row justify-content-center">
                                 <div class="col-sm-12 col-md-6 col-lg-4 text-right">
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.Title">عنوان پرونده</label>
-                                        <input asp-for="CreateEstateDto.Title" name="Title" class="form-control" />
-                                        <span asp-validation-for="CreateEstateDto.Title" name="Title"></span>
+                                        <input asp-for="CreateEstateDto.Title"  class="form-control" />
+                                        <span asp-validation-for="CreateEstateDto.Title" ></span>
                                     </div>
 
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.FilingCode">کد پرونده</label>
-                                        <input asp-for="CreateEstateDto.FilingCode" name="FilingCode" class="form-control" />
+                                        <input asp-for="CreateEstateDto.FilingCode" class="form-control" />
                                     </div>
 
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.CustomerId">مشتری</label>
-                                        <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" name="CustomerId" id="CustomerId" class="form-control"></select>
+                                        <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" id="CustomerId" class="form-control"></select>
 
                                     </div>
                                     <div class="form-group text-right">
                                         <label asp-for="CreateEstateDto.CityId">شهر</label>
-                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" name="CityId" id="CityId" class="form-control"></select>
+                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities"  id="CityId" class="form-control"></select>
                                     </div>
                                     <div class="form-group text-right">
                                         <label asp-for="CreateEstateDto.DistrictId">منطقه شهری</label>
-                                        <select asp-for="CreateEstateDto.DistrictId" name="DistrictId" id="DistrictId" class="form-control"></select>
+                                        <select asp-for="CreateEstateDto.DistrictId" id="DistrictId" class="form-control"></select>
                                     </div>
                                     @switch (Model.CreateEstateDto.EstateTypeId)
                                     {
@@ -124,7 +124,7 @@
                                     }
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.BuiltDate">سال ساخت</label>
-                                        <input type="date" asp-for="CreateEstateDto.BuiltDate" name="BuiltDate" class="form-control" />
+                                        <input type="date" asp-for="CreateEstateDto.BuiltDate"  class="form-control" />
                                     </div>
 
                                     @switch (Model.CreateEstateDto.ServiceTypeId)
@@ -132,30 +132,30 @@
                                         case 1:
                                             <div class="form-group">
                                                 <label asp-for="CreateEstateDto.Price">قیمت هر مترمربع به میلیون تومان</label>
-                                                <input asp-for="CreateEstateDto.Price" name="Price" class="form-control" />
+                                                <input asp-for="CreateEstateDto.Price"  class="form-control" />
                                             </div>
                                             break;
                                         case 2:
                                             <div class="form-group">
                                                 <label asp-for="CreateEstateDto.Deposit">ودیعه</label>
-                                                <input asp-for="CreateEstateDto.Deposit" name="Deposit" class="form-control" />
+                                                <input asp-for="CreateEstateDto.Deposit" class="form-control" />
                                             </div>
                                             <div class="form-group">
                                                 <label asp-for="CreateEstateDto.Rent">مبلغ اجاره</label>
-                                                <input asp-for="CreateEstateDto.Rent" name="Rent" class="form-control" />
+                                                <input asp-for="CreateEstateDto.Rent" class="form-control" />
                                             </div>
                                             break;
                                     }
 
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.Address">آدرس</label>
-                                        <textarea asp-for="CreateEstateDto.Address" name="Address" class="form-control" rows="6"></textarea>
+                                        <textarea asp-for="CreateEstateDto.Address" class="form-control" rows="6"></textarea>
                                         <span asp-validation-for="CreateEstateDto.Address"></span>
                                     </div>
 
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.Description">توضیحات</label>
-                                        <textarea asp-for="CreateEstateDto.Description" name="Description" class="form-control" rows="6"></textarea>
+                                        <textarea asp-for="CreateEstateDto.Description" class="form-control" rows="6"></textarea>
                                         <span asp-validation-for="CreateEstateDto.Description"></span>
                                     </div>
 
@@ -171,7 +171,7 @@
                                 </div>
                             </div>
                             <div id="imgZone" style="visibility: hidden; position: absolute">
-                                <input id="inp1" type="file" name="Images" />
+                                <input id="inp1" type="file" asp-for="CreateEstateDto.Images" />
                             </div>
                             <div class="row justify-content-end">
                                 <button type="submit" class="btn btn-success">ثبت <i class="fa fa-check"></i></button>
@@ -209,30 +209,7 @@
                         data:data.result.results
                     });
                 });
-
-            //$("#DistrictId").select2({
-            //    dir: 'rtl',
-            //    dropdownAutoWidth: true,
-            //    dropdownParent: $("#DistrictId").parent(),
-            //    ajax: {
-            //        url: '/Estates/GetDistricts',
-            //        type: "post",
-            //        data: function (params) {
-            //            var query = {
-            //                term: params.term,
-            //                cityId: $("#CityId").val()
-            //            }
-            //            return query;
-            //        },
-
-            //        processResults: function (data) {
-            //            return {
-            //                results: data.result.results
-            //            };
-            //        },
-            //        dataType: 'json'
-            //    }
-            //});
+            
             $("#CityId").change(function() {
                 $("#DistrictId").val('').trigger("change");
                 $.post("/Estates/GetDistricts",
@@ -249,13 +226,19 @@
                     });
             });
             $("#frmCreate").ajaxForm({
+                beforeSubmit: () => {
+                    $("#IsBusy").modal("show");
+                    abp.ui.setBusy($("#frmCreate"));
+                },
                 success: function (data) {
+                    $("#IsBusy").modal("hide");
+                    abp.ui.clearBusy($("#frmCreate"));                    
                     if (data.result.code == 0) {
                         sweetAlert("", "اطلاعات با موفقیت ثبت شد", "success");
                         $("#frmCreate").trigger("reset");
                         $("#imgThumbnails .imgThumbnail").remove();
                         $("#imgZone").empty();
-                        $("#imgZone").append(`<input id="inp1" type="file" name="Images" />`);
+                        $("#imgZone").append(`<input id="inp1" type="file" name="CreateEstateDto.Images" />`);
                         $("#imgSelector").attr("data-target", "#inp1");
                         $("#inp1").change(function() {
                             readUrl(this);
@@ -264,7 +247,9 @@
                         sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
                     }
                 },
-                error: function() {
+                error: function () {
+                    $("#IsBusy").modal("hide");
+                    abp.ui.clearBusy($("#frmCreate"));
                     sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
                 }
             });
@@ -298,7 +283,7 @@
                 let inpId = "inp" + (length + 1);
                 $("#imgZone")
                     .append(
-                        `<input id="${inpId}" type="file" name="Images" onchange="readUrl(this)"/>`);
+                        `<input id="${inpId}" type="file" name="CreateEstateDto.Images" onchange="readUrl(this)"/>`);
                 $("#imgSelector").attr("data-target", "#" + inpId);
             }
         }

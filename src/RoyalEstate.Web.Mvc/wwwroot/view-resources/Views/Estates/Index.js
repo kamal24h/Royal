@@ -8,7 +8,7 @@
     });
 });
 
-let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-4">
+let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-4 mb-4">
                                 <a href="/Estates/Single/?id=${estate.id}">
                                     <div class="card estateCard m-0">
                                         <div class="row no-gutters h-100">

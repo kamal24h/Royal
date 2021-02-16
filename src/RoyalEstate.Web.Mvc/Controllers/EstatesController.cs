@@ -92,7 +92,6 @@ namespace RoyalEstate.Web.Controllers
         public async Task<JsonResult> GetDistricts(int cityId)
         {
             var districts = await _districtAppService.GetDistrictsSelectListAsync(cityId);
-            /*term = term.ToEnglishNumbers();*/
             return Json(new
             {
                 results = districts.Select(d => new
@@ -105,10 +104,11 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<JsonResult> CreateEstate(CreateEstateDto input)
+        public async Task<JsonResult> CreateEstate([Bind(include:"CreateEstateDto")] CreateEstateVm model)
         {
             try
             {
+                var input = model.CreateEstateDto;
                 if (input.Images.Count>0)
                 {
                     var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();

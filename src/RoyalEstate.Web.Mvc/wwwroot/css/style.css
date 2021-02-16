@@ -37,3 +37,12 @@ html {
 .famfamfam-flags {
     display: inline-block;
 }
+
+
+#IsBusy div.modal-content {
+    background-color: rgba(100,100,200,0.6)
+}
+
+.field-validation-error {
+    color: red
+}
