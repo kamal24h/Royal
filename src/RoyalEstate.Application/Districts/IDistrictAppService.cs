@@ -10,6 +10,6 @@ namespace RoyalEstate.Districts
 {
     public interface IDistrictAppService : IAsyncCrudAppService<DistrictDto, int, PagedDistrictResultRequestDto, CreateDistrictDto, DistrictDto>
     {
-        Task<List<SelectListItem>> GetDistrictsSelectList(PagedDistrictResultRequestDto input);
+        Task<List<SelectListItem>> GetDistrictsSelectListAsync(int cityId);
     }
 }

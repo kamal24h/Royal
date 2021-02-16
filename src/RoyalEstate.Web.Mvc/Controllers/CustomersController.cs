@@ -28,7 +28,7 @@ namespace RoyalEstate.Web.Controllers
         {
             CreateCustomerDto model = new CreateCustomerDto()
             {
-                Cities = await _cityAppService.GetCitiesSelectList(new PagedCityResultRequestDto())
+                Cities = await _cityAppService.GetCitiesSelectList()
             };
             return View(model);
         }

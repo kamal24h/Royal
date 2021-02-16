@@ -29,7 +29,7 @@ namespace RoyalEstate.Web.Controllers
         public async Task<IActionResult> Index()
         {
             DistrictsIndexVm model = new DistrictsIndexVm();
-            model.Cities.AddRange(await _cityAppService.GetCitiesSelectList(new PagedCityResultRequestDto()));
+            model.Cities.AddRange(await _cityAppService.GetCitiesSelectList());
 
             return View(model);
         }
@@ -41,7 +41,7 @@ namespace RoyalEstate.Web.Controllers
             EditDistrictVm model = new EditDistrictVm()
             {
                 District = await _DistrictAppService.GetAsync(new EntityDto<int>(id)),
-                Cities = await _cityAppService.GetCitiesSelectList(new PagedCityResultRequestDto())
+                Cities = await _cityAppService.GetCitiesSelectList()
             };
             return PartialView("_EditDistrictModal", model);
         }

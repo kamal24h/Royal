@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
+using DNTPersianUtils.Core;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using RoyalEstate.Cities;
+using RoyalEstate.Cities.Dto;
 using RoyalEstate.Web.Models.Estates;
 using RoyalEstate.Controllers;
 using RoyalEstate.Customers;
@@ -25,17 +28,20 @@ namespace RoyalEstate.Web.Controllers
         private readonly IEstateAppService _estateAppService;
         private readonly ICustomerAppService _customerAppService;
         private readonly IDistrictAppService _districtAppService;
+        private readonly ICityAppService _cityAppService;
 
         public EstatesController(
             IEstateTypeAppService estateTypeAppService, 
             IEstateAppService estateAppService,
             ICustomerAppService customerAppService,
-            IDistrictAppService districtAppService)
+            IDistrictAppService districtAppService,
+            ICityAppService cityAppService)
         {
             _estateTypeAppService = estateTypeAppService;
             _estateAppService = estateAppService;
             _customerAppService = customerAppService;
             _districtAppService = districtAppService;
+            _cityAppService = cityAppService;
         }
 
         public async Task<ActionResult> EstateTypes()
@@ -70,18 +76,33 @@ namespace RoyalEstate.Web.Controllers
         {
             CreateEstateVm model = new CreateEstateVm
             {
-                CreateEstateDto = new CreateEstateDto()
+                CreateEstateDto = new CreateEstateDto
                 {
                     ServiceTypeId = serviceTypeId, 
                     EstateTypeId = estateTypeId
                 },
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),
-                Districts = await _districtAppService.GetDistrictsSelectList(new PagedDistrictResultRequestDto { IsActive = true})
+                Cities = await _cityAppService.GetCitiesSelectList()
             };
 
             return View(model);
         }
-        
+
+        [HttpPost]
+        public async Task<JsonResult> GetDistricts(int cityId, string term)
+        {
+            var districts = await _districtAppService.GetDistrictsSelectListAsync(cityId);
+            term = term.ToEnglishNumbers();
+            return Json(new
+            {
+                results = districts.Where(d=>string.IsNullOrEmpty(term)|| d.Text.Contains(term)).Select(d => new
+                {
+                    id = int.Parse(d.Value),
+                    text = d.Text
+                }).ToArray()
+            });
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<JsonResult> CreateEstate(CreateEstateDto input)
@@ -134,5 +155,7 @@ namespace RoyalEstate.Web.Controllers
             };
             return View(model);
         }
+
+        
     }
 }

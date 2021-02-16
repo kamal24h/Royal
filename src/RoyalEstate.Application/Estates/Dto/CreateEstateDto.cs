@@ -41,7 +41,7 @@ namespace RoyalEstate.Estates.Dto
         public long? Rent { get; set; }
         public long? Deposit { get; set; }
 
-        //public int CityId { get; set; }
+        public int CityId { get; set; }
         public int? DistrictId { get; set; }
         public long CustomerId { get; set; }
 

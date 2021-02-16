@@ -17,9 +17,9 @@ namespace RoyalEstate.Districts
         {
         }
 
-        public async Task<List<SelectListItem>> GetDistrictsSelectList(PagedDistrictResultRequestDto input)
+        public async Task<List<SelectListItem>> GetDistrictsSelectListAsync(int cityId)
         {
-            return (await GetAllAsync(input)).Items.OrderBy(c=>c.Id).Select(c => new SelectListItem {Text = c.Name, Value = c.Id.ToString()}).ToList();
+            return (await Repository.GetAllListAsync(d=>d.CityId==cityId && d.IsActive)).Select(d=>new SelectListItem{Text = d.Name, Value = d.Id.ToString()}).ToList();
         }
     }
 }

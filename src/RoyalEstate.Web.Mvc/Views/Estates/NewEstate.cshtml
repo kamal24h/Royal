@@ -51,6 +51,9 @@
             cursor: pointer;
             background-color: burlywood
         }
+        .select2-selection--single {
+            height: 2.2rem !important
+        }
     </style>
 }
 
@@ -94,9 +97,13 @@
                                         <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" name="CustomerId" id="CustomerId" class="form-control"></select>
 
                                     </div>
-                                    <div class="form-group">
+                                    <div class="form-group text-right">
+                                        <label asp-for="CreateEstateDto.CityId">شهر</label>
+                                        <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" name="CityId" id="CityId" class="form-control"></select>
+                                    </div>
+                                    <div class="form-group text-right">
                                         <label asp-for="CreateEstateDto.DistrictId">منطقه شهری</label>
-                                        <select asp-for="CreateEstateDto.DistrictId" asp-items="Model.Districts" name="DistrictId" id="DistrictId" class="form-control"></select>
+                                        <select asp-for="CreateEstateDto.DistrictId" name="DistrictId" id="DistrictId" class="form-control"></select>
                                     </div>
                                     @switch (Model.CreateEstateDto.EstateTypeId)
                                     {
@@ -183,6 +190,44 @@
     <script src="/libs/sweetalert/sweetalert.min.js"></script>
     <script>
         $(() => {
+            $("#frmCreate select:not(#DistrictId)").each((i, e) => {
+                $(e).select2({
+                    dir: 'rtl',
+                    dropdownAutoWidth: true,
+                    dropdownParent: $(e).parent()
+                });
+            });
+
+            $("#DistrictId").select2({
+                dir: 'rtl',
+                dropdownAutoWidth: true,
+                dropdownParent: $("#DistrictId").parent(),
+                ajax: {
+                    url: '/Estates/GetDistricts',
+                    type: "post",
+                    data: function (params) {
+                        var query = {
+                            term: params.term,
+                            cityId: $("#CityId").val()
+                            
+                        }
+
+                        // Query parameters will be ?search=[term]&type=public
+                        return query;
+                    },
+                    processResults: function (data) {
+                        console.log(data);
+                        // Transforms the top-level key of the response object from 'items' to 'results'
+                        return {
+                            results: data.result.results
+                        };
+                    },
+                    dataType: 'json'
+                }
+            });
+            $("#CityId").change(function() {
+                $("#DistrictId").val('').trigger("change");
+            })
             $("#frmCreate").ajaxForm({
                 success: function (data) {
                     if (data.result.code == 0) {

@@ -10,6 +10,6 @@ namespace RoyalEstate.Cities
 {
     public interface ICityAppService : IAsyncCrudAppService<CityDto, int, PagedCityResultRequestDto, CreateCityDto, CityDto>
     {
-        Task<List<SelectListItem>> GetCitiesSelectList(PagedCityResultRequestDto input);
+        Task<List<SelectListItem>> GetCitiesSelectList();
     }
 }

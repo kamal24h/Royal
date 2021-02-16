@@ -17,9 +17,9 @@ namespace RoyalEstate.Cities
         {
         }
 
-        public async Task<List<SelectListItem>> GetCitiesSelectList(PagedCityResultRequestDto input)
+        public async Task<List<SelectListItem>> GetCitiesSelectList()
         {
-            return (await GetAllAsync(input)).Items.OrderBy(c=>c.Id).Select(c => new SelectListItem {Text = c.Name, Value = c.Id.ToString()}).ToList();
+            return (await Repository.GetAllListAsync(c=>c.IsActive==true)).OrderBy(c=>c.Id).Select(c => new SelectListItem {Text = c.Name, Value = c.Id.ToString()}).ToList();
         }
     }
 }
