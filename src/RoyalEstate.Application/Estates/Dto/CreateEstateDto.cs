@@ -19,8 +19,6 @@ namespace RoyalEstate.Estates.Dto
         public string Title { get; set; }
         
         public int EstateTypeId { get; set; }
-        public int ServiceTypeId { get; set; }
-
         public double Area { get; set; }
         public int? Rooms { get; set; }
         public int? Floor { get; set; }

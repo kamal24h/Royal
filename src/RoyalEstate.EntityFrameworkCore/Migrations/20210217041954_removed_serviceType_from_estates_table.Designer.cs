@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RoyalEstate.EntityFrameworkCore;
 
 namespace RoyalEstate.Migrations
 {
     [DbContext(typeof(RoyalEstateDbContext))]
-    partial class RoyalEstateDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210217041954_removed_serviceType_from_estates_table")]
+    partial class removed_serviceType_from_estates_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

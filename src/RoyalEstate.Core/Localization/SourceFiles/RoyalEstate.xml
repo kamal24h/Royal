@@ -146,6 +146,25 @@
     <text name="SystemUsers">System Users</text>
     <text name="Customers">Customers</text>
     <text name="EstateDescription">Estate Description</text>
+
+    <!--Dynamic properties-->
+    <text name="Price">Price</text>
+    <text name="Rent">Rent</text>
+    <text name="Deposit">Deposit</text>
+
+    <text name="AreaM2">Area (m2)</text>
+    <text name="Rooms">Rooms</text>
+    <text name="Floor">Floor</text>
+    <text name="TotalFloors">TotalFloors</text>
+    <text name="UnitsPerFloor">UnitsPerFloor</text>
+    <text name="Parking">Parking</text>
+    <text name="Storeroom">Storeroom</text>
+    <text name="Elevator">Elevator</text>
+    <text name="BuiltDate">BuiltDate</text>
+    <!---->
+
+    <text name="Has">Has</text>
+    <text name="HasNot">Has Not</text>
     
   </texts>
 </localizationDictionary>

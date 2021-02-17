@@ -81,13 +81,12 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> NewEstate(int estateTypeId, int serviceTypeId)
+        public async Task<ActionResult> NewEstate(int estateTypeId)
         {
             CreateEstateVm model = new CreateEstateVm
             {
                 CreateEstateDto = new CreateEstateDto
                 {
-                    ServiceTypeId = serviceTypeId, 
                     EstateTypeId = estateTypeId                  
                 },
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),

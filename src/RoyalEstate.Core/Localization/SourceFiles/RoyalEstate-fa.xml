@@ -185,5 +185,24 @@
 
     <text name="Address">آدرس</text>
     <text name="EstateDescription">توضیحات ملک</text>
+
+    <!--Dynamic properties-->
+    <text name="Price">قیمت</text>
+    <text name="Rent">اجاره</text>
+    <text name="Deposit">ودیعه</text>
+
+    <text name="AreaM2">متراژ</text>
+    <text name="Rooms">تعداد اتاق</text>
+    <text name="Floor">طبقه</text>
+    <text name="TotalFloors">کل طبقات</text>
+    <text name="UnitsPerFloor">تعداد واحد در هر طبقه</text>
+    <text name="Parking">پارکینگ</text>
+    <text name="Storeroom">انباری</text>
+    <text name="Elevator">آسانسور</text>
+    <text name="BuiltDate">تاریخ ساخت</text>
+    <!---->
+
+    <text name="Has">دارد</text>
+    <text name="HasNot">ندارد</text>
   </texts>
 </localizationDictionary>

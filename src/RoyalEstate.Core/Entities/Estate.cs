@@ -32,10 +32,6 @@ namespace RoyalEstate.Entities
         public EstateType EstateType { get; set; }
         public int EstateTypeId { get; set; }
 
-        [ForeignKey(nameof(ServiceTypeId))]
-        public ServiceType ServiceType { get; set; }
-        public int ServiceTypeId { get; set; }
-
         public string FilingCode { get; set; }
 
         public double Area { get; set; }
