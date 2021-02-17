@@ -8,6 +8,9 @@
 
 @section styles
 {
+
+    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" asp-append-version="true" />
+
     <style>
         ul#ulCategories li {
             padding: 0.7rem 0.5rem !important;
@@ -35,9 +38,11 @@
             background-clip: content-box;
             height: 7rem;
         }
+
         #btnReturnToCategories:hover {
             color: black;
         }
+
         .estateCard {
             height: 8rem !important;
             background-color: #f5f5f5;
@@ -49,10 +54,10 @@
             justify-content: space-between;
             flex-direction: column;
         }
+
         #estatesSection a {
             color: black;
         }
-        
     </style>
 }
 
@@ -91,7 +96,7 @@
                                             <li class="nav-item">
                                                 <a class="nav-link" data-toggle="tab" href="@("#serviceType"+item.Id)">@L(item.Name)</a>
                                             </li>
-                                        }                                        
+                                        }
                                     </ul>
                                     <div class="tab-content d-none">
                                         <button id="btnReturnToCategories" class="btn btn-link">
@@ -111,14 +116,14 @@
                                                                 @L(estateType.Name)
                                                             </a>
                                                         </li>
-                                                    }                                                    
+                                                    }
                                                 </ul>
                                             </div>
-                                        }                                        
+                                        }
                                     </div>
                                 </div>
                             </div>
-                            
+
                             @using (Html.BeginForm("NewEstate", "Estates", FormMethod.Post, new { id = "frmNew", @class = "d-none" }))
                             {
                                 @Html.AntiForgeryToken()
@@ -136,7 +141,10 @@
 
 @section scripts
 {
+    @*<script src="/libs/jquery.form/jquery.form.min.js"></script>*@
     <script src="/libs/persian-date/dist/persian-date.min.js" asp-append-version="true"></script>
+    <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
+
     <script>
         $(() => {
             $("#btnNewEstate").click(function () {
@@ -144,11 +152,11 @@
                 $("#estatesSection").fadeOut(500);
             });
 
-            $("#newEstateSection button.close").click(function() {
+            $("#newEstateSection button.close").click(function () {
                 $("#newEstateSection").hide(500);
                 $("#estatesSection").fadeIn(500);
             });
-            
+
 
             $("#newEstateSection a.nav-link").click(function () {
                 $("#ulCategories").addClass("d-none");

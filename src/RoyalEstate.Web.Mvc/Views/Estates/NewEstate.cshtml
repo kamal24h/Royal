@@ -8,12 +8,16 @@
 
 @section styles
 {
+
+    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" asp-append-version="true" />
+
     <style>
         #imgThumbnails {
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
         }
+
         .imgThumbnail {
             width: 5rem;
             height: 5rem;
@@ -24,33 +28,39 @@
             border: 1px dashed black;
             position: relative;
         }
-        .imgThumbnail img {
-            width: 4.9rem;
-            height: 4.9rem;
+
+            .imgThumbnail img {
+                width: 4.9rem;
+                height: 4.9rem;
+            }
+
+            .imgThumbnail .deleteImg {
+                position: absolute;
+                top: 0.1rem;
+                left: 0.1rem;
+            }
+
+                .imgThumbnail .deleteImg:hover {
+                    cursor: pointer;
+                    color: red !important
+                }
+
+        #imgSelector {
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px dashed black;
+            transition: background-color 0.5s
         }
-        .imgThumbnail .deleteImg {
-            position: absolute;
-            top: 0.1rem;
-            left: 0.1rem;
-        }
-            .imgThumbnail .deleteImg:hover {
+
+            #imgSelector:hover {
                 cursor: pointer;
-                color: red !important
+                background-color: burlywood
             }
-            #imgSelector {
-                width: 5rem;
-                height: 5rem;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background: white;
-                border: 1px dashed black;
-                transition: background-color 0.5s
-            }
-        #imgSelector:hover {
-            cursor: pointer;
-            background-color: burlywood
-        }
+
         .select2-selection--single {
             height: 2.2rem !important
         }
@@ -77,7 +87,7 @@
                         @using (Html.BeginForm("CreateEstate", "Estates", FormMethod.Post, new { id = "frmCreate", enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
-                            <input asp-for="CreateEstateDto.EstateTypeId"  type="hidden"/>
+                            <input asp-for="CreateEstateDto.EstateTypeId" type="hidden" />
                             <div class="row justify-content-center">
                                 <div class="col-sm-12 col-md-6 col-lg-4 text-right">
                                     <div class="form-group">
@@ -93,8 +103,8 @@
 
                                     @if (Model.EstateType.LegalDoc)
                                     {
-                                        <label asp-for="CreateEstateDto.LegalDoc">وضعیت سند</label>    
-                                        <select asp-for="CreateEstateDto.LegalDoc"  class="form-control">
+                                        <label asp-for="CreateEstateDto.LegalDoc">وضعیت سند</label>
+                                        <select asp-for="CreateEstateDto.LegalDoc" class="form-control">
                                             <option value="سند آزاد">سند آزاد</option>
                                             <option value="در دست اقدام">در دست اقدام</option>
                                             <option value="فاقد سند">فاقد سند</option>
@@ -241,7 +251,7 @@
                             <label>عکس‌های پرونده ملکی</label>
                             <div class="row">
                                 <div id="imgThumbnails" class="col-12 text-right">
-                                    
+
                                     <div id="imgSelector" data-target="#inp1">
                                         <i class="fa fa-image" style="font-size: 2rem"></i>
                                     </div>
@@ -251,22 +261,23 @@
                                 <input id="inp1" type="file" asp-for="CreateEstateDto.Images" />
                             </div>
                             <div class="row justify-content-end">
-                                <button type="submit" class="btn btn-success" >ثبت <i class="fa fa-check"></i></button>
+                                <button type="submit" class="btn btn-success">ثبت <i class="fa fa-check"></i></button>
                             </div>
                         }
-                    </div>                    
+                    </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 </section>
 
 @section scripts{
     <script src="/libs/jquery.form/jquery.form.min.js"></script>
+    <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
     <script>
         $(() => {
-            
+
             $("#frmCreate select:not(#DistrictId)").each((i, e) => {
                 $(e).select2({
                     dir: 'rtl',
@@ -283,17 +294,17 @@
                         dir: 'rtl',
                         dropdownAutoWidth: true,
                         dropdownParent: $("#DistrictId").parent(),
-                        data:data.result.results
+                        data: data.result.results
                     });
                 });
-            
-            $("#CityId").change(function() {
+
+            $("#CityId").change(function () {
                 $("#DistrictId").val('').trigger("change");
                 $.post("/Estates/GetDistricts",
                     {
                         cityId: $("#CityId").val()
                     },
-                    function(data, status) {
+                    function (data, status) {
                         $("#DistrictId option").remove();
                         data.result.results.forEach(d => {
                             var newOption = new Option(d.text, d.id, false, false);
@@ -303,21 +314,21 @@
                     });
             });
             $("#frmCreate").ajaxForm({
-                beforeSubmit: () => {                           
-                    $("#IsBusy").css("display","block");
-                    abp.ui.setBusy($("#frmCreate"));                                        
+                beforeSubmit: () => {
+                    $("#IsBusy").css("display", "block");
+                    abp.ui.setBusy($("#frmCreate"));
                 },
                 success: function (data) {
                     $("#IsBusy").css("display", "none");
-                    abp.ui.clearBusy($("#frmCreate"));                    
-                    if (data.result.code == 0) {                        
+                    abp.ui.clearBusy($("#frmCreate"));
+                    if (data.result.code == 0) {
                         sweetAlert("", "اطلاعات با موفقیت ثبت شد", "success");
                         $("#frmCreate").trigger("reset");
                         $("#imgThumbnails .imgThumbnail").remove();
                         $("#imgZone").empty();
                         $("#imgZone").append(`<input id="inp1" type="file" name="CreateEstateDto.Images" />`);
                         $("#imgSelector").attr("data-target", "#inp1");
-                        $("#inp1").change(function() {
+                        $("#inp1").change(function () {
                             readUrl(this);
                         })
                     } else {
@@ -331,12 +342,12 @@
                 }
             });
             $("#Elevator,#Parking,#StoreRoom").val('').change();
-            $("#imgSelector").click(function() {
+            $("#imgSelector").click(function () {
                 let selector = $(this).attr("data-target");
                 $(selector).trigger("click");
             });
 
-            $("div#imgZone input").change(function() {
+            $("div#imgZone input").change(function () {
                 readUrl(this);
             });
         });
@@ -345,14 +356,14 @@
             if (input.files && input.files[0]) {
                 let id = $(input).prop("id");
                 $("#imgSelector").before(`<div data-id="${id}" class="imgThumbnail">
-                                        <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
-                                        <img/>
-                                    </div>`);
+                                                <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
+                                                <img/>
+                                            </div>`);
 
                 var blob = new Blob([input.files[0]]);
                 var url = URL.createObjectURL(blob);
                 var img = $(`#imgThumbnails div[data-id=${id}] img`)[0];
-                img.onload = function() {
+                img.onload = function () {
                     URL.revokeObjectURL(this.src);     // clean-up memory
                 }
                 img.src = url;
@@ -371,5 +382,5 @@
             $(`#imgZone input#${inpId}`).remove();
         }
     </script>
-    
+
 }
