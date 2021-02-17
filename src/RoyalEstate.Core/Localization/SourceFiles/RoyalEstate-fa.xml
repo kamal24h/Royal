@@ -186,13 +186,34 @@
     <text name="Address">آدرس</text>
     <text name="EstateDescription">توضیحات ملک</text>
 
+    <!--Service Types-->
+    <text name="ResidentialForSale">فروش مسکونی</text>
+    <text name="ResidentialForRent">اجاره مسکونی</text>
+    <text name="CommercialForSale">فروش تجاری</text>
+    <text name="CommercialForRent">اجاره تجاری</text>
+    <!---->
+
+    <!--Estate Types-->
+    <text name="ApartmentForSale">فروش آپارتمان</text>
+    <text name="HomeForSale">فروش خانه</text>
+    <text name="StoreForSale">فروش مغازه</text>
+    <text name="OfficeForSale">فروش دفتر کار</text>
+    <text name="ApartmentForRent">اجاره آپارتمان</text>
+    <text name="HomeForRent">اجاره خانه</text>
+    <text name="StoreForRent">اجاره مغازه</text>
+    <text name="OfficeForRent">اجاره دفتر کار</text>
+    <!---->
+
     <!--Dynamic properties-->
-    <text name="Price">قیمت</text>
+    <text name="LegalDoc">وضعیت سند</text>
+
+    <text name="PricePerM2">قیمت هر متر مربع</text>
     <text name="Rent">اجاره</text>
     <text name="Deposit">ودیعه</text>
 
     <text name="AreaM2">متراژ</text>
     <text name="Rooms">تعداد اتاق</text>
+    <text name="MasterRoom">اتاق مستر</text>
     <text name="Floor">طبقه</text>
     <text name="TotalFloors">کل طبقات</text>
     <text name="UnitsPerFloor">تعداد واحد در هر طبقه</text>

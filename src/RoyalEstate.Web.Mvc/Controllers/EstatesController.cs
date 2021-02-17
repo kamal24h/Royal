@@ -156,15 +156,14 @@ namespace RoyalEstate.Web.Controllers
         }
 
         public async Task<ActionResult> Single(long id)
-        {          
-            
+        {
+            var estateDto = await _estateAppService.GetAsync(new EntityDto<long>(id));
             EstateVm model = new EstateVm()
             {
-                EstateDto = await _estateAppService.GetAsync(new EntityDto<long>(id))
+                EstateDto = estateDto,
+                EstateTypeDto = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
             };
             return View(model);
         }
-
-        
     }
 }

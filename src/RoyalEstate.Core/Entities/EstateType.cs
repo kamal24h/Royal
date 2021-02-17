@@ -25,8 +25,7 @@ namespace RoyalEstate.Entities{
         [Required]
         public virtual ServiceType ServiceType { get; set; }
         public int ServiceTypeId { get; set; }
-
-        public bool FileCode { get; set; }
+        
         public bool LegalDoc { get; set; }
 
         public bool Price { get; set; }

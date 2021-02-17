@@ -1652,6 +1652,9 @@ namespace RoyalEstate.Migrations
                     b.Property<DateTime>("BuiltDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CityId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 
@@ -1732,6 +1735,8 @@ namespace RoyalEstate.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("CityId");
+
                     b.HasIndex("CreatorUserId");
 
                     b.HasIndex("CustomerId");
@@ -1791,6 +1796,12 @@ namespace RoyalEstate.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LegalDoc")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("MasterRoom")
                         .HasColumnType("bit");
 
                     b.Property<string>("Name")
@@ -2154,6 +2165,12 @@ namespace RoyalEstate.Migrations
 
             modelBuilder.Entity("RoyalEstate.Entities.Estate", b =>
                 {
+                    b.HasOne("RoyalEstate.Entities.City", "City")
+                        .WithMany()
+                        .HasForeignKey("CityId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("RoyalEstate.Authorization.Users.User", "CreatorUser")
                         .WithMany()
                         .HasForeignKey("CreatorUserId")

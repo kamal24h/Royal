@@ -25,12 +25,15 @@ namespace RoyalEstate.Estates.Dto
         public int ServiceTypeId { get; set; }
         public string ServiceTypeName { get; set; }
 
+        public bool LegalDoc { get; set; }
+
         public bool Price { get; set; }
         public bool Rent { get; set; }
         public bool Deposit { get; set; }
 
         public bool Area { get; set; }
         public bool Rooms { get; set; }
+        public bool MasterRoom { get; set; }
         public bool Floor { get; set; }
         public bool TotalFloors { get; set; }
         public bool UnitsPerFloor { get; set; }

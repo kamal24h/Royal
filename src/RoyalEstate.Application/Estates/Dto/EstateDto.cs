@@ -23,7 +23,7 @@ namespace RoyalEstate.Estates.Dto
         public bool? StoreRoom { get; set; }
         public bool? Elevator { get; set; }
         public bool? MasterRoom { get; set; }
-        public string? LegalDoc { get; set; }
+        public string LegalDoc { get; set; }
         public string BuiltDate { get; set; }
         public string FilingCode { get; set; }
 
@@ -34,7 +34,8 @@ namespace RoyalEstate.Estates.Dto
         public long? Rent { get; set; }
         public long? Deposit { get; set; }
 
-        //public int CityId { get; set; }
+        public int CityId { get; set; }
+        public string CityName { get; set; }
         public int? DistrictId { get; set; }
         public string DistrictName { get; set; }
         public long CustomerId { get; set; }

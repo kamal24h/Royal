@@ -101,7 +101,7 @@
                                         @foreach (var item in Model)
                                         {
                                             <div class="tab-pane container" id="@("serviceType"+item.Id)">
-                                                <label>@item.Name</label>
+                                                <label>@L(item.Name)</label>
                                                 <ul class="list-group ">
                                                     @foreach (var estateType in item.EstateTypes)
                                                     {

@@ -13,7 +13,7 @@
     <style>
 
         .container-fluid {
-            font: 'yekan';
+            font-family: 'yekan';
         }
 
         .carousel-inner img {
@@ -56,6 +56,12 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
+                        <div class="row justify-content-center">
+                            <div>
+                                <button id="btnDelete" class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                                <button id="btnEdit" class="btn btn-info"><i class="fas fa-pen"></i></button>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-sm-4">
                                 <i class="fas fa-user"></i>
@@ -104,18 +110,14 @@
 
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
-                                                    <h6>کد :</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.FilingCode</span>
-                                                    &nbsp
-                                                    <h6>محله</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.DistrictName</span>
+                                                    <h6>شهر: <span class="text-info text-bold">@Model.EstateDto.CityName</span></h6>
+                                                    <h6>محله: <span class="text-info text-bold">@Model.EstateDto.DistrictName</span></h6>
                                                 </div>
                                             </li>
 
-
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
-                                                    @if (Model.EstateDto.Price > 0)
+                                                    @if (Model.EstateTypeDto.Price)
                                                     {<h6>قیمت</h6>
                                                     <span class="text-info text-bold">@Model.EstateDto.Price (میلیون تومان)</span> }
                                                     else
@@ -134,24 +136,7 @@
                                                     <span class="text-info text-bold">@Model.EstateDto.Rent (میلیون تومان)</span>}
                                                 </div>
                                             </li>
-
-                                            @*<li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>قیمت (میلیون تومان) </h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Price</span>
-                                                    <h6>قیمت کل</h6>
-                                                    <span class="text-info text-bold">)
-</span>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6> رهن (میلیون تومان) </h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Deposit</span>
-                                                    <h6>:اجاره</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Rent</span>
-                                                </div>
-                                            </li>*@
+                                            
                                             <li class="list-group-item">
                                                 <div class="row justify-content-between">
                                                     <h6>وضعیت سند</h6>
@@ -290,6 +275,30 @@
 
 @section scripts{
     <script>
+        let _estateService = abp.services.app.estate;
+        let l = abp.localization.getSource('RoyalEstate');
+        let title = "@Html.Raw(Model.EstateDto.Title)";
+        console.log(title);
+        $(() => {
+            $("#btnDelete").click(function() {
+                abp.message.confirm(
+                    abp.utils.formatString(
+                        l('AreYouSureWantToDelete'),
+                        title),
+                    "حذف",
+                    (isConfirmed) => {
+                        if (isConfirmed) {
+                            $("#IsBusy").css("display", "block");
+                            _estateService.delete({
+                                id: @(Model.EstateDto.Id)
+                            }).done(() => {
+                                window.location.replace("/Estates/Index");
+                            });
+                        }
+                    }
+                );
+            });
+        });
         function goFullScreen(i) {
             let index = $(i).parent().index();
             $(`#fullScreenSlider .carousel-indicators> li`).removeClass("active");

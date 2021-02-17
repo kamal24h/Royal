@@ -91,6 +91,17 @@
                                         <input asp-for="CreateEstateDto.FilingCode" class="form-control" />
                                     </div>
 
+                                    @if (Model.EstateType.LegalDoc)
+                                    {
+                                        <label asp-for="CreateEstateDto.LegalDoc">وضعیت سند</label>    
+                                        <select asp-for="CreateEstateDto.LegalDoc"  class="form-control">
+                                            <option value="سند آزاد">سند آزاد</option>
+                                            <option value="در دست اقدام">در دست اقدام</option>
+                                            <option value="فاقد سند">فاقد سند</option>
+                                            <option value="سند ورٍثه ای">سند ورٍثه ای</option>
+                                        </select>
+                                    }
+
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.CustomerId">مشتری</label>
                                         <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" id="CustomerId" class="form-control"></select>
@@ -104,6 +115,8 @@
                                         <label asp-for="CreateEstateDto.DistrictId">منطقه شهری</label>
                                         <select asp-for="CreateEstateDto.DistrictId" id="DistrictId" class="form-control"></select>
                                     </div>
+
+
 
                                     @if (Model.EstateType.Area)
                                     {
@@ -119,6 +132,18 @@
                                             <input asp-for="CreateEstateDto.Rooms" type="number" class="form-control" />
                                         </div>
                                     }
+
+                                    @if (Model.EstateType.MasterRoom)
+                                    {
+                                        <div class="form-group text-right">
+                                            <label asp-for="CreateEstateDto.MasterRoom">@L("MasterRoom")</label>
+                                            <select asp-for="CreateEstateDto.MasterRoom" class="form-control">
+                                                <option value="false">@L("HasNot")</option>
+                                                <option value="true">@L("Has")</option>
+                                            </select>
+                                        </div>
+                                    }
+
                                     @if (Model.EstateType.Floor)
                                     {
                                         <div class="form-group text-right">
@@ -130,14 +155,14 @@
                                     {
                                         <div class="form-group text-right">
                                             <label asp-for="CreateEstateDto.TotalFloors">@L("TotalFloors")</label>
-                                            <input asp-for="CreateEstateDto.TotalFloors" type="number" class="form-control" />
+                                            <input asp-for="CreateEstateDto.TotalFloors" type="number" min="1" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.UnitsPerFloor)
                                     {
                                         <div class="form-group text-right">
                                             <label asp-for="CreateEstateDto.UnitsPerFloor">@L("UnitsPerFloor")</label>
-                                            <input asp-for="CreateEstateDto.UnitsPerFloor" type="number" class="form-control" />
+                                            <input asp-for="CreateEstateDto.UnitsPerFloor" type="number" min="1" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Parking)
@@ -146,7 +171,7 @@
                                             <label asp-for="CreateEstateDto.Parking">@L("Parking")</label>
                                             <select asp-for="CreateEstateDto.Parking" class="form-control">
                                                 <option value="true">@L("Has")</option>
-                                                <option value="false">@L("NotHave")</option>
+                                                <option value="false">@L("HasNot")</option>
                                             </select>
                                         </div>
                                     }
@@ -156,7 +181,7 @@
                                             <label asp-for="CreateEstateDto.StoreRoom">@L("Storeroom")</label>
                                             <select asp-for="CreateEstateDto.StoreRoom" class="form-control">
                                                 <option value="true">@L("Has")</option>
-                                                <option value="false">@L("NotHave")</option>
+                                                <option value="false">@L("HasNot")</option>
                                             </select>
                                         </div>
                                     }
@@ -166,7 +191,7 @@
                                             <label asp-for="CreateEstateDto.Elevator">@L("Elevator")</label>
                                             <select asp-for="CreateEstateDto.Elevator" class="form-control">
                                                 <option value="true">@L("Has")</option>
-                                                <option value="false">@L("NotHave")</option>
+                                                <option value="false">@L("HasNot")</option>
                                             </select>
                                         </div>
                                     }
@@ -181,21 +206,21 @@
                                     {
                                         <div class="form-group text-right">
                                             <label asp-for="CreateEstateDto.Price">@L("PricePerM2")</label>
-                                            <input asp-for="CreateEstateDto.Price" type="number" class="form-control" />
+                                            <input asp-for="CreateEstateDto.Price" type="number" min="0" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Deposit)
                                     {
                                         <div class="form-group text-right">
                                             <label asp-for="CreateEstateDto.Deposit">@L("Deposit")</label>
-                                            <input asp-for="CreateEstateDto.Deposit" type="number" class="form-control" />
+                                            <input asp-for="CreateEstateDto.Deposit" type="number" min="0" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Rent)
                                     {
                                         <div class="form-group text-right">
                                             <label asp-for="CreateEstateDto.Rent">@L("Rent")</label>
-                                            <input asp-for="CreateEstateDto.Rent" type="number" class="form-control" />
+                                            <input asp-for="CreateEstateDto.Rent" type="number" min="0" class="form-control" />
                                         </div>
                                     }
 
@@ -239,7 +264,6 @@
 
 @section scripts{
     <script src="/libs/jquery.form/jquery.form.min.js"></script>
-    <script src="/libs/sweetalert/sweetalert.min.js"></script>
     <script>
         $(() => {
             

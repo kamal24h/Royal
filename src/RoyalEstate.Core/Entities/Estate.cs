@@ -43,7 +43,7 @@ namespace RoyalEstate.Entities
         public bool? StoreRoom { get; set; }
         public bool? Elevator { get; set; }
         public bool? MasterRoom { get; set; }
-        public string? LegalDoc { get; set; }
+        public string LegalDoc { get; set; }
         
         public DateTime BuiltDate { get; set; }
 
@@ -53,9 +53,11 @@ namespace RoyalEstate.Entities
         public long? Deposit { get; set; }
 
 
-        //[ForeignKey(nameof(CityId))]
-        //public City City { get; set; }
-        //public int CityId { get; set; }
+        [ForeignKey(nameof(CityId))]
+        [Required]
+        public City City { get; set; }
+        public int CityId { get; set; }
+
 
         [ForeignKey(nameof(DistrictId))]
         public District District { get; set; }

@@ -147,13 +147,34 @@
     <text name="Customers">Customers</text>
     <text name="EstateDescription">Estate Description</text>
 
+    <!--Service Types-->
+    <text name="ResidentialForSale">Residential For Sale</text>
+    <text name="ResidentialForRent">Residential For Rent</text>
+    <text name="CommercialForSale">Commercial For Sale</text>
+    <text name="CommercialForRent">Commercial For Rent</text>
+    <!---->
+
+    <!--Estate Types-->
+    <text name="ApartmentForSale">Apartment For Sale</text>
+    <text name="HomeForSale">Home For Sale</text>
+    <text name="StoreForSale">Store For Sale</text>
+    <text name="OfficeForSale">Office For Sale</text>
+    <text name="ApartmentForRent">Apartment For Rent</text>
+    <text name="HomeForRent">Home For Rent</text>
+    <text name="StoreForRent">Store For Rent</text>
+    <text name="OfficeForRent">Office For Rent</text>
+    <!---->
+
     <!--Dynamic properties-->
-    <text name="Price">Price</text>
+    <text name="LegalDoc">Legal Doc</text>
+
+    <text name="PricePerM2">Price (per m2)</text>
     <text name="Rent">Rent</text>
-    <text name="Deposit">Deposit</text>
+    <text name="Deposit">Deposit</text>    
 
     <text name="AreaM2">Area (m2)</text>
     <text name="Rooms">Rooms</text>
+    <text name="MasterRoom">Master Room</text>
     <text name="Floor">Floor</text>
     <text name="TotalFloors">TotalFloors</text>
     <text name="UnitsPerFloor">UnitsPerFloor</text>

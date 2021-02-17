@@ -45,6 +45,7 @@
         </div>
     </div>
     @await Html.PartialAsync("_Scripts.cshtml")
+    <script src="/libs/sweetalert/sweetalert.min.js"></script>
     @RenderSection("scripts", required: false)
     @WebResourceManager.RenderScripts()
 </body>
