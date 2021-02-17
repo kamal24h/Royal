@@ -196,7 +196,7 @@ namespace RoyalEstate.Migrations
                 },
                 values: new object[] {5, 2,
                     "ApartmentForRent",
-                    true,false,false,
+                    false,true,true,
                     true, true, true, true, true,
                     true, true, true, true,
                     DateTime.Now
