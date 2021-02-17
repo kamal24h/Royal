@@ -56,6 +56,7 @@
     <text name="CreateNewDistrict">New District</text>
     <text name="Districts">Districts</text>
     <text name="District">District</text>
+    <text name="AllEstateFiles">All Estate Files</text>
 
     <text name="Optional" value="Optional" />
     <text name="LeaveEmptyToSwitchToHost">Leave empty to switch to the host</text>

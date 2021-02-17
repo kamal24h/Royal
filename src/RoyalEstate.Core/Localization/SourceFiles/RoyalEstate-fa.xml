@@ -10,7 +10,9 @@
     <text name="Submit">ثبت</text>
     <text name="CreateNewDistrict">محله جدید</text>
     <text name="Districts">محله ها</text>
-    <text name="District">محله</text> 
+    <text name="District">محله</text>
+    <text name="AllEstateFiles">همه پرونده ها</text>
+    
 
     <text name="Tenants" value="تننت‌ها" />
     <text name="CreateNewTenant" value="ایجاد تننت جدید" />
