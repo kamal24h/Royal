@@ -10,6 +10,8 @@
 {
 
     <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" asp-append-version="true" />
+    <link href="~/view-resources/Views/_Bundles/bootstrap-rtl.min.css" rel="stylesheet" />
+
 
     <style>
         #imgThumbnails {
@@ -83,13 +85,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header"></div>
-                    <div class="card-body text-right">
+                    <div class="card-body">
                         @using (Html.BeginForm("CreateEstate", "Estates", FormMethod.Post, new { id = "frmCreate", enctype = "multipart/form-data" }))
                         {
                             @Html.AntiForgeryToken()
                             <input asp-for="CreateEstateDto.EstateTypeId" type="hidden" />
                             <div class="row justify-content-center">
-                                <div class="col-sm-12 col-md-6 col-lg-4 text-right">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
                                     <div class="form-group">
                                         <label asp-for="CreateEstateDto.Title">عنوان پرونده</label>
                                         <input asp-for="CreateEstateDto.Title" class="form-control" />
@@ -117,11 +119,11 @@
                                         <select asp-for="CreateEstateDto.CustomerId" asp-items="Model.Customers" id="CustomerId" class="form-control"></select>
 
                                     </div>
-                                    <div class="form-group text-right">
+                                    <div class="form-group">
                                         <label asp-for="CreateEstateDto.CityId">شهر</label>
                                         <select asp-for="CreateEstateDto.CityId" asp-items="Model.Cities" id="CityId" class="form-control"></select>
                                     </div>
-                                    <div class="form-group text-right">
+                                    <div class="form-group">
                                         <label asp-for="CreateEstateDto.DistrictId">منطقه شهری</label>
                                         <select asp-for="CreateEstateDto.DistrictId" id="DistrictId" class="form-control"></select>
                                     </div>
@@ -130,14 +132,14 @@
 
                                     @if (Model.EstateType.Area)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group ">
                                             <label asp-for="CreateEstateDto.Area">@L("AreaM2")</label>
                                             <input asp-for="CreateEstateDto.Area" type="number" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Rooms)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group ">
                                             <label asp-for="CreateEstateDto.Rooms">@L("Rooms")</label>
                                             <input asp-for="CreateEstateDto.Rooms" type="number" class="form-control" />
                                         </div>
@@ -145,7 +147,7 @@
 
                                     @if (Model.EstateType.MasterRoom)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group ">
                                             <label asp-for="CreateEstateDto.MasterRoom">@L("MasterRoom")</label>
                                             <select asp-for="CreateEstateDto.MasterRoom" class="form-control">
                                                 <option value="false">@L("HasNot")</option>
@@ -156,28 +158,28 @@
 
                                     @if (Model.EstateType.Floor)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group ">
                                             <label asp-for="CreateEstateDto.Floor">@L("Floor")</label>
                                             <input asp-for="CreateEstateDto.Floor" type="number" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.TotalFloors)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group ">
                                             <label asp-for="CreateEstateDto.TotalFloors">@L("TotalFloors")</label>
                                             <input asp-for="CreateEstateDto.TotalFloors" type="number" min="1" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.UnitsPerFloor)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.UnitsPerFloor">@L("UnitsPerFloor")</label>
                                             <input asp-for="CreateEstateDto.UnitsPerFloor" type="number" min="1" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Parking)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.Parking">@L("Parking")</label>
                                             <select asp-for="CreateEstateDto.Parking" class="form-control">
                                                 <option value="true">@L("Has")</option>
@@ -187,7 +189,7 @@
                                     }
                                     @if (Model.EstateType.Storeroom)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.StoreRoom">@L("Storeroom")</label>
                                             <select asp-for="CreateEstateDto.StoreRoom" class="form-control">
                                                 <option value="true">@L("Has")</option>
@@ -197,7 +199,7 @@
                                     }
                                     @if (Model.EstateType.Elevator)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.Elevator">@L("Elevator")</label>
                                             <select asp-for="CreateEstateDto.Elevator" class="form-control">
                                                 <option value="true">@L("Has")</option>
@@ -207,28 +209,28 @@
                                     }
                                     @if (Model.EstateType.BuiltDate)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.BuiltDate">@L("BuiltDate")</label>
                                             <input asp-for="CreateEstateDto.BuiltDate" type="date" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Price)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.Price">@L("PricePerM2")</label>
                                             <input asp-for="CreateEstateDto.Price" type="number" min="0" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Deposit)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.Deposit">@L("Deposit")</label>
                                             <input asp-for="CreateEstateDto.Deposit" type="number" min="0" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateType.Rent)
                                     {
-                                        <div class="form-group text-right">
+                                        <div class="form-group">
                                             <label asp-for="CreateEstateDto.Rent">@L("Rent")</label>
                                             <input asp-for="CreateEstateDto.Rent" type="number" min="0" class="form-control" />
                                         </div>
@@ -250,7 +252,7 @@
                             </div>
                             <label>عکس‌های پرونده ملکی</label>
                             <div class="row">
-                                <div id="imgThumbnails" class="col-12 text-right">
+                                <div id="imgThumbnails" class="col-12">
 
                                     <div id="imgSelector" data-target="#inp1">
                                         <i class="fa fa-image" style="font-size: 2rem"></i>
@@ -356,9 +358,9 @@
             if (input.files && input.files[0]) {
                 let id = $(input).prop("id");
                 $("#imgSelector").before(`<div data-id="${id}" class="imgThumbnail">
-                                                <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
-                                                <img/>
-                                            </div>`);
+                                                        <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
+                                                        <img/>
+                                                    </div>`);
 
                 var blob = new Blob([input.files[0]]);
                 var url = URL.createObjectURL(blob);
