@@ -53,8 +53,7 @@
                     endIndex += length;                    
                 } else {
                     endIndex = length;
-                }
-                canLoadDown = (maxResultCount == length);
+                }                
                 firstDiv = $("#estatesSection>div:first-child");
             }
             else if (dir == dirUp) {                
