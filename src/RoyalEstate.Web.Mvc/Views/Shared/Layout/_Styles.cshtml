@@ -1,7 +1,7 @@
 ﻿<link rel="shortcut icon" href="~/img/favicon.ico">
 <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 
-<environment names="Development">
+<environment names="Development,Production">
     @*admin-lte styles start*@
     <link href="~/libs/font-awesome/css/all.min.css" rel="stylesheet" asp-append-version="true" />
     <link href="~/libs/icheck-bootstrap/icheck-bootstrap.css" rel="stylesheet" asp-append-version="true" />
@@ -24,6 +24,6 @@
     @*custom styles end*@
 </environment>
 
-<environment names="Staging,Production">
+@*<environment names="Staging,Production">
     <link href="~/view-resources/Views/_Bundles/shared-layout.min.css" rel="stylesheet" asp-append-version="true" />
-</environment>
+</environment>*@

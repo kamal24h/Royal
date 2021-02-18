@@ -8,7 +8,7 @@
         abp.appPath = '@ApplicationPath';
 </script>
 
-<environment names="Development">
+<environment names="Development,Production">
     @*core scripts start*@
     <script src="~/libs/jquery/jquery.js" asp-append-version="true"></script>
     @*core scripts end*@
@@ -54,9 +54,9 @@
     @*custom scripts end*@
 </environment>
 
-<environment names="Staging,Production">
+@*<environment names="Staging,Production">
     <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
-</environment>
+</environment>*@
 
 @if (CultureInfo.CurrentUICulture.Name != "en")
 {
