@@ -83,7 +83,7 @@
         });
     };
     
-    loadEstates(pageSize, 1, dirDown);   
+    loadEstates(pageSize, 0, dirDown);   
 
     $(window).scroll(function () {
         let st = $(window).scrollTop();

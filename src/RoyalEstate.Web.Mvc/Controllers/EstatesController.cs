@@ -145,10 +145,11 @@ namespace RoyalEstate.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditEstate(long id)
         {
-            EstateDto estateDto = await _estateAppService.GetAsync(new EntityDto<long>(id));
+            EditEstateDto estateDto = ObjectMapper.Map<EditEstateDto>(await _estateAppService.GetAsync(new EntityDto<long>(id)));
+
             EditEstateVm model = new EditEstateVm
             {
-                EstateDto = estateDto,
+                EditEstateDto = estateDto,
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),
                 Cities = await _cityAppService.GetCitiesSelectList(),
                 EstateType = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
@@ -156,13 +157,13 @@ namespace RoyalEstate.Web.Controllers
             return View(model);
         }
 
-        /*public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EditEstateVm model)
+        public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EditEstateVm model)
         {
             try
             {
-                var input = model.EstateDto;
+                var input = model.EditEstateDto;
                 if (input.Images.Count > 0)
-                {                    
+                {
                     var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", ticks);
                     Directory.CreateDirectory(path);
@@ -187,7 +188,7 @@ namespace RoyalEstate.Web.Controllers
                     msg = "تغییرات با موفقیت ذخیره شد."
                 });
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return Json(new
                 {
@@ -195,7 +196,7 @@ namespace RoyalEstate.Web.Controllers
                     msg = "خطایی در سمت سرور رخ داد."
                 });
             }
-        }*/
+        }
 
         [HttpPost]
         public async Task<JsonResult> GetDistricts(int cityId)

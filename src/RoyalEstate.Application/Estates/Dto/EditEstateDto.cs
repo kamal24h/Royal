@@ -9,6 +9,8 @@ using RoyalEstate.Entities;
 
 namespace RoyalEstate.Estates.Dto
 {
+    [AutoMapFrom(typeof(EstateDto))]
+    [AutoMapTo(typeof(Estate))]
     public class EditEstateDto : AuditedEntityDto<long>
     {
         public string Title { get; set; }
