@@ -95,21 +95,7 @@ namespace RoyalEstate.Web.Controllers
             };
 
             return View(model);
-        }
-
-        [HttpPost]
-        public async Task<JsonResult> GetDistricts(int cityId)
-        {
-            var districts = await _districtAppService.GetDistrictsSelectListAsync(cityId);
-            return Json(new
-            {
-                results = districts.Select(d => new
-                {
-                    id = int.Parse(d.Value),
-                    text = d.Text
-                }).ToArray()
-            });
-        }
+        }        
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -117,7 +103,7 @@ namespace RoyalEstate.Web.Controllers
         {
             try
             {
-                var input = model.CreateEstateDto;
+                var input = model.CreateEstateDto;                    
                 if (input.Images.Count>0)
                 {
                     var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
@@ -154,6 +140,76 @@ namespace RoyalEstate.Web.Controllers
                 });
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> EditEstate(long id)
+        {
+            EstateDto estateDto = await _estateAppService.GetAsync(new EntityDto<long>(id));
+            EditEstateVm model = new EditEstateVm
+            {
+                EstateDto = estateDto,
+                Customers = await _customerAppService.GetCustomersSelectListAsync(),
+                Cities = await _cityAppService.GetCitiesSelectList(),
+                EstateType = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
+            };
+            return View(model);
+        }
+
+        public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EditEstateVm model)
+        {
+            try
+            {
+                var input = model.EstateDto;
+                if (input.Images.Count > 0)
+                {                    
+                    var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", ticks);
+                    Directory.CreateDirectory(path);
+
+                    int i = 1;
+                    foreach (IFormFile file in input.Images.Where(f => f.Length != 0))
+                    {
+                        string imageExt = Path.GetExtension(file.FileName);
+                        await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
+                        {
+                            await file.CopyToAsync(stream);
+                            input.ImagePaths.Add("/" + Path.Combine("img", "Estates", ticks, i + imageExt).Replace('\\', '/'));
+                        }
+                        i++;
+                    }
+                }
+
+                await _estateAppService.UpdateAsync(input);
+                return Json(new
+                {
+                    code = 0,
+                    msg = "تغییرات با موفقیت ذخیره شد."
+                });
+            }
+            catch(Exception e)
+            {
+                return Json(new
+                {
+                    code = 1,
+                    msg = "خطایی در سمت سرور رخ داد."
+                });
+            }
+        }
+
+        [HttpPost]
+        public async Task<JsonResult> GetDistricts(int cityId)
+        {
+            var districts = await _districtAppService.GetDistrictsSelectListAsync(cityId);
+            return Json(new
+            {
+                results = districts.Select(d => new
+                {
+                    id = int.Parse(d.Value),
+                    text = d.Text
+                }).ToArray()
+            });
+        }        
 
         public async Task<ActionResult> Single(long id)
         {

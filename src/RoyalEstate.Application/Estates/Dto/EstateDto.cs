@@ -4,6 +4,7 @@ using System.Text;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Timing;
+using Microsoft.AspNetCore.Http;
 using RoyalEstate.Entities;
 
 namespace RoyalEstate.Estates.Dto
@@ -57,5 +58,6 @@ namespace RoyalEstate.Estates.Dto
         public string Description { get; set; }
 
         public List<string> ImagePaths { get; set; }
+        public List<IFormFile> Images { get; set; }
     }
 }
