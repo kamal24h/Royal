@@ -34,21 +34,24 @@
             if (length == 0) {
                 canLoadDown = false;
                 return;
-            }
-            console.log(result.items);
+            }            
             if (dir == dirDown) {                
                 result.items.forEach(e => {
                     $("#estatesSection").append(renderEstate(e));                    
                 });
                 
-                if ($("#estatesSection>div").length > pageSize) {                    
+                if ($("#estatesSection>div").length > pageSize) {        
                     
-                    let lastDivToRemove = $("#estatesSection>div")[length - 1];                             
-                    $("#estatesSection").css("padding-top", `${$(lastDivToRemove).offset().top - $("#estatesSection").offset().top + $(lastDivToRemove).outerHeight()}px`);
+                    let pTop = parseInt($("#estatesSection").css("padding-top"))
+                        + ($("#estatesSection>div")[length - 1].offsetTop
+                            - $("#estatesSection>div")[0].offsetTop)
+                        + $("#estatesSection>div")[length - 1].offsetHeight;
+                        
+                    
+                    $("#estatesSection").css("padding-top", `${pTop}px`);
                     for (var i = 0; i < length; i++) {
                         $("#estatesSection>div:first-child").remove();
-                    }                 
-                    
+                    }                            
                     startIndex += length;
                     endIndex += length;                    
                 } else {
@@ -56,9 +59,11 @@
                 }                
                 firstDiv = $("#estatesSection>div:first-child");
             }
-            else if (dir == dirUp) {                
-                let pTop = parseInt($("#estatesSection>div:first-child").css("padding-top"))
-                    - parseInt($($("#estatesSection>div")[length - 1]).css("padding-top"));
+            else if (dir == dirUp) {                     
+                let pTop = parseInt($("#estatesSection").css("padding-top"))
+                    - ($("#estatesSection>div")[length - 1].offsetTop
+                        - $("#estatesSection>div")[0].offsetTop)   
+                    - $("#estatesSection>div")[length - 1].offsetHeight;
                 $("#estatesSection").css("padding-top", pTop + "px");
 
                 result.items.reverse().forEach(e => {
@@ -75,7 +80,7 @@
                     endIndex -= length;                                       
                 }     
 
-                console.log($("#estatesSection div.text-bold").text());
+                
             }  
             canLoadUp = true;
             canLoadDown = true;
@@ -93,7 +98,7 @@
             lazyLoadDown();        
         } else if (st < lastScrollTop && st < $(firstDiv).offset().top && canLoadUp) {                            
             //scroll up
-            canLoadUp = false;            
+            canLoadUp = false;  
             lazyLoadUp();
         }
         lastScrollTop = st <= 0 ? 0 : st;
@@ -136,13 +141,7 @@
             return;
         }
         let skip = startIndex <= maxLoadSize ? 0 : (startIndex - maxLoadSize - 1);
-        let loadSize = startIndex > maxLoadSize ? maxLoadSize : (startIndex - 1);    
-        console.log({
-            skip: skip,
-            loadSize: loadSize,
-            startIndex: startIndex,
-            endIndex: endIndex
-        });        
+        let loadSize = startIndex > maxLoadSize ? maxLoadSize : (startIndex - 1);            
         loadEstates(loadSize, skip, dirUp);
     }
 
