@@ -11,6 +11,10 @@ namespace RoyalEstate.Estates.Dto
     {
         public EstateMapProfile()
         {
+            CreateMap<EstateDto, EditEstateDto>();
+            CreateMap<EstateDto, EditEstateDto>()
+                .ForMember(d => d.Images, opt => opt.Ignore());
+
             CreateMap<EditEstateDto, Estate>();
             CreateMap<EditEstateDto, Estate>()
                 .ForMember(d => d.Images, opt => opt.Ignore())

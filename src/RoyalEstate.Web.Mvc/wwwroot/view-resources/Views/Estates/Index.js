@@ -53,8 +53,7 @@
                     endIndex += length;                    
                 } else {
                     endIndex = length;
-                }
-                canLoadDown = (maxResultCount == length);
+                }                
                 firstDiv = $("#estatesSection>div:first-child");
             }
             else if (dir == dirUp) {                
@@ -83,7 +82,7 @@
         });
     };
     
-    loadEstates(pageSize, 1, dirDown);   
+    loadEstates(pageSize, 0, dirDown);   
 
     $(window).scroll(function () {
         let st = $(window).scrollTop();
