@@ -10,8 +10,9 @@
     let canLoadDown = true;
 
     let lastScrollTop = 0;
-
-    let maxLoadSize = parseInt(($("#loadSizes div").find(x => $(x).css("display") === "block")).attr("data-loadSize"));
+        
+    let maxLoadSize = parseInt($("#loadSizes div").first(x => x.css("display") === "block").attr("data-loadSize"));
+    
     
     if ($("#estatesSection").width() > 992) {
         maxLoadSize = 12;
@@ -99,7 +100,7 @@
     });
 
     window.addEventListener("resize", function () {
-        maxLoadSize = parseInt(($("#loadSizes div").find(x => $(x).css("display") === "block")).attr("data-loadSize"));
+        let maxLoadSize = parseInt($("#loadSizes div").first(x => x.css("display") === "block").attr("data-loadSize"));
         wh = $(window).height();
     })
 
