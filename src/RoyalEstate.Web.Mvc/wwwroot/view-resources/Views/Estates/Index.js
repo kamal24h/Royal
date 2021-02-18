@@ -35,6 +35,7 @@
                 canLoadDown = false;
                 return;
             }
+            console.log(result.items);
             if (dir == dirDown) {                
                 result.items.forEach(e => {
                     $("#estatesSection").append(renderEstate(e));                    
@@ -82,7 +83,7 @@
         });
     };
     
-    loadEstates(pageSize, 0, dirDown);   
+    loadEstates(pageSize, 1, dirDown);   
 
     $(window).scroll(function () {
         let st = $(window).scrollTop();

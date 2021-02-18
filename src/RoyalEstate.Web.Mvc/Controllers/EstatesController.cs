@@ -156,7 +156,7 @@ namespace RoyalEstate.Web.Controllers
             return View(model);
         }
 
-        public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EditEstateVm model)
+        /*public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EditEstateVm model)
         {
             try
             {
@@ -195,7 +195,7 @@ namespace RoyalEstate.Web.Controllers
                     msg = "خطایی در سمت سرور رخ داد."
                 });
             }
-        }
+        }*/
 
         [HttpPost]
         public async Task<JsonResult> GetDistricts(int cityId)

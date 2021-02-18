@@ -23,10 +23,11 @@ namespace RoyalEstate
                         .ForMember(d => d.CreationTime, options => options.Ignore());
 
                     config.CreateMap<CreateEstateDto, Estate>().ForMember(d => d.Images,
-                        options => options.MapFrom<CreateEstateImgResolver>());
+                        options => options.MapFrom<CreateEstateImgResolver>());                   
 
                     config.CreateMap<Estate, EstateDto>()
                         .ForMember(d => d.ImagePaths, opt => opt.MapFrom<ShowEstateImageResolver>());
+                    
                 });
         }
 

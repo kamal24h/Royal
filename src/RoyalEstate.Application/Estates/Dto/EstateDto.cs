@@ -11,7 +11,7 @@ namespace RoyalEstate.Estates.Dto
 {
     [AutoMapFrom(typeof(Estate))]
     public class EstateDto : AuditedEntityDto<long>
-    {
+    {       
         public string Title { get; set; }
 
         public int EstateTypeId { get; set; }
@@ -57,7 +57,6 @@ namespace RoyalEstate.Estates.Dto
         public bool IsActive { get; set; }
         public string Description { get; set; }
 
-        public List<string> ImagePaths { get; set; }
-        public List<IFormFile> Images { get; set; }
+        public List<string> ImagePaths { get; set; }        
     }
 }
