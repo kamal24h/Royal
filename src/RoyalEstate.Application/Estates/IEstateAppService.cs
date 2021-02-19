@@ -6,7 +6,7 @@ using RoyalEstate.Estates.Dto;
 
 namespace RoyalEstate.Estates
 {
-    public interface IEstateAppService : IAsyncCrudAppService<EstateDto, long, GetAllEstatesInputDto, CreateEstateDto, EditEstateDto>
+    public interface IEstateAppService : IAsyncCrudAppService<EstateDto, long, GetAllEstatesInputDto, CreateEstateDto, EstateDto>
     {
         
     }

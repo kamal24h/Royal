@@ -11,7 +11,11 @@ namespace RoyalEstate.Estates.Dto
 {
     [AutoMapFrom(typeof(Estate))]
     public class EstateDto : AuditedEntityDto<long>
-    {       
+    {
+        public EstateDto()
+        {
+            ImagePaths = new List<string>();
+        }
         public string Title { get; set; }
 
         public int EstateTypeId { get; set; }

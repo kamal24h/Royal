@@ -40,46 +40,55 @@
     </style>
 }
 
-<section class="content-header text-right">
+<section class="content-header ">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h5 class="text-right">@L("EstateDetails")</h5>
+                <h5 >@L("EstateDetails")</h5>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content text-right">
+<section class="content ">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
                 <div class="card">
                     <div class="card-header">
-                        <div class="row justify-content-center">
+                        <div class="row justify-content-center mb-4">
                             <div>
                                 <button id="btnDelete" class="btn btn-danger"><i class="fas fa-trash"></i></button>
                                 <button id="btnEdit" class="btn btn-info"><i class="fas fa-pen"></i></button>
+                                @using(Html.BeginForm("EditEstate","Estates", FormMethod.Post, new { id="frmEdit", @class="d-none"}))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <input name="id" value="@Model.EstateDto.Id"/>
+                                }
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <i class="fas fa-user"></i>
-                                <span class="text-info text-bold">@("ثبت: " + Model.EstateDto.CreatorUserName) @Model.EstateDto.CreatorUserSurname</span>
-                            </div>
-                            <div class="col-sm-4">
-                                <i class="fas fa-calendar"></i>
-                                <span class="text-info text-bold">تاریخ ثبت: @Model.EstateDto.CreationTime.ToShortPersianDateString()</span>
-                            </div>
-                            <div class="col-sm-4">
-                                <i class="fas fa-clock"></i>
-                                <span class="text-info text-bold">کد پرونده: @Model.EstateDto.FilingCode</span>
-                            </div>
+                        <div class="row justify-content-center">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <i class="fas fa-user"></i>
+                                        <span class="text-info text-bold">@("ثبت: " + Model.EstateDto.CreatorUserName) @Model.EstateDto.CreatorUserSurname</span>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <i class="fas fa-calendar"></i>
+                                        <span class="text-info text-bold">تاریخ ثبت: @Model.EstateDto.CreationTime.ToShortPersianDateString()</span>
+                                    </div>
+                                    <div class="col-sm-4 ">
+                                        <i class="fas fa-file"></i>
+                                        <span class="text-info text-bold">کد پرونده: @Model.EstateDto.FilingCode</span>
+                                    </div>
+                                </div>
+                            </div>                            
                         </div>
                     </div>
                     <div class="card-body">
                         <div class="row justify-content-center">
-                            <div class="col-md-10 col-lg-8">
+                            <div class="col-md-10 ">
                                 <div class="row">
                                     <div class="col-sm-6 order-2 order-sm-1">
                                         <h4>@Model.EstateDto.Title</h4>
@@ -114,80 +123,111 @@
                                                     <h6>محله: <span class="text-info text-bold">@Model.EstateDto.DistrictName</span></h6>
                                                 </div>
                                             </li>
-
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    @if (Model.EstateTypeDto.Price)
-                                                    {<h6>قیمت</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Price (میلیون تومان)</span> }
-                                                    else
-                                                    {<h6>رهن</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Deposit (میلیون تومان)</span>}
-                                                </div>
-                                            </li>
-
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    @if (Model.EstateDto.Price > 0)
-                                                    {<h6>قیمت کل</h6>
-                                                    <span class="text-info text-bold">@(Model.EstateDto.Price * Model.EstateDto.Area) (میلیون تومان)</span>}
-                                                    else
-                                                    {<h6>اجاره</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Rent (میلیون تومان)</span>}
-                                                </div>
-                                            </li>
-                                            
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>وضعیت سند</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.LegalDoc</span>
-                                                    &nbsp
-                                                    <h6>متراژ</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Area</span>
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>تعداد اتاق</h6>
-                                                    <span class="text-info text-bold">@Model.EstateDto.Rooms</span>
-                                                    &nbsp
-                                                    <h6>اتاق مستر</h6>
-                                                    <i class="fas @(Model.EstateDto.MasterRoom==true?"fa-check text-success":"fa-times text-danger")"></i>
-
-                                                </div>
-                                            </li>
-                                            @*<li class="list-group-item">
+                                            @if (Model.EstateTypeDto.Area)
+                                            {
+                                                <li class="list-group-item">
                                                     <div class="row justify-content-between">
-                                                        <h6>
-                                                            @("طبقه:" + "  " + Model.EstateDto.Floor + "  " + " از: " + "  " + Model.EstateDto.TotalFloors
-                                                            + "  " + " طبقه --- هر طبقه: " + "  " + Model.EstateDto.UnitsPerFloor + "  " + " واحد.")
-                                                        </h6>
+                                                        <h6>@L("AreaM2")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.Area</span>
                                                     </div>
-                                                </li>*@
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">                                                    
-                                                    <h6>طبقه: <span class="text-info text-bold">@Model.EstateDto.Floor</span></h6>
-                                                    
-                                                    <h6>مجموع طبقات: <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span></h6>
-                                                    
-                                                    <h6>تعداد واحد هر طبقه: </h6>
-                                                    
-                                                </div>
-                                            </li>
-                                            <li class="list-group-item">
-                                                <div class="row justify-content-between">
-                                                    <h6>آسانسور</h6>
-                                                    <i class="fas @(Model.EstateDto.Elevator==true?"fa-check text-success":"fa-times text-danger")"></i>
-                                                    &nbsp
-                                                    <h6>پارکینگ</h6>
-                                                    <i class="fas @(Model.EstateDto.Parking==true?"fa-check text-success":"fa-times text-danger")"></i>
-                                                    <label>&nbsp</label>
-                                                    <h6>انباری</h6>
-                                                    <i class="fas @(Model.EstateDto.StoreRoom==true?"fa-check text-success":"fa-times text-danger")"></i>
-                                                </div>
-                                            </li>
+                                                </li>
+                                            }
+                                            @if (Model.EstateTypeDto.Rooms)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("Rooms")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.Rooms</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                            @if (Model.EstateTypeDto.Floor)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("Floor")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.Floor</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                            @if (Model.EstateTypeDto.TotalFloors)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("TotalFloors")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                            @if (Model.EstateTypeDto.Price)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("PricePerM2")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.Price (میلیون تومان)</span>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("TotalPrice")</h6>
+                                                        <span class="text-info text-bold">@(Model.EstateDto.Price*Model.EstateDto.Area) (میلیون تومان)</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                            @if (Model.EstateTypeDto.Rent)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("Deposit")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.Deposit</span>
+                                                    </div>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("Rent")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.Rent</span>
+                                                    </div>
+                                                </li>
+                                            }
+                                            @if (Model.EstateTypeDto.LegalDoc)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("LegalDoc")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.LegalDoc</span>
+                                                    </div>
+                                                </li>
+                                            }
                                         </ul>
 
+                                        <h5>@L("Features")</h5>
+                                        <div class="row mb-4">
+                                            @if (Model.EstateTypeDto.Elevator)
+                                            {
+                                                <div class="col-sm-4">
+                                                    <h6>@L("Elevator") <i class="fas @(Model.EstateDto.Elevator==true?"fa-check text-success":"fa-times text-danger")"></i></h6>
+                                                </div>
+
+                                            }
+                                            @if (Model.EstateTypeDto.Parking)
+                                            {
+                                                <div class="col-sm-4">
+                                                    <h6>@L("Parking") <i class="fas @(Model.EstateDto.Parking==true?"fa-check text-success":"fa-times text-danger")"></i></h6>
+                                                </div>
+                                            }
+                                            @if (Model.EstateTypeDto.Storeroom)
+                                            {
+                                                <div class="col-sm-4">
+                                                    <h6>@L("Storeroom") <i class="fas @(Model.EstateDto.StoreRoom==true?"fa-check text-success":"fa-times text-danger")"></i></h6>
+                                                </div>
+                                            }
+                                            @if (Model.EstateTypeDto.MasterRoom)
+                                            {
+                                                <div class="col-sm-4">
+                                                    <h6>@L("MasterRoom") <i class="fas @(Model.EstateDto.StoreRoom==true?"fa-check text-success":"fa-times text-danger")"></i></h6>
+                                                </div>
+                                            }
+                                        </div>                                        
                                         <h5>@L("Address")</h5>
                                         <p>@Model.EstateDto.Address</p>
                                         <h5>@L("EstateDescription")</h5>
@@ -298,6 +338,10 @@
                     }
                 );
             });
+            $("#btnEdit").click(function () {                
+                $("#IsBusy").css("display", "block");
+                $("#frmEdit").submit();
+            })
         });
         function goFullScreen(i) {
             let index = $(i).parent().index();

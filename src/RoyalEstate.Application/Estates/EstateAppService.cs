@@ -13,7 +13,7 @@ using RoyalEstate.Estates.Dto;
 
 namespace RoyalEstate.Estates
 {
-    public class EstateAppService : AsyncCrudAppService<Estate, EstateDto, long, GetAllEstatesInputDto, CreateEstateDto, EditEstateDto>, IEstateAppService
+    public class EstateAppService : AsyncCrudAppService<Estate, EstateDto, long, GetAllEstatesInputDto, CreateEstateDto, EstateDto>, IEstateAppService
     {
         public EstateAppService(IRepository<Estate, long> repository) : base(repository)
         {

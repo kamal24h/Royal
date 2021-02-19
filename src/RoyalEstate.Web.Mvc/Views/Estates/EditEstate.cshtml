@@ -1,0 +1,416 @@
+﻿@using RoyalEstate.Web.Startup
+@model RoyalEstate.Web.Models.Estates.EstateVm
+
+@{
+    ViewBag.Title = L("Estates");
+    ViewBag.CurrentPageName = PageNames.Estates;
+}
+
+@section styles
+{
+
+    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" asp-append-version="true" />
+    <link href="~/view-resources/Views/_Bundles/bootstrap-rtl.min.css" rel="stylesheet" />
+
+
+    <style>
+        #imgThumbnails {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+
+        .imgThumbnail {
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            margin-left: 1rem;
+            align-items: center;
+            justify-content: center;
+            border: 1px dashed black;
+            position: relative;
+        }
+
+            .imgThumbnail img {
+                width: 4.9rem;
+                height: 4.9rem;
+            }
+
+            .imgThumbnail .deleteImg {
+                z-index:2;
+                position: absolute;
+                top: 0.1rem;
+                left: 0.1rem;
+            }
+
+                .imgThumbnail .deleteImg:hover {
+                    cursor: pointer;
+                    color: red !important
+                }
+
+        #imgSelector {
+            width: 5rem;
+            height: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px dashed black;
+            transition: background-color 0.5s
+        }
+
+            #imgSelector:hover {
+                cursor: pointer;
+                background-color: burlywood
+            }
+
+        .select2-selection--single {
+            height: 2.2rem !important
+        }
+    </style>
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h5>Royal Estates</h5>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header"></div>
+                    <div class="card-body">
+                        @using (Html.BeginForm("UpdateEstate", "Estates", FormMethod.Post, new { id = "frmCreate", enctype = "multipart/form-data" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <input asp-for="EstateDto.Id" type="hidden"/>
+                            <input asp-for="EstateDto.EstateTypeId" type="hidden" />
+                            <div class="row justify-content-center">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.Title">عنوان پرونده</label>
+                                        <input asp-for="EstateDto.Title" class="form-control" />
+                                        <span asp-validation-for="EstateDto.Title"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.FilingCode">کد پرونده</label>
+                                        <input asp-for="EstateDto.FilingCode" class="form-control" />
+                                    </div>
+
+                                    @if (Model.EstateTypeDto.LegalDoc)
+                                    {
+                                        <label asp-for="EstateDto.LegalDoc">وضعیت سند</label>
+                                        <select asp-for="EstateDto.LegalDoc" class="form-control">
+                                            <option value="سند آزاد">سند آزاد</option>
+                                            <option value="در دست اقدام">در دست اقدام</option>
+                                            <option value="فاقد سند">فاقد سند</option>
+                                            <option value="سند ورٍثه ای">سند ورٍثه ای</option>
+                                        </select>
+                                    }
+
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.CustomerId">مشتری</label>
+                                        <select asp-for="EstateDto.CustomerId" asp-items="Model.Customers" id="CustomerId" class="form-control"></select>
+
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.CityId">شهر</label>
+                                        <select asp-for="EstateDto.CityId" asp-items="Model.Cities" id="CityId" class="form-control"></select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.DistrictId">منطقه شهری</label>
+                                        <select asp-for="EstateDto.DistrictId" id="DistrictId" class="form-control"></select>
+                                    </div>
+
+
+
+                                    @if (Model.EstateTypeDto.Area)
+                                    {
+                                        <div class="form-group ">
+                                            <label asp-for="EstateDto.Area">@L("AreaM2")</label>
+                                            <input asp-for="EstateDto.Area" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Rooms)
+                                    {
+                                        <div class="form-group ">
+                                            <label asp-for="EstateDto.Rooms">@L("Rooms")</label>
+                                            <input asp-for="EstateDto.Rooms" type="number" class="form-control" />
+                                        </div>
+                                    }
+
+                                    @if (Model.EstateTypeDto.MasterRoom)
+                                    {
+                                        <div class="form-group ">
+                                            <label asp-for="EstateDto.MasterRoom">@L("MasterRoom")</label>
+                                            <select asp-for="EstateDto.MasterRoom" class="form-control">
+                                                <option value="false">@L("HasNot")</option>
+                                                <option value="true">@L("Has")</option>
+                                            </select>
+                                        </div>
+                                    }
+
+                                    @if (Model.EstateTypeDto.Floor)
+                                    {
+                                        <div class="form-group ">
+                                            <label asp-for="EstateDto.Floor">@L("Floor")</label>
+                                            <input asp-for="EstateDto.Floor" type="number" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.TotalFloors)
+                                    {
+                                        <div class="form-group ">
+                                            <label asp-for="EstateDto.TotalFloors">@L("TotalFloors")</label>
+                                            <input asp-for="EstateDto.TotalFloors" type="number" min="1" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.UnitsPerFloor)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.UnitsPerFloor">@L("UnitsPerFloor")</label>
+                                            <input asp-for="EstateDto.UnitsPerFloor" type="number" min="1" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Parking)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.Parking">@L("Parking")</label>
+                                            <select asp-for="EstateDto.Parking" class="form-control">
+                                                <option value="true">@L("Has")</option>
+                                                <option value="false">@L("HasNot")</option>
+                                            </select>
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Storeroom)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.StoreRoom">@L("Storeroom")</label>
+                                            <select asp-for="EstateDto.StoreRoom" class="form-control">
+                                                <option value="true">@L("Has")</option>
+                                                <option value="false">@L("HasNot")</option>
+                                            </select>
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Elevator)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.Elevator">@L("Elevator")</label>
+                                            <select asp-for="EstateDto.Elevator" class="form-control">
+                                                <option value="true">@L("Has")</option>
+                                                <option value="false">@L("HasNot")</option>
+                                            </select>
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.BuiltDate)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.BuiltDate">@L("BuiltDate")</label>
+                                            <input asp-for="EstateDto.BuiltDate" type="date" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Price)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.Price">@L("PricePerM2")</label>
+                                            <input asp-for="EstateDto.Price" type="number" min="0" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Deposit)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.Deposit">@L("Deposit")</label>
+                                            <input asp-for="EstateDto.Deposit" type="number" min="0" class="form-control" />
+                                        </div>
+                                    }
+                                    @if (Model.EstateTypeDto.Rent)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.Rent">@L("Rent")</label>
+                                            <input asp-for="EstateDto.Rent" type="number" min="0" class="form-control" />
+                                        </div>
+                                    }
+
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.Address">آدرس</label>
+                                        <textarea asp-for="EstateDto.Address" class="form-control" rows="6"></textarea>
+                                        <span asp-validation-for="EstateDto.Address"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="EstateDto.Description">توضیحات</label>
+                                        <textarea asp-for="EstateDto.Description" class="form-control" rows="6"></textarea>
+                                        <span asp-validation-for="EstateDto.Description"></span>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <label>عکس‌های پرونده ملکی</label>
+                            <div class="row">
+                                <div id="imgThumbnails" class="col-12">
+                                    @foreach (string item in Model.EstateDto.ImagePaths)
+                                    {
+                                        <div class="imgThumbnail">
+                                            <i class="fa fa-trash text-light deleteImg" onclick="toggleImg(this)"></i>
+                                            <img class="currImg" src="@item"/>
+                                        </div>
+                                    }
+                                    <div id="imgSelector" data-target="#inp1">
+                                        <i class="fa fa-image" style="font-size: 2rem"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="imgZone" style="visibility: hidden; position: absolute">
+                                <input id="inp1" type="file" name="Images" />
+                            </div>
+                            <div class="row justify-content-end">
+                                <button type="submit" class="btn btn-success">ثبت <i class="fa fa-check"></i></button>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@section scripts{
+    <script src="/libs/jquery.form/jquery.form.min.js"></script>
+    <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
+    <script>
+        $(() => {
+
+            $("#frmCreate select:not(#DistrictId)").each((i, e) => {
+                $(e).select2({
+                    dir: 'rtl',
+                    dropdownAutoWidth: true,
+                    dropdownParent: $(e).parent()
+                });
+            });
+            $.post("/Estates/GetDistricts",
+                {
+                    cityId: $("#CityId").val()
+                },
+                function (data, status) {
+                    $("#DistrictId").select2({
+                        dir: 'rtl',
+                        dropdownAutoWidth: true,
+                        dropdownParent: $("#DistrictId").parent(),
+                        data: data.result.results
+                    });
+                });
+
+            $("#CityId").change(function () {
+                $("#DistrictId").val('').trigger("change");
+                $.post("/Estates/GetDistricts",
+                    {
+                        cityId: $("#CityId").val()
+                    },
+                    function (data, status) {
+                        $("#DistrictId option").remove();
+                        data.result.results.forEach(d => {
+                            var newOption = new Option(d.text, d.id, false, false);
+                            $("#DistrictId").append(newOption);
+                        });
+                        $("#DistrictId").trigger('change');
+                    });
+            });
+            $("#frmCreate").ajaxForm({
+                beforeSubmit: (formData, jqForm, options) => {
+                    $("img.currImg").each((i, e) => {
+                        if ($(e).prev().hasClass("fa-trash")) {
+                            formData.push({ name: "EstateDto.ImagePaths", value: $(e).prop("src") })
+                        }
+                    })
+                    $("#IsBusy").css("display", "block");
+                    abp.ui.setBusy($("#frmCreate"));
+                },
+                success: function (data) {
+                    $("#IsBusy").css("display", "none");
+                    abp.ui.clearBusy($("#frmCreate"));
+                    if (data.result.code == 0) {
+                        sweetAlert("", "تغییرات با موفقیت ذخیره شد", "success");
+                        $("#imgThumbnails .imgThumbnail").remove();
+                        data.result.imagePaths.forEach(p => {
+                            $("#imgThumbnails").prepend(`<div class="imgThumbnail">
+                                            <i class="fa fa-trash text-light deleteImg" onclick="toggleImg(this)"></i>
+                                            <img class="currImg" src="${p}"/>
+                                        </div>`)
+                        })
+                        $("#imgZone").empty();
+                        $("#imgZone").append(`<input id="inp1" type="file" name="Images" />`);
+                        $("#imgSelector").attr("data-target", "#inp1");
+                        $("#inp1").change(function () {
+                            readUrl(this);
+                        })
+                    } else {
+                        sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
+                    }
+                },
+                error: function () {
+                    $("#IsBusy").css("display", "none");
+                    abp.ui.clearBusy($("#frmCreate"));
+                    sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
+                }
+            });
+            $("#Elevator,#Parking,#StoreRoom").val('').change();
+            $("#imgSelector").click(function () {
+                let selector = $(this).attr("data-target");
+                $(selector).trigger("click");
+            });
+
+            $("div#imgZone input").change(function () {
+                readUrl(this);
+            });
+        });
+
+        function readUrl(input) {
+            if (input.files && input.files[0]) {
+                let id = $(input).prop("id");
+                $("#imgSelector").before(`<div data-id="${id}" class="imgThumbnail">
+                                                        <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
+                                                        <img/>
+                                                    </div>`);
+
+                var blob = new Blob([input.files[0]]);
+                var url = URL.createObjectURL(blob);
+                var img = $(`#imgThumbnails div[data-id=${id}] img`)[0];
+                img.onload = function () {
+                    URL.revokeObjectURL(this.src);     // clean-up memory
+                }
+                img.src = url;
+                let length = $("#imgZone input").length;
+                let inpId = "inp" + (length + 1);
+                $("#imgZone")
+                    .append(
+                        `<input id="${inpId}" type="file" name="Images" onchange="readUrl(this)"/>`);
+                $("#imgSelector").attr("data-target", "#" + inpId);
+            }
+        }
+
+        function deleteImg(e) {
+            let inpId = $(e).parent().attr("data-id");
+            $(e).parent().remove();
+            $(`#imgZone input#${inpId}`).remove();
+        }
+
+        function toggleImg(e) {
+            if ($(e).hasClass("fa-trash")) {
+                $(e).removeClass("fa-trash").addClass("fa-undo");
+                $(e).next().css("opacity", 0.5);
+            } else {
+                $(e).removeClass("fa-undo").addClass("fa-trash");
+                $(e).next().css("opacity", 1);
+            }
+        }
+    </script>
+
+}

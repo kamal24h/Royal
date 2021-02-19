@@ -145,31 +145,32 @@ namespace RoyalEstate.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> EditEstate(long id)
         {
-            EditEstateDto estateDto = ObjectMapper.Map<EditEstateDto>(await _estateAppService.GetAsync(new EntityDto<long>(id)));
+            EstateDto estateDto = await _estateAppService.GetAsync(new EntityDto<long>(id));
 
-            EditEstateVm model = new EditEstateVm
+            EstateVm model = new EstateVm
             {
-                EditEstateDto = estateDto,
+                EstateDto = estateDto,
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),
                 Cities = await _cityAppService.GetCitiesSelectList(),
-                EstateType = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
+                EstateTypeDto = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
             };
             return View(model);
         }
 
-        public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EditEstateVm model)
+        public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EstateVm model)
         {
             try
             {
-                var input = model.EditEstateDto;
-                if (input.Images.Count > 0)
+                var input = model.EstateDto;
+                var files = Request.Form.Files;
+                if (files!=null && files.Count > 0)
                 {
                     var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", ticks);
                     Directory.CreateDirectory(path);
 
                     int i = 1;
-                    foreach (IFormFile file in input.Images.Where(f => f.Length != 0))
+                    foreach (IFormFile file in files.Where(f => f.Length != 0))
                     {
                         string imageExt = Path.GetExtension(file.FileName);
                         await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
@@ -185,6 +186,7 @@ namespace RoyalEstate.Web.Controllers
                 return Json(new
                 {
                     code = 0,
+                    imagePaths = input.ImagePaths,
                     msg = "تغییرات با موفقیت ذخیره شد."
                 });
             }
