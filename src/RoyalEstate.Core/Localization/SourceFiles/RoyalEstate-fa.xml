@@ -12,7 +12,7 @@
     <text name="Districts">محله ها</text>
     <text name="District">محله</text>
     <text name="AllEstateFiles">همه پرونده ها</text>
-    
+    <text name="NewEstateFile">پرونده جدید</text>
 
     <text name="Tenants" value="تننت‌ها" />
     <text name="CreateNewTenant" value="ایجاد تننت جدید" />

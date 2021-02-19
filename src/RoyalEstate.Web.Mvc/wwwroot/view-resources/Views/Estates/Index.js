@@ -120,7 +120,7 @@
                                                     </div>
 
                                                     <div class="px-2 py-1">
-                                                         کد: ${estate.filingcode ? estate.filingcode : " - "}
+                                                         کد: ${estate.filingCode ? estate.filingCode : ""}
                                                         <br/>
                                                         قیمت: ${estate.price ? estate.price : ""} میلیون تومان
                                                         <br/>

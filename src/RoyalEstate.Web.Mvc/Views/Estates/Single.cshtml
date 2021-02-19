@@ -13,7 +13,7 @@
     <style>
 
         .container-fluid {
-            font-family: 'yekan';
+            font-family: 'B Nazanin';
         }
 
         .carousel-inner img {
@@ -40,17 +40,17 @@
     </style>
 }
 
-<section class="content-header text-right">
+<section class="content-header">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
-                <h5 class="text-right">@L("EstateDetails")</h5>
+                <h2>@L("EstateDetails")</h2>
             </div>
         </div>
     </div>
 </section>
 
-<section class="content text-right">
+<section class="content">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -165,13 +165,11 @@
                                                     </div>
                                                 </li>*@
                                             <li class="list-group-item">
-                                                <div class="row justify-content-between">                                                    
+                                                <div class="row justify-content-between">
                                                     <h6>طبقه: <span class="text-info text-bold">@Model.EstateDto.Floor</span></h6>
-                                                    
                                                     <h6>مجموع طبقات: <span class="text-info text-bold">@Model.EstateDto.TotalFloors</span></h6>
-                                                    
-                                                    <h6>تعداد واحد هر طبقه: </h6>
-                                                    
+                                                    <h6>واحد در طبقه: <span class="text-info text-bold">@Model.EstateDto.UnitsPerFloor</span></h6>
+
                                                 </div>
                                             </li>
                                             <li class="list-group-item">
