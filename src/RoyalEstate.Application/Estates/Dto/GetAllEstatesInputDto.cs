@@ -6,7 +6,7 @@ using Abp.Application.Services.Dto;
 namespace RoyalEstate.Estates.Dto
 {
     public class GetAllEstatesInputDto : PagedAndSortedResultRequestDto
-    {
-        
+    {        
+        public string Term { get; set; }
     }
 }

@@ -188,6 +188,8 @@
     <text name="Address">آدرس</text>
     <text name="EstateDescription">توضیحات ملک</text>
 
+    <text name="NewEstate">پرونده جدید</text>
+
     <!--Service Types-->
     <text name="ResidentialForSale">فروش مسکونی</text>
     <text name="ResidentialForRent">اجاره مسکونی</text>

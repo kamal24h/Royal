@@ -50,9 +50,9 @@ namespace RoyalEstate.Entities{
             CreationTime = DateTime.Now;
         }
 
-        public static implicit operator List<object>(EstateType v)
+        /*public static implicit operator List<object>(EstateType v)
         {
             throw new NotImplementedException();
-        }
+        }*/
     }
 }

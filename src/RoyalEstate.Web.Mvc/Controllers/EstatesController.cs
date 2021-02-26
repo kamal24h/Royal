@@ -32,7 +32,7 @@ namespace RoyalEstate.Web.Controllers
         private readonly ICustomerAppService _customerAppService;
         private readonly IDistrictAppService _districtAppService;
         private readonly ICityAppService _cityAppService;
-        private readonly IRepository<ServiceType> _serviceTypesRepo;
+        private readonly IEstateCategoryAppService _estateCategoryAppService;
 
         public EstatesController(
             IEstateTypeAppService estateTypeAppService, 
@@ -40,14 +40,14 @@ namespace RoyalEstate.Web.Controllers
             ICustomerAppService customerAppService,
             IDistrictAppService districtAppService,
             ICityAppService cityAppService,
-            IRepository<ServiceType> serviceTypesRepo)
+            IEstateCategoryAppService estateCategoryAppService)
         {
             _estateTypeAppService = estateTypeAppService;
             _estateAppService = estateAppService;
             _customerAppService = customerAppService;
             _districtAppService = districtAppService;
             _cityAppService = cityAppService;
-            _serviceTypesRepo = serviceTypesRepo;
+            _estateCategoryAppService = estateCategoryAppService;
         }
 
         public async Task<ActionResult> EstateTypes()
@@ -75,8 +75,8 @@ namespace RoyalEstate.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var serviceTypes = await _serviceTypesRepo.GetAllIncluding(s => s.EstateTypes).ToListAsync();            
-            return View(serviceTypes);
+            var categories = await _estateCategoryAppService.GetAllAsync();
+            return View(categories);
         }
 
         [HttpPost]

@@ -8,6 +8,7 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using RoyalEstate.Entities;
 using RoyalEstate.Estates.Dto;
 
@@ -22,7 +23,7 @@ namespace RoyalEstate.Estates
 
         protected override IQueryable<Estate> CreateFilteredQuery(GetAllEstatesInputDto input)
         {
-            return Repository.GetAllIncluding(e => e.Images);
+            return Repository.GetAllIncluding(e => e.Images).WhereIf(!string.IsNullOrEmpty(input.Term), e=>e.Title.Contains(input.Term) || e.Description.Contains(input.Term));
         }
 
         protected override Task<Estate> GetEntityByIdAsync(long id)

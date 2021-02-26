@@ -1,22 +1,19 @@
 ﻿$(() => {
     let _estateService = abp.services.app.estate;   
-
     const pageSize = 30;
-    
     let startIndex = 1;
     let endIndex = 30;
 
+    let filtersObject = {
+        maxResultCount: pageSize,
+        skipCount: 0
+    };
+
     let canLoadUp = false;
     let canLoadDown = true;
-
     let lastScrollTop = 0;
         
-    let maxLoadSize = parseInt($("#loadSizes div").first(x => x.css("display") === "block").attr("data-loadSize"));
-    
-    
-    if ($("#estatesSection").width() > 992) {
-        maxLoadSize = 12;
-    }
+    let maxLoadSize = parseInt($("#loadSizes div").first(x => x.css("display") === "block").attr("data-loadSize"));        
     
     const dirUp = "up";
     const dirDown = "down";
@@ -25,11 +22,11 @@
 
     let firstDiv = null;
 
-    let loadEstates = (maxResultCount, skipCount, dir) => {
+    let loadEstates = (filters, dir) => {
         if (dir==dirUp && startIndex==1) {
             return;
         }
-        _estateService.getAll({ maxResultCount: maxResultCount, skipCount: skipCount }).done(function (result) {                        
+        _estateService.getAll(filters).done(function (result) {                        
             let length = result.items.length;
             if (length == 0) {
                 canLoadDown = false;
@@ -87,7 +84,7 @@
         });
     };
     
-    loadEstates(pageSize, 0, dirDown);   
+    loadEstates(filtersObject, dirDown);   
 
     $(window).scroll(function () {
         let st = $(window).scrollTop();
@@ -140,13 +137,35 @@
         if (startIndex==1) {
             return;
         }
-        let skip = startIndex <= maxLoadSize ? 0 : (startIndex - maxLoadSize - 1);
-        let loadSize = startIndex > maxLoadSize ? maxLoadSize : (startIndex - 1);            
-        loadEstates(loadSize, skip, dirUp);
+        filtersObject.maxResultCount = startIndex > maxLoadSize ? maxLoadSize : (startIndex - 1);    
+        filtersObject.skipCount = startIndex <= maxLoadSize ? 0 : (startIndex - maxLoadSize - 1);
+        loadEstates(filtersObject, dirUp);
     }
 
     function lazyLoadDown() {                  
-        loadEstates(maxLoadSize, endIndex, dirDown);
+        filtersObject.maxResultCount = maxLoadSize;
+        filtersObject.skipCount = endIndex;
+        loadEstates(filtersObject, dirDown);
     }
+
+    $("#frmSearch").submit(function () {
+        console.log($(this).serializeArray());
+        let s = $(this).serializeArray().reduce((obj, { name, value }) => {
+            obj[name] = value;
+            return obj;
+        }, {});
+        $("#estatesSection").empty();
+        $("#estatesSection")[0].style.paddingTop = 0;
+        startIndex = 1;
+        endIndex = 30;
+        canLoadUp = false;
+        canLoadDown = true;
+        lastScrollTop = 0;
+        filtersObject.maxResultCount = pageSize;
+        filtersObject.skipCount = 0;
+        filtersObject = {...filtersObject, ...s }        
+        loadEstates(filtersObject, dirDown);
+        return false;
+    })
 });
 

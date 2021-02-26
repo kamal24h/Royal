@@ -2,7 +2,7 @@
 @using RoyalEstate.Web.Views.Shared.Components.SideBarUserArea
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     @await Html.PartialAsync("_SideBar.Logo.cshtml")
-    <div class="sidebar" dir="rtl">
+    <div class="sidebar text-right">
         @await Component.InvokeAsync(typeof(SideBarUserAreaViewComponent))
         @await Component.InvokeAsync(typeof(SideBarMenuViewComponent))
     </div>

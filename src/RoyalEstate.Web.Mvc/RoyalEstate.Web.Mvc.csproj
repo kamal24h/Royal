@@ -35,6 +35,16 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Properties\PublishProfiles\IISProfile.pubxml.user" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\css\adminlte.css.map" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\css\adminlte.min.css.map" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\adminlte.js" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\adminlte.js.map" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\adminlte.min.js" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\adminlte.min.js.map" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\demo.js" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\pages\dashboard.js" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\pages\dashboard2.js" />
+    <None Include="wwwroot\libs\admin-lte-rtl\dist\js\pages\dashboard3.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.min.js" />
     <None Include="wwwroot\libs\jquery.form\jquery.form.min.js.map" />

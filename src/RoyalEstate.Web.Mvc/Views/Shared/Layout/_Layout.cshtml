@@ -20,13 +20,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <link href="~/css/style.css" rel="stylesheet" />
-    <link href="~/view-resources/Views/_Bundles/bootstrap-rtl.min.css" rel="stylesheet" />
+    <link href="~/view-resources/Views/_Bundles/bootstrap.min.css" rel="stylesheet" />
     <title>@pageTitle</title>
 
     @await Html.PartialAsync("_Styles.cshtml")
     @RenderSection("styles", required: false)
 </head>
-<body style="font-family:'B Nazanin' " class="hold-transition sidebar-mini">
+<body style="font-family:'B Nazanin' " class="hold-transition sidebar-mini layout-navbar-fixed text-right">
     <div class="wrapper">
         @await Html.PartialAsync("_Header.cshtml")
         @await Html.PartialAsync("_SideBar.cshtml")

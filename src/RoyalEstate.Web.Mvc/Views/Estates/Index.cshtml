@@ -1,6 +1,6 @@
 ﻿@using RoyalEstate.Web.Startup
-@using RoyalEstate.Entities
-@model System.Collections.Generic.List<ServiceType>
+@using RoyalEstate.Estates.Dto
+@model System.Collections.Generic.List<EstateCategoryDto>
 @{
     ViewBag.Title = L("Estates");
     ViewBag.CurrentPageName = PageNames.Estates;
@@ -9,14 +9,13 @@
 @section styles
 {
 
-    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" asp-append-version="true" />
-    @*<link href="~/view-resources/Views/_Bundles/bootstrap-rtl.min.css" rel="stylesheet" />*@
+    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" asp-append-version="true" />    
     <style>
         ul#ulCategories li {
             padding: 0.7rem 0.5rem !important;
         }
 
-        #newEstateSection ul {
+        #mdlNewEstate ul {
             font-size: 1rem;
             font-weight: bold
         }
@@ -61,7 +60,7 @@
     </style>
 }
 
-<section class="content-header">
+<section class="content-header text-right">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -73,67 +72,104 @@
 
 
 
-<section class="content">
+<section class="content text-right">
     <div class="container-fluid  ">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header  ">
-                        <button id="btnNewEstate" class="btn btn-success">پرونده جدید</button>
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-2">
+                                <button class="btn btn-info">
+                                    فیلترها &nbsp;
+                                    <span class="bg-light rounded-circle p-1"><i class="fa fa-bars"></i></span>
+                                </button>
+                            </div>
+                            <div class="col-sm-10 ">
+                                <form id="frmSearch">
+                                    <div class="input-group " style="direction:ltr !important">
+                                        <div class="input-group-prepend">
+                                            <button class="btn btn-outline-primary">
+                                                <i class="fa fa-search"></i>
+                                            </button>
+                                        </div>
+                                        <input name="term" class="form-control" placeholder="@L("Search")" />
+                                    </div>
+                                </form>
+                            </div>
+                            
+                        </div>
+                        
                     </div>
                     <div class="card-body">
-                        <section id="newEstateSection" style="display: none">
-                            <div class="row justify-content-end">
-                                <button class="btn close" style="font-size: 3rem">&times;</button>
-                            </div>
-
-                            <div class="row justify-content-center">
-                                <div class="col-sm-12 col-md-6 col-lg-4">
-                                    <h5>دسته پرونده را انتخاب کنید</h5>
-                                    <ul id="ulCategories" class="nav flex-column">
-                                        @foreach (var item in Model)
-                                        {
-                                            <li class="nav-item">
-                                                <a class="nav-link" data-toggle="tab" href="@("#serviceType"+item.Id)">@L(item.Name)</a>
-                                            </li>
-                                        }
-                                    </ul>
-                                    <div class="tab-content d-none">
-                                        <button id="btnReturnToCategories" class="btn btn-link">
-                                            <i class="fa fa-arrow-circle-right"></i>&nbsp;
-                                            بازگشت به همه دسته‌بندی‌ها
-                                        </button>
-                                        @foreach (var item in Model)
-                                        {
-                                            <div class="tab-pane container" id="@("serviceType"+item.Id)">
-                                                <label>@L(item.Name)</label>
-                                                <ul class="list-group ">
-                                                    @foreach (var estateType in item.EstateTypes)
-                                                    {
-                                                        <li class="list-group-item">
-                                                            <a href="#" class="newEstateLink" data-EstateTypeId="@estateType.Id">
-                                                                <i class="fa fa-building"></i>
-                                                                @L(estateType.Name)
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        }
+                        <div class="modal fade" id="mdlNewEstate">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body text-right">                                        
+                                        <h5>دسته پرونده را انتخاب کنید</h5>
+                                        <ul id="ulCategories" class="nav flex-column">
+                                            @foreach (var item in Model)
+                                            {
+                                                <li class="nav-item">
+                                                    <a class="nav-link" data-toggle="tab" href="@("#serviceType"+item.Id)">@L(item.Name)</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                        <div class="tab-content d-none">
+                                            <button id="btnReturnToCategories" class="btn btn-link">
+                                                <i class="fa fa-arrow-circle-right"></i>&nbsp;
+                                                بازگشت به همه دسته‌بندی‌ها
+                                            </button>
+                                            @foreach (var item in Model)
+                                            {
+                                                <div class="tab-pane container" id="@("serviceType"+item.Id)">
+                                                    <label>@L(item.Name)</label>
+                                                    <ul class="list-group ">
+                                                        @foreach (var estateType in item.EstateTypes)
+                                                        {
+                                                            <li class="list-group-item">
+                                                                <a href="#" class="newEstateLink" data-EstateTypeId="@estateType.Id">
+                                                                    <i class="fa fa-building"></i>
+                                                                    @L(estateType.Name)
+                                                                </a>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>                           
+
+                            
 
                             @using (Html.BeginForm("NewEstate", "Estates", FormMethod.Post, new { id = "frmNew", @class = "d-none" }))
                             {
                                 @Html.AntiForgeryToken()
                                 <input name="estateTypeId" type="hidden" value="" />
                             }
-                        </section>
+                        </div>
                         <div id="loadSizes" class="">
                             <div class="d-block d-sm-none" data-loadSize="10"></div>
                             <div class="d-none d-sm-block d-xl-none" data-loadSize="10"></div>
                             <div class="d-none d-xl-block" data-loadSize="12"></div>
+                        </div>
+                        <div id="filterBox" class="modal fade">
+                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button class="btn close" data-dismiss="modal">&times;</button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form id="frmFilter">                                           
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div id="estatesSection" class="row">
                         </div>
@@ -151,28 +187,32 @@
     <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
 
     <script>
+        let categories = null;
         $(() => {
+            $("nav.main-header").append(`
+<ul class="navbar-nav p-0 mr-auto">
+        <li class="nav-item">
+            <button id="btnNewEstate" class="btn btn-success">@L("NewEstate") <i class="fa fa-plus"></i></button>
+        </li>
+    </ul>`);
             $("#btnNewEstate").click(function () {
-                $("#newEstateSection").show(500);
-                $("#estatesSection").fadeOut(500);
-            });
+                $("#ulCategories").removeClass("d-none");
+                $("#ulCategories .active").removeClass("active");
+                $("#mdlNewEstate div.tab-pane").removeClass("fade active show");
+                $("#mdlNewEstate div.tab-content").addClass("d-none");
+                $("#mdlNewEstate").modal("show");
+            });            
 
-            $("#newEstateSection button.close").click(function () {
-                $("#newEstateSection").hide(500);
-                $("#estatesSection").fadeIn(500);
-            });
-
-
-            $("#newEstateSection a.nav-link").click(function () {
+            $("#mdlNewEstate a.nav-link").click(function () {
                 $("#ulCategories").addClass("d-none");
-                $("#newEstateSection div.tab-content").removeClass("d-none");
+                $("#mdlNewEstate div.tab-content").removeClass("d-none");
             });
 
             $("#btnReturnToCategories").click(function () {
                 $("#ulCategories").removeClass("d-none");
                 $("#ulCategories .active").removeClass("active");
-                $("#newEstateSection div.tab-pane").removeClass("fade active show");
-                $("#newEstateSection div.tab-content").addClass("d-none");
+                $("#mdlNewEstate div.tab-pane").removeClass("fade active show");
+                $("#mdlNewEstate div.tab-content").addClass("d-none");
             });
 
             $("a.newEstateLink").click(function () {
@@ -181,6 +221,7 @@
                 $("#frmNew input[name='estateTypeId']").val(estateTypeId);
                 $("#frmNew").submit();
             });
+            categories = @Html.Raw(Json.Serialize(Model));            
         })
     </script>
 
