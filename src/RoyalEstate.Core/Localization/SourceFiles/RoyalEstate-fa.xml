@@ -155,6 +155,7 @@
     <text name="ResetPasswordStepTwoInfo">2. این رمز تصادفی را یادداشت کرده و به کاربر ارسال کنید.</text>
 
     <text name="Estates" value="پرونده‌ها" />
+    <text name="EstateType" value="نوع‌ پرونده" />
     <text name="EstateTypes" value="دسته‌بندی پرونده‌ها" />
     <text name="EstateDetails" value="جزئیات پرونده" />
     <text name="EstateTypeName" value="نام نوع ملک" />
@@ -188,7 +189,7 @@
     <text name="Address">آدرس</text>
     <text name="EstateDescription">توضیحات ملک</text>
 
-    <text name="NewEstate">پرونده جدید</text>
+    <text name="NewEstate">جدید</text>
 
     <!--Service Types-->
     <text name="ResidentialForSale">فروش مسکونی</text>

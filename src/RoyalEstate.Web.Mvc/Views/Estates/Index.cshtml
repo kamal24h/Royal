@@ -4,6 +4,7 @@
 @{
     ViewBag.Title = L("Estates");
     ViewBag.CurrentPageName = PageNames.Estates;
+    var estateTypes = Model.SelectMany(s => s.EstateTypes);
 }
 
 @section styles
@@ -60,7 +61,7 @@
     </style>
 }
 
-<section class="content-header text-right">
+@*<section class="content-header text-right">
     <div class="container-fluid">
         <div class="row">
             <div class="col-12">
@@ -68,24 +69,21 @@
             </div>
         </div>
     </div>
-</section>
+</section>*@
 
 
 
-<section class="content text-right">
-    <div class="container-fluid  ">
-        <div class="row">
-            <div class="col-12">
+<section class="content text-right p-0">
+    <div class="container-fluid  p-0">
+        <div class="row mx-0 p-0">
+            <div class="col-12 p-0">
                 <div class="card">
-                    <div class="card-header">
+                    <div id="myCardHeader" class="card-header " style="position:sticky; z-index:3; background-color:#eee; max-height:70vh; overflow-y:scroll">
                         <div class="row">
-                            <div class="col-sm-2">
-                                <button class="btn btn-info">
-                                    فیلترها &nbsp;
-                                    <span class="bg-light rounded-circle p-1"><i class="fa fa-bars"></i></span>
-                                </button>
+                            <div class="col-2">
+                                <button class="btn btn-info" data-toggle="collapse" data-target="#filtersBox">فیلترها</button>
                             </div>
-                            <div class="col-sm-10 ">
+                            <div class="col-10 ">
                                 <form id="frmSearch">
                                     <div class="input-group " style="direction:ltr !important">
                                         <div class="input-group-prepend">
@@ -99,7 +97,125 @@
                             </div>
                             
                         </div>
-                        
+                        <div id="filtersBox" class="collapse text-right">
+                            <form id="frmFilters" class="d-none mt-2">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="form-group">
+                                            <label>@L("EstateType")</label>
+                                            <select name="estateTypeId" class="form-control" onchange="filterByEstateType(this)">
+                                                <option value="">همه</option>
+                                                @foreach (var estateType in estateTypes)
+                                                {
+                                                    <option value="@estateType.Id">@L(estateType.Name)</option>
+                                                }
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>@L("City")</label>
+                                                    <select name="cityId" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <label>@L("District")</label>
+                                                    <select name="districtId" class="form-control"></select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group filter-area d-none">
+                                            <label>@L("AreaM2")</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="minArea" class="form-control" placeholder="حداقل" />
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="number" min="maxArea" class="form-control" placeholder="حداکثر" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group filter-rooms d-none">
+                                                    <label>@L("Rooms")</label>
+                                                    <input type="number" name="rooms" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group filter-floor d-none">
+                                                    <label>@L("Floor")</label>
+                                                    <input type="number" name="floor" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>                                        
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group filter-price d-none">
+                                            <label>@L("PricePerM2")</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="minPrice" class="form-control" placeholder="حداقل" />
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="maxPrice" class="form-control" placeholder="حداکثر" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group filter-rent d-none">
+                                            <label>@L("Rent")</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="minRent" class="form-control" placeholder="حداقل" />
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="maxRent" class="form-control" placeholder="حداکثر" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group filter-deposit d-none">
+                                            <label>@L("Deposit")</label>
+                                            <div class="row">
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="minDeposit" class="form-control" placeholder="حداقل" />
+                                                </div>
+                                                <div class="col-sm-6">
+                                                    <input type="number" name="maxDeposit" class="form-control" placeholder="حداکثر" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group form-inline filter-elevator d-none">
+                                                    <label class="mx-2">@L("Elevator")</label>
+                                                    <input type="checkbox" name="elevator" class="form-control">
+                                                </div>
+                                            </div>                                            
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <div class="form-group form-inline filter-parking d-none">
+                                                    <label class="mx-2">@L("Parking")</label>
+                                                    <input type="checkbox" name="parking" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div>
+                                        <button type="button" id="btnResetFilters" class="btn btn-info"><i class="fa fa-undo"></i></button>
+                                        <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
+                                    </div>
+                                    
+                                </div>
+                            </form>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="modal fade" id="mdlNewEstate">
@@ -157,20 +273,7 @@
                             <div class="d-block d-sm-none" data-loadSize="10"></div>
                             <div class="d-none d-sm-block d-xl-none" data-loadSize="10"></div>
                             <div class="d-none d-xl-block" data-loadSize="12"></div>
-                        </div>
-                        <div id="filterBox" class="modal fade">
-                            <div class="modal-dialog modal-dialog-centered modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button class="btn close" data-dismiss="modal">&times;</button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form id="frmFilter">                                           
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        </div>                        
                         <div id="estatesSection" class="row">
                         </div>
                     </div>
@@ -187,21 +290,30 @@
     <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
 
     <script>
-        let categories = null;
+        let estateTypes = @Html.Raw(Json.Serialize(estateTypes));
+        
         $(() => {
+            $("#myCardHeader")[0].style.top = $("nav.main-header")[0].offsetHeight+'px';
+            $("#filtersBox").on('show.bs.collapse', function () {
+                $("#filtersBox>form").removeClass("d-none");
+            });
+            $("#filtersBox").on('hide.bs.collapse', function () {
+                $("#filtersBox>form").addClass("d-none");
+            });
+
             $("nav.main-header").append(`
 <ul class="navbar-nav p-0 mr-auto">
-        <li class="nav-item">
-            <button id="btnNewEstate" class="btn btn-success">@L("NewEstate") <i class="fa fa-plus"></i></button>
-        </li>
-    </ul>`);
+<li class="nav-item">
+<button id="btnNewEstate" class="btn btn-success">@L("NewEstate") <i class="fa fa-plus"></i></button>
+</li>
+</ul>`);
             $("#btnNewEstate").click(function () {
                 $("#ulCategories").removeClass("d-none");
                 $("#ulCategories .active").removeClass("active");
                 $("#mdlNewEstate div.tab-pane").removeClass("fade active show");
                 $("#mdlNewEstate div.tab-content").addClass("d-none");
                 $("#mdlNewEstate").modal("show");
-            });            
+            });
 
             $("#mdlNewEstate a.nav-link").click(function () {
                 $("#ulCategories").addClass("d-none");
@@ -221,8 +333,23 @@
                 $("#frmNew input[name='estateTypeId']").val(estateTypeId);
                 $("#frmNew").submit();
             });
-            categories = @Html.Raw(Json.Serialize(Model));            
+
         })
+        function filterByEstateType(s) {
+            let idEstateType = $(s).val();            
+            let estateType = estateTypes.find(i => i.id == idEstateType);     
+            
+            $("#frmFilters .form-group[class*='filter-']").each((i, fg) => {                
+                $(fg).addClass("d-none");
+                $(fg).find("input").val('').change();
+                if (idEstateType==null || idEstateType=="") {
+                    return;
+                }
+                let propName = fg.className.split(/\s+/).find(c => c.startsWith('filter-')).substring(7);                
+                if (estateType[propName] === true)
+                    $(fg).removeClass("d-none");
+            })
+        }
     </script>
 
     <script src="~/view-resources/Views/Estates/Index.js" asp-append-version="true"></script>

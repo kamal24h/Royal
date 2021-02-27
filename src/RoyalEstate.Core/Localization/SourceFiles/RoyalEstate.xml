@@ -148,7 +148,7 @@
     <text name="SystemUsers">System Users</text>
     <text name="Customers">Customers</text>
     <text name="EstateDescription">Estate Description</text>
-    <text name="NewEstate">New Estate</text>
+    <text name="NewEstate">New</text>
 
     <!--Service Types-->
     <text name="ResidentialForSale">Residential For Sale</text>

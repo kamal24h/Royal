@@ -148,8 +148,7 @@
         loadEstates(filtersObject, dirDown);
     }
 
-    $("#frmSearch").submit(function () {
-        console.log($(this).serializeArray());
+    $("#frmSearch").submit(function () {        
         let s = $(this).serializeArray().reduce((obj, { name, value }) => {
             obj[name] = value;
             return obj;
@@ -166,6 +165,33 @@
         filtersObject = {...filtersObject, ...s }        
         loadEstates(filtersObject, dirDown);
         return false;
+    })
+
+    $("#frmFilters").submit(function (e) {
+        $("#IsBusy").modal('show');
+        let s = $(this).serializeArray().reduce((obj, { name, value }) => {
+            obj[name] = value;
+            return obj;
+        }, {});
+        $("#estatesSection").empty();
+        $("#estatesSection")[0].style.paddingTop = 0;
+        startIndex = 1;
+        endIndex = 30;
+        canLoadUp = false;
+        canLoadDown = true;
+        lastScrollTop = 0;
+        filtersObject.maxResultCount = pageSize;
+        filtersObject.skipCount = 0;
+        filtersObject = { ...filtersObject, ...s }
+        loadEstates(filtersObject, dirDown);
+        $(this).parent().collapse("hide");   
+        $("#IsBusy").modal('hide');
+        return false;
+    })
+
+    $("#btnResetFilters").click(function () {
+        $("#frmFilters").trigger('reset');
+        $("#frmFilters").submit();
     })
 });
 
