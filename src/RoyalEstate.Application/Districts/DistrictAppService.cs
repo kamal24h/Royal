@@ -8,6 +8,7 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using RoyalEstate.Districts.Dto;
 using RoyalEstate.Entities;
 
@@ -21,7 +22,9 @@ namespace RoyalEstate.Districts
 
         protected override IQueryable<District> CreateFilteredQuery(PagedDistrictResultRequestDto input)
         {
-            return Repository.GetAll().WhereIf(input.CityId != null, d => d.CityId == input.CityId);
+            return base.CreateFilteredQuery(input)
+                .WhereIf(input.CityId != null, d => d.CityId == input.CityId)
+                .Include(c=>c.City);
         }
 
         public async Task<List<SelectListItem>> GetDistrictsSelectListAsync(int cityId)

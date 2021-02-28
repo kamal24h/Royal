@@ -89,9 +89,9 @@
     _cityService.getAll({}).done(function (result) {
         result.items.forEach(c => {
             $("select[name='cityId']").append(`<option value='${c.id}'>${c.name}</option>`)
-        })
+        });
     });
-    $("select[name='cityId']").change(function () {
+    $("select[name='cityId']").change(function() {
         let districtSelect = $("select[name='districtId']");
         $(districtSelect).empty();
         $(districtSelect).trigger('change');
@@ -99,12 +99,13 @@
         if (cityId == null || cityId == "")
             return;
         $(districtSelect).append(`<option value=''>همه</option>`);
-        _districtService.getAll({ cityId: cityId }).done(function (result) {
+        _districtService.getAll({ cityId: cityId }).done(function(result) {
             result.items.forEach(d => {
                 $(districtSelect).append(`<option value='${d.id}'>${d.name}</option>`);
-            })
-        })
-    })
+            });
+        });
+    });
+
     loadEstates(filtersObject, dirDown);   
 
     $(window).scroll(function () {
