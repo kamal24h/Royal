@@ -58,6 +58,15 @@
         #estatesSection a {
             color: black;
         }
+        span.tag-badge {
+            font-size: 0.8rem;
+            background-color: #a62626;
+            color: #fff;
+            padding: 0.5rem;
+        }
+            span.tag-badge .fa-times:hover {
+                cursor: pointer;
+            }
     </style>
 }
 
@@ -95,7 +104,20 @@
                                     </div>
                                 </form>
                             </div>
-                            
+
+                        </div>
+                        <div class="mt-3">
+                            <span class="badge tag-badge d-none fromSelect filter-estateTypeId" data-target="#selectEstateType"><span class="filterData-estateType"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none fromSelect filter-cityId" data-target="#selectCity"><span class="filterData-city"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none fromSelect filter-districtId" data-target="#selectDistrict"><span class="filterData-district"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-minArea-maxArea">متراژ از <span class="filterData-minArea"></span> تا <span class="filterData-maxArea"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-minPrice-maxPrice">قیمت هر متر از <span class="filterData-minPrice"></span> تا <span class="filterData-maxPrice"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-minRent-maxRent">اجاره از <span class="filterData-minRent"></span> تا <span class="filterData-maxRent"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-minDeposit-maxDeposit">ودیعه از <span class="filterData-minDeposit"></span> تا <span class="filterData-maxDeposit"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-rooms">تعداد اتاق <span class="filterData-rooms"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-floor">طبقه <span class="filterData-floor"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none filter-elevator">با آسانسور&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none filter-parking">دارای پارکینگ&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                         </div>
                         <div id="filtersBox" class="collapse text-right">
                             <form id="frmFilters" class="d-none mt-2">
@@ -103,7 +125,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label>@L("EstateType")</label>
-                                            <select name="estateTypeId" class="form-control" onchange="filterByEstateType(this)">
+                                            <select id="selectEstateType" name="estateTypeId" class="form-control" onchange="filterByEstateType(this)">
                                                 <option value="">همه</option>
                                                 @foreach (var estateType in estateTypes)
                                                 {
@@ -119,7 +141,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>@L("City")</label>
-                                                    <select name="cityId" class="form-control">
+                                                    <select id="selectCity" name="cityId" class="form-control">
                                                         <option value="">همه</option>
                                                     </select>
                                                 </div>
@@ -127,7 +149,7 @@
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <label>@L("District")</label>
-                                                    <select name="districtId" class="form-control"></select>
+                                                    <select id="selectDistrict" name="districtId" class="form-control"></select>
                                                 </div>
                                             </div>
                                         </div>
@@ -138,7 +160,7 @@
                                                     <input type="number" name="minArea" class="form-control" placeholder="حداقل" />
                                                 </div>
                                                 <div class="col-sm-6">
-                                                    <input type="number" min="maxArea" class="form-control" placeholder="حداکثر" />
+                                                    <input type="number" name="maxArea" class="form-control" placeholder="حداکثر" />
                                                 </div>
                                             </div>
                                         </div>
@@ -155,7 +177,7 @@
                                                     <input type="number" name="floor" class="form-control" />
                                                 </div>
                                             </div>
-                                        </div>                                        
+                                        </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group filter-price d-none">
@@ -197,7 +219,7 @@
                                                     <label class="mx-2">@L("Elevator")</label>
                                                     <input type="checkbox" name="elevator" class="form-control">
                                                 </div>
-                                            </div>                                            
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-sm-4">
@@ -214,7 +236,7 @@
                                         <button type="button" id="btnResetFilters" class="btn btn-info"><i class="fa fa-undo"></i></button>
                                         <button type="submit" class="btn btn-success"><i class="fa fa-check"></i></button>
                                     </div>
-                                    
+
                                 </div>
                             </form>
                         </div>
@@ -275,7 +297,7 @@
                             <div class="d-block d-sm-none" data-loadSize="10"></div>
                             <div class="d-none d-sm-block d-xl-none" data-loadSize="10"></div>
                             <div class="d-none d-xl-block" data-loadSize="12"></div>
-                        </div>                        
+                        </div>      
                         <div id="estatesSection" class="row">
                         </div>
                     </div>

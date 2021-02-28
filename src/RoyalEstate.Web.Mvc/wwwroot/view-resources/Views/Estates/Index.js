@@ -188,12 +188,13 @@
         return false;
     })
 
-    $("#frmFilters").submit(function (e) {
+    $("#frmFilters").submit(function(e) {
         $("#IsBusy").modal('show');
         let s = $(this).serializeArray().reduce((obj, { name, value }) => {
-            obj[name] = value;
-            return obj;
-        }, {});
+                obj[name] = value;
+                return obj;
+            },
+            {});
         $("#estatesSection").empty();
         $("#estatesSection")[0].style.paddingTop = 0;
         startIndex = 1;
@@ -206,16 +207,74 @@
         filtersObject = { ...filtersObject, ...s }
         filtersObject.elevator = $(".filter-elevator input").is(":checked");
         filtersObject.parking = $(".filter-parking input").is(":checked");
-        console.log(filtersObject);
         loadEstates(filtersObject, dirDown);
-        $(this).parent().collapse("hide");   
+        checkFilterTags(filtersObject);
+        $(this).parent().collapse("hide");
         $("#IsBusy").modal('hide');
         return false;
-    })
+    });
 
-    $("#btnResetFilters").click(function () {
+    $("#btnResetFilters").click(function() {
         $("#frmFilters").trigger('reset');
         $("#frmFilters").submit();
+    });
+
+    function checkFilterTags(filters) {
+        $(".tag-badge").each((i, t) => {
+            $(t).addClass("d-none");
+            let classNames = t.className.split(/\s+/);
+            let propNames = classNames.find(c => c.startsWith("filter-")).split(/-/);
+            propNames.shift();
+            let found = false;
+            if (propNames.length > 1) {
+                for (let p in propNames) {
+                    if (filters[propNames[p]]) {
+                        found = true;
+                        break;
+                    }
+                }
+            } else if (filters[propNames[0]])
+                found = true;
+            if (!found) {
+                return;
+            }
+            if ($(t).hasClass("hasData")) {
+                $(t).find("[class^='filterData-']").each((j, d) => {
+                    let prop = d.className.split(/-/)[1];
+                    let v = filters[prop];
+                    $(d).text(v==""||v==null?'هرچقدر':v);
+                });
+            } else if ($(t).hasClass("fromSelect")) {
+                $(t).find("[class^='filterData-']").text($($(t).attr("data-target") + " option:selected").html());
+            }
+            $(t).removeClass("d-none");
+        });
+    }
+
+    $(".tag-badge .fa-times").click(function () {
+        $("#IsBusy").modal('show');
+        let tag = $(this).parent()[0];
+        let classNames = tag.className.split(/\s+/);
+        let propNames = classNames.find(c => c.startsWith("filter-")).split(/-/);
+        propNames.shift();
+        for (p in propNames) {
+            filtersObject[propNames[p]] = '';
+        }
+        $(tag).addClass("d-none");
+        $("#estatesSection").empty();
+        $("#estatesSection")[0].style.paddingTop = 0;
+        startIndex = 1;
+        endIndex = 30;
+        canLoadUp = false;
+        canLoadDown = true;
+        lastScrollTop = 0;
+        filtersObject.maxResultCount = pageSize;
+        filtersObject.skipCount = 0;
+        filtersObject.elevator = $(".filter-elevator input").is(":checked");
+        filtersObject.parking = $(".filter-parking input").is(":checked");
+        loadEstates(filtersObject, dirDown);
+        $("#filtersBox").collapse('hide');
+        $("#IsBusy").modal('hide');
     })
 });
 
