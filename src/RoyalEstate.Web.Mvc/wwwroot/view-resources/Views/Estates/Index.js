@@ -257,9 +257,22 @@
         let classNames = tag.className.split(/\s+/);
         let propNames = classNames.find(c => c.startsWith("filter-")).split(/-/);
         propNames.shift();
-        for (p in propNames) {
-            filtersObject[propNames[p]] = '';
+        let isCheckBox = !($(tag).hasClass("hasData") || $(tag).hasClass("fromSelect"));
+        if (isCheckBox) {
+            for (p in propNames) {
+                filtersObject[propNames[p]] = false;
+                $(`#frmFilters input[name='${propNames[p]}']`).prop('checked', false);
+            }
+        } else {
+            for (p in propNames) {
+                filtersObject[propNames[p]] = '';
+                if ($(tag).hasClass('fromSelect'))
+                    $($(tag).attr("data-target")).val('').change();
+                else
+                    $(`#frmFilters input[name='${propNames[p]}']`).val('').change();
+            }
         }
+        
         $(tag).addClass("d-none");
         $("#estatesSection").empty();
         $("#estatesSection")[0].style.paddingTop = 0;
