@@ -30,6 +30,8 @@ namespace RoyalEstate.Estates
                 .WhereIf(input.DistrictId != null, e => e.DistrictId == input.DistrictId)
                 .WhereIf(input.MinArea!=null, e=>e.Area>=input.MinArea)
                 .WhereIf(input.MaxArea != null, e => e.Area <= input.MaxArea)
+                .WhereIf(input.MinPrice != null, e => e.Price >= input.MinPrice)
+                .WhereIf(input.MaxPrice != null, e => e.Price <= input.MaxPrice)
                 .WhereIf(input.MinRent != null, e => e.Rent >= input.MinRent)
                 .WhereIf(input.MaxRent != null, e => e.Rent <= input.MaxRent)
                 .WhereIf(input.MinDeposit != null, e => e.Deposit >= input.MinDeposit)

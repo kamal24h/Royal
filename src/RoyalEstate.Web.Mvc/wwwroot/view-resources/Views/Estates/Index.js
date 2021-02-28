@@ -204,6 +204,9 @@
         filtersObject.maxResultCount = pageSize;
         filtersObject.skipCount = 0;
         filtersObject = { ...filtersObject, ...s }
+        filtersObject.elevator = $(".filter-elevator input").is(":checked");
+        filtersObject.parking = $(".filter-parking input").is(":checked");
+        console.log(filtersObject);
         loadEstates(filtersObject, dirDown);
         $(this).parent().collapse("hide");   
         $("#IsBusy").modal('hide');
