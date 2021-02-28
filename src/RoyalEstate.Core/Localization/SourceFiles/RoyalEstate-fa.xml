@@ -200,13 +200,21 @@
 
     <!--Estate Types-->
     <text name="ApartmentForSale">فروش آپارتمان</text>
-    <text name="HomeForSale">فروش خانه</text>
+    <text name="HomeForSale">فروش خانه،ویلا</text>
     <text name="StoreForSale">فروش مغازه</text>
     <text name="OfficeForSale">فروش دفتر کار</text>
     <text name="ApartmentForRent">اجاره آپارتمان</text>
-    <text name="HomeForRent">اجاره خانه</text>
+    <text name="HomeForRent">اجاره خانه،ویلا</text>
     <text name="StoreForRent">اجاره مغازه</text>
     <text name="OfficeForRent">اجاره دفتر کار</text>
+    <text name="LandForSale">فروش زمین و کلنگی</text>
+    <text name="LandForRent">اجاره زمین و کلنگی</text>
+    <text name="IdustrialForSale">فروش ملک صنعتی،تجاری،کشاورزی</text>
+    <text name="IdustrialForRent">اجاره ملک صنعتی،تجاری،کشاورزی</text>
+  
+    
+
+
     <!---->
 
     <!--Dynamic properties-->

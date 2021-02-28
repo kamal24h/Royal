@@ -59,24 +59,28 @@ $(() => {
             },
             {
                 targets: 4,
-                data: 'creationTime',
-                sortable: true,
-                render: data => new persianDate(new Date(data)).format("DD MMMM YYYY")
+                data: 'cellPhone1',
+                sortable: true,                
             },
             {
                 targets: 5,
+                data: 'phoneNumber1',
+                sortable: true,
+            },
+            {
+                targets: 6,
                 data: 'isSeller',
                 sortable: false,
                 render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`
             },
             {
-                targets: 6,
+                targets: 7,
                 data: 'isBuyer',
                 sortable: false,
                 render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`
             },
             {
-                targets: 7,
+                targets: 8,
                 data: 'isActive',
                 sortable: false,
                 render: data => `<input type="checkbox" disabled ${data ? 'checked' : ''}>`

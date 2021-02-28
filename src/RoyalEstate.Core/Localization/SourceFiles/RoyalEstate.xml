@@ -166,6 +166,10 @@
     <text name="HomeForRent">Home For Rent</text>
     <text name="StoreForRent">Store For Rent</text>
     <text name="OfficeForRent">Office For Rent</text>
+    <text name="LandForSale">Land for sale</text>
+    <text name="LandForRent">Lamd for Rent</text>
+    <text name="IdustrialForSale">Industrial, Commercial, Agricultural for sale</text>
+    <text name="IdustrialForRent">Industrial, Commercial, Agricultural for rent</text>
     <!---->
 
     <!--Dynamic properties-->
