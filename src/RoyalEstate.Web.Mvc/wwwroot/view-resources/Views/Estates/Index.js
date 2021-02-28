@@ -217,6 +217,7 @@
 
     $("#btnResetFilters").click(function() {
         $("#frmFilters").trigger('reset');
+        $("#frmFilters .form-group[class*='filter-']").addClass("d-none");
         $("#frmFilters").submit();
     });
 
