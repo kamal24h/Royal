@@ -171,21 +171,20 @@
     }
 
     $("#frmSearch").submit(function () {        
-        let s = $(this).serializeArray().reduce((obj, { name, value }) => {
-            obj[name] = value;
-            return obj;
-        }, {});
-        $("#estatesSection").empty();
-        $("#estatesSection")[0].style.paddingTop = 0;
-        startIndex = 1;
-        endIndex = 30;
-        canLoadUp = false;
-        canLoadDown = true;
-        lastScrollTop = 0;
+        $("#IsBusy").modal("show");        
+        let term = $("#frmSearch input[name='term']").val();
+        
+        resetLazyLoad();
         filtersObject.maxResultCount = pageSize;
         filtersObject.skipCount = 0;
-        filtersObject = {...filtersObject, ...s }        
+        filtersObject = { ...filtersObject, term }       
+        if (term != "") {
+            $(".tag-search span").html(term).parent().removeClass("d-none");
+        } else {
+            $(".tag-search span").html('').parent().addClass("d-none");
+        }        
         loadEstates(filtersObject, dirDown);
+        $("#IsBusy").modal("hide");
         return false;
     })
 
@@ -196,13 +195,8 @@
                 return obj;
             },
             {});
-        $("#estatesSection").empty();
-        $("#estatesSection")[0].style.paddingTop = 0;
-        startIndex = 1;
-        endIndex = 30;
-        canLoadUp = false;
-        canLoadDown = true;
-        lastScrollTop = 0;
+        
+        resetLazyLoad();
         filtersObject.maxResultCount = pageSize;
         filtersObject.skipCount = 0;
         filtersObject = { ...filtersObject, ...s }
@@ -276,13 +270,8 @@
         }
         
         $(tag).addClass("d-none");
-        $("#estatesSection").empty();
-        $("#estatesSection")[0].style.paddingTop = 0;
-        startIndex = 1;
-        endIndex = 30;
-        canLoadUp = false;
-        canLoadDown = true;
-        lastScrollTop = 0;
+        
+        resetLazyLoad();
         filtersObject.maxResultCount = pageSize;
         filtersObject.skipCount = 0;
         filtersObject.elevator = $(".filter-elevator input").is(":checked");
@@ -291,5 +280,26 @@
         $("#filtersBox").collapse('hide');
         $("#IsBusy").modal('hide');
     })
+
+    $(".tag-search .fa-times").click(function () {
+        $("#IsBusy").modal("show");
+        $(this).before().html('').parent().addClass("d-none");
+        $("#frmSearch input").val('').change();
+        resetLazyLoad();
+        filtersObject.term = null;
+        loadEstates(filtersObject, dirDown);
+        $("#filtersBox").collapse('hide');
+        $("#IsBusy").modal('hide');
+    })
+
+    function resetLazyLoad() {        
+        $("#estatesSection").empty();
+        $("#estatesSection")[0].style.paddingTop = 0;
+        startIndex = 1;
+        endIndex = 30;
+        canLoadUp = false;
+        canLoadDown = true;
+        lastScrollTop = 0;        
+    }
 });
 

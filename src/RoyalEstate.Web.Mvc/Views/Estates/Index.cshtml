@@ -58,13 +58,17 @@
         #estatesSection a {
             color: black;
         }
-        span.tag-badge {
+        span.tag-badge,
+        span.tag-search {
             font-size: 0.8rem;
             background-color: #a62626;
             color: #fff;
             padding: 0.5rem;
         }
             span.tag-badge .fa-times:hover {
+                cursor: pointer;
+            }
+            span.tag-search .fa-times:hover {
                 cursor: pointer;
             }
     </style>
@@ -107,6 +111,7 @@
 
                         </div>
                         <div class="mt-3">
+                            <span class="badge tag-search d-none hasData filter-rooms">متن جستجو: <span></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none fromSelect filter-estateTypeId" data-target="#selectEstateType"><span class="filterData-estateType"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none fromSelect filter-cityId" data-target="#selectCity"><span class="filterData-city"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none fromSelect filter-districtId" data-target="#selectDistrict"><span class="filterData-district"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
