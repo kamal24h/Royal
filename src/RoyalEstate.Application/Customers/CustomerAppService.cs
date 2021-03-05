@@ -7,6 +7,7 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
+using Abp.Linq.Extensions;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using RoyalEstate.Customers.Dto;
 using RoyalEstate.Entities;
@@ -27,7 +28,9 @@ namespace RoyalEstate.Customers
 
         protected override IQueryable<Customer> CreateFilteredQuery(GetAllCustomersInputDto input)
         {
-            return Repository.GetAllIncluding(e => e.City);
+            return Repository.GetAllIncluding(c => c.City)
+                .WhereIf(input.IsActive != null, c => c.IsActive == input.IsActive)
+                .WhereIf(!string.IsNullOrEmpty(input.Term), c=>c.Name.Contains(input.Term)||c.Surname.Contains(input.Term));
         }
 
         protected override Task<Customer> GetEntityByIdAsync(long id)
@@ -42,5 +45,12 @@ namespace RoyalEstate.Customers
             taskSrc.SetResult(entity);
             return taskSrc.Task;
         }
+
+        public override async Task DeleteAsync(EntityDto<long> input)
+        {
+            var customer = await Repository.GetAsync(input.Id);
+            customer.IsActive = false;            
+            await Repository.UpdateAsync(customer);
+        }        
     }
 }

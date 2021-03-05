@@ -13,6 +13,8 @@
     <text name="District">محله</text>
     <text name="AllEstateFiles">همه پرونده ها</text>
     <text name="NewEstateFile">پرونده جدید</text>
+    <text name="SomethingWentWrong">خطایی در سمت سرور رخ داد!</text>
+    
 
     <text name="Tenants" value="تننت‌ها" />
     <text name="CreateNewTenant" value="ایجاد تننت جدید" />
@@ -153,6 +155,7 @@
     <text name="Clear">پاک کردن</text>
     <text name="ResetPasswordStepOneInfo">1. رمز مدیریتی خود را وارد کنید</text>
     <text name="ResetPasswordStepTwoInfo">2. این رمز تصادفی را یادداشت کرده و به کاربر ارسال کنید.</text>
+    <text name="AlsoDeleteRelatedEstates">حذف به همراه پرونده‌های مربوطه</text>
 
     <text name="Estates" value="پرونده‌ها" />
     <text name="EstateType" value="نوع‌ پرونده" />

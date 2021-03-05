@@ -9,6 +9,7 @@ using Abp.Application.Services.Dto;
 using Abp.Domain.Entities;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Microsoft.EntityFrameworkCore;
 using RoyalEstate.Entities;
 using RoyalEstate.Estates.Dto;
 
@@ -21,14 +22,21 @@ namespace RoyalEstate.Estates
             
         }
 
+        public async Task<List<EstateDto>> GetAllWithoutPagingAsync(GetAllEstatesInputDto input)
+        {
+            var q = await CreateFilteredQuery(input).ToListAsync();
+            return q.Select(e => ObjectMapper.Map<EstateDto>(e)).ToList();
+        }        
+
         protected override IQueryable<Estate> CreateFilteredQuery(GetAllEstatesInputDto input)
         {
             return Repository.GetAllIncluding(e => e.Images)
-                .WhereIf(!string.IsNullOrEmpty(input.Term), e=>e.Title.Contains(input.Term) || e.Description.Contains(input.Term))
+                .WhereIf(input.IsActive != null, e => e.IsActive == input.IsActive)
+                .WhereIf(!string.IsNullOrEmpty(input.Term), e => e.Title.Contains(input.Term) || e.Description.Contains(input.Term))
                 .WhereIf(input.EstateTypeId != null, e => e.EstateTypeId == input.EstateTypeId)
                 .WhereIf(input.CityId != null, e => e.CityId == input.CityId)
                 .WhereIf(input.DistrictId != null, e => e.DistrictId == input.DistrictId)
-                .WhereIf(input.MinArea!=null, e=>e.Area>=input.MinArea)
+                .WhereIf(input.MinArea != null, e => e.Area >= input.MinArea)
                 .WhereIf(input.MaxArea != null, e => e.Area <= input.MaxArea)
                 .WhereIf(input.MinPrice != null, e => e.Price >= input.MinPrice)
                 .WhereIf(input.MaxPrice != null, e => e.Price <= input.MaxPrice)
@@ -39,7 +47,8 @@ namespace RoyalEstate.Estates
                 .WhereIf(input.Rooms != null, e => e.Rooms == input.Rooms)
                 .WhereIf(input.Floor != null, e => e.Floor == input.Floor)
                 .WhereIf(input.Elevator, e => e.Elevator == true)
-                .WhereIf(input.Parking, e => e.Parking == true);
+                .WhereIf(input.Parking, e => e.Parking == true)
+                .WhereIf(input.CustomerId != null, e => e.CustomerId == input.CustomerId);
         }
 
         protected override Task<Estate> GetEntityByIdAsync(long id)

@@ -1,0 +1,157 @@
+﻿@model RoyalEstate.Customers.Dto.CustomerDto
+@{
+    Layout = null;
+}
+<div>
+    <div class="row justify-content-center mb-3">
+        <div>
+            <button class="btn btn-sm btnDelete btn-danger" data-name="@(Model.Name+' '+Model.Surname)" data-id="@Model.Id"><i class="fa fa-trash" ></i></button>
+            <button class="btn btn-sm btnEdit btn-info"><i class="fa fa-pen"></i></button>
+        </div>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped text-center">
+            <tbody>
+                <tr>
+                    <th>@L("FullName")</th>
+                    <td>@Model.Name @Model.Surname</td>
+                    <th>@L("City")</th>
+                    <td>@Model.CityName</td>
+                </tr>
+                <tr>
+                    <th>@L("CellPhone1")</th>
+                    <td>@Model.CellPhone1</td>
+                    <th>@L("CellPhone2")</th>
+                    <td>@Model.CellPhone2</td>
+                </tr>
+                <tr>
+                    <th>@L("PhoneNumber1")</th>
+                    <td>@Model.PhoneNumber1</td>
+                    <th>@L("PhoneNumber2")</th>
+                    <td>@Model.PhoneNumber2</td>
+                </tr>
+                <tr>
+                    <th>
+                        @L("Address")
+                    </th>
+                    <td colspan="3">
+                        @Model.Address
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <label class="mx-2">@L("IsSeller")</label>
+            <i class="fa @(Model.IsSeller?"fa-check text-success":"fa-times text-danger")"></i>
+        </div>
+        <div class="col-sm-4">
+            <label class="mx-2">@L("IsBuyer")</label>
+            <i class="fa @(Model.IsBuyer?"fa-check text-success":"fa-times text-danger")"></i>
+        </div>
+        <div class="col-sm-4">
+            <label class="mx-2">@L("IsActive")</label>
+            <i class="fa @(Model.IsActive?"fa-check text-success":"fa-times text-danger")"></i>
+        </div>
+    </div>
+</div>
+
+
+<form id="frmUpdateCustomer" class="d-none">
+    <button type="button" class="btn btn-default returnEdit mb-2">بازگشت</button>
+    <h5 class="text-primary">@L("PersonalInfo")</h5>
+    <input name="id" type="hidden" value="@Model.Id"/>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="Name">@L("Name")</label>
+                <input asp-for="Name" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="Surname">@L("Surname")</label>
+                <input asp-for="Surname" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group form-inline">
+                <label asp-for="IsSeller" class="ml-2">@L("IsSeller")</label>
+                <input asp-for="IsSeller" type="checkbox" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="form-group form-inline">
+                <label asp-for="IsBuyer" class="ml-2">@L("IsBuyer")</label>
+                <input asp-for="IsBuyer" type="checkbox" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <h5 class="text-primary">@L("ContactInfo")</h5>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="EmailAddress">@L("EmailAddress")</label>
+                <input asp-for="EmailAddress" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="CellPhone1">@L("CellPhone1")</label>
+                <input asp-for="CellPhone1" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="CellPhone2">@L("CellPhone2")</label>
+                <input asp-for="CellPhone2" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="PhoneNumber1">@L("PhoneNumber1")</label>
+                <input asp-for="PhoneNumber1" class="form-control" />
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label asp-for="PhoneNumber2">@L("PhoneNumber2")</label>
+                <input asp-for="PhoneNumber2" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <h5 class="text-primary">@L("LocationInfo")</h5>
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="form-group">
+                <label for="CityId">@L("City")</label>
+                <select name="CityId" class="form-control" data-id="@Model.CityId"></select>
+            </div>
+        </div>
+        <div class="col-sm-9">
+            <div class="form-group">
+                <label asp-for="Address">@L("Address")</label>
+                <textarea asp-for="Address" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+    <h5 class="text-primary">وضعیت</h5>
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group form-inline">
+                <label asp-for="IsActive" class="ml-2">@L("IsActive")</label>
+                <input name="IsActive" type="checkbox" class="form-control" value="true" checked />
+            </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <button type="button" class="btn btn-default returnEdit mx-2">بازگشت</button>
+        <button type="submit" class="btn btn-success">@L("Submit")</button>
+    </div>
+</form>

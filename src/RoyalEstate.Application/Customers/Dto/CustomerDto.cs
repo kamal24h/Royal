@@ -42,7 +42,8 @@ namespace RoyalEstate.Customers.Dto
 
         [DisableDateTimeNormalization]
         public DateTime CreationTime { get; set; }
-        
+
+        public long CityId { get; set; }
         public string CityName { get; set; }
 
         [DisplayName("")]

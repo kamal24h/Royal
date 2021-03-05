@@ -8,7 +8,8 @@
 
     let filtersObject = {
         maxResultCount: pageSize,
-        skipCount: 0
+        skipCount: 0,
+        isActive: true
     };
 
     let canLoadUp = false;

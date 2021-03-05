@@ -7,6 +7,8 @@ namespace RoyalEstate.Customers.Dto
 {
     public class GetAllCustomersInputDto : PagedAndSortedResultRequestDto
     {
-        public string Name { get; set; }
+        public string Term { get; set; }
+        public bool? IsActive { get; set; }
+
     }
 }

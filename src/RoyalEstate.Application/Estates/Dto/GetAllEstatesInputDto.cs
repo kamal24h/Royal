@@ -6,7 +6,8 @@ using Abp.Application.Services.Dto;
 namespace RoyalEstate.Estates.Dto
 {
     public class GetAllEstatesInputDto : PagedAndSortedResultRequestDto
-    {        
+    {
+        public bool? IsActive { get; set; }
         public string Term { get; set; }
         public int? EstateTypeId { get; set; }
         public int? CityId { get; set; }
@@ -23,5 +24,6 @@ namespace RoyalEstate.Estates.Dto
         public long? MaxRent { get; set; }
         public long? MinDeposit { get; set; }
         public long? MaxDeposit { get; set; }
+        public long? CustomerId { get; set; }
     }
 }

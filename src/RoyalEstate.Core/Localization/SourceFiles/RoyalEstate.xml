@@ -52,6 +52,7 @@
     <text name="CreateNewUser" value="Create new user" />
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
+    <text name="SomethingWentWrong">Something went wrong!</text>
 
     <text name="CreateNewDistrict">New District</text>
     <text name="Districts">Districts</text>
@@ -149,6 +150,8 @@
     <text name="Customers">Customers</text>
     <text name="EstateDescription">Estate Description</text>
     <text name="NewEstate">New</text>
+    <text name="AlsoDeleteRelatedEstates">Also Delete Related Estates</text>
+    
 
     <!--Service Types-->
     <text name="ResidentialForSale">Residential For Sale</text>
