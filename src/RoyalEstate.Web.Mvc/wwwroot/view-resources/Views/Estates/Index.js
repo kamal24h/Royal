@@ -203,6 +203,7 @@
         filtersObject = { ...filtersObject, ...s }
         filtersObject.elevator = $(".filter-elevator input").is(":checked");
         filtersObject.parking = $(".filter-parking input").is(":checked");
+        filtersObject.isActive = $("#onlyActiveEstates").is(":checked");
         loadEstates(filtersObject, dirDown);
         checkFilterTags(filtersObject);
         $(this).parent().collapse("hide");
@@ -277,6 +278,7 @@
         filtersObject.skipCount = 0;
         filtersObject.elevator = $(".filter-elevator input").is(":checked");
         filtersObject.parking = $(".filter-parking input").is(":checked");
+        filtersObject.isActive = $("#onlyActiveEstates").is(":checked");
         loadEstates(filtersObject, dirDown);
         $("#filtersBox").collapse('hide');
         $("#IsBusy").modal('hide');

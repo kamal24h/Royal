@@ -244,5 +244,8 @@
 
     <text name="Has">دارد</text>
     <text name="HasNot">ندارد</text>
+
+    <text name="OnlyActiveEstates">فقط پرونده‌های فعال</text>
+    
   </texts>
 </localizationDictionary>

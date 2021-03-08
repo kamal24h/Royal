@@ -246,6 +246,13 @@
                                         <span asp-validation-for="CreateEstateDto.Description"></span>
                                     </div>
 
+                                    <div class="form-check" style="font-size: 1rem; font-weight: bold">
+                                        <label asp-for="CreateEstateDto.IsActive" class="form-check-label">
+                                            @L("IsActive")
+                                            <input asp-for="CreateEstateDto.IsActive" type="checkbox" class="form-check-input mx-1" checked="checked"/>
+                                        </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <label>عکس‌های پرونده ملکی</label>
