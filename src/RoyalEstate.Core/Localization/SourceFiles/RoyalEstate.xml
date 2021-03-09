@@ -194,11 +194,13 @@
     <text name="BuiltDate">BuiltDate</text>
     <!---->
 
-    <text name="Features">ویژگی‌ها</text>
-    <text name="TotalPrice">قیما کل</text>
+    <text name="Features">Features</text>
+    <text name="TotalPrice">Total Price</text>
 
     <text name="Has">Has</text>
     <text name="HasNot">Has Not</text>
+
+    <text name="OnlyActiveEstates">Only Active Estates</text>
     
   </texts>
 </localizationDictionary>

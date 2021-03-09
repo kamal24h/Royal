@@ -250,6 +250,13 @@
                                         <span asp-validation-for="EstateDto.Description"></span>
                                     </div>
 
+                                    <div class="form-check" style="font-size: 1rem; font-weight: bold">
+                                        <label asp-for="EstateDto.IsActive" class="form-check-label">
+                                            @L("IsActive")
+                                            <input asp-for="EstateDto.IsActive" type="checkbox" class="form-check-input mx-1" />
+                                        </label>
+                                    </div>
+
                                 </div>
                             </div>
                             <label>عکس‌های پرونده ملکی</label>
