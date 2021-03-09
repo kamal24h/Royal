@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using Abp.Timing;
 using RoyalEstate.Authorization.Users;
+using System.ComponentModel;
 
 namespace RoyalEstate.Entities
 {
@@ -74,6 +75,7 @@ namespace RoyalEstate.Entities
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }
 
+        [DefaultValue(true)]
         public bool IsActive { get; set; }
 
         [StringLength(2000)]
