@@ -51,17 +51,15 @@ namespace RoyalEstate.Estates
                 .WhereIf(input.CustomerId != null, e => e.CustomerId == input.CustomerId);
         }
 
-        protected override Task<Estate> GetEntityByIdAsync(long id)
+        protected override async Task<Estate> GetEntityByIdAsync(long id)
         {
-            var entity = Repository.GetAllIncluding(p => p.Images, p => p.District, p => p.City, p => p.Customer, e => e.CreatorUser).FirstOrDefault(p => p.Id == id);
-            if (entity == null)
-            {
-                throw new EntityNotFoundException(typeof(Estate), id);
-            }
-
-            var taskSrc = new TaskCompletionSource<Estate>();
-            taskSrc.SetResult(entity);
-            return taskSrc.Task;
+            var e = Repository.FirstOrDefault(e => e.Id == id);
+            await Repository.EnsurePropertyLoadedAsync(e, x => x.District);
+            await Repository.EnsurePropertyLoadedAsync(e, x => x.City);
+            await Repository.EnsurePropertyLoadedAsync(e, x => x.Customer);
+            await Repository.EnsurePropertyLoadedAsync(e, x => x.CreatorUser);
+            await Repository.EnsureCollectionLoadedAsync(e, x => x.Images);
+            return e;
         }
     }
 }
