@@ -29,7 +29,8 @@
         if (dir==dirUp && startIndex==1) {
             return;
         }
-        _estateService.getAll(filters).done(function (result) {                        
+        console.log(filters);
+        _estateService.getAll(filters).done(function (result) {                
             let length = result.items.length;
             if (length == 0) {
                 canLoadDown = false;

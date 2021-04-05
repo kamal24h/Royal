@@ -265,7 +265,7 @@
                                 </div>
                             </div>
                             <div id="imgZone" style="visibility: hidden; position: absolute">
-                                <input id="inp1" type="file" asp-for="CreateEstateDto.Images" />
+                                <input id="inp1" type="file" asp-for="CreateEstateDto.Images" accept="image/*" onchange="readUrl(this)"/>
                             </div>
                             <div class="row justify-content-end">
                                 <button type="submit" class="btn btn-success">ثبت <i class="fa fa-check"></i></button>
@@ -333,7 +333,7 @@
                         $("#frmCreate").trigger("reset");
                         $("#imgThumbnails .imgThumbnail").remove();
                         $("#imgZone").empty();
-                        $("#imgZone").append(`<input id="inp1" type="file" name="CreateEstateDto.Images" />`);
+                        $("#imgZone").append(`<input id="inp1" type="file" accept="image/*" name="CreateEstateDto.Images" />`);
                         $("#imgSelector").attr("data-target", "#inp1");
                         $("#inp1").change(function () {
                             readUrl(this);
@@ -352,15 +352,17 @@
             $("#imgSelector").click(function () {
                 let selector = $(this).attr("data-target");
                 $(selector).trigger("click");
-            });
-
-            $("div#imgZone input").change(function () {
-                readUrl(this);
-            });
+            });            
         });
 
         function readUrl(input) {
             if (input.files && input.files[0]) {
+                if (!/^image\/.+$/.test(input.files[0].type)) {
+                    $(input).val(null).change();
+                    sweetAlert("", "فرمت ناصحیح", "error");
+                    return;
+                }
+                console.log(input.files[0]);
                 let id = $(input).prop("id");
                 $("#imgSelector").before(`<div data-id="${id}" class="imgThumbnail">
                                                         <i class="fa fa-trash text-light deleteImg" onclick="deleteImg(this)"></i>
@@ -378,7 +380,7 @@
                 let inpId = "inp" + (length + 1);
                 $("#imgZone")
                     .append(
-                        `<input id="${inpId}" type="file" name="CreateEstateDto.Images" onchange="readUrl(this)"/>`);
+                        `<input id="${inpId}" type="file" accept="image/*" name="CreateEstateDto.Images" onchange="readUrl(this)"/>`);
                 $("#imgSelector").attr("data-target", "#" + inpId);
             }
         }
@@ -387,6 +389,14 @@
             let inpId = $(e).parent().attr("data-id");
             $(e).parent().remove();
             $(`#imgZone input#${inpId}`).remove();
+            $(`#imgZone input`).each((i, inp) => {
+                $(inp).prop("id", "inp" + (i+1));
+            });
+            $("#imgThumbnails .imgThumbnail").each((i, t) => {
+                $(t).attr("data-id", "inp" +(i + 1));
+            })
+            let length = $("#imgZone input").length;            
+            $("#imgSelector").attr("data-target", "#" + "inp" + length);
         }
     </script>
 

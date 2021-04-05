@@ -87,6 +87,7 @@
     <PackageReference Include="Abp.HangFire" Version="5.13.0" />
     <PackageReference Include="Abp.RedisCache" Version="5.13.0" />
     <PackageReference Include="Abp.Castle.Log4Net" Version="5.13.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Customers\" />

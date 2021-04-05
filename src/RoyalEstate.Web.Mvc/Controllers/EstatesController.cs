@@ -22,6 +22,9 @@ using RoyalEstate.Districts.Dto;
 using Abp.Domain.Repositories;
 using RoyalEstate.Entities;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.StaticFiles;
+using System.Drawing.Imaging;
+using System.Drawing;
 
 namespace RoyalEstate.Web.Controllers
 {
@@ -111,9 +114,28 @@ namespace RoyalEstate.Web.Controllers
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","img","Estates", ticks);
                     Directory.CreateDirectory(path);
 
+                    // Create Thumbnail from first image
+                    var firstImage = input.Images.First();
+                    string ext = Path.GetExtension(firstImage.FileName);
+                    string contentType;
+                    new FileExtensionContentTypeProvider().TryGetContentType(firstImage.FileName, out contentType);
+
+                    EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, 50);
+                    ImageCodecInfo imageCodec = ImageCodecInfo.GetImageEncoders().First(e => e.MimeType == contentType);
+                    EncoderParameters encoderParams = new EncoderParameters(1);
+                    encoderParams.Param[0] = qualityParam;
+                    using (Stream stream = firstImage.OpenReadStream()) 
+                    {
+                        Image thumbnail = Image.FromStream(stream);
+                        thumbnail.Save(Path.Combine(path, "thumbnail" + ext), imageCodec, encoderParams);
+                    }
+                        
+                    ///////////////////
+
+                    //Save images
                     int i = 1;
                     foreach (IFormFile file in input.Images.Where(f=>f.Length!=0))
-                    {
+                    {                        
                         string imageExt = Path.GetExtension(file.FileName);
                         await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
                         {
