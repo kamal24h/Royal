@@ -11,6 +11,7 @@
         public const string Roles = "Roles";
         public const string EstateTypes = "Estate Types";
         public const string Estates = "Estates";
+        public const string EstatesQuickLoad = "EstatesQuickLoad";
         public const string CitiesAndProvinces = "Cities & Provinces";
         public const string Cities = "Cities";
         public const string Provinces = "Provinces";

@@ -150,7 +150,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-5 h-100" style="background-image:url('${estate.imagePaths[0] || ''}'); background-size:cover"></div>
+                                            <div class="col-5 h-100" style="background-image:url('${quickLoad ? '':(estate.imagePaths[0] || '')}'); background-size:cover"></div>
                                         </div>
                                     </div>
                                 </a>

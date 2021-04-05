@@ -31,6 +31,14 @@ namespace RoyalEstate.Web.Startup
                         icon: "fas fa-building",
                         order:2
                     )
+                ).AddItem(
+                    new MenuItemDefinition(
+                        PageNames.EstatesQuickLoad,
+                        L("EstatesQuickLoad"),
+                        url: "Estates/Index/?quickLoad=true",
+                        icon: "fas fa-building",
+                        order: 3
+                    )
                 ).AddItem(new MenuItemDefinition(
                         PageNames.BaseInformation,
                         L("BaseInformation"),

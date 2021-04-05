@@ -201,6 +201,8 @@
     <text name="HasNot">Has Not</text>
 
     <text name="OnlyActiveEstates">Only Active Estates</text>
+    <text name="EstatesQuickLoad">Estates (QuickLoad)</text>
     
+
   </texts>
 </localizationDictionary>

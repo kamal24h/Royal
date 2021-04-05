@@ -73,9 +73,10 @@ namespace RoyalEstate.Web.Controllers
 
 
 
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> Index(bool quickLoad = false)
         {
             var categories = await _estateCategoryAppService.GetAllAsync();
+            ViewBag.QuickLoad = quickLoad;
             return View(categories);
         }
 

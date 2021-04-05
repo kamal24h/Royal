@@ -3,7 +3,7 @@
 @model System.Collections.Generic.List<EstateCategoryDto>
 @{
     ViewBag.Title = L("Estates");
-    ViewBag.CurrentPageName = PageNames.Estates;
+    ViewBag.CurrentPageName = ViewBag.QuickLoad ? PageNames.EstatesQuickLoad : PageNames.Estates;
     var estateTypes = Model.SelectMany(s => s.EstateTypes);
 }
 
@@ -330,8 +330,9 @@
     <script src="~/libs/select2/js/select2.full.min.js" asp-append-version="true"></script>
 
     <script>
+        let quickLoad = @Html.Raw(Json.Serialize(ViewBag.QuickLoad));
         let estateTypes = @Html.Raw(Json.Serialize(estateTypes));
-        
+
         $(() => {
             $("#myCardHeader")[0].style.top = $("nav.main-header")[0].offsetHeight+'px';
             $("#filtersBox").on('show.bs.collapse', function () {
@@ -376,16 +377,16 @@
 
         })
         function filterByEstateType(s) {
-            let idEstateType = $(s).val();            
-            let estateType = estateTypes.find(i => i.id == idEstateType);     
-            
-            $("#frmFilters .form-group[class*='filter-']").each((i, fg) => {                
+            let idEstateType = $(s).val();
+            let estateType = estateTypes.find(i => i.id == idEstateType);
+
+            $("#frmFilters .form-group[class*='filter-']").each((i, fg) => {
                 $(fg).addClass("d-none");
                 $(fg).find("input").val('').change();
                 if (idEstateType==null || idEstateType=="") {
                     return;
                 }
-                let propName = fg.className.split(/\s+/).find(c => c.startsWith('filter-')).substring(7);                
+                let propName = fg.className.split(/\s+/).find(c => c.startsWith('filter-')).substring(7);
                 if (estateType[propName] === true)
                     $(fg).removeClass("d-none");
             })

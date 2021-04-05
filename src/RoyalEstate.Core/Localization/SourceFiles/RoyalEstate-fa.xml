@@ -246,6 +246,7 @@
     <text name="HasNot">ندارد</text>
 
     <text name="OnlyActiveEstates">فقط پرونده‌های فعال</text>
+    <text name="EstatesQuickLoad">پرونده‌ها (مرور سریع)</text>
     
   </texts>
 </localizationDictionary>
