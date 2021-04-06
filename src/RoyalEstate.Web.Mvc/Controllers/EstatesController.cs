@@ -116,18 +116,7 @@ namespace RoyalEstate.Web.Controllers
 
                     // Create Thumbnail from first image
                     var firstImage = input.Images.First();
-                    string ext = Path.GetExtension(firstImage.FileName);
-                    /*new FileExtensionContentTypeProvider().TryGetContentType(firstImage.FileName, out var contentType);
-                    long q = 35;
-                    EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, q);
-                    ImageCodecInfo imageCodec = ImageCodecInfo.GetImageEncoders().First(e => e.MimeType == contentType);
-                    EncoderParameters encoderParams = new EncoderParameters(1) {Param = {[0] = qualityParam}};*/
-                    await using (Stream stream = firstImage.OpenReadStream()) 
-                    {
-                        Image thumbnail = Image.FromStream(stream).GetThumbnailImage(240,120,()=>false, IntPtr.Zero);
-                        await using FileStream fStream = new FileStream(Path.Combine(path, "thumbnail" + ext), FileMode.Create);
-                        thumbnail.Save(fStream, ImageFormat.Jpeg);
-                    }
+                    CreateThumbnail(firstImage, path);
                     ///////////////////
 
                     //Save images
@@ -190,6 +179,11 @@ namespace RoyalEstate.Web.Controllers
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", ticks);
                     Directory.CreateDirectory(path);
 
+                    // Create Thumbnail from first image
+                    var firstImage = files.First();
+                    CreateThumbnail(firstImage, path);
+                    ///////////////////
+
                     int i = 1;
                     foreach (IFormFile file in files.Where(f => f.Length != 0))
                     {
@@ -244,6 +238,23 @@ namespace RoyalEstate.Web.Controllers
                 EstateTypeDto = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
             };
             return View(model);
+        }
+
+        [NonAction]
+        public async void CreateThumbnail(IFormFile file, string path)
+        {
+            string ext = Path.GetExtension(file.FileName);
+            /*new FileExtensionContentTypeProvider().TryGetContentType(firstImage.FileName, out var contentType);
+            long q = 35;
+            EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, q);
+            ImageCodecInfo imageCodec = ImageCodecInfo.GetImageEncoders().First(e => e.MimeType == contentType);
+            EncoderParameters encoderParams = new EncoderParameters(1) {Param = {[0] = qualityParam}};*/
+            await using (Stream stream = file.OpenReadStream())
+            {
+                Image thumbnail = Image.FromStream(stream).GetThumbnailImage(240, 120, () => false, IntPtr.Zero);
+                await using FileStream fStream = new FileStream(Path.Combine(path, "thumbnail" + ext), FileMode.Create);
+                thumbnail.Save(fStream, ImageFormat.Jpeg);
+            }
         }
     }
 }
