@@ -1783,6 +1783,10 @@ namespace RoyalEstate.Migrations
                     b.Property<bool>("BuiltDate")
                         .HasColumnType("bit");
 
+                    b.Property<string>("Color")
+                        .HasColumnType("nvarchar(50)")
+                        .HasMaxLength(50);
+
                     b.Property<DateTime>("CreationTime")
                         .HasColumnType("datetime2");
 

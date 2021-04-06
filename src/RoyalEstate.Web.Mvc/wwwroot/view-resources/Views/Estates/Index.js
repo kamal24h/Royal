@@ -29,8 +29,7 @@
         if (dir==dirUp && startIndex==1) {
             return;
         }
-        console.log(filters);
-        _estateService.getAll(filters).done(function (result) {                
+        _estateService.getAll(filters).done(function (result) {
             let length = result.items.length;
             if (length == 0) {
                 canLoadDown = false;
@@ -126,7 +125,7 @@
     });
 
     window.addEventListener("resize", function () {
-        let maxLoadSize = parseInt($("#loadSizes div").first(x => x.css("display") === "block").attr("data-loadSize"));
+        maxLoadSize = parseInt($("#loadSizes div").first(x => x.css("display") === "block").attr("data-loadSize"));
         wh = $(window).height();
     })
 
@@ -142,16 +141,14 @@
 
                                                     <div class="px-2 py-1">
                                                          کد: ${estate.filingCode ? estate.filingCode : ""}
-                                                        <br/>
-                                                        قیمت: ${estate.price ? estate.price : ""} میلیون تومان
-                                                        <br/>
-                                                        رهن: ${estate.deposit ? estate.deposit : ""} - اجاره: ${estate.rent ? estate.rent : ""}
+                                                        <br/><span class="badge" style="background-color:${estate.estateTypeColor}">${estate.rent?'اجاره: '+estate.rent+' میلیون تومان':'قیمت: '+estate.price*estate.area+' میلیون تومان'}</span>
+                                                        
                                                         <br/>
                                                         تاریخ: ${new persianDate(new Date(estate.creationTime)).format("DD MMMM YYYY")}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-5 h-100" style="background-image:url('${quickLoad ? '':(estate.imagePaths[0] || '')}'); background-size:cover"></div>
+                                            <div class="col-5 h-100" style="background-image:url('${getThumbnailPath(estate.imagePaths[0])}'); background-size:cover"></div>
                                         </div>
                                     </div>
                                 </a>
@@ -170,6 +167,16 @@
         filtersObject.maxResultCount = maxLoadSize;
         filtersObject.skipCount = endIndex;
         loadEstates(filtersObject, dirDown);
+    }
+
+    function getThumbnailPath(p) {
+        if (p) {
+            let i = p.lastIndexOf('/') + 1;
+            let dot = p.lastIndexOf('.');
+            let str = p.substring(0, i) + "thumbnail" + p.substring(dot);
+            return str;
+        }
+        return '';
     }
 
     $("#frmSearch").submit(function () {        

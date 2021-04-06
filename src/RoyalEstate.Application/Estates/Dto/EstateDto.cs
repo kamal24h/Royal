@@ -19,6 +19,7 @@ namespace RoyalEstate.Estates.Dto
         public string Title { get; set; }
 
         public int EstateTypeId { get; set; }
+        public string EstateTypeColor { get; set; }
         public double Area { get; set; }
         public int? Rooms { get; set; }
         public int? Floor { get; set; }
@@ -61,6 +62,7 @@ namespace RoyalEstate.Estates.Dto
         public bool IsActive { get; set; }
         public string Description { get; set; }
 
+        public string Thumbnail { get; set; }
         public List<string> ImagePaths { get; set; }        
     }
 }

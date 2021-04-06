@@ -42,7 +42,8 @@ namespace RoyalEstate.Entities{
         public bool Storeroom { get; set; }
         public bool Elevator { get; set; }
         public bool BuiltDate { get; set; }
-
+        [MaxLength(50)]
+        public string Color { get; set; }
 
 
         public EstateType()

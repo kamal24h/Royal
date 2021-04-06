@@ -30,7 +30,7 @@ namespace RoyalEstate.Estates
 
         protected override IQueryable<Estate> CreateFilteredQuery(GetAllEstatesInputDto input)
         {
-            return Repository.GetAllIncluding(e => e.Images)
+            return Repository.GetAllIncluding(e => e.Images, e=>e.EstateType)
                 .WhereIf(input.IsActive == true, e => e.IsActive)
                 .WhereIf(!string.IsNullOrEmpty(input.Term), e => e.Title.Contains(input.Term) || e.Description.Contains(input.Term))
                 .WhereIf(input.EstateTypeId != null, e => e.EstateTypeId == input.EstateTypeId)

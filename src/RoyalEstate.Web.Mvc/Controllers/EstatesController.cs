@@ -117,19 +117,17 @@ namespace RoyalEstate.Web.Controllers
                     // Create Thumbnail from first image
                     var firstImage = input.Images.First();
                     string ext = Path.GetExtension(firstImage.FileName);
-                    string contentType;
-                    new FileExtensionContentTypeProvider().TryGetContentType(firstImage.FileName, out contentType);
-
-                    EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, 50);
+                    /*new FileExtensionContentTypeProvider().TryGetContentType(firstImage.FileName, out var contentType);
+                    long q = 35;
+                    EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, q);
                     ImageCodecInfo imageCodec = ImageCodecInfo.GetImageEncoders().First(e => e.MimeType == contentType);
-                    EncoderParameters encoderParams = new EncoderParameters(1);
-                    encoderParams.Param[0] = qualityParam;
-                    using (Stream stream = firstImage.OpenReadStream()) 
+                    EncoderParameters encoderParams = new EncoderParameters(1) {Param = {[0] = qualityParam}};*/
+                    await using (Stream stream = firstImage.OpenReadStream()) 
                     {
-                        Image thumbnail = Image.FromStream(stream);
-                        thumbnail.Save(Path.Combine(path, "thumbnail" + ext), imageCodec, encoderParams);
+                        Image thumbnail = Image.FromStream(stream).GetThumbnailImage(240,120,()=>false, IntPtr.Zero);
+                        await using FileStream fStream = new FileStream(Path.Combine(path, "thumbnail" + ext), FileMode.Create);
+                        thumbnail.Save(fStream, ImageFormat.Jpeg);
                     }
-                        
                     ///////////////////
 
                     //Save images

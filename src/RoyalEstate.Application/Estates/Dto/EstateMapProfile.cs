@@ -16,10 +16,10 @@ namespace RoyalEstate.Estates.Dto
                 .ForMember(d => d.Images, opt => opt.Ignore())
                 .ForMember(d => d.CreationTime, opt => opt.Ignore())
                 .ForMember(d => d.CreatorUserId, opt => opt.Ignore())
-                .AfterMap((dto, estate) => updateImages(dto, estate));
+                .AfterMap(UpdateImages);
         }
 
-        private void updateImages(EstateDto dto, Estate estate)
+        private void UpdateImages(EstateDto dto, Estate estate)
         {
             estate.Images.Where(i => !dto.ImagePaths.Any(p => p.Equals(i.Path)))
                 .ToList().ForEach(deleted => estate.Images.Remove(deleted));
