@@ -223,9 +223,9 @@
     <!--Dynamic properties-->
     <text name="LegalDoc">وضعیت سند</text>
 
-    <text name="PricePerM2">قیمت هر متر مربع</text>
+    <text name="PricePerM2">قیمت هر متر مربع (به میلیون تومان)</text>
     <text name="Rent">اجاره</text>
-    <text name="Deposit">ودیعه</text>
+    <text name="Deposit">ودیعه (به میلیون تومان)</text>
 
     <text name="AreaM2">متراژ</text>
     <text name="Rooms">تعداد اتاق</text>

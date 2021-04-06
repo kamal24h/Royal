@@ -25,6 +25,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.StaticFiles;
 using System.Drawing.Imaging;
 using System.Drawing;
+using System.Text.RegularExpressions;
 
 namespace RoyalEstate.Web.Controllers
 {
@@ -167,6 +168,8 @@ namespace RoyalEstate.Web.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EstateVm model)
         {
             try
@@ -175,7 +178,10 @@ namespace RoyalEstate.Web.Controllers
                 var files = Request.Form.Files;
                 if (files!=null && files.Count > 0)
                 {
-                    var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
+                    var ticks = input.ImagePaths.Count == 0
+                        ? (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString()
+                        : Regex.Match(input.ImagePaths[0], @"\/\d+\/").Value;
+                    ticks = ticks.Trim('/');
                     var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", ticks);
                     Directory.CreateDirectory(path);
 

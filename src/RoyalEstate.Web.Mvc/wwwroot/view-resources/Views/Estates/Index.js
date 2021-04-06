@@ -141,14 +141,19 @@
 
                                                     <div class="px-2 py-1">
                                                          کد: ${estate.filingCode ? estate.filingCode : ""}
-                                                        <br/><span class="badge" style="background-color:${estate.estateTypeColor}">${estate.rent?'اجاره: '+estate.rent+' میلیون تومان':'قیمت: '+estate.price*estate.area+' میلیون تومان'}</span>
+                                                        <br/><span class="badge text-right" style="background-color:${
+        estate.estateTypeColor}">${estate.rent
+        ? 'رهن: ' + thousands_separators(estate.deposit) + ' میلیون تومان<br/>' + 'اجاره: ' + thousands_separators(estate.rent)
+        : 'قیمت: ' + thousands_separators(estate.price * estate.area) + ' میلیون تومان'}</span>
                                                         
                                                         <br/>
-                                                        تاریخ: ${new persianDate(new Date(estate.creationTime)).format("DD MMMM YYYY")}
+                                                        تاریخ: ${new persianDate(new Date(estate.creationTime)).format(
+            "DD MMMM YYYY")}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-5 h-100" style="background-image:url('${getThumbnailPath(estate.imagePaths[0])}'); background-size:cover"></div>
+                                            <div class="col-5 h-100" style="background-image:url('${getThumbnailPath(
+            estate.imagePaths[0])}'); background-size:cover"></div>
                                         </div>
                                     </div>
                                 </a>

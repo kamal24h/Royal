@@ -227,7 +227,7 @@
                                     {
                                         <div class="form-group">
                                             <label asp-for="EstateDto.Deposit">@L("Deposit")</label>
-                                            <input asp-for="EstateDto.Deposit" type="number" min="0" class="form-control" />
+                                            <input asp-for="EstateDto.Deposit" type="number"  class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateTypeDto.Rent)
@@ -266,7 +266,7 @@
                                     {
                                         <div class="imgThumbnail currImg">
                                             <i class="fa fa-trash text-light deleteImg" onclick="toggleImg(this)"></i>
-                                            <img class="currImg" src="@item"/>
+                                            <img class="currImg" src="@item" data-p="@item"/>
                                         </div>
                                     }
                                     <div id="imgSelector" data-target="#inp1">
@@ -334,7 +334,7 @@
                 beforeSubmit: (formData, jqForm, options) => {
                     $("img.currImg").each((i, e) => {
                         if ($(e).prev().hasClass("fa-trash")) {
-                            formData.push({ name: "EstateDto.ImagePaths", value: $(e).prop("src") })
+                            formData.push({ name: "EstateDto.ImagePaths", value: $(e).attr("data-p") });
                         }
                     })
                     $("#IsBusy").css("display", "block");
@@ -362,7 +362,8 @@
                         sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
                     }
                 },
-                error: function () {
+                error: function (d) {
+                    console.log(d);
                     $("#IsBusy").css("display", "none");
                     abp.ui.clearBusy($("#frmCreate"));
                     sweetAlert("", "خطایی در سمت سرور رخ داد", "error");
