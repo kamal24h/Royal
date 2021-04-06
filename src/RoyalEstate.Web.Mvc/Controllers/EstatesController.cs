@@ -111,8 +111,9 @@ namespace RoyalEstate.Web.Controllers
                 var input = model.CreateEstateDto;                    
                 if (input.Images.Count>0)
                 {
-                    var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString();
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","img","Estates", ticks);
+                    var ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks;
+                    string ticksString = ticks.ToString();
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot","img","Estates", ticksString);
                     Directory.CreateDirectory(path);
 
                     // Create Thumbnail from first image
@@ -125,12 +126,12 @@ namespace RoyalEstate.Web.Controllers
                     foreach (IFormFile file in input.Images.Where(f=>f.Length!=0))
                     {                        
                         string imageExt = Path.GetExtension(file.FileName);
-                        await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
+                        await using (FileStream stream = new FileStream(Path.Combine(path, ticks + imageExt), FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
-                            input.ImagePaths.Add("/"+ Path.Combine("img", "Estates", ticks, i + imageExt).Replace('\\', '/'));
+                            input.ImagePaths.Add("/"+ Path.Combine("img", "Estates", ticksString, ticks + imageExt).Replace('\\', '/'));
                         }
-                        i++;
+                        ticks++;
                     }
                 }
 
@@ -178,28 +179,38 @@ namespace RoyalEstate.Web.Controllers
                 var files = Request.Form.Files;
                 if (files!=null && files.Count > 0)
                 {
-                    var ticks = input.ImagePaths.Count == 0
-                        ? (DateTime.Now - new DateTime(2021, 1, 1)).Ticks.ToString()
-                        : Regex.Match(input.ImagePaths[0], @"\/\d+\/").Value;
-                    ticks = ticks.Trim('/');
-                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", ticks);
+                    var estate = await _estateAppService.GetAsync(new EntityDto<long>(input.Id));
+                    long ticks = (DateTime.Now - new DateTime(2021, 1, 1)).Ticks;
+                    string ticksString = ticks.ToString();
+                    var folder = estate.ImagePaths.Count == 0
+                        ? ticksString
+                        : Regex.Match(input.ImagePaths[0], @"\/\d+\/").Value.Trim('/');
+                    
+                    var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "img", "Estates", folder);
                     Directory.CreateDirectory(path);
 
                     // Create Thumbnail from first image
-                    var firstImage = files.First();
-                    CreateThumbnail(firstImage, path);
+                    if (input.ImagePaths.Count==0)
+                    {
+                        CreateThumbnail(files.First(), path);
+                    }
+                    else
+                    {
+                        CreateThumbnailFromFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", input.ImagePaths[0].Substring(1)));
+                    }
+                    
                     ///////////////////
 
-                    int i = 1;
+                    
                     foreach (IFormFile file in files.Where(f => f.Length != 0))
                     {
                         string imageExt = Path.GetExtension(file.FileName);
-                        await using (FileStream stream = new FileStream(Path.Combine(path, i + imageExt), FileMode.Create))
+                        await using (FileStream stream = new FileStream(Path.Combine(path, ticks + imageExt), FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
-                            input.ImagePaths.Add("/" + Path.Combine("img", "Estates", ticks, i + imageExt).Replace('\\', '/'));
+                            input.ImagePaths.Add("/" + Path.Combine("img", "Estates", folder, ticks+ imageExt).Replace('\\', '/'));
                         }
-                        i++;
+                        ticks++;
                     }
                 }
 
@@ -259,6 +270,24 @@ namespace RoyalEstate.Web.Controllers
             {
                 Image thumbnail = Image.FromStream(stream).GetThumbnailImage(240, 120, () => false, IntPtr.Zero);
                 await using FileStream fStream = new FileStream(Path.Combine(path, "thumbnail" + ext), FileMode.Create);
+                thumbnail.Save(fStream, ImageFormat.Jpeg);
+            }
+        }
+
+        [NonAction]
+        public async void CreateThumbnailFromFile(string path)
+        {
+            
+            /*new FileExtensionContentTypeProvider().TryGetContentType(firstImage.FileName, out var contentType);
+            long q = 35;
+            EncoderParameter qualityParam = new EncoderParameter(Encoder.Quality, q);
+            ImageCodecInfo imageCodec = ImageCodecInfo.GetImageEncoders().First(e => e.MimeType == contentType);
+            EncoderParameters encoderParams = new EncoderParameters(1) {Param = {[0] = qualityParam}};*/
+            await using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                Image thumbnail = Image.FromStream(stream).GetThumbnailImage(240, 120, () => false, IntPtr.Zero);
+                path = Regex.Replace(path, @"\/\d+\.", "/thumbnail.");
+                await using FileStream fStream = new FileStream(path, FileMode.Create);
                 thumbnail.Save(fStream, ImageFormat.Jpeg);
             }
         }

@@ -347,9 +347,9 @@
                         sweetAlert("", "تغییرات با موفقیت ذخیره شد", "success");
                         $("#imgThumbnails .imgThumbnail").remove();
                         data.result.imagePaths.forEach(p => {
-                            $("#imgThumbnails").prepend(`<div class="imgThumbnail">
+                            $("#imgSelector").before(`<div class="imgThumbnail currImg">
                                             <i class="fa fa-trash text-light deleteImg" onclick="toggleImg(this)"></i>
-                                            <img class="currImg" src="${p}"/>
+                                            <img class="currImg" src="${p}" data-p="${p}"/>
                                         </div>`)
                         })
                         $("#imgZone").empty();
