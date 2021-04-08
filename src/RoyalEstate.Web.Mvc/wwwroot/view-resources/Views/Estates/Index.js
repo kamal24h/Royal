@@ -129,7 +129,7 @@
         wh = $(window).height();
     })
 
-    let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-4 mb-4">
+    let renderEstate = (estate) => `<div class="col-12 col-sm-6 col-xl-3 mb-3">
                                 <a href="/Estates/Single/?id=${estate.id}" target="_blank">
                                     <div class="card estateCard m-0">
                                         <div class="row no-gutters h-100">
@@ -141,8 +141,8 @@
 
                                                     <div class="px-2 py-1">
                                                          کد: ${estate.filingCode ? estate.filingCode : ""}
-                                                        <br/><span class="badge text-right" style="background-color:${
-        estate.estateTypeColor}">${estate.rent
+                                                        <br/><span class="badge text-right" style="font-size: 0.9rem; font-weight: bold; background-color:${
+        estate.estateTypeColor} ">${estate.rent
         ? 'رهن: ' + thousands_separators(estate.deposit) + ' میلیون تومان<br/>' + 'اجاره: ' + thousands_separators(estate.rent)
         : 'قیمت: ' + thousands_separators(estate.price * estate.area) + ' میلیون تومان'}</span>
                                                         

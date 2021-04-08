@@ -116,7 +116,7 @@
                             <span class="badge tag-badge d-none fromSelect filter-cityId" data-target="#selectCity"><span class="filterData-city"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none fromSelect filter-districtId" data-target="#selectDistrict"><span class="filterData-district"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none hasData filter-minArea-maxArea">متراژ از <span class="filterData-minArea"></span> تا <span class="filterData-maxArea"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
-                            <span class="badge tag-badge d-none hasData filter-minPrice-maxPrice">قیمت هر متر از <span class="filterData-minPrice"></span> تا <span class="filterData-maxPrice"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
+                            <span class="badge tag-badge d-none hasData filter-minPrice-maxPrice">قیمت کل از <span class="filterData-minPrice"></span> تا <span class="filterData-maxPrice"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none hasData filter-minRent-maxRent">اجاره از <span class="filterData-minRent"></span> تا <span class="filterData-maxRent"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none hasData filter-minDeposit-maxDeposit">ودیعه از <span class="filterData-minDeposit"></span> تا <span class="filterData-maxDeposit"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
                             <span class="badge tag-badge d-none hasData filter-rooms">تعداد اتاق <span class="filterData-rooms"></span>&nbsp;&nbsp;<i class="fa fa-times"></i></span>
@@ -344,11 +344,11 @@
             });
 
             $("nav.main-header").append(`
-<ul class="navbar-nav p-0 mr-auto">
-<li class="nav-item">
-<button id="btnNewEstate" class="btn btn-success">@L("NewEstate") <i class="fa fa-plus"></i></button>
-</li>
-</ul>`);
+            <ul class="navbar-nav p-0 mr-auto">
+            <li class="nav-item">
+            <button id="btnNewEstate" class="btn btn-success">@L("NewEstate") <i class="fa fa-plus"></i></button>
+            </li>
+            </ul>`);
             $("#btnNewEstate").click(function () {
                 $("#ulCategories").removeClass("d-none");
                 $("#ulCategories .active").removeClass("active");
