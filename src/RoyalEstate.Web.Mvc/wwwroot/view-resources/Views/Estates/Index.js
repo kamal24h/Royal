@@ -260,6 +260,7 @@
             }
             $(t).removeClass("d-none");
         });
+        updateQuickFiltersColors();
     }
 
     $(".tag-badge .fa-times").click(function () {
@@ -293,6 +294,9 @@
         filtersObject.parking = $(".filter-parking input").is(":checked");
         filtersObject.isActive = $("#onlyActiveEstates").is(":checked");
         loadEstates(filtersObject, dirDown);
+
+        updateQuickFiltersColors();
+
         $("#filtersBox").collapse('hide');
         $("#IsBusy").modal('hide');
     })
@@ -316,6 +320,27 @@
         canLoadUp = false;
         canLoadDown = true;
         lastScrollTop = 0;        
+    }
+
+    $(".quickFilter").click(function () {
+        let tagId = $(this).attr("data-id");
+        $("#frmFilters").trigger("reset");
+        $("#selectEstateType").val(tagId).change();
+        $("#frmFilters").submit();
+    });
+
+    function updateQuickFiltersColors() {
+        let selectedCat = $("#selectEstateType").val();
+        $(".quickFilter").unbind('mouseenter mouseleave');
+        $(`.quickFilter[data-id!='${selectedCat}']`).css("background-color", "rgba(150, 150, 150, 0.5)").hover(
+            function () {
+                $(this).css("background-color", "rgba(250, 250, 50, 0.5)")
+            },
+            function () {
+                $(this).css("background-color", "rgba(150, 150, 150, 0.5)")
+            }
+        );
+        $(`.quickFilter[data-id='${selectedCat}']`).css("background-color", "rgba(250, 250, 50, 0.5)");
     }
 });
 

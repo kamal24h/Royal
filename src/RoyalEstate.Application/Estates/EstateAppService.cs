@@ -30,16 +30,17 @@ namespace RoyalEstate.Estates
 
         protected override IQueryable<Estate> CreateFilteredQuery(GetAllEstatesInputDto input)
         {
-            return Repository.GetAllIncluding(e => e.Images, e=>e.EstateType)
+            return Repository.GetAllIncluding(e => e.Images, e => e.EstateType)
                 .WhereIf(input.IsActive == true, e => e.IsActive)
-                .WhereIf(!string.IsNullOrEmpty(input.Term), e => e.Title.Contains(input.Term) || e.Description.Contains(input.Term))
+                .WhereIf(!string.IsNullOrEmpty(input.Term),
+                    e => e.Title.Contains(input.Term) || e.Description.Contains(input.Term))
                 .WhereIf(input.EstateTypeId != null, e => e.EstateTypeId == input.EstateTypeId)
                 .WhereIf(input.CityId != null, e => e.CityId == input.CityId)
                 .WhereIf(input.DistrictId != null, e => e.DistrictId == input.DistrictId)
                 .WhereIf(input.MinArea != null, e => e.Area >= input.MinArea)
                 .WhereIf(input.MaxArea != null, e => e.Area <= input.MaxArea)
-                .WhereIf(input.MinPrice != null, e => e.Price >= input.MinPrice)
-                .WhereIf(input.MaxPrice != null, e => e.Price <= input.MaxPrice)
+                .WhereIf(input.MinPrice != null, e => e.Price * e.Area >= input.MinPrice)
+                .WhereIf(input.MaxPrice != null, e => e.Price * e.Area <= input.MaxPrice)
                 .WhereIf(input.MinRent != null, e => e.Rent >= input.MinRent)
                 .WhereIf(input.MaxRent != null, e => e.Rent <= input.MaxRent)
                 .WhereIf(input.MinDeposit != null, e => e.Deposit >= input.MinDeposit)
