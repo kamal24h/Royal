@@ -11,6 +11,7 @@ using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
 using Microsoft.EntityFrameworkCore;
 using RoyalEstate.Entities;
+using RoyalEstate.EntityFrameworkCore;
 using RoyalEstate.Estates.Dto;
 
 namespace RoyalEstate.Estates
@@ -26,14 +27,23 @@ namespace RoyalEstate.Estates
         {
             var q = await CreateFilteredQuery(input).ToListAsync();
             return q.Select(e => ObjectMapper.Map<EstateDto>(e)).ToList();
-        }        
+        }
+
+
+        public async Task<bool> UpdateWithTimeResetAsync(EstateDto inputDto)
+        {
+            var input = ObjectMapper.Map<Estate>(inputDto);
+            input.CreationTime = DateTime.Today;
+            await Repository.UpdateAsync(input);
+            return true;
+        }
 
         protected override IQueryable<Estate> CreateFilteredQuery(GetAllEstatesInputDto input)
         {
             return Repository.GetAllIncluding(e => e.Images, e => e.EstateType)
                 .WhereIf(input.IsActive == true, e => e.IsActive)
                 .WhereIf(!string.IsNullOrEmpty(input.Term),
-                    e => e.Title.Contains(input.Term) || e.Description.Contains(input.Term))
+                    e => e.Title.Contains(input.Term) || e.Description.Contains(input.Term) || e.FilingCode.Contains(input.Term))
                 .WhereIf(input.EstateTypeId != null, e => e.EstateTypeId == input.EstateTypeId)
                 .WhereIf(input.CityId != null, e => e.CityId == input.CityId)
                 .WhereIf(input.DistrictId != null, e => e.DistrictId == input.DistrictId)

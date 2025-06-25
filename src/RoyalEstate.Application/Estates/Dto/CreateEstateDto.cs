@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using Abp.AutoMapper;
 using Microsoft.AspNetCore.Http;
@@ -47,6 +48,7 @@ namespace RoyalEstate.Estates.Dto
         public double? Longitude { get; set; }
         public double? Latitude { get; set; }
 
+        public DateTime OrderDate { get; set; }
 
         public bool IsActive { get; set; }
 

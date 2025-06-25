@@ -77,6 +77,8 @@ namespace RoyalEstate.Entities
 
         [DefaultValue(true)]
         public bool IsActive { get; set; }
+        
+        public DateTime OrderDate { get; set; }
 
         [StringLength(2000)]
         public string Description { get; set; }

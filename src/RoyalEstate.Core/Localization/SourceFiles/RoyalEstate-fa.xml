@@ -15,6 +15,8 @@
     <text name="NewEstateFile">پرونده جدید</text>
     <text name="SomethingWentWrong">خطایی در سمت سرور رخ داد!</text>
     
+    <text name="ViewEstates">مشاهده پرونده‌ها</text>
+    
 
     <text name="Tenants" value="تننت‌ها" />
     <text name="CreateNewTenant" value="ایجاد تننت جدید" />
@@ -140,8 +142,6 @@
     <text name="ConfirmNewPassword">تکرار رمز عبور جدید</text>
     <text name="PasswordsDoNotMatch">رمزها همخوانی ندارند.</text>
     <text name="PasswordsMustBeAtLeast8CharactersContainLowercaseUppercaseNumber">رمز عبور باید شامل حداقل 8 کاراکتر، و حداقل یک حرف کوچک و یک حرف بزرگ و یک عدد باشد.</text>
-    
-    
     
     <text name="SearchWithThreeDot">جستجو...</text>
     <text name="PleaseEnterAtLeastNCharacter">لطفا حداقل {0} کاراکتر وارد کنید.</text>

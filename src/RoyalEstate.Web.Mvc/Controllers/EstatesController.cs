@@ -26,9 +26,11 @@ using Microsoft.AspNetCore.StaticFiles;
 using System.Drawing.Imaging;
 using System.Drawing;
 using System.Text.RegularExpressions;
+using RoyalEstate.Authorization;
 
 namespace RoyalEstate.Web.Controllers
 {
+    
     public class EstatesController : RoyalEstateControllerBase
     {
         private readonly IEstateTypeAppService _estateTypeAppService;
@@ -64,6 +66,7 @@ namespace RoyalEstate.Web.Controllers
             return View(model);
         }
 
+        [AbpMvcAuthorize(PermissionNames.Pages_Estates)]
         public async Task<ActionResult> EditEstateTypeModal(int estateTypeId)
         {
             var estateType = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateTypeId));
@@ -76,7 +79,7 @@ namespace RoyalEstate.Web.Controllers
         }
 
 
-
+        [AbpMvcAuthorize(PermissionNames.Pages_ViewEstates)]
         public async Task<ActionResult> Index(bool quickLoad = false)
         {
             var categories = await _estateCategoryAppService.GetAllAsync();
@@ -86,6 +89,7 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AbpMvcAuthorize(PermissionNames.Pages_Estates)]
         public async Task<ActionResult> NewEstate(int estateTypeId)
         {
             CreateEstateVm model = new CreateEstateVm
@@ -100,10 +104,12 @@ namespace RoyalEstate.Web.Controllers
             };
 
             return View(model);
-        }        
+        }
 
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AbpMvcAuthorize(PermissionNames.Pages_Estates)]
         public async Task<JsonResult> CreateEstate([Bind(include:"CreateEstateDto")] CreateEstateVm model)
         {
             try
@@ -135,6 +141,7 @@ namespace RoyalEstate.Web.Controllers
                     }
                 }
 
+                input.OrderDate = DateTime.Today;
                 var estate = await _estateAppService.CreateAsync(input);
                 return Json(new
                 {
@@ -155,6 +162,7 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AbpMvcAuthorize(PermissionNames.Pages_Estates)]
         public async Task<ActionResult> EditEstate(long id)
         {
             EstateDto estateDto = await _estateAppService.GetAsync(new EntityDto<long>(id));
@@ -171,6 +179,7 @@ namespace RoyalEstate.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AbpMvcAuthorize(PermissionNames.Pages_Estates)]
         public async Task<JsonResult> UpdateEstate([Bind(include: "EstateDto")] EstateVm model)
         {
             try
@@ -198,10 +207,7 @@ namespace RoyalEstate.Web.Controllers
                     {
                         CreateThumbnailFromFile(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", input.ImagePaths[0].Substring(1)));
                     }
-                    
-                    ///////////////////
-
-                    
+                                                            
                     foreach (IFormFile file in files.Where(f => f.Length != 0))
                     {
                         string imageExt = Path.GetExtension(file.FileName);
@@ -214,6 +220,7 @@ namespace RoyalEstate.Web.Controllers
                     }
                 }
 
+                input.OrderDate = DateTime.Today;
                 await _estateAppService.UpdateAsync(input);
                 return Json(new
                 {

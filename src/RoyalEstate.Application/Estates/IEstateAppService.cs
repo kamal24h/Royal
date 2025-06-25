@@ -11,5 +11,6 @@ namespace RoyalEstate.Estates
     public interface IEstateAppService : IAsyncCrudAppService<EstateDto, long, GetAllEstatesInputDto, CreateEstateDto, EstateDto>
     {
         Task<List<EstateDto>> GetAllWithoutPagingAsync(GetAllEstatesInputDto input);
+        //Task<bool> UpdateWithTimeResetAsync(EstateDto inputDto);
     }
 }

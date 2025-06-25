@@ -12,5 +12,6 @@
   </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\RoyalEstate.Core\RoyalEstate.Core.csproj" />
+    <ProjectReference Include="..\RoyalEstate.EntityFrameworkCore\RoyalEstate.EntityFrameworkCore.csproj" />
   </ItemGroup>
 </Project>

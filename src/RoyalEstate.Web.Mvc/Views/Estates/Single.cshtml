@@ -159,6 +159,15 @@
                                                     </div>
                                                 </li>
                                             }
+                                            @if (Model.EstateTypeDto.UnitsPerFloor)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("UnitsPerFloor")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.UnitsPerFloor</span>
+                                                    </div>
+                                                </li>                                                
+                                            }
                                             @if (Model.EstateTypeDto.Price)
                                             {
                                                 <li class="list-group-item">
@@ -322,21 +331,21 @@
         $(() => {
             $("#btnDelete").click(function() {
                 abp.message.confirm(
-                    abp.utils.formatString(
+                   abp.utils.formatString(
                         l('AreYouSureWantToDelete'),
                         title),
                     "حذف",
                     (isConfirmed) => {
                         if (isConfirmed) {
                             $("#IsBusy").css("display", "block");
-                            _estateService.delete({
-                                id: @(Model.EstateDto.Id)
+                           _estateService.delete({
+                              id: @(Model.EstateDto.Id)
                             }).done(() => {
                                 window.location.replace("/Estates/Index");
                             });
                         }
                     }
-                );
+               );
             });
             $("#btnEdit").click(function () {                
                 $("#IsBusy").css("display", "block");

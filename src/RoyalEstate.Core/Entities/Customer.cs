@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 using JetBrains.Annotations;
+using System.ComponentModel;
 
 namespace RoyalEstate.Entities
 {
@@ -21,6 +22,7 @@ namespace RoyalEstate.Entities
         public string Surname { get; set; }
         
         [EmailAddress]
+        [DefaultValue("royal@royal.ir")]
         [StringLength(AbpUserBase.MaxEmailAddressLength)]
         public string EmailAddress { get; set; }
 
