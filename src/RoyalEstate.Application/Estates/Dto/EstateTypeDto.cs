@@ -41,6 +41,7 @@ namespace RoyalEstate.Estates.Dto
         public bool Storeroom { get; set; }
         public bool Elevator { get; set; }
         public bool BuiltDate { get; set; }
+        public bool BuildYear { get; set; }
         public string Color { get; set; }
     }
 }

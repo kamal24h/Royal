@@ -1649,6 +1649,9 @@ namespace RoyalEstate.Migrations
                     b.Property<double>("Area")
                         .HasColumnType("float");
 
+                    b.Property<long?>("BuildYear")
+                        .HasColumnType("bigint");
+
                     b.Property<DateTime>("BuiltDate")
                         .HasColumnType("datetime2");
 
@@ -1665,8 +1668,8 @@ namespace RoyalEstate.Migrations
                     b.Property<long>("CustomerId")
                         .HasColumnType("bigint");
 
-                    b.Property<double?>("Deposit")
-                        .HasColumnType("float");
+                    b.Property<long?>("Deposit")
+                        .HasColumnType("bigint");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(2000)")
@@ -1708,14 +1711,17 @@ namespace RoyalEstate.Migrations
                     b.Property<bool?>("MasterRoom")
                         .HasColumnType("bit");
 
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool?>("Parking")
                         .HasColumnType("bit");
 
-                    b.Property<double?>("Price")
-                        .HasColumnType("float");
+                    b.Property<long?>("Price")
+                        .HasColumnType("bigint");
 
-                    b.Property<double?>("Rent")
-                        .HasColumnType("float");
+                    b.Property<long?>("Rent")
+                        .HasColumnType("bigint");
 
                     b.Property<int?>("Rooms")
                         .HasColumnType("int");
@@ -1778,6 +1784,9 @@ namespace RoyalEstate.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<bool>("Area")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("BuildYear")
                         .HasColumnType("bit");
 
                     b.Property<bool>("BuiltDate")

@@ -47,8 +47,9 @@ namespace RoyalEstate.Entities
         public string LegalDoc { get; set; }
         
         public DateTime BuiltDate { get; set; }
+        public long? BuildYear { get; set; }
 
-        
+
         public long? Price { get; set; }
         public long? Rent { get; set; }
         public long? Deposit { get; set; }

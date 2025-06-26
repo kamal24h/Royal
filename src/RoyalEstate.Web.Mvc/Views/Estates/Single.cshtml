@@ -166,7 +166,18 @@
                                                         <h6>@L("UnitsPerFloor")</h6>
                                                         <span class="text-info text-bold">@Model.EstateDto.UnitsPerFloor</span>
                                                     </div>
-                                                </li>                                                
+                                                </li>
+
+                                            }
+                                            @if (Model.EstateTypeDto.BuildYear)
+                                            {
+                                                <li class="list-group-item">
+                                                    <div class="row justify-content-between">
+                                                        <h6>@L("BuildYear")</h6>
+                                                        <span class="text-info text-bold">@Model.EstateDto.BuildYear</span>
+                                                    </div>
+                                                </li>
+
                                             }
                                             @if (Model.EstateTypeDto.Price)
                                             {

@@ -208,11 +208,18 @@
                                             </select>
                                         </div>
                                     }
-                                    @if (Model.EstateTypeDto.BuiltDate)
+                                    @*@if (Model.EstateTypeDto.BuiltDate)
                                     {
                                         <div class="form-group">
                                             <label asp-for="EstateDto.BuiltDate">@L("BuiltDate")</label>
                                             <input asp-for="EstateDto.BuiltDate" type="date" class="form-control" />
+                                        </div>
+                                    }*@
+                                    @if (Model.EstateTypeDto.BuildYear)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="EstateDto.BuildYear">@L("BuildYear")</label>
+                                            <input asp-for="EstateDto.BuildYear" type="number" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateTypeDto.Price)
@@ -226,7 +233,7 @@
                                     {
                                         <div class="form-group">
                                             <label asp-for="EstateDto.Deposit">@L("Deposit")</label>
-                                            <input asp-for="EstateDto.Deposit" type="number"  class="form-control" />
+                                            <input asp-for="EstateDto.Deposit" type="number" class="form-control" />
                                         </div>
                                     }
                                     @if (Model.EstateTypeDto.Rent)

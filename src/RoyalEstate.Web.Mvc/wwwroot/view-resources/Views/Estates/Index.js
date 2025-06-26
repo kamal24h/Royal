@@ -9,6 +9,7 @@
     let filtersObject = {
         maxResultCount: pageSize,
         skipCount: 0,
+        sorting: "OrderDate DESC",
         isActive: true
     };
 
@@ -163,13 +164,15 @@
         if (startIndex==1) {
             return;
         }
-        filtersObject.maxResultCount = startIndex > maxLoadSize ? maxLoadSize : (startIndex - 1);    
+        filtersObject.maxResultCount = startIndex > maxLoadSize ? maxLoadSize : (startIndex - 1);
+        filtersObject.sorting = "OrderDate DESC";
         filtersObject.skipCount = startIndex <= maxLoadSize ? 0 : (startIndex - maxLoadSize - 1);
         loadEstates(filtersObject, dirUp);
     }
 
     function lazyLoadDown() {                  
         filtersObject.maxResultCount = maxLoadSize;
+        filtersObject.sorting = "OrderDate DESC";
         filtersObject.skipCount = endIndex;
         loadEstates(filtersObject, dirDown);
     }
@@ -190,6 +193,7 @@
         
         resetLazyLoad();
         filtersObject.maxResultCount = pageSize;
+        filtersObject.sorting = "OrderDate DESC";
         filtersObject.skipCount = 0;
         filtersObject = { ...filtersObject, term }       
         if (term != "") {
@@ -212,6 +216,7 @@
         
         resetLazyLoad();
         filtersObject.maxResultCount = pageSize;
+        filtersObject.sorting = "OrderDate DESC";
         filtersObject.skipCount = 0;
         filtersObject = { ...filtersObject, ...s }
         filtersObject.elevator = $(".filter-elevator input").is(":checked");

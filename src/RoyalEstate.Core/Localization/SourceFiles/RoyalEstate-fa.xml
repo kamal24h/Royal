@@ -237,6 +237,7 @@
     <text name="Storeroom">انباری</text>
     <text name="Elevator">آسانسور</text>
     <text name="BuiltDate">تاریخ ساخت</text>
+    <text name="BuildYear">سال ساخت</text>
     <!---->
 
     <text name="Features">ویژگی‌ها</text>
