@@ -48,8 +48,8 @@ namespace RoyalEstate.Entities
         
         public DateTime BuiltDate { get; set; }
         public long? BuildYear { get; set; }
-
-
+        public string BuildingDirection { get; set; }
+        
         public long? Price { get; set; }
         public long? Rent { get; set; }
         public long? Deposit { get; set; }

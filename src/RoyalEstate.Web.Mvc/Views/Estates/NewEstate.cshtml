@@ -205,13 +205,36 @@
                                             </select>
                                         </div>
                                     }
-                                    @if (Model.EstateType.BuiltDate)
+
+                                    @*@if (Model.EstateType.BuiltDate)
                                     {
                                         <div class="form-group">
                                             <label asp-for="CreateEstateDto.BuiltDate">@L("BuiltDate")</label>
                                             <input asp-for="CreateEstateDto.BuiltDate" type="date" class="form-control" />
                                         </div>
+                                    }*@
+
+                                    @if (Model.EstateType.BuildYear)
+                                    {
+                                        <div class="form-group">
+                                            <label asp-for="CreateEstateDto.BuildYear">@L("BuildYear")</label>
+                                            <input asp-for="CreateEstateDto.BuildYear" type="number" class="form-control" />
+                                        </div>
                                     }
+                                    @if (Model.EstateType.BuildingDirection)
+                                    {
+                                        <label asp-for="CreateEstateDto.BuildingDirection">@L("BuildingDirection")</label>
+                                        <select asp-for="CreateEstateDto.BuildingDirection" class="form-control">
+                                            <option value="">"-"</option>
+                                            <option value="جنوبی">جنوبی</option>
+                                            <option value="شمالی">شمالی</option>
+                                            <option value="دوکله">دوکله</option>
+                                            <option value="جنوبی نبش">جنوبی نبش</option>
+                                            <option value="شمالی نبش">شمالی نبش</option>
+                                            <option value="شرقی/غربی">شرقی/غربی</option>
+                                        </select>
+                                    }
+
                                     @if (Model.EstateType.Price)
                                     {
                                         <div class="form-group">
@@ -249,7 +272,7 @@
                                     <div class="form-check" style="font-size: 1rem; font-weight: bold">
                                         <label asp-for="CreateEstateDto.IsActive" class="form-check-label">
                                             @L("IsActive")
-                                            <input asp-for="CreateEstateDto.IsActive" type="checkbox" class="form-check-input mx-1" checked="checked"/>
+                                            <input asp-for="CreateEstateDto.IsActive" type="checkbox" class="form-check-input mx-1" checked="checked" />
                                         </label>
                                     </div>
 

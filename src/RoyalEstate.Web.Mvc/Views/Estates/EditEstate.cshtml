@@ -126,7 +126,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label asp-for="EstateDto.DistrictId">منطقه شهری</label>
-                                        <select asp-for="EstateDto.DistrictId" id="DistrictId" class="form-control"></select>
+                                        <select asp-for="EstateDto.DistrictId" asp-items="Model.Districts" id="DistrictId" class="form-control"></select>
                                     </div>
 
 
@@ -221,6 +221,19 @@
                                             <label asp-for="EstateDto.BuildYear">@L("BuildYear")</label>
                                             <input asp-for="EstateDto.BuildYear" type="number" class="form-control" />
                                         </div>
+                                    }
+                                    @if (Model.EstateTypeDto.BuildingDirection)
+                                    {
+                                        <label asp-for="EstateDto.BuildingDirection">@L("BuildingDirection")</label>
+                                        <select asp-for="EstateDto.BuildingDirection" class="form-control">
+                                            <option value="">"-"</option>
+                                            <option value="جنوبی">جنوبی</option>
+                                            <option value="شمالی">شمالی</option>
+                                            <option value="دوکله">دوکله</option>
+                                            <option value="جنوبی نبش">جنوبی نبش</option>
+                                            <option value="شمالی نبش">شمالی نبش</option>
+                                            <option value="شرقی/غربی">شرقی/غربی</option>
+                                        </select>
                                     }
                                     @if (Model.EstateTypeDto.Price)
                                     {

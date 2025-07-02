@@ -13,6 +13,7 @@ namespace RoyalEstate.Web.Models.Estates
         public EstateDto EstateDto { get; set; }
         public EstateTypeDto EstateTypeDto { get; set; }
         public List<SelectListItem> Customers { get; set; }
+        public List<SelectListItem> Districts { get; set; }
         public List<SelectListItem> Cities { get; set; }
         public bool CanEdit { get; set; }
         public bool CanDelete { get; set; }

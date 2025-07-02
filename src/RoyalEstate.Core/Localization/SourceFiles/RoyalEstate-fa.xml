@@ -238,6 +238,7 @@
     <text name="Elevator">آسانسور</text>
     <text name="BuiltDate">تاریخ ساخت</text>
     <text name="BuildYear">سال ساخت</text>
+    <text name="BuildingDirection">جهت بنا</text>
     <!---->
 
     <text name="Features">ویژگی‌ها</text>

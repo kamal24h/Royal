@@ -1652,6 +1652,9 @@ namespace RoyalEstate.Migrations
                     b.Property<long?>("BuildYear")
                         .HasColumnType("bigint");
 
+                    b.Property<string>("BuildingDirection")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("BuiltDate")
                         .HasColumnType("datetime2");
 
@@ -1787,6 +1790,9 @@ namespace RoyalEstate.Migrations
                         .HasColumnType("bit");
 
                     b.Property<bool>("BuildYear")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("BuildingDirection")
                         .HasColumnType("bit");
 
                     b.Property<bool>("BuiltDate")

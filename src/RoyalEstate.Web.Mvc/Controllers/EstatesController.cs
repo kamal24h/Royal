@@ -1,36 +1,26 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Abp.Application.Services.Dto;
+﻿using Abp.Application.Services.Dto;
 using Abp.AspNetCore.Mvc.Authorization;
-using DNTPersianUtils.Core;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Mvc;
+using RoyalEstate.Authorization;
 using RoyalEstate.Cities;
-using RoyalEstate.Cities.Dto;
-using RoyalEstate.Web.Models.Estates;
 using RoyalEstate.Controllers;
 using RoyalEstate.Customers;
-using RoyalEstate.Customers.Dto;
-using RoyalEstate.Estates.Dto;
-using RoyalEstate.Estates;
 using RoyalEstate.Districts;
-using RoyalEstate.Districts.Dto;
-using Abp.Domain.Repositories;
-using RoyalEstate.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.StaticFiles;
-using System.Drawing.Imaging;
+using RoyalEstate.Estates;
+using RoyalEstate.Estates.Dto;
+using RoyalEstate.Web.Models.Estates;
+using System;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
-using RoyalEstate.Authorization;
+using System.Threading.Tasks;
 
 namespace RoyalEstate.Web.Controllers
 {
-    
+
     public class EstatesController : RoyalEstateControllerBase
     {
         private readonly IEstateTypeAppService _estateTypeAppService;
@@ -172,6 +162,7 @@ namespace RoyalEstate.Web.Controllers
                 EstateDto = estateDto,
                 Customers = await _customerAppService.GetCustomersSelectListAsync(),
                 Cities = await _cityAppService.GetCitiesSelectList(),
+                Districts = await _districtAppService.GetDistrictsSelectListAsync(estateDto.CityId),
                 EstateTypeDto = await _estateTypeAppService.GetAsync(new EntityDto<int>(estateDto.EstateTypeId))
             };
             return View(model);

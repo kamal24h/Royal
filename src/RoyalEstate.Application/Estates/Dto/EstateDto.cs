@@ -37,6 +37,7 @@ namespace RoyalEstate.Estates.Dto
         public DateTime CreationTime { get; set; }
         public DateTime OrderDate { get; set; }
         public long? BuildYear { get; set; }
+        public string BuildingDirection { get; set; }
 
         public long? Price { get; set; }
         public long? Rent { get; set; }

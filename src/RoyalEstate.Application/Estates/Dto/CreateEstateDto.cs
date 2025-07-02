@@ -31,6 +31,9 @@ namespace RoyalEstate.Estates.Dto
         public bool? MasterRoom { get; set; }
         public string? LegalDoc { get; set; }
         public string BuiltDate { get; set; }
+        public long? BuildYear { get; set; }
+        public string BuildingDirection { get; set; }
+
         public string FilingCode { get; set; }
 
         public long? Price { get; set; }
